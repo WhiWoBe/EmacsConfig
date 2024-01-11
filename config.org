@@ -6,6 +6,9 @@
 #+OPTIONS: toc:2
 
 * INFO  
+:PROPERTIES:
+:ID:       9d60f158-81e8-4b1a-8f4b-405094c8aee4
+:END:
 
 The code blocks of this file get tangled into the file
 under the Header argument PROPERTY. To show the changes in the init file
@@ -15,40 +18,60 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 #+begin_src emacs-lisp
 
-    (setq inhibit-startup-message t)
+  (setq inhibit-startup-message t)
 
-      ;; WINDOW
-      (scroll-bar-mode -1) ;show scroll bars
-      (set-fringe-mode 0) ;added window border
-      (menu-bar-mode -1) ; top menu bar
-      (tool-bar-mode -1)
-      ;; (tooltip mode -1)
+  ;; WINDOW
+  (scroll-bar-mode -1) ;show scroll bars
+  (set-fringe-mode 0) ;added window border
+  (menu-bar-mode -1) ; top menu bar
+  (tool-bar-mode -1)
+  ;; (tooltip mode -1)
 
-      (setq visible-bell t)
+  (setq visible-bell t)
 
-      ;; Scroll
-      ;; (pixel-scroll-precision-mode)
+  ;; Scroll
+  ;; (pixel-scroll-precision-mode)
 
-      ;; Line Numbers
-      (global-display-line-numbers-mode 1)
-      (menu-bar--display-line-numbers-mode-relative)
-      ;; (display-line-numbers-type 'relative)
+  ;; Line Numbers
+  (global-display-line-numbers-mode 1)
+  (menu-bar--display-line-numbers-mode-relative)
+  ;; (display-line-numbers-type 'relative)
+  (global-hl-line-mode 1)
 
-      ;; History
+  ;; History
 
   (setq history-length 25)
   (savehist-mode 1)
 
-
   (setq recentf-max-saved-items 25)
   (recentf-mode 1)
 
-    ;; Auto update buffers
-    (global-auto-revert-mode)
+  ;; Auto update buffers
+  (global-auto-revert-mode)
+
+#+end_src
+
+
+
+* Setting some Environment Variables
+
+
+#+begin_src emacs-lisp 
+
+   ;; (defvar my/org-dir-files "/mnt/d/notebooks/org")
+   ;; (defvar my/org-agenda-files "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+   ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+   ;; (defvar my/backup-directory "/mnt/d/notebooks/org/.data/backups/")
+   ;; (defvar my/org-templates "/mnt/d/notebooks/org/.templates")
+   (defvar my/bookmarks "/mnt/d/notebooks/org/.data/bookmarks")
+   (defvar my/org-id-locations-file "/mnt/d/notebooks/org/.data/.org-id-locations")
+   (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 #+end_src
 
 * Appearance Settings (Fonts and Themes)
+
+considering another Theme like doom-old
 
 #+begin_src emacs-lisp 
 
@@ -65,7 +88,8 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 * Package Manager
 
-Package.el is built into Emacs
+Package.el is built into Emacs. Works fine for now
+
 #+begin_src emacs-lisp
 
   ;; TANGLE
@@ -89,17 +113,38 @@ Package.el is built into Emacs
 
 #+end_src
 
+* Default Programs
+
+Default Programs can be set up here. org-file-apps can point to windows programs but have
+to be added to the $PATH Variable. Additionallt sending the informations about the
+path to the document (per ex. a pdf) requires further tinkering.
+The DEFAULT BROWSER Function however works flawlessly. 
+
+#+begin_src emacs-lisp
+
+     ;; DEFAULT BROWSER
+     (setq browse-url-browser-function 'browse-url-generic       browse-url-generic-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+
+  (setq org-file-apps
+     '(("\\.docx\\'" . default)
+       ("\\.mm\\'" . default)
+       ("\\.x?html?\\'" . default)
+       ("\\.pdf\\'" . "firefox %s")
+       (auto-mode . emacs)))
+
+
+#+end_src
+
 * Packages
+
 Since Emacs 20.1 use package is pre installed
 
 ** Minibuffer
-:PROPERTIES:
-:ID:       090c3df3-9d7e-4098-897d-6ca14dd3eb13
-:END:
-ivy rich has a bug which breaks the buffer when starting dred
-or use Distrotubes guide for Ivy https://www.youtube.com/watch?v=A4UothfExBM&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX&index=5
-check out Alternatives https://github.com/emacs-tw/awesome-emacs?tab=readme-ov-file#other-awesome-lists:~:text=for%20key%2Dbindings.-,Minibuffer,-IDO%20%2D%20%5Bbuilt  
-For now i will use build in (fido-vertical-mode) for now.
+
+For me ivy rich broke the buffer when starting dired.
+- Maybe use Distrotubes guide for Ivy https://www.youtube.com/watch?v=A4UothfExBM&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX&index=5
+- check out Alternatives https://github.com/emacs-tw/awesome-emacs?tab=readme-ov-file#other-awesome-lists:~:text=for%20key%2Dbindings.-,Minibuffer,-IDO%20%2D%20%5Bbuilt  
+Used the build in (fido-vertical-mode)  and switched to vertico and orderless
 
 #+begin_src emacs-lisp
 
@@ -147,10 +192,8 @@ For now i will use build in (fido-vertical-mode) for now.
     ;; `completion-list-mode-map'.
     :bind (:map minibuffer-local-map
                 ("M-A" . marginalia-cycle))
-
     ;; The :init section is always executed.
     :init
-
     ;; Marginalia must be activated in the :init section of use-package such that
     ;; the mode gets enabled right away. Note that this forces loading the
     ;; package.
@@ -158,7 +201,7 @@ For now i will use build in (fido-vertical-mode) for now.
 
 #+end_src
 
-** Modeline
+** Doom Modeline
 
 #+begin_src emacs-lisp
 
@@ -169,7 +212,7 @@ For now i will use build in (fido-vertical-mode) for now.
 
 #+end_src
 
-** Shortcut Cheat Sheet
+** Which-Key Shortcut Cheat Sheet
 
 #+begin_src emacs-lisp
 
@@ -219,14 +262,162 @@ For now i will use build in (fido-vertical-mode) for now.
 
 #+end_src
 
-* Default Programs
+** Org Mode
+
+You can manually add files to the agenda ‘M-x org-agenda-file-to-front’
+
+By Default ive set emacs to create IDs when I store a Link if there is no custom ID.
+The my/capture functions set the variable to either use or not use an ID for this Capture.
+~let~ will change that variable only within the function and leaves the global settings untouched.
 
 #+begin_src emacs-lisp
 
-  ;; DEFAULT BROWSER
-  (setq browse-url-browser-function 'browse-url-generic       browse-url-generic-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+  (defun tmi/org-mode-setup ()
+    (org-indent-mode)
+    (setq evil-auto-indent nil))
+
+  ;;(defun my/org-todo-insert-comment ()
+  ;;       (interactive)
+  ;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
+  ;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
+
+  ;; when calling store-link it creates a link unless there is a defined custom id.
+  ;; when capture is called do not create an id.
+  ;; when my/capture-with... is called it creates an id at point.
+  ;; so we can say capture with id > task and it will create an id at point and link to that id.
+
+  (defun my/capture-with-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id t))
+      (org-capture nil "J")
+      ))
+
+  (defun my/capture-journal-without-id()
+    (org-capture nil "j"))
+
+  (use-package org
+    :pin org
+    :commands (org-capture org-agenda)
+    :hook (org-mode . tmi/org-mode-setup)
+    :config
+    (setq org-directory-files '("/mnt/d/notebooks/DemacsNotes/org/")) ;;Default location of Org files
+    (setq org-agenda-files '("/mnt/d/notebooks/DemacsNotes/org/Capture.org")) ;;org agenda searches in this file or dir for todo items
+    (setq org-ellipsis " +")
+    (setq org-return-follows-link t)
+    (setq org-log-done 'time) ;; timestamp on done
+    (setq org-log-into-drawer t)
+
+    ;; Setup org-id
+
+    (require 'org-id)
+    (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+    ;; (org-id-method) 
+    (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+
+    ;; Org Capture Templates
+
+    (setq org-capture-templates
+          `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Task_Template.org")
+             :jump-to-captured t
+             :empty-lines-after 1
+             :empty-lines-before 1)
+            ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Meeting_Template.org")
+             :jump-to-captured t
+             :empty-lines-after 1
+             :empty-lines-before 1)
+            ("c" "Comment" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Comment_Template.org")
+             :refile-targets ((nil :level . 2))
+             :empty-lines-before 0
+             :empty-lines-after 0
+             :time-prompt t
+             )
+            ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Journal")
+             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Journal_Template.org")
+             :empty-lines-before 0
+             :empty-lines-after 0
+             )
+            )
+
+          ;; Org global TODO States
+          ;; (setq org-todo-keywords
+          ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+          ))
+
+  ;;(setq org-refile-targets
+  ;;         '(("/mnt/d/notebooks/DemacsNotes/org/Capture.org" :maxlevel . 1)))
+
+  ;;(org-id-get-with-outline-path-completion)
+  ;; (defun my/org-add-ids-to-headlines-in-file ()
+  ;;   "Add ID properties to all headlines in the current file which
+  ;; do not already have one."
+  ;;   (interactive)
+  ;;   (org-map-entries 'org-id-get-create))
+
+  ;; (add-hook 'org-mode-hook
+  ;;           (lambda ()
+  ;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
+
+  ;; (add-hook 'org-mode-hook 'org-indent-mode)
+
+
 
 #+end_src
+
+** Google Calendar Import
+
+#+begin_src emacs-lisp
+
+  (require 'icalendar)
+
+  (setq diary-file "/mnt/d/notebooks/DemacsNotes/org/cal.org")
+  (setq calendar-mark-diary-entries-flag t)
+  (add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
+  (setq diary-comment-start ";;")
+  (setq diary-comment-end "")
+  (setq org-agenda-include-diary t)
+  (add-hook 'diary-mode-hook 'real-auto-save-mode)
+  (add-hook 'diary-mode-hook #'abbrev-mode) 
+
+#+end_src
+
+
+** MAGIT 
+
+#+begin_src emacs-lisp
+
+  (use-package magit
+    :ensure t)
+
+  (use-package ob-mermaid
+    :ensure t)
+  (setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
+
+
+#+end_src
+
+** Dired
+
+basic setup and trash directory
+
+#+begin_src emacs-lisp
+
+  (use-package dired
+
+    :ensure nil
+    :commands (dired dired-jump)
+    :custom ((dired-listing-switches "-agho --group-directories-first"))
+    :config
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "h" 'dired-up-directory
+      "l" 'dired-find-file))
+  (setq delete-by-moving-to-trash t)
+  (setq trash-directory my/trash-directory)
+
+#+end_src
+
 
 * KEYBINDINGS
 
@@ -239,8 +430,8 @@ For now i will use build in (fido-vertical-mode) for now.
 
 #+end_src
 
-** General.el Keybindings
-*** Setup Keybindings with GENERAL https://github.com/noctuid/general.el
+** General.el Keybindings for Leader Keys
+Resources https://github.com/noctuid/general.el
 
 #+begin_src emacs-lisp
 
@@ -316,165 +507,58 @@ For now i will use build in (fido-vertical-mode) for now.
 
 #+end_src
 
-
-* Org Mode
-
-dont forget that you can manually add files to the agenda ‘M-x org-agenda-file-to-front’
-
-#+begin_src emacs-lisp
-
-  (defun tmi/org-mode-setup ()
-    (org-indent-mode)
-    (setq evil-auto-indent nil))
-
-  ;;(defun my/org-todo-insert-comment ()
-  ;;       (interactive)
-  ;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
-  ;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
-
-  ;; when calling store-link it creates a link unless there is a defined custom id.
-  ;; when capture is called do not create an id.
-  ;; when my/capture-with... is called it creates an id at point.
-  ;; so we can say capture with id > task and it will create an id at point and link to that id.
-
-  (defun my/capture-with-id-at-point()
-    (interactive)
-    (let ((org-id-link-to-org-use-id t))
-      (org-capture nil "J")
-      ))
-
-  (defun my/capture-journal-without-id()
-    (org-capture nil "j"))
-
-  (use-package org
-    :pin org
-    :commands (org-capture org-agenda)
-    :hook (org-mode . tmi/org-mode-setup)
-    :config
-    (setq org-directory-files '("~/mnt/d/notebooks/DemacsNotes/org")) ;;Default location of Org files
-    (setq org-agenda-files '("/mnt/d/notebooks/DemacsNotes/org/Capture.org")) ;;org agenda searches in this file or dir for todo items
-    (setq org-ellipsis " +")
-    (setq org-return-follows-link t)
-    (setq org-log-done 'time) ;; timestamp on done
-    (setq org-log-into-drawer t)
-
-    ;; Setup org-id
-
-    (require 'org-id)
-    (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
-    ;; (org-id-method) 
-    (setq org-id-locations-file "/mnt/d/notebooks/DemacsNotes/org/data/.org-id-locations") ;; set where id's are stored
-
-    ;; Org Capture Templates
-
-    (setq org-capture-templates
-          `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Task_Template.org")
-             :jump-to-captured t
-             :empty-lines-after 1
-             :empty-lines-before 1)
-            ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Meeting_Template.org")
-             :jump-to-captured t
-             :empty-lines-after 1
-             :empty-lines-before 1)
-            ("c" "Comment" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Comment_Template.org")
-             :refile-targets ((nil :level . 2))
-             :empty-lines-before 0
-             :empty-lines-after 0
-             :time-prompt t
-             )
-            ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Journal")
-             (file "/mnt/d/notebooks/DemacsNotes/org/templates/Journal_Template.org")
-             :empty-lines-before 0
-             :empty-lines-after 0
-             )
-            )
-
-          ;; Org global TODO States
-          ;; (setq org-todo-keywords
-          ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-          ))
-
-  ;;(setq org-refile-targets
-  ;;         '(("/mnt/d/notebooks/DemacsNotes/org/Capture.org" :maxlevel . 1)))
-
-  ;;(org-id-get-with-outline-path-completion)
-  ;; (defun my/org-add-ids-to-headlines-in-file ()
-  ;;   "Add ID properties to all headlines in the current file which
-  ;; do not already have one."
-  ;;   (interactive)
-  ;;   (org-map-entries 'org-id-get-create))
-
-  ;; (add-hook 'org-mode-hook
-  ;;           (lambda ()
-  ;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
-
-  ;; (add-hook 'org-mode-hook 'org-indent-mode)
-
-
-
-#+end_src
-
 * Littering
 
 #+begin_src emacs-lisp
 
-  (setq backup-directory-alist '(("." . "~/.config/emacs/tmp/backups/")))
+  (setq backup-directory-alist '(("." . "~/.config/emacs/tmp/backups/"))) 
 
 #+end_src
 
-* Bookmarks 
+* Bookmarks
+:PROPERTIES:
+:ID:       efd2c542-0f07-4ee3-9af4-a6ac7a0c2009
+:END:
 
 #+begin_src emacs-lisp
 
-  (setq bookmark-default-file "/mnt/d/notebooks/DemacsNotes/org/bookmarks/bookmarks")
+ (setq bookmark-default-file my/bookmarks)
 
 #+end_src
 
-* MAGIT Setup 
+* AUTOTANGLE
+
+Tangles this config to the init file
 
 #+begin_src emacs-lisp
 
-  (use-package magit
-    :ensure t)
-
-#+end_src
-
-* Dired
-
-#+begin_src emacs-lisp
-
-  (use-package dired
-
-    :ensure nil
-    :commands (dired dired-jump)
-    :custom ((dired-listing-switches "-agho --group-directories-first"))
-    :config
-    (evil-collection-define-key 'normal 'dired-mode-map
-      "h" 'dired-up-directory
-      "l" 'dired-find-file))
-  (setq delete-by-moving-to-trash t)
-  (setq trash-directory "~/.config/emacs/tmp/trash/")
-
-#+end_src
-
-
-* AUTOTANGLE 
-
-#+begin_src emacs-lisp
-
-  (defun efs/org-babel-tangle-config ()
+  (defun my/org-babel-tangle-config ()
     (when (string-equal (file-name-directory (buffer-file-name))
-			(expand-file-name user-emacs-directory))
+                        (expand-file-name user-emacs-directory))
       ;; Dynamic scoping to the rescue
       (let ((org-confirm-babel-evaluate nil))
-	(org-babel-tangle))))
+        (org-babel-tangle))
+      )
+    ) 
 
-  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/org-babel-tangle-config)))
 
 #+end_src
 
+* Pushes to Dropbox
+
+#+begin_src emacs-lisp
+
+  (defun my/push-to-drop ()
+    (interactive)
+    (when (string-equal (buffer-file-name)
+                        "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+      ;; Dynamic scoping to the rescue
+      (write-region nil nil "/mnt/d/notebooks/DemacsNotes/org/tanglecapture.org" nil nil nil t)))
+
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
+
+#+end_src
 
 * Org Super agenda
+

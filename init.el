@@ -1,33 +1,42 @@
 (setq inhibit-startup-message t)
 
-    ;; WINDOW
-    (scroll-bar-mode -1) ;show scroll bars
-    (set-fringe-mode 0) ;added window border
-    (menu-bar-mode -1) ; top menu bar
-    (tool-bar-mode -1)
-    ;; (tooltip mode -1)
+;; WINDOW
+(scroll-bar-mode -1) ;show scroll bars
+(set-fringe-mode 0) ;added window border
+(menu-bar-mode -1) ; top menu bar
+(tool-bar-mode -1)
+;; (tooltip mode -1)
 
-    (setq visible-bell t)
+(setq visible-bell t)
 
-    ;; Scroll
-    ;; (pixel-scroll-precision-mode)
+;; Scroll
+;; (pixel-scroll-precision-mode)
 
-    ;; Line Numbers
-    (global-display-line-numbers-mode 1)
-    (menu-bar--display-line-numbers-mode-relative)
-    ;; (display-line-numbers-type 'relative)
+;; Line Numbers
+(global-display-line-numbers-mode 1)
+(menu-bar--display-line-numbers-mode-relative)
+;; (display-line-numbers-type 'relative)
+(global-hl-line-mode 1)
 
-    ;; History
+;; History
 
 (setq history-length 25)
 (savehist-mode 1)
 
-
 (setq recentf-max-saved-items 25)
 (recentf-mode 1)
 
-  ;; Auto update buffers
-  (global-auto-revert-mode)
+;; Auto update buffers
+(global-auto-revert-mode)
+
+;; (defvar my/org-dir-files "/mnt/d/notebooks/org")
+;; (defvar my/org-agenda-files "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+;; (defvar my/backup-directory "/mnt/d/notebooks/org/.data/backups/")
+;; (defvar my/org-templates "/mnt/d/notebooks/org/.templates")
+(defvar my/bookmarks "/mnt/d/notebooks/org/.data/bookmarks")
+(defvar my/org-id-locations-file "/mnt/d/notebooks/org/.data/.org-id-locations")
+(defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
 (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 180)
@@ -56,6 +65,16 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+;; DEFAULT BROWSER
+   (setq browse-url-browser-function 'browse-url-generic       browse-url-generic-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+
+(setq org-file-apps
+   '(("\\.docx\\'" . default)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "firefox %s")
+     (auto-mode . emacs)))
 
 ;; (fido-vertical-mode)
 
@@ -101,10 +120,8 @@
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
               ("M-A" . marginalia-cycle))
-
   ;; The :init section is always executed.
   :init
-
   ;; Marginalia must be activated in the :init section of use-package such that
   ;; the mode gets enabled right away. Note that this forces loading the
   ;; package.
@@ -146,8 +163,125 @@
   (setq evil-collection-mode-list '(dashboard dired ibuffer))
   (evil-collection-init))
 
-;; DEFAULT BROWSER
-(setq browse-url-browser-function 'browse-url-generic       browse-url-generic-program "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+(defun tmi/org-mode-setup ()
+  (org-indent-mode)
+  (setq evil-auto-indent nil))
+
+;;(defun my/org-todo-insert-comment ()
+;;       (interactive)
+;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
+;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
+
+;; when calling store-link it creates a link unless there is a defined custom id.
+;; when capture is called do not create an id.
+;; when my/capture-with... is called it creates an id at point.
+;; so we can say capture with id > task and it will create an id at point and link to that id.
+
+(defun my/capture-with-id-at-point()
+  (interactive)
+  (let ((org-id-link-to-org-use-id t))
+    (org-capture nil "J")
+    ))
+
+(defun my/capture-journal-without-id()
+  (org-capture nil "j"))
+
+(use-package org
+  :pin org
+  :commands (org-capture org-agenda)
+  :hook (org-mode . tmi/org-mode-setup)
+  :config
+  (setq org-directory-files '("/mnt/d/notebooks/DemacsNotes/org/")) ;;Default location of Org files
+  (setq org-agenda-files '("/mnt/d/notebooks/DemacsNotes/org/Capture.org")) ;;org agenda searches in this file or dir for todo items
+  (setq org-ellipsis " +")
+  (setq org-return-follows-link t)
+  (setq org-log-done 'time) ;; timestamp on done
+  (setq org-log-into-drawer t)
+
+  ;; Setup org-id
+
+  (require 'org-id)
+  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  ;; (org-id-method) 
+  (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+
+  ;; Org Capture Templates
+
+  (setq org-capture-templates
+        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Task_Template.org")
+           :jump-to-captured t
+           :empty-lines-after 1
+           :empty-lines-before 1)
+          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Meeting_Template.org")
+           :jump-to-captured t
+           :empty-lines-after 1
+           :empty-lines-before 1)
+          ("c" "Comment" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
+           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Comment_Template.org")
+           :refile-targets ((nil :level . 2))
+           :empty-lines-before 0
+           :empty-lines-after 0
+           :time-prompt t
+           )
+          ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Journal")
+           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Journal_Template.org")
+           :empty-lines-before 0
+           :empty-lines-after 0
+           )
+          )
+
+        ;; Org global TODO States
+        ;; (setq org-todo-keywords
+        ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+        ))
+
+;;(setq org-refile-targets
+;;         '(("/mnt/d/notebooks/DemacsNotes/org/Capture.org" :maxlevel . 1)))
+
+;;(org-id-get-with-outline-path-completion)
+;; (defun my/org-add-ids-to-headlines-in-file ()
+;;   "Add ID properties to all headlines in the current file which
+;; do not already have one."
+;;   (interactive)
+;;   (org-map-entries 'org-id-get-create))
+
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
+
+;; (add-hook 'org-mode-hook 'org-indent-mode)
+
+(require 'icalendar)
+
+(setq diary-file "/mnt/d/notebooks/DemacsNotes/org/cal.org")
+(setq calendar-mark-diary-entries-flag t)
+(add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
+(setq diary-comment-start ";;")
+(setq diary-comment-end "")
+(setq org-agenda-include-diary t)
+(add-hook 'diary-mode-hook 'real-auto-save-mode)
+(add-hook 'diary-mode-hook #'abbrev-mode)
+
+(use-package magit
+  :ensure t)
+
+(use-package ob-mermaid
+  :ensure t)
+(setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
+
+(use-package dired
+
+  :ensure nil
+  :commands (dired dired-jump)
+  :custom ((dired-listing-switches "-agho --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-up-directory
+    "l" 'dired-find-file))
+(setq delete-by-moving-to-trash t)
+(setq trash-directory my/trash-directory)
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (keymap-global-unset "C-k") ; unset kill line
@@ -221,120 +355,26 @@
     )
   )
 
-(defun tmi/org-mode-setup ()
-  (org-indent-mode)
-  (setq evil-auto-indent nil))
-
-;;(defun my/org-todo-insert-comment ()
-;;       (interactive)
-;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
-;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
-
-;; when calling store-link it creates a link unless there is a defined custom id.
-;; when capture is called do not create an id.
-;; when my/capture-with... is called it creates an id at point.
-;; so we can say capture with id > task and it will create an id at point and link to that id.
-
-(defun my/capture-with-id-at-point()
-  (interactive)
-  (let ((org-id-link-to-org-use-id t))
-    (org-capture nil "J")
-    ))
-
-(defun my/capture-journal-without-id()
-  (org-capture nil "j"))
-
-(use-package org
-  :pin org
-  :commands (org-capture org-agenda)
-  :hook (org-mode . tmi/org-mode-setup)
-  :config
-  (setq org-directory-files '("~/mnt/d/notebooks/DemacsNotes/org")) ;;Default location of Org files
-  (setq org-agenda-files '("/mnt/d/notebooks/DemacsNotes/org/Capture.org")) ;;org agenda searches in this file or dir for todo items
-  (setq org-ellipsis " +")
-  (setq org-return-follows-link t)
-  (setq org-log-done 'time) ;; timestamp on done
-  (setq org-log-into-drawer t)
-
-  ;; Setup org-id
-
-  (require 'org-id)
-  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
-  ;; (org-id-method) 
-  (setq org-id-locations-file "/mnt/d/notebooks/DemacsNotes/org/data/.org-id-locations") ;; set where id's are stored
-
-  ;; Org Capture Templates
-
-  (setq org-capture-templates
-        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Task_Template.org")
-           :jump-to-captured t
-           :empty-lines-after 1
-           :empty-lines-before 1)
-          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Meeting_Template.org")
-           :jump-to-captured t
-           :empty-lines-after 1
-           :empty-lines-before 1)
-          ("c" "Comment" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Comment_Template.org")
-           :refile-targets ((nil :level . 2))
-           :empty-lines-before 0
-           :empty-lines-after 0
-           :time-prompt t
-           )
-          ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Journal")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Journal_Template.org")
-           :empty-lines-before 0
-           :empty-lines-after 0
-           )
-          )
-
-        ;; Org global TODO States
-        ;; (setq org-todo-keywords
-        ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-        ))
-
-;;(setq org-refile-targets
-;;         '(("/mnt/d/notebooks/DemacsNotes/org/Capture.org" :maxlevel . 1)))
-
-;;(org-id-get-with-outline-path-completion)
-;; (defun my/org-add-ids-to-headlines-in-file ()
-;;   "Add ID properties to all headlines in the current file which
-;; do not already have one."
-;;   (interactive)
-;;   (org-map-entries 'org-id-get-create))
-
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
-
-;; (add-hook 'org-mode-hook 'org-indent-mode)
-
 (setq backup-directory-alist '(("." . "~/.config/emacs/tmp/backups/")))
 
-(setq bookmark-default-file "/mnt/d/notebooks/DemacsNotes/org/bookmarks/bookmarks")
+(setq bookmark-default-file my/bookmarks)
 
-(use-package magit
-  :ensure t)
-
-(use-package dired
-
-  :ensure nil
-  :commands (dired dired-jump)
-  :custom ((dired-listing-switches "-agho --group-directories-first"))
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "h" 'dired-up-directory
-    "l" 'dired-find-file))
-(setq delete-by-moving-to-trash t)
-(setq trash-directory "~/.config/emacs/tmp/trash/")
-
-(defun efs/org-babel-tangle-config ()
+(defun my/org-babel-tangle-config ()
   (when (string-equal (file-name-directory (buffer-file-name))
-		      (expand-file-name user-emacs-directory))
+                      (expand-file-name user-emacs-directory))
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
-      (org-babel-tangle))))
+      (org-babel-tangle))
+    )
+  ) 
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/org-babel-tangle-config)))
+
+(defun my/push-to-drop ()
+  (interactive)
+  (when (string-equal (buffer-file-name)
+                      "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+    ;; Dynamic scoping to the rescue
+    (write-region nil nil "/mnt/d/notebooks/DemacsNotes/org/tanglecapture.org" nil nil nil t)))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
