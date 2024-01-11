@@ -1,0 +1,11 @@
+* %^{prompt} %i 
+Date: ^%T
+Attendants: 
+Location: 
+** Agenda
+- 
+Comment: %T %?
+:PROPERTIES:
+:Path: %F
+:Created: %(org-insert-time-stamp (current-time))
+:END:

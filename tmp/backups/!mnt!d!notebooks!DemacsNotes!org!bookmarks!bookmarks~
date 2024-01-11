@@ -1,0 +1,35 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored-marker"
+ (filename . "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+ (front-context-string . "*** Comment: [20")
+ (rear-context-string . " Eva Schobert]]\n")
+ (position . 2258)
+ (last-modified 26005 44717 325576 201000))
+("org-refile-last-stored"
+ (filename . "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+ (front-context-string . "*** Comment: [20")
+ (rear-context-string . " Eva Schobert]]\n")
+ (position . 2258)
+ (last-modified 26005 44717 307025 612000))
+("org-capture-last-stored"
+ (filename . "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+ (front-context-string . "***** <2024-01-0")
+ (rear-context-string . "-01-04 Thursday\n")
+ (position . 3053)
+ (last-modified 26006 42971 102199 541000))
+("Capture"
+ (filename . "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+ (front-context-string . "* Inbox\n\n** TODO")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26005 23132 41057 664000))
+("Org Mode Setup"
+ (filename . "/mnt/d/notebooks/DemacsNotes/org/Org-mode-setup.org")
+ (front-context-string . "* Setting up Org")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26005 23155 224916 84000))
+)

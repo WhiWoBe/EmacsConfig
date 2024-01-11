@@ -1,0 +1,119 @@
+#+STARTUP: content  
+#+TODO: ACT(a) WAIT(b) READ(r) | DONE(d) CANCELED(c) 
+#+TODO: COMMENT(k@)
+
+(setq org-log-into-drawer t)
+
+* Inbox
+:PROPERTIES:
+:ID:       ed66e6c8-b7b1-4279-8bd0-183fbe4ea1ef
+:END:
+** DONE Set up Comments for Tasks                                    :emacs:
+CLOSED: [2024-01-04 Thu 10:04] SCHEDULED: <2024-01-04 Thu 10:00>
+:PROPERTIES:
+:Path:     /mnt/d/notebooks/DemacsNotes/org/Capture.org
+:Created:  [2024-01-03 Wed 20:30]
+:ID:       a32a2035-91c4-43ed-8e60-b4c8b7f721cc
+:END:
+:LOGBOOK:
+- Note taken on [2024-01-04 Thu 08:42] \\
+  adding a note through org-add-note while on heading
+- Note taken on [2024-01-04 Thu 08:41] \\
+  Comments for Tasks through pressing z in agenda mode
+:END:
+
+** ACT Setup Keybindings
+:PROPERTIES:
+:ID:       46474c12-8d56-4fde-a666-be47bd73452b
+:END:
+:LOGBOOK:
+:END:
+  [2024-01-01 Mon 14:43]
+  [[id:d4d6e81c-262f-4f5e-98db-8287fc3bd81a][Setup Keybindings with GENERAL https://github.com/noctuid/general.el]]
+
+** ACT add super agenda
+:PROPERTIES:
+:ID:       706c1636-da4f-4249-b36b-f1d9a5f3aa45
+:END:
+:LOGBOOK:
+- Note taken on [2024-01-03 Wed 20:44] \\
+  123
+:END:
+  [2024-01-01 Mon 14:46]
+  [[id:1db73c32-e281-4503-b6e8-bf345e952eda][Add Org Super agenda to the Config]]
+
+** ACT find a solution for Task Tracking
+  [2024-01-01 Mon 14:47]
+  [[id:cef2658a-2e9b-4e37-879e-25e4e52344c6][Solution for Tasks]]
+
+** ACT find a solution for sync
+  [2024-01-01 Mon 14:48]
+  [[id:2775e98e-cbba-4e1d-bafc-2bf53ad92e79][Syncing to Phone]]
+
+** DONE check out alternatives for Minibuffer completion
+CLOSED: [2024-01-01 Mon 16:50]
+:PROPERTIES:
+:ID:       7aca2812-0669-4b35-bce8-85dc6996c3c9
+:END:
+  [2024-01-01 Mon 14:44]
+  [[id:090c3df3-9d7e-4098-897d-6ca14dd3eb13][Minibuffer]]
+
+** ACT Look up Packages                                              :emacs:
+:PROPERTIES:
+:ID:       42144d3c-65d8-443b-b3f3-19fc0124573d
+:END:
+  [2024-01-01 Mon 14:49]
+  [[id:7525402e-ab54-494a-85b5-e4814925824b][Packages to Consider]]
+
+** DONE Setup Bookmarks
+CLOSED: [2024-01-03 Wed 08:52]
+:PROPERTIES:
+:ID:       31da55cb-8b02-4bf3-88a0-7d037e16e415
+:END:
+Source: [[id:e5d00642-3c00-42c2-9800-90f3de127e3c][Bookmarks]]
+Path: /home/thms/.config/emacs/config.org
+
+** ACT Einweisung Eva Schobert  
+
+Date: <2024-01-03 Wed 12:10>
+Attendees: TMI, Eva Schobert, Lasse Schobert 
+Location: Online
+
+*** Agenda
+1.
+2. 
+3. 
+
+*** Notes
+
+*** Tasks
+- [ ] 
+- [ ]
+- [ ]
+
+** WAIT a new task To do
+:PROPERTIES:
+:Path: /mnt/d/notebooks/DemacsNotes/org/Capture.org
+:Created: [2024-01-03 Wed 18:58] 
+:ID:       fef7885c-5395-43c7-ac6f-35c330a0cf78
+:END:
+:LOGBOOK:
+- Note taken on [2024-01-03 Wed 20:45] \\
+  123
+:END:
+Source: [[id:6c3e29fa-a58b-4e30-bb2e-c5d1d9a4599b][Einweisung Eva Schobert]]
+
+**  123                                                               :123:
+:PROPERTIES:
+:Path: /mnt/d/notebooks/DemacsNotes/org/Capture.org
+:Created: [2024-01-04 Thu 10:38] 
+:END:
+Source: [[file:/mnt/d/notebooks/DemacsNotes/org/Capture.org::*Einweisung Eva Schobert][Einweisung Eva Schobert]]
+
+* Journal
+** 2024
+*** 2024-01 January
+**** 2024-01-04 Thursday
+***** <2024-01-04 Thu 13:42>
+1234
+

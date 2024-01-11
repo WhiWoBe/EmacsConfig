@@ -1,0 +1,24 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Changes to be committed:
+#	modified:   config.org
+#
+# Untracked files:
+#	.local/
+#	auto-save-list/
+#	config.org.rej
+#	config.org~
+#	diary
+#	eln-cache/
+#	elpa/
+#	file-0
+#	history
+#	init.el~
+#	recentf
+#	tmp/
+#	transient/
+#	tree-sitter/
+#
