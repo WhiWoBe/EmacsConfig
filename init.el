@@ -180,19 +180,19 @@
 (defun my/capture-with-id-at-point()
   (interactive)
   (let ((org-id-link-to-org-use-id t))
-    (org-capture nil "J")
+    (org-capture nil)
     ))
 
-(defun my/capture-journal-without-id()
-  (org-capture nil "j"))
+;; (defun my/capture-journal-without-id()
+;;   (org-capture nil))
 
 (use-package org
   :pin org
   :commands (org-capture org-agenda)
   :hook (org-mode . tmi/org-mode-setup)
   :config
-  (setq org-directory-files '("/mnt/d/notebooks/DemacsNotes/org/")) ;;Default location of Org files
-  (setq org-agenda-files '("/mnt/d/notebooks/DemacsNotes/org/Capture.org")) ;;org agenda searches in this file or dir for todo items
+  (setq org-directory-files '("/mnt/d/notebooks/org/")) ;;Default location of Org files
+  (setq org-agenda-files '("/mnt/d/notebooks/org/Tasks.org" "/mnt/d/notebooks/org/Meetings.org")) ;;org agenda searches in this file or dir for todo items
   (setq org-ellipsis " +")
   (setq org-return-follows-link t)
   (setq org-log-done 'time) ;; timestamp on done
@@ -208,25 +208,31 @@
   ;; Org Capture Templates
 
   (setq org-capture-templates
-        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Task_Template.org")
+        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/org/Tasks.org" "Task List")
+           (file "/mnt/d/notebooks/org/.templates/Task_Template.org")
+           :prepend t
            :jump-to-captured t
            :empty-lines-after 1
-           :empty-lines-before 1)
-          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Meeting_Template.org")
+           :empty-lines-before 1
+
+           )
+          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/org/Meetings.org" "Metting Notes")
+           (file "/mnt/d/notebooks/org/.templates/Meeting_Template.org")
+           :prepend t
            :jump-to-captured t
            :empty-lines-after 1
-           :empty-lines-before 1)
-          ("c" "Comment" entry (file+headline "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Inbox")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Comment_Template.org")
-           :refile-targets ((nil :level . 2))
+           :empty-lines-before 1
+           :time-prompt 1
+           )
+          ("c" "Free Capture" entry (file+headline "/mnt/d/notebooks/org/org_capture.org" "Inbox")
+           (file "/mnt/d/notebooks/org/.templates/Free_Capture_Template.org")
+           :prepend t
            :empty-lines-before 0
            :empty-lines-after 0
-           :time-prompt t
            )
-          ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/DemacsNotes/org/Capture.org" "Journal")
-           (file "/mnt/d/notebooks/DemacsNotes/org/templates/Journal_Template.org")
+          ("j" "Journal" entry (file+olp+datetree "/mnt/d/notebooks/org/Journal.org" "Journal")
+           (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
+           :prepend t
            :empty-lines-before 0
            :empty-lines-after 0
            )
@@ -236,9 +242,12 @@
         ;; (setq org-todo-keywords
         ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
         ))
+(setq org-refile-targets
+      (quote(("/mnt/d/notebooks/org/Tasks.org" :maxlevel . 3)
+             ("/mnt/d/notebooks/org/Meetings.org" :maxlevel . 3)
+             ("/mnt/d/notebooks/org/org_capture.org" :maxlevel . 3))))
 
-;;(setq org-refile-targets
-;;         '(("/mnt/d/notebooks/DemacsNotes/org/Capture.org" :maxlevel . 1)))
+(setq org-refile-use-outline-path 'file)       
 
 ;;(org-id-get-with-outline-path-completion)
 ;; (defun my/org-add-ids-to-headlines-in-file ()
@@ -255,7 +264,7 @@
 
 (require 'icalendar)
 
-(setq diary-file "/mnt/d/notebooks/DemacsNotes/org/cal.org")
+(setq diary-file "/mnt/d/notebooks/org/cal.org")
 (setq calendar-mark-diary-entries-flag t)
 (add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
 (setq diary-comment-start ";;")
@@ -337,6 +346,7 @@
     "w s"'(other-window :wk "switch window")
     "w c"'(quit-window :wk "close window")
     "w q" '(delete-other-windows :wk "delete other window")
+    "w v" '(evil-window-vsplit :wk "split vertical")
 
     "e" '(:ignore t :wk "eval")
     "e r" '(eval-region :wk "eval-r")
@@ -345,6 +355,7 @@
     "o" '(:ignore t :wk "org")
     "o a" '(org-agenda :wk "Agenda")
     "o c" '(org-capture :wk "Capture")
+    "o C" '(my/capture-with-id-at-point :wk "Capture with ID")
     "o l" '(org-store-link :wk "Store Link")
     "o i" '(org-insert-link :wk "Insert Link")
     "o s" '(org-schedule :wk "Schedule")
@@ -355,7 +366,16 @@
     )
   )
 
-(setq backup-directory-alist '(("." . "~/.config/emacs/tmp/backups/")))
+(setq display-buffer-base-action
+'((display-buffer-reuse-window
+   display-buffer-reuse-mode-window
+   display-buffer-same-window
+   display-buffer-in-previous-window)))
+
+(setq backup-directory-alist
+      '((".*" . "~/.config/emacs/tmp/backups/")))
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.config/emacs/tmp/backups/" t)))
 
 (setq bookmark-default-file my/bookmarks)
 
@@ -373,8 +393,8 @@
 (defun my/push-to-drop ()
   (interactive)
   (when (string-equal (buffer-file-name)
-                      "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+                      "/mnt/d/notebooks/org/Tasks.org")
     ;; Dynamic scoping to the rescue
-    (write-region nil nil "/mnt/d/notebooks/DemacsNotes/org/tanglecapture.org" nil nil nil t)))
+    (write-region nil nil "/mnt/d/notebooks/org/tanglecapture.org" nil nil nil t)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
