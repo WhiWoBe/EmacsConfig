@@ -1,34 +1,35 @@
 (setq inhibit-startup-message t)
 
-  ;; WINDOW
-  (scroll-bar-mode -1) ;show scroll bars
-  (set-fringe-mode 0) ;added window border
-  (menu-bar-mode -1) ; top menu bar
-  (tool-bar-mode -1)
-  ;; (tooltip mode -1)
+;; WINDOW
+(scroll-bar-mode -1) ;show scroll bars
+(set-fringe-mode 0) ;added window border
+(menu-bar-mode -1) ; top menu bar
+(tool-bar-mode -1)
+;; (tooltip mode -1)
 
-  (setq visible-bell t)
+(setq visible-bell t)
 
-  ;; Scroll
-  ;; (pixel-scroll-precision-mode)
+;; Scroll
+;; (pixel-scroll-precision-mode)
 
-  ;; Line Numbers
-  (global-display-line-numbers-mode 1)
-  (menu-bar--display-line-numbers-mode-relative)
-  ;; (display-line-numbers-type 'relative)
-  (global-hl-line-mode 1)
+;; Line Numbers
+(global-display-line-numbers-mode 1)
+(menu-bar--display-line-numbers-mode-relative)
+;; (display-line-numbers-type 'relative)
+(global-hl-line-mode 1)
 
-  ;; History
+;; History
 
-  (setq history-length 25)
-  (savehist-mode 1)
+(setq history-length 25)
+(savehist-mode 1)
 
-  (setq recentf-max-saved-items 25)
-  (recentf-mode 1)
+(setq recentf-max-saved-items 25)
+(recentf-mode 1)
 
-  ;; Auto update buffers
-  (global-auto-revert-mode)
+;; Auto update buffers
+(global-auto-revert-mode)
 
+;; Frame Parameters
 
 (set-frame-parameter nil 'internal-border-width 10)
 (set-frame-parameter nil 'alpha-background 90)
@@ -159,15 +160,15 @@
 ;;  ([remap describe-key] . helpful-key))
 
 (use-package evil
-    :init
-    (setq evil-want-integration t)
-;;    (setq evil-want-C-i-jump nil) ;; disables Jumplist binding so you can TAB in Normal mode in Org mode 
-    (setq evil-want-C-u-scroll t)
-    (setq evil-want-C-d-scroll t)
-    (setq evil-want-keybinding nil)
-    (setq evil-vsplit-window-right t)
-    (setq evil-split-window-below t)
-    (evil-mode))
+  :init
+  (setq evil-want-integration t)
+  ;;    (setq evil-want-C-i-jump nil) ;; disables Jumplist binding so you can TAB in Normal mode in Org mode 
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-d-scroll t)
+  (setq evil-want-keybinding nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (evil-mode))
 
 (use-package evil-collection
   :after evil
@@ -175,129 +176,127 @@
   (setq evil-collection-mode-list '(dashboard dired org vertico ibuffer))
   (evil-collection-init))
 
-; Diable Line 
-     (defun my-display-numbers-hook ()
-       (display-line-numbers-mode 0))
+;; Diable Line 
+(defun my-display-numbers-hook ()
+  (display-line-numbers-mode 0))
 
-     (defun tmi/org-mode-setup ()
-       (org-indent-mode)
-       (setq evil-auto-indent t))
+(defun tmi/org-mode-setup ()
+  (org-indent-mode)
+  (setq evil-auto-indent t))
 
-     (add-hook 'org-mode-hook 'my-display-numbers-hook)
-     ;; (defun my/org-todo-insert-comment ()
-     ;;       (interactive)
-     ;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
-     ;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
+(add-hook 'org-mode-hook 'my-display-numbers-hook)
+;; (defun my/org-todo-insert-comment ()
+;;       (interactive)
+;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
+;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
 
-     ;; when calling store-link it creates a link unless there is a defined custom id.
-     ;; when capture is called do not create an id.
-     ;; when my/capture-with... is called it creates an id at point.
-     ;; so we can say capture with id > task and it will create an id at point and link to that id.
+;; when calling store-link it creates a link unless there is a defined custom id.
+;; when capture is called do not create an id.
+;; when my/capture-with... is called it creates an id at point.
+;; so we can say capture with id > task and it will create an id at point and link to that id.
 
-     (defun my/capture-with-id-at-point()
-       (interactive)
-       (let ((org-id-link-to-org-use-id t))
-         (org-capture nil)
-         ))
+(defun my/capture-with-id-at-point()
+  (interactive)
+  (let ((org-id-link-to-org-use-id t))
+    (org-capture nil)
+    ))
 
-     ;; (defun my/capture-journal-without-id()
-     ;;   (org-capture nil))
+;; (defun my/capture-journal-without-id()
+;;   (org-capture nil))
 
-     (use-package org
-       :pin org
-       :commands (org-capture org-agenda)
-       :hook (org-mode . tmi/org-mode-setup)
-       :config
-       (setq org-directory-files '("/mnt/d/notebooks/org/")) ;;Default location of Org files
-       (setq org-agenda-files '("/mnt/d/notebooks/org/Tasks.org" "/mnt/d/notebooks/org/Meetings.org")) ;;org agenda searches in this file or dir for todo items
-       (setq org-ellipsis " +")
-       (setq org-return-follows-link t)
-       (setq org-log-done 'time) ;; timestamp on done
-       (setq org-log-into-drawer t)
-       (setq org-startup-folded nil)
+(use-package org
+  :pin org
+  :commands (org-capture org-agenda)
+  :hook (org-mode . tmi/org-mode-setup)
+  :config
+  (setq org-directory-files '("/mnt/d/notebooks/org/")) ;;Default location of Org files
+  (setq org-agenda-files '("/mnt/d/notebooks/org/Tasks.org" "/mnt/d/notebooks/org/Meetings.org")) ;;org agenda searches in this file or dir for todo items
+  (setq org-ellipsis " +")
+  (setq org-return-follows-link t)
+  (setq org-log-done 'time) ;; timestamp on done
+  (setq org-log-into-drawer t)
+  (setq org-startup-folded nil)
 
+  ;; Setup org-id
 
+  (require 'org-id)
+  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  ;; (org-id-method) 
+  (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
 
-       ;; Setup org-id
+  ;;Set Faces
 
-       (require 'org-id)
-       (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
-       ;; (org-id-method) 
-       (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+   '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+   '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+   '(org-level-5 ((t (:inherit outline-5 :height 0.9))))
+   '(org-block ((t (:family "Fira Code Mono"  :height 1.0))))
+   )
 
-       ;;Set Faces
+  ;; Org Capture Templates
 
-       (custom-set-faces
-        '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
-        '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
-        '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
-        '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-        '(org-level-5 ((t (:inherit outline-5 :height 0.9))))
-        '(org-block ((t (:family "Fira Code Mono"  :height 1.0))))
-        )
+  (setq org-capture-templates
+        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/org/Tasks.org" "Inbox")
+           (file "/mnt/d/notebooks/org/.templates/Task_Template.org")
+           :prepend t
+           :jump-to-captured t
+           :empty-lines-after 1
+           :empty-lines-before 1
+           )
 
-       ;; Org Capture Templates
+          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/org/Meetings.org" "Meeting Notes")
+           (file "/mnt/d/notebooks/org/.templates/Meeting_Template.org")
+           :prepend t
+           :jump-to-captured t
+           :empty-lines-after 1
+           :empty-lines-before 1
+           :time-prompt 1
+           )
 
-       (setq org-capture-templates
-             `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/org/Tasks.org" "Task List")
-                (file "/mnt/d/notebooks/org/.templates/Task_Template.org")
-                :prepend t
-                :jump-to-captured t
-                :empty-lines-after 1
-                :empty-lines-before 1
-                )
+          ;; ("c" "Free Capture" entry (file+headline "/mnt/d/notebooks/org/org_capture.org" "Inbox")
+          ;; (file "/mnt/d/notebooks/org/.templates/Free_Capture_Template.org")
+          ;; :prepend t
+          ;; :empty-lines-before 0
+          ;; :empty-lines-after 0
+          ;; )
 
-               ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/org/Meetings.org" "Metting Notes")
-                (file "/mnt/d/notebooks/org/.templates/Meeting_Template.org")
-                :prepend t
-                :jump-to-captured t
-                :empty-lines-after 1
-                :empty-lines-before 1
-                :time-prompt 1
-                )
+          ("j" "Journal Log" item (file+function "/mnt/d/notebooks/org/Journal.org"
+                                                 (lambda ()
+                                                   (org-datetree-find-date-create
+                                                    (org-date-to-gregorian (org-today)) t)
+                                                   (re-search-forward "^\\*.+ Log" nil t)))
+           (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
+           :empty-lines-before 1
+           :empty-lines-after 1
+           )
 
-               ("c" "Free Capture" entry (file+headline "/mnt/d/notebooks/org/org_capture.org" "Inbox")
-                (file "/mnt/d/notebooks/org/.templates/Free_Capture_Template.org")
-                :prepend t
-                :empty-lines-before 0
-                :empty-lines-after 0
-                )
+          ("J" "Journal Outline" entry (file+olp+datetree "/mnt/d/notebooks/org/Journal.org" "Journal")
+           (file "/mnt/d/notebooks/org/.templates/Journal_Outline_Template.org")
+           :prepend nil
+           :empty-lines-before 0
+           :empty-lines-after 0
+           )
 
-               ("j" "Journal Log" item (file+function "/mnt/d/notebooks/org/Journal.org"
-                                                    (lambda ()
-                                                      (org-datetree-find-date-create
-                                                       (org-date-to-gregorian (org-today)) t)
-                                                      (re-search-forward "^\\*.+ Log" nil t)))
-                (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
-                :empty-lines-before 1
-                :empty-lines-after 1
-                )
+          )
 
-               ("J" "Journal Outline" entry (file+olp+datetree "/mnt/d/notebooks/org/Journal.org" "Journal")
-                (file "/mnt/d/notebooks/org/.templates/Journal_Outline_Template.org")
-                :prepend nil
-                :empty-lines-before 0
-                :empty-lines-after 0
-                )
+        ;; Org global TODO States
+        ;; (setq org-todo-keywords
+        ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+        ))
 
-               )
+;; Org Refile
 
-             ;; Org global TODO States
-             ;; (setq org-todo-keywords
-             ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-             ))
-
-     ;; Org Refile
-
-   (setq org-refile-targets
-         (quote(("/mnt/d/notebooks/org/Tasks.org" :maxlevel . 1)
-                ("/mnt/d/notebooks/org/Meetings.org" :maxlevel . 1)
-                ("/mnt/d/notebooks/org/org_capture.org" :maxlevel . 1))))
+(setq org-refile-targets
+      (quote(("/mnt/d/notebooks/org/Tasks.org" :maxlevel . 1)
+             ("/mnt/d/notebooks/org/Meetings.org" :maxlevel . 1)
+             ("/mnt/d/notebooks/org/org_capture.org" :maxlevel . 1))))
 
 
-   (setq org-refile-use-outline-path nil)
-   (setq org-refile-allow-creating-parent-nodes t)
-   (setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path nil)
+(setq org-refile-allow-creating-parent-nodes t)
+(setq org-outline-path-complete-in-steps nil)
 
 
 ;;(org-id-get-with-outline-path-completion)
@@ -307,11 +306,11 @@
 ;;   (interactive)
 ;;   (org-map-entries 'org-id-get-create))
 
-     ;; (add-hook 'org-mode-hook
-     ;;           (lambda ()
-     ;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
 
-     ;; (add-hook 'org-mode-hook 'org-indent-mode)
+;; (add-hook 'org-mode-hook 'org-indent-mode)
 
 (setq org-agenda-window-setup 'reorganize-frame) 
 (setq org-agenda-restore-windows-after-quit t)
@@ -341,7 +340,6 @@
 (setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
 
 (use-package dired
-
   :ensure nil
   :commands (dired dired-jump)
   :custom ((dired-listing-switches "-agho --group-directories-first"))
@@ -402,11 +400,11 @@
     "d" '(:ignore t :wk "dir")
     "d d" '(switch-to-buffer :wk "placeholder")
 
- ;; "w" '(:ignore t :wk "window")
- ;; "w s"'(other-window :wk "switch window")
- ;; "w c"'(quit-window :wk "close window")
- ;; "w q" '(delete-other-windows :wk "delete other window")
- ;; "w v" '(evil-window-vsplit :wk "split vertical")
+    "w" '(:ignore t :wk "window")
+    "w s"'(other-window :wk "switch window")
+    "w q"'(quit-window :wk "close window")
+    "w o" '(delete-other-windows :wk "delete other window")
+    "w v" '(split-window-right :wk "split vertical")
 
     "e" '(:ignore t :wk "eval")
     "e r" '(eval-region :wk "eval-r")
@@ -417,7 +415,8 @@
     "o c" '(org-capture :wk "Capture")
     "o C" '(my/capture-with-id-at-point :wk "Capture with ID")
     "o l" '(org-store-link :wk "Store Link")
-    "o i" '(org-insert-link :wk "Insert Link")
+    "o i" '(org-insert-last-stored-link :wk "Insert Link")
+    "o I" '(org-insert-link :wk "Insert selected Link")
     "o s" '(org-schedule :wk "Schedule")
     "o d" '(org-deadline :wk "Deadline")
     "o t" '(org-set-tags-command :wk "Tags set/edit") 
@@ -458,6 +457,11 @@
   (when (string-equal (buffer-file-name)
                       "/mnt/d/notebooks/org/Tasks.org")
     ;; Dynamic scoping to the rescue
-    (write-region nil nil "/mnt/d/notebooks/org/tanglecapture.org" nil nil nil t)))
+    (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
+
+  (when (string-equal (buffer-file-name)
+                      "/mnt/d/notebooks/org/Journal.org")
+    ;; Dynamic scoping to the rescue
+    (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
