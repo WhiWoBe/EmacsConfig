@@ -195,10 +195,22 @@
 ;; when my/capture-with... is called it creates an id at point.
 ;; so we can say capture with id > task and it will create an id at point and link to that id.
 
-(defun my/capture-with-id-at-point()
+(defun my/capture-without-id-at-point()
   (interactive)
-  (let ((org-id-link-to-org-use-id t))
+  (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
     (org-capture nil)
+    ))
+
+(defun my/journal-capture-without-id-at-point()
+  (interactive)
+  (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+    (org-capture nil "j")
+    ))
+
+(defun my/journal-outline-capture-without-id-at-point()
+  (interactive)
+  (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+    (org-capture nil "J")
     ))
 
 ;; (defun my/capture-journal-without-id()
@@ -220,7 +232,7 @@
   ;; Setup org-id
 
   (require 'org-id)
-  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  (setq org-id-link-to-org-use-id t)
   ;; (org-id-method) 
   (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
 
@@ -262,12 +274,13 @@
           ;; :empty-lines-after 0
           ;; )
 
-          ("j" "Journal Log" item (file+function "/mnt/d/notebooks/org/Journal.org"
-                                                 (lambda ()
-                                                   (org-datetree-find-date-create
-                                                    (org-date-to-gregorian (org-today)) t)
-                                                   (re-search-forward "^\\*.+ Log" nil t)))
+          ("j" "Journal Log" plain (file+function "/mnt/d/notebooks/org/Journal.org"
+                                                  (lambda ()
+                                                    (org-datetree-find-date-create
+                                                     (org-date-to-gregorian (org-today)) t)
+                                                    (re-search-forward "^\\*.+ Log" nil t)))
            (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
+           :prepend nil
            :empty-lines-before 1
            :empty-lines-after 1
            )
@@ -297,6 +310,42 @@
 (setq org-refile-use-outline-path nil)
 (setq org-refile-allow-creating-parent-nodes t)
 (setq org-outline-path-complete-in-steps nil)
+
+
+;; Org Agenda
+
+(setq org-agenda-custom-commands
+      '(("n" "Agenda and TODOs"
+         ((agenda "")
+          (alltodo "")))))
+
+
+(setq org-agenda-custom-commands
+      '(
+
+        ("," "Custom View"
+         ((todo "WAIT"
+                ((org-agenda-overriding-header "* Waiting on *\n")))
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-span 1)
+                   (org-agenda-overriding-header "\n* TODAY *\n")))
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-start-day "+1d")
+                   (org-agenda-span 1)
+                   (org-agenda-overriding-header "\n* TOMORROW *\n")))
+          (todo "ACT"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Unscheduled Tasks *\n")))
+          ))
+
+        ))
+
+
+(setq org-agenda-todo-ignore-scheduled nil)
+(setq org-agenda-todo-list-sublevels t)
 
 
 ;;(org-id-get-with-outline-path-completion)
@@ -413,10 +462,12 @@
     "o" '(:ignore t :wk "org")
     "o a" '(org-agenda :wk "Agenda")
     "o c" '(org-capture :wk "Capture")
-    "o C" '(my/capture-with-id-at-point :wk "Capture with ID")
+    "o C" '(my/capture-without-id-at-point :wk "Capture without ID")
     "o l" '(org-store-link :wk "Store Link")
     "o i" '(org-insert-last-stored-link :wk "Insert Link")
     "o I" '(org-insert-link :wk "Insert selected Link")
+    "o j" '(my/journal-capture-without-id-at-point :wk "Journal Entry")
+    "o J" '(my/journal-outline-capture-without-id-at-point :wk "Journal Outline")
     "o s" '(org-schedule :wk "Schedule")
     "o d" '(org-deadline :wk "Deadline")
     "o t" '(org-set-tags-command :wk "Tags set/edit") 
@@ -454,13 +505,12 @@
 
 (defun my/push-to-drop ()
   (interactive)
-  (when (string-equal (buffer-file-name)
-                      "/mnt/d/notebooks/org/Tasks.org")
+
+  (when (string-equal (buffer-file-name) "/mnt/d/notebooks/org/Tasks.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
 
-  (when (string-equal (buffer-file-name)
-                      "/mnt/d/notebooks/org/Journal.org")
+  (when (string-equal (buffer-file-name) "/mnt/d/notebooks/org/Journal.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
