@@ -185,6 +185,12 @@
   (setq evil-auto-indent t))
 
 (add-hook 'org-mode-hook 'my-display-numbers-hook)
+
+(defun my/org-unschedule ()
+  (interactive)
+  (let ((current-prefix-arg '(4))) ;; emulate C-u
+    (call-interactively 'org-schedule))) ;; invoke align-regexp interactivel
+
 ;; (defun my/org-todo-insert-comment ()
 ;;       (interactive)
 ;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
@@ -315,30 +321,24 @@
 ;; Org Agenda
 
 (setq org-agenda-custom-commands
-      '(("n" "Agenda and TODOs"
-         ((agenda "")
-          (alltodo "")))))
-
-
-(setq org-agenda-custom-commands
       '(
 
-        ("," "Custom View"
+        ("," "My Agenda"
          ((todo "WAIT"
                 ((org-agenda-overriding-header "* Waiting on *\n")))
           (agenda ""
                   ((org-agenda-block-separator nil)
                    (org-agenda-span 1)
-                   (org-agenda-overriding-header "\n* TODAY *\n")))
+                   (org-agenda-overriding-header "\n* Today *\n")))
           (agenda ""
                   ((org-agenda-block-separator nil)
                    (org-agenda-start-day "+1d")
-                   (org-agenda-span 1)
-                   (org-agenda-overriding-header "\n* TOMORROW *\n")))
+                   (org-agenda-span 3)
+                   (org-agenda-overriding-header "\n* Next *\n")))
           (todo "ACT"
                 ((org-agenda-block-separator nil)
                  (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                 (org-agenda-overriding-header "\n* Unscheduled Tasks *\n")))
+                 (org-agenda-overriding-header "\n* Open Tasks *\n")))
           ))
 
         ))
@@ -450,7 +450,7 @@
     "d d" '(switch-to-buffer :wk "placeholder")
 
     "w" '(:ignore t :wk "window")
-    "w s"'(other-window :wk "switch window")
+    "w w"'(other-window :wk "switch window")
     "w q"'(quit-window :wk "close window")
     "w o" '(delete-other-windows :wk "delete other window")
     "w v" '(split-window-right :wk "split vertical")
@@ -463,17 +463,19 @@
     "o a" '(org-agenda :wk "Agenda")
     "o c" '(org-capture :wk "Capture")
     "o C" '(my/capture-without-id-at-point :wk "Capture without ID")
-    "o l" '(org-store-link :wk "Store Link")
+    "o d" '(org-deadline :wk "Deadline")
     "o i" '(org-insert-last-stored-link :wk "Insert Link")
     "o I" '(org-insert-link :wk "Insert selected Link")
     "o j" '(my/journal-capture-without-id-at-point :wk "Journal Entry")
     "o J" '(my/journal-outline-capture-without-id-at-point :wk "Journal Outline")
-    "o s" '(org-schedule :wk "Schedule")
-    "o d" '(org-deadline :wk "Deadline")
-    "o t" '(org-set-tags-command :wk "Tags set/edit") 
-    ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
+    "o l" '(org-store-link :wk "Store Link")
     "o n" '(org-add-note :wk "add note to current entry")
     "o o" '(org-open-at-point :wk "open link")
+    "o s" '(org-schedule :wk "Schedule")
+    "o t" '(org-set-tags-command :wk "Tags set/edit")
+    "o u" '(my/org-unschedule :wk "Unschedule")
+
+    ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
     "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
 
     )
