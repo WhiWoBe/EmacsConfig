@@ -429,29 +429,111 @@ The my/capture functions set the variable to either use or not use an ID for thi
   (setq org-agenda-custom-commands
         '(
 
-          ("," "My Agenda"
-           ((todo "WAIT"
-                  ((org-agenda-overriding-header "* Waiting on *\n")))
+          ("," "Dayliy Overview"
+           (
+
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-start-day "-1d")
+                     (org-agenda-span 1)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Yesterday *\n")))
+
             (agenda ""
                     ((org-agenda-block-separator nil)
                      (org-agenda-span 1)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
                      (org-agenda-overriding-header "\n* Today *\n")))
+
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-entry-types '(:deadline))
+                     (org-deadline-warning-days 7)
+                     (org-agenda-overriding-header "\n* Deadlines *\n")))
+
             (agenda ""
                     ((org-agenda-block-separator nil)
                      (org-agenda-start-day "+1d")
                      (org-agenda-span 3)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
                      (org-agenda-overriding-header "\n* Next *\n")))
+
+            (todo "WAIT"
+                  ((org-agenda-overriding-header "* Waiting on *\n")))
+
             (todo "ACT"
                   ((org-agenda-block-separator nil)
                    (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
                    (org-agenda-overriding-header "\n* Open Tasks *\n")))
+
+            (todo "DELIGATED"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Monitor *\n")))
+
             ))
+
+
+          ("." "Weekly Overview"
+           (
+
+
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-span 7)
+                     (org-agenda-start-on-weekday 0)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Week *\n")))
+
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-entry-types '(:deadline))
+                     (org-deadline-warning-days 14)
+                     (org-agenda-overriding-header "\n* deadlines *\n")))
+
+            (todo "WAIT"
+                  ((org-agenda-overriding-header "* Waiting on *\n")))
+
+            (todo "ACT"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Open Tasks *\n")))
+
+            (todo "DELIGATED"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Monitor *\n")))
+
+            ))
+
 
           ))
 
+  (defun my/org-agenda-inactive ()
+    (interactive)
+    (let ((org-agenda-include-inactive-timestamps t))
+      (org-agenda)))
 
+  (setq org-agenda-ignore-properties '(effort appt stats category))
   (setq org-agenda-todo-ignore-scheduled nil)
   (setq org-agenda-todo-list-sublevels t)
+  (setq org-agenda-use-tag-inheritance nil)
+
+
+  (setq org-todo-keyword-faces
+        '(
+          ("ACT" . (:foreground "#cd5c60" :weight bold))
+          ("WAIT" . (:foreground "yellow"))
+          ("READ" . (:foreground))
+
+          ("DELIGATED" . (:foreground "lightblue"))
+          ("DONE" . (:foreground))
+          ("CANCELED" . (:foreground "blue" :weight bold))
+          ))
 
 
   ;;(org-id-get-with-outline-path-completion)
@@ -616,6 +698,7 @@ Resources https://github.com/noctuid/general.el
 
       "o" '(:ignore t :wk "org")
       "o a" '(org-agenda :wk "Agenda")
+      "o A" '(my/org-agenda-inactive :wk "Agenda TS")
       "o c" '(org-capture :wk "Capture")
       "o C" '(my/capture-without-id-at-point :wk "Capture without ID")
       "o d" '(org-deadline :wk "Deadline")
@@ -629,7 +712,7 @@ Resources https://github.com/noctuid/general.el
       "o s" '(org-schedule :wk "Schedule")
       "o t" '(org-set-tags-command :wk "Tags set/edit")
       "o u" '(my/org-unschedule :wk "Unschedule")
-  
+
       ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
       "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
 
