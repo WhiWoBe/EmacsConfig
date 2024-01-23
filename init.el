@@ -37,13 +37,13 @@
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 40))
 
-;; (defvar my/org-dir-files "/mnt/d/notebooks/org")
+;; (defvar my/org-dir-files "d:/worg")
 ;; (defvar my/org-agenda-files "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
 ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
-;; (defvar my/backup-directory "/mnt/d/notebooks/org/.data/backups/")
-;; (defvar my/org-templates "/mnt/d/notebooks/org/.templates")
-(defvar my/bookmarks "/mnt/d/notebooks/org/.data/bookmarks")
-(defvar my/org-id-locations-file "/mnt/d/notebooks/org/.data/.org-id-locations")
+;; (defvar my/backup-directory "d:/worg/.data/backups/")
+;; (defvar my/org-templates "d:/worg/.templates")
+(defvar my/bookmarks "d:/worg/.data/bookmarks")
+(defvar my/org-id-locations-file "d:/worg/.data/.org-id-locations")
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
@@ -238,8 +238,8 @@
   :commands (org-capture org-agenda)
   :hook (org-mode . tmi/org-mode-setup)
   :config
-  (setq org-directory-files '("/mnt/d/notebooks/org/")) ;;Default location of Org files
-  (setq org-agenda-files '("/mnt/d/notebooks/org/Tasks.org" "/mnt/d/notebooks/org/Meetings.org")) ;;org agenda searches in this file or dir for todo items
+  (setq org-directory-files '("d:/worg/")) ;;Default location of Org files
+  (setq org-agenda-files '("d:/worg/Tasks.org" "d:/worg/Meetings.org")) ;;org agenda searches in this file or dir for todo items
   (setq org-ellipsis " +")
   (setq org-return-follows-link t)
   (setq org-log-done 'time) ;; timestamp on done
@@ -267,16 +267,16 @@
   ;; Org Capture Templates
 
   (setq org-capture-templates
-        `(("t" "Tasks" entry (file+headline "/mnt/d/notebooks/org/Tasks.org" "Inbox")
-           (file "/mnt/d/notebooks/org/.templates/Task_Template.org")
+        `(("t" "Tasks" entry (file+headline "d:/worg/Tasks.org" "Inbox")
+           (file "d:/worg/.templates/Task_Template.org")
            :prepend t
            :jump-to-captured t
            :empty-lines-after 1
            :empty-lines-before 1
            )
 
-          ("m" "Meeting" entry (file+headline "/mnt/d/notebooks/org/Meetings.org" "Meeting Notes")
-           (file "/mnt/d/notebooks/org/.templates/Meeting_Template.org")
+          ("m" "Meeting" entry (file+headline "d:/worg/Meetings.org" "Meeting Notes")
+           (file "d:/worg/.templates/Meeting_Template.org")
            :prepend t
            :jump-to-captured t
            :empty-lines-after 1
@@ -284,20 +284,20 @@
            :time-prompt 1
            )
 
-          ("j" "Journal Log" plain (file+function "/mnt/d/notebooks/org/Journal.org"
+          ("j" "Journal Log" plain (file+function "d:/worg/Journal.org"
                                                   (lambda ()
                                                     (org-datetree-find-date-create
                                                      (org-date-to-gregorian (org-today)) t)
                                                     (re-search-forward "^\\*.+ Log" nil t)))
-           (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
+           (file "d:/worg/.templates/Journal_Template.org")
            :prepend nil
            :jump-to-captured nil
            :empty-lines-before 1
            :empty-lines-after 1
            )
 
-          ("J" "Journal Outline" entry (file+olp+datetree "/mnt/d/notebooks/org/Journal.org" "Journal")
-           (file "/mnt/d/notebooks/org/.templates/Journal_Outline_Template.org")
+          ("J" "Journal Outline" entry (file+olp+datetree "d:/worg/Journal.org" "Journal")
+           (file "d:/worg/.templates/Journal_Outline_Template.org")
            :prepend nil
            :jump-to-captured t
            :immediate-finish t
@@ -315,9 +315,9 @@
 ;; Org Refile
 
 (setq org-refile-targets
-      (quote(("/mnt/d/notebooks/org/Tasks.org" :maxlevel . 1)
-             ("/mnt/d/notebooks/org/Meetings.org" :maxlevel . 1)
-             ("/mnt/d/notebooks/org/org_capture.org" :maxlevel . 1))))
+      (quote(("d:/worg/Tasks.org" :maxlevel . 1)
+             ("d:/worg/Meetings.org" :maxlevel . 1)
+             ("d:/worg/org_capture.org" :maxlevel . 1))))
 
 
 (setq org-refile-use-outline-path nil)
@@ -458,11 +458,11 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   :custom
-  (org-bullets-bullet-list '("" "" "󰔶" "󰹞" "󰜁" "󰋘" "󱗿")))
+  (org-bullets-bullet-list '("1" "2" "3" "4" "5" "6" "7")))
 
 (require 'icalendar)
 
-(setq diary-file "/mnt/d/notebooks/org/cal.org")
+(setq diary-file "d:/worg/cal.org")
 (setq calendar-mark-diary-entries-flag t)
 (add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
 (setq diary-comment-start ";;")
@@ -600,30 +600,12 @@
 (defun my/push-to-drop ()
   (interactive)
 
-  (when (string-equal (buffer-file-name) "/mnt/d/notebooks/org/Tasks.org")
+  (when (string-equal (buffer-file-name) "d:/worg/Tasks.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
 
-  (when (string-equal (buffer-file-name) "/mnt/d/notebooks/org/Journal.org")
+  (when (string-equal (buffer-file-name) "d:/worg/Journal.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(which-key vertico org-bullets orderless ob-mermaid marginalia magit general evil-collection elisp-refs)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
