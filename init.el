@@ -31,8 +31,8 @@
 
 ;; Frame Parameters
 
-(set-frame-parameter nil 'internal-border-width 10)
-(set-frame-parameter nil 'alpha-background 90)
+(set-frame-parameter nil 'internal-border-width 20)
+(set-frame-parameter nil 'alpha-background 80)
 
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 40))
@@ -47,18 +47,18 @@
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
-(set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 180)
+ (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 180)
 
-;; Theme Settings
-;; (setq modus-themes-region'(bg-only))
-;; (setq modus-themes-mode-line '(accented borderless padded))
-;; (setq modus-themes-org-blocks 'gray-background)
-;; (load-theme 'modus-vivendi t)
+ ;; Theme Settings
+ (setq modus-themes-region'(bg-only))
+ (setq modus-themes-mode-line '(accented borderless padded))
+ (setq modus-themes-org-blocks 'gray-background)
+ (load-theme 'modus-vivendi t)
 
-(use-package kaolin-themes
-:config
-(load-theme 'kaolin-dark t)
-(kaolin-treemacs-theme))
+;; (use-package kaolin-themes
+;; :config
+;; (load-theme 'kaolin-dark t)
+;; (kaolin-treemacs-theme))
 
 ;; TANGLE
 (require 'package)
@@ -86,8 +86,19 @@
    '(("\\.docx\\'" . default)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "firefox %s")
+     ("\\.pdf\\'" . "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe %s")
      (auto-mode . emacs)))
+
+(setq frame-title-format
+       (list (format "%s %%S: %%j " (system-name))
+             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+ (defun my/clip-path-to-current-location ()
+   "Show the full path file name in the minibuffer."
+   (interactive)
+   (kill-new (buffer-file-name)))
+
+;; (global-set-key [C-f1] 'show-file-name) ; Or any other key you want
 
 ;; (fido-vertical-mode)
 
@@ -147,7 +158,7 @@
 
 (use-package which-key
   :init (which-key-mode)
-  :config (setq which-key-idle-delay 0.1))
+  :config (setq which-key-idle-delay 0.05))
 
 ;; (use-package helpful
 ;;  :custom
@@ -180,11 +191,11 @@
 (defun my-display-numbers-hook ()
   (display-line-numbers-mode 0))
 
+(add-hook 'org-mode-hook 'my-display-numbers-hook)
+
 (defun tmi/org-mode-setup ()
   (org-indent-mode)
   (setq evil-auto-indent t))
-
-(add-hook 'org-mode-hook 'my-display-numbers-hook)
 
 (defun my/org-unschedule ()
   (interactive)
@@ -196,10 +207,10 @@
 ;;       (let ((current-prefix-arg '(4))) ;; emulate C-u
 ;;         (call-interactively 'org-todo))) ;; invoke align-regexp interactively
 
-;; when calling store-link it creates a link unless there is a defined custom id.
-;; when capture is called do not create an id.
-;; when my/capture-with... is called it creates an id at point.
-;; so we can say capture with id > task and it will create an id at point and link to that id.
+;; when calling capture or store-link it creates a link
+;; when jounrnal-capture is called it doesnt create an id.
+;; this means a specific related task creates an ID a jounal entry for later
+;; processing does not.
 
 (defun my/capture-without-id-at-point()
   (interactive)
@@ -273,13 +284,6 @@
            :time-prompt 1
            )
 
-          ;; ("c" "Free Capture" entry (file+headline "/mnt/d/notebooks/org/org_capture.org" "Inbox")
-          ;; (file "/mnt/d/notebooks/org/.templates/Free_Capture_Template.org")
-          ;; :prepend t
-          ;; :empty-lines-before 0
-          ;; :empty-lines-after 0
-          ;; )
-
           ("j" "Journal Log" plain (file+function "/mnt/d/notebooks/org/Journal.org"
                                                   (lambda ()
                                                     (org-datetree-find-date-create
@@ -287,6 +291,7 @@
                                                     (re-search-forward "^\\*.+ Log" nil t)))
            (file "/mnt/d/notebooks/org/.templates/Journal_Template.org")
            :prepend nil
+           :jump-to-captured nil
            :empty-lines-before 1
            :empty-lines-after 1
            )
@@ -294,6 +299,8 @@
           ("J" "Journal Outline" entry (file+olp+datetree "/mnt/d/notebooks/org/Journal.org" "Journal")
            (file "/mnt/d/notebooks/org/.templates/Journal_Outline_Template.org")
            :prepend nil
+           :jump-to-captured t
+           :immediate-finish t
            :empty-lines-before 0
            :empty-lines-after 0
            )
@@ -448,7 +455,8 @@
 
 (use-package org-bullets
   :after org
-  :hook (org-mode . org-bullets-mode)
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   :custom
   (org-bullets-bullet-list '("" "" "󰔶" "󰹞" "󰜁" "󰋘" "󱗿")))
 
@@ -528,8 +536,9 @@
                 (load-file "~/.config/emacs/init.el"))
               :wk "Reload emacs config")
 
-    "d" '(:ignore t :wk "dir")
-    "d d" '(switch-to-buffer :wk "placeholder")
+    "d" '(:ignore t :wk "Dired")
+    "d d" '(dired :wk "Dired")
+    "d D" '(dired-other-window :wk "Dired other Window")
 
     "w" '(:ignore t :wk "window")
     "w w"'(other-window :wk "switch window")
@@ -600,3 +609,21 @@
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(which-key vertico org-bullets orderless ob-mermaid marginalia magit general evil-collection elisp-refs)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+ '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
