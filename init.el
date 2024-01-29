@@ -1,9 +1,10 @@
+(server-start) 
 (setq inhibit-startup-message t)
 
 ;; WINDOW
 (scroll-bar-mode -1) ;show scroll bars
 (set-fringe-mode 0) ;added window border
-(menu-bar-mode -1) ; top menu bar
+(menu-bar-mode 1) ; top menu bar
 (tool-bar-mode -1)
 ;; (tooltip mode -1)
 
@@ -31,29 +32,38 @@
 
 ;; Frame Parameters
 
-(set-frame-parameter nil 'internal-border-width 20)
-(set-frame-parameter nil 'alpha-background 80)
+;; (set-frame-parameter nil 'internal-border-width 20)
+;; (set-frame-parameter nil 'alpha-background 70)
 
-(add-to-list 'default-frame-alist '(width  . 100))
-(add-to-list 'default-frame-alist '(height . 40))
+ (add-to-list 'default-frame-alist '(internal-border-width . 20))
+ (add-to-list 'default-frame-alist '(alpha-background  . 70))
 
-;; (defvar my/org-dir-files "d:/worg")
+;; (add-to-list 'default-frame-alist '(width  . 100))
+;; (add-to-list 'default-frame-alist '(height . 40))
+
+;; (defvar my/org-dir-files "d:/notebooks/org")
 ;; (defvar my/org-agenda-files "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
 ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
-;; (defvar my/backup-directory "d:/worg/.data/backups/")
-;; (defvar my/org-templates "d:/worg/.templates")
-(defvar my/bookmarks "d:/worg/.data/bookmarks")
-(defvar my/org-id-locations-file "d:/worg/.data/.org-id-locations")
+;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
+;; (defvar my/org-templates "d:/notebooks/org/.templates")
+(defvar my/bookmarks "d:/notebooks/org/.data/win_bookmarks")
+(defvar my/org-id-locations-file "d:/notebooks/org/.data/.win_org-id-locations")
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
- (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 180)
+ (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-22"))
+ (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
 
  ;; Theme Settings
  (setq modus-themes-region'(bg-only))
  (setq modus-themes-mode-line '(accented borderless padded))
  (setq modus-themes-org-blocks 'gray-background)
  (load-theme 'modus-vivendi t)
+
+
+;; Icons
+(use-package all-the-icons
+:if (display-graphic-p))
 
 ;; (use-package kaolin-themes
 ;; :config
@@ -238,8 +248,8 @@
   :commands (org-capture org-agenda)
   :hook (org-mode . tmi/org-mode-setup)
   :config
-  (setq org-directory-files '("d:/worg/")) ;;Default location of Org files
-  (setq org-agenda-files '("d:/worg/Tasks.org" "d:/worg/Meetings.org")) ;;org agenda searches in this file or dir for todo items
+  (setq org-directory-files '("d:/notebooks/org/")) ;;Default location of Org files
+  (setq org-agenda-files '("d:/notebooks/org/Tasks.org" "d:/notebooks/org/Meetings.org")) ;;org agenda searches in this file or dir for todo items
   (setq org-ellipsis " +")
   (setq org-return-follows-link t)
   (setq org-log-done 'time) ;; timestamp on done
@@ -267,16 +277,16 @@
   ;; Org Capture Templates
 
   (setq org-capture-templates
-        `(("t" "Tasks" entry (file+headline "d:/worg/Tasks.org" "Inbox")
-           (file "d:/worg/.templates/Task_Template.org")
+        `(("t" "Tasks" entry (file+headline "d:/notebooks/org/Tasks.org" "Inbox")
+           (file "d:/notebooks/org/.templates/Task_Template.org")
            :prepend t
            :jump-to-captured t
            :empty-lines-after 1
            :empty-lines-before 1
            )
 
-          ("m" "Meeting" entry (file+headline "d:/worg/Meetings.org" "Meeting Notes")
-           (file "d:/worg/.templates/Meeting_Template.org")
+          ("m" "Meeting" entry (file+headline "d:/notebooks/org/Meetings.org" "Meeting Notes")
+           (file "d:/notebooks/org/.templates/Meeting_Template.org")
            :prepend t
            :jump-to-captured t
            :empty-lines-after 1
@@ -284,23 +294,22 @@
            :time-prompt 1
            )
 
-          ("j" "Journal Log" plain (file+function "d:/worg/Journal.org"
+          ("j" "Journal Log" plain (file+function "d:/notebooks/org/Journal.org"
                                                   (lambda ()
                                                     (org-datetree-find-date-create
                                                      (org-date-to-gregorian (org-today)) t)
                                                     (re-search-forward "^\\*.+ Log" nil t)))
-           (file "d:/worg/.templates/Journal_Template.org")
+           (file "d:/notebooks/org/.templates/Journal_Template.org")
            :prepend nil
            :jump-to-captured nil
            :empty-lines-before 1
            :empty-lines-after 1
            )
 
-          ("J" "Journal Outline" entry (file+olp+datetree "d:/worg/Journal.org" "Journal")
-           (file "d:/worg/.templates/Journal_Outline_Template.org")
+          ("J" "Journal Outline" entry (file+olp+datetree "d:/notebooks/org/Journal.org" "Journal")
+           (file "d:/notebooks/org/.templates/Journal_Outline_Template.org")
            :prepend nil
            :jump-to-captured t
-           :immediate-finish t
            :empty-lines-before 0
            :empty-lines-after 0
            )
@@ -315,9 +324,9 @@
 ;; Org Refile
 
 (setq org-refile-targets
-      (quote(("d:/worg/Tasks.org" :maxlevel . 1)
-             ("d:/worg/Meetings.org" :maxlevel . 1)
-             ("d:/worg/org_capture.org" :maxlevel . 1))))
+      (quote(("d:/notebooks/org/Tasks.org" :maxlevel . 1)
+             ("d:/notebooks/org/Meetings.org" :maxlevel . 1)
+             ("d:/notebooks/org/org_capture.org" :maxlevel . 1))))
 
 
 (setq org-refile-use-outline-path nil)
@@ -462,7 +471,7 @@
 
 (require 'icalendar)
 
-(setq diary-file "d:/worg/cal.org")
+(setq diary-file "d:/notebooks/org/cal.org")
 (setq calendar-mark-diary-entries-flag t)
 (add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
 (setq diary-comment-start ";;")
@@ -476,7 +485,7 @@
 
 (use-package ob-mermaid
   :ensure t)
-(setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
+;; (setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
 
 (use-package dired
   :ensure nil
@@ -573,11 +582,11 @@
     )
   )
 
-(setq display-buffer-base-action
-'((display-buffer-reuse-window
-   display-buffer-reuse-mode-window
-   display-buffer-same-window
-   display-buffer-in-previous-window)))
+;; (setq display-buffer-base-action
+;; '((display-buffer-reuse-window
+;;    display-buffer-reuse-mode-window
+;;    display-buffer-same-window
+;;    display-buffer-in-previous-window)))
 
 (setq backup-directory-alist
       '((".*" . "~/.config/emacs/tmp/backups/")))
@@ -600,11 +609,11 @@
 (defun my/push-to-drop ()
   (interactive)
 
-  (when (string-equal (buffer-file-name) "d:/worg/Tasks.org")
+  (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
 
-  (when (string-equal (buffer-file-name) "d:/worg/Journal.org")
+  (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
     ;; Dynamic scoping to the rescue
     (write-region nil nil "/mnt/d/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
