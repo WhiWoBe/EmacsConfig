@@ -575,7 +575,7 @@ The my/capture functions set the variable to either use or not use an ID for thi
   (use-package org-bullets
   :hook (org-mode . org-bullets-mode)
   :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+  (org-bullets-bullet-list '("1" "2" "3" "4" "5" "6")))
 
 #+end_src
 

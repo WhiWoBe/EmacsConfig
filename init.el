@@ -442,7 +442,7 @@
 (use-package org-bullets
 :hook (org-mode . org-bullets-mode)
 :custom
-(org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+(org-bullets-bullet-list '("1" "2" "3" "4" "5" "6")))
 
 (require 'icalendar)
 
