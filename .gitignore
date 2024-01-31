@@ -5,3 +5,4 @@ transient/history.el
 auto-save-list
 org-persist
 tmp
+server

@@ -1,4 +1,4 @@
-(server-start) 
+; (server-start) 
 (setq inhibit-startup-message t)
 
 ;; WINDOW
@@ -41,18 +41,21 @@
 ;; (add-to-list 'default-frame-alist '(width  . 100))
 ;; (add-to-list 'default-frame-alist '(height . 40))
 
-(setq default-directory (getenv "DRIVE_D"))
+; (setq default-directory (getenv "DRIVE_D"))
 
-(defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" default-directory)
-                     (expand-file-name "notebooks/org/Meetings.org" default-directory)))
+(defvar my/DRIVE_D "D:\\")
+(defvar my/DRIVE_C "C:\\")
 
-(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" default-directory)))
+(defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
+                     (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)))
 
-(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" default-directory))
+(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
+
+(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
 ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
 ;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
 ;; (defvar my/org-templates "d:/notebooks/org/.templates")
-(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" default-directory))
+(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
@@ -90,14 +93,15 @@
 (setq use-package-always-ensure t)
 
 ;; DEFAULT BROWSER
-   (setq browse-url-browser-function 'browse-url-generic       browse-url-generic-program "c:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program (expand-file-name "Program Files (x86)/Microsoft/Edge/Application/msedge.exe" my/DRIVE_C))
 
 (setq org-file-apps
-   '(("\\.docx\\'" . default)
-     ("\\.mm\\'" . default)
-     ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "c:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe %s")
-     (auto-mode . emacs)))
+      '(("\\.docx\\'" . default)
+        ("\\.mm\\'" . default)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . default)
+        (auto-mode . emacs)))
 
 (setq frame-title-format
        (list (format "%s %%S: %%j " (system-name))
@@ -444,7 +448,7 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   :custom
-  (org-bullets-bullet-list '("1" "2" "3" "4" "5" "6" "7")))
+  (org-bullets-bullet-list '("" "" "" "" "" "*" "**")))
 
 (require 'icalendar)
 
@@ -584,32 +588,20 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/org-babel-tangle-config)))
 
 (defun my/push-to-drop ()
-  (interactive)
+    (interactive)
 
-  (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
-    ;; Dynamic scoping to the rescue
-    (write-region nil nil "d:/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
+    (when (string-equal (buffer-file-name) (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D))
+      ;; Dynamic scoping to the rescue
+      (write-region nil nil (expand-file-name "Dropbox/Dropbox/org/Tasks_pushed.org" my/DRIVE_D) nil nil nil nil))
 
-  (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
-    ;; Dynamic scoping to the rescue
-    (write-region nil nil "d:/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
+    (when (string-equal (buffer-file-name) (expand-file-name "notebooks/org/Journal.org" my/DRIVE_D))
+      ;; Dynamic scoping to the rescue
+      (write-region nil nil (expand-file-name "Dropbox/Dropbox/org/Journal_pushed.org" my/DRIVE_D) nil nil nil nil))
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(all-the-icons general ob-mermaid magit org-bullets evil-collection evil which-key marginalia orderless vertico)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
+    (when (string-equal (buffer-file-name) (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D))
+      ;; Dynamic scoping to the rescue
+      (write-region nil nil (expand-file-name "Dropbox/Dropbox/org/Meetings_pushed.org" my/DRIVE_D) nil nil nil nil)))
+
+;(list (expand-file-name "notebooks/org/Tasks.org" default-directory)
+  
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
