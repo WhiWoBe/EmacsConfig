@@ -440,11 +440,9 @@
 (setq org-agenda-restore-windows-after-quit t)
 
 (use-package org-bullets
-  :after org
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  :custom
-  (org-bullets-bullet-list '("1" "2" "3" "4" "5" "6" "7")))
+:hook (org-mode . org-bullets-mode)
+:custom
+(org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (require 'icalendar)
 
