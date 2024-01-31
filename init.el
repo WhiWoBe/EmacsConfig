@@ -41,18 +41,20 @@
 ;; (add-to-list 'default-frame-alist '(width  . 100))
 ;; (add-to-list 'default-frame-alist '(height . 40))
 
-(setq default-directory (getenv "DRIVE_D"))
+; (setq default-directory (getenv "DRIVE_D"))
+(defvar my/DRIVE_D "d:/")
+(defvar my/DRIVE_C "c:/")
 
-(defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" default-directory)
-                     (expand-file-name "notebooks/org/Meetings.org" default-directory)))
+(defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
+                     (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)))
 
-(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" default-directory)))
+(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
 
-(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" default-directory))
+(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
 ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
 ;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
 ;; (defvar my/org-templates "d:/notebooks/org/.templates")
-(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" default-directory))
+(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
@@ -96,7 +98,7 @@
    '(("\\.docx\\'" . default)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "c:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe %s")
+     ("\\.pdf\\'" . default)
      (auto-mode . emacs)))
 
 (setq frame-title-format
@@ -495,6 +497,15 @@
     "f c" '((lambda () (interactive)
               (find-file "~/.config/emacs/config.org")) 
             :wk "Open config.org")
+    "f m" '((lambda () (interactive)
+              (find-file "d:/notebooks/org/Meetings.org")) 
+            :wk "Open Meetings.org")
+    "f j" '((lambda () (interactive)
+              (find-file "d:/notebooks/org/Journal.org")) 
+            :wk "Open Journal.org")
+    "f t" '((lambda () (interactive)
+              (find-file "d:/notebooks/org/Tasks.org")) 
+            :wk "Open Tasks.org")  
     "f r" '(recentf-open :wk "Recent Files")
 
     "TAB TAB" '(comment-line :wk "Comment lines")
