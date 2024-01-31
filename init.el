@@ -4,7 +4,7 @@
 ;; WINDOW
 (scroll-bar-mode -1) ;show scroll bars
 (set-fringe-mode 0) ;added window border
-(menu-bar-mode 1) ; top menu bar
+(menu-bar-mode -1) ; top menu bar
 (tool-bar-mode -1)
 ;; (tooltip mode -1)
 
