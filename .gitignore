@@ -2,3 +2,5 @@ elpa
 history
 recentf
 transient/history.el
+org-persist
+auto-save-list
