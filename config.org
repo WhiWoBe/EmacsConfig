@@ -63,11 +63,16 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 * Setting Location Variables
 
+Locations between my PC and the LAPTOP PC Differ, consider if statement to change var depending on
+the system you are using.
+
 #+begin_src emacs-lisp 
 
   ; (setq default-directory (getenv "DRIVE_D"))
   (defvar my/DRIVE_D "d:/")
   (defvar my/DRIVE_C "c:/")
+  (defvar my/WORK_KROENER_FODLER "d:/kroener")
+  (defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
 
   (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
                        (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)))
@@ -160,8 +165,6 @@ The DEFAULT BROWSER Function however works flawlessly.
 It passes more than the Path I would have to pass the Windows path Otherwise
 get the current direcory of the file
 (browse-url-generic "D:/airwaymedix.pdf")
-[[file:/mnt/d/airwaymedix.pdf]]
-[[file:~/airwaymedix.pdf]]
 Since Emacs 20.1 use package is pre installed
 
 * Show file Name

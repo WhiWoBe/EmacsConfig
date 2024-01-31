@@ -44,6 +44,8 @@
 ; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
 (defvar my/DRIVE_C "c:/")
+(defvar my/WORK_KROENER_FODLER "d:/kroener")
+(defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
 
 (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
                      (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)))
