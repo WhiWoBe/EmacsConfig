@@ -1,2 +1,6 @@
-auto-save-list
 elpa
+history
+recentf
+transient/history.el
+auto-save-list
+org-persist
