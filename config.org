@@ -21,7 +21,7 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   ;; WINDOW
   (scroll-bar-mode -1) ;show scroll bars
   (set-fringe-mode 0) ;added window border
-  (menu-bar-mode -1) ; top menu bar
+  (menu-bar-mode 1) ; top menu bar
   (tool-bar-mode -1)
   ;; (tooltip mode -1)
 
@@ -820,4 +820,22 @@ Tangles this config to the init file
 #+end_src
 
 * Org Super agenda
+
+* Custom Functions
+
+#+begin_src emacs-lisp
+
+
+(defun my/insert-directory-files-as-links (directory)
+  "Insert links for all files in DIRECTORY."
+  (interactive "sEnter directory path: ")
+  (dolist (file (directory-files directory))
+    (when (not (string-prefix-p "." file)) ; Exclude hidden files
+      (insert (format "[[file:%s][%s]]\n" (expand-file-name file directory) file)))))
+
+;; Usage: (insert-directory-files-as-links \"~/my_directory\")
+
+#+end_src
+
+
 
