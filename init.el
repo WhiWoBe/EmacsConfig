@@ -41,6 +41,10 @@
 ;; (add-to-list 'default-frame-alist '(width  . 100))
 ;; (add-to-list 'default-frame-alist '(height . 40))
 
+
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+
 ; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
 (defvar my/DRIVE_C "c:/")

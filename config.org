@@ -4,7 +4,7 @@
 #+DESCRIPTION: Personal Emacs Config
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
- 
+  
 * INFO 
 
 The code blocks of this file get tangled into the file
@@ -15,7 +15,7 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 #+begin_src emacs-lisp
 
-  ; (server-start) 
+                                          ; (server-start) 
   (setq inhibit-startup-message t)
 
   ;; WINDOW
@@ -24,7 +24,7 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   (menu-bar-mode -1) ; top menu bar
   (tool-bar-mode -1)
   ;; (tooltip mode -1)
- 
+
   (setq visible-bell t)
 
   ;; Scroll
@@ -57,6 +57,10 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
   ;; (add-to-list 'default-frame-alist '(width  . 100))
   ;; (add-to-list 'default-frame-alist '(height . 40))
+
+
+  (set-language-environment 'utf-8)
+  (set-default-coding-systems 'utf-8)
 
 #+end_src
 
