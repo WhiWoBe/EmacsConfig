@@ -59,8 +59,8 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   ;; (add-to-list 'default-frame-alist '(height . 40))
 
 
-  (set-language-environment 'utf-8)
-  (set-default-coding-systems 'utf-8)
+;;  (set-language-environment 'utf-8)
+;;  (set-default-coding-systems 'utf-8)
 
 #+end_src
 
@@ -331,240 +331,242 @@ The my/capture functions set the variable to either use or not use an ID for thi
     (org-indent-mode)
     (setq evil-auto-indent t))
 
-     ;; Disable Line Number in Org mode
+
+  (use-package org
+    :pin org
+    :commands (org-capture org-agenda)
+    :hook (org-mode . tmi/org-mode-setup)
+    :config
+
+    (setq org-directory my/org-dir-files) ;;Default location of Org files
+    (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
+    (setq org-ellipsis " +")
+    (setq org-return-follows-link t)
+    (setq org-log-done 'time) ;; timestamp on done
+    (setq org-log-into-drawer t)
+    (setq org-startup-folded nil)
+
+    ;; Setup org-id
+
+    (require 'org-id)
+    (setq org-id-link-to-org-use-id t) ;; (org-id-method) 
+    (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+
+    ;;Set Faces
+
+    (custom-set-faces
+     '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+     '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+     '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+     '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+     '(org-level-5 ((t (:inherit outline-5 :height 0.9))))
+     '(org-block ((t (:family "Fira Code Mono"  :height 1.0))))
+     )
+
+    ;; Org Capture Templates
+
+    (setq org-capture-templates
+          `(("t" "Tasks" entry (file+headline "d:/notebooks/org/Tasks.org" "Inbox")
+             (file "d:/notebooks/org/.templates/Task_Template.org")
+             :prepend t
+             :jump-to-captured t
+             :empty-lines-after 1
+             :empty-lines-before 1
+             )
+
+            ("m" "Meeting" entry (file+headline "d:/notebooks/org/Meetings.org" "Meeting Notes")
+             (file "d:/notebooks/org/.templates/Meeting_Template.org")
+             :prepend t
+             :jump-to-captured t
+             :empty-lines-after 1
+             :empty-lines-before 1
+             :time-prompt 1
+             )
+
+            ("j" "Journal Log" plain (file+function "d:/notebooks/org/Journal.org"
+                                                    (lambda ()
+                                                      (org-datetree-find-date-create
+                                                       (org-date-to-gregorian (org-today)) t)
+                                                      (re-search-forward "^\\*.+ Log" nil t)))
+             (file "d:/notebooks/org/.templates/Journal_Template.org")
+             :prepend nil
+             :jump-to-captured nil
+             :empty-lines-before 1
+             :empty-lines-after 1
+             )
+
+            ("J" "Journal Outline" entry (file+olp+datetree "d:/notebooks/org/Journal.org" "Journal")
+             (file "d:/notebooks/org/.templates/Journal_Outline_Template.org")
+             :prepend nil
+             :jump-to-captured t
+             :empty-lines-before 0
+             :empty-lines-after 0
+             )
+
+            )
+
+          ;; Org global TODO States
+          ;; (setq org-todo-keywords
+          ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+          ))
+
+
+  ;; Disable Line Number in Org mode
   (defun my-display-numbers-hook ()
-       (display-line-numbers-mode 0))
+    (display-line-numbers-mode 0))
 
-     (add-hook 'org-mode-hook 'my-display-numbers-hook)
+  (add-hook 'org-mode-hook 'my-display-numbers-hook)
 
-     (defun my/org-unschedule ()
-       (interactive)
-       (let ((current-prefix-arg '(4))) ;; emulate C-u
-         (call-interactively 'org-schedule))) ;; invoke align-regexp interactivel
+  ;; Org-Mode Custom Commands
+  
+  (defun my/org-unschedule ()
+    (interactive)
+    (let ((current-prefix-arg '(4))) ;; emulate C-u
+      (call-interactively 'org-schedule))) ;; invoke align-regexp interactivel
 
-     (defun my/capture-without-id-at-point()
-       (interactive)
-       (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-         (org-capture nil)
-         ))
+  (defun my/capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil)
+      ))
 
-     (defun my/journal-capture-without-id-at-point()
-       (interactive)
-       (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-         (org-capture nil "j")
-         ))
+  (defun my/journal-capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil "j")
+      ))
 
-     (defun my/journal-outline-capture-without-id-at-point()
-       (interactive)
-       (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-         (org-capture nil "J")
-         ))
+  (defun my/journal-outline-capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil "J")
+      ))
 
-     ;; (defun my/capture-journal-without-id()
-     ;;   (org-capture nil))
+  ;; (defun my/capture-journal-without-id()
+  ;;   (org-capture nil))
+  ;; Org Refile
 
-     (use-package org
-       :pin org
-       :commands (org-capture org-agenda)
-       :hook (org-mode . tmi/org-mode-setup)
-       :config
-
-       (setq org-directory my/org-dir-files) ;;Default location of Org files
-       (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
-       (setq org-ellipsis " +")
-       (setq org-return-follows-link t)
-       (setq org-log-done 'time) ;; timestamp on done
-       (setq org-log-into-drawer t)
-       (setq org-startup-folded nil)
-
-       ;; Setup org-id
-
-       (require 'org-id)
-       (setq org-id-link-to-org-use-id t)
-       ;; (org-id-method) 
-       (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
-
-       ;;Set Faces
-
-       (custom-set-faces
-        '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
-        '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
-        '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
-        '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-        '(org-level-5 ((t (:inherit outline-5 :height 0.9))))
-        '(org-block ((t (:family "Fira Code Mono"  :height 1.0))))
-        )
-
-       ;; Org Capture Templates
-
-       (setq org-capture-templates
-             `(("t" "Tasks" entry (file+headline "d:/notebooks/org/Tasks.org" "Inbox")
-                (file "d:/notebooks/org/.templates/Task_Template.org")
-                :prepend t
-                :jump-to-captured t
-                :empty-lines-after 1
-                :empty-lines-before 1
-                )
-
-               ("m" "Meeting" entry (file+headline "d:/notebooks/org/Meetings.org" "Meeting Notes")
-                (file "d:/notebooks/org/.templates/Meeting_Template.org")
-                :prepend t
-                :jump-to-captured t
-                :empty-lines-after 1
-                :empty-lines-before 1
-                :time-prompt 1
-                )
-
-               ("j" "Journal Log" plain (file+function "d:/notebooks/org/Journal.org"
-                                                       (lambda ()
-                                                         (org-datetree-find-date-create
-                                                          (org-date-to-gregorian (org-today)) t)
-                                                         (re-search-forward "^\\*.+ Log" nil t)))
-                (file "d:/notebooks/org/.templates/Journal_Template.org")
-                :prepend nil
-                :jump-to-captured nil
-                :empty-lines-before 1
-                :empty-lines-after 1
-                )
-
-               ("J" "Journal Outline" entry (file+olp+datetree "d:/notebooks/org/Journal.org" "Journal")
-                (file "d:/notebooks/org/.templates/Journal_Outline_Template.org")
-                :prepend nil
-                :jump-to-captured t
-                :empty-lines-before 0
-                :empty-lines-after 0
-                )
-
-               )
-
-             ;; Org global TODO States
-             ;; (setq org-todo-keywords
-             ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-             ))
-
-     ;; Org Refile
-
-     (setq org-refile-targets
-           (quote(("d:/notebooks/org/Tasks.org" :maxlevel . 1)
-                  ("d:/notebooks/org/Meetings.org" :maxlevel . 1)
-                  ("d:/notebooks/org/org_capture.org" :maxlevel . 1))))
+  (setq org-refile-targets
+        (quote(("d:/notebooks/org/Tasks.org" :maxlevel . 1)
+               ("d:/notebooks/org/Meetings.org" :maxlevel . 1)
+               ("d:/notebooks/org/org_capture.org" :maxlevel . 1))))
 
 
-     (setq org-refile-use-outline-path nil)
-     (setq org-refile-allow-creating-parent-nodes t)
-     (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path nil)
+  (setq org-refile-allow-creating-parent-nodes t)
+  (setq org-outline-path-complete-in-steps nil)
 
 
-     ;; Org Agenda
+  ;; Org Agenda
 
-     (setq org-agenda-custom-commands
-           '(
+  (setq org-agenda-custom-commands
+        '(
 
-             ("," "Dayliy Overview"
-              (
+          ("," "Dayliy Overview"
+           (
 
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-start-day "-1d")
-                        (org-agenda-span 1)
-                        (org-agenda-repeating-timestamp-show-all t)
-                        (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                        (org-agenda-overriding-header "\n* Yesterday *\n")))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-start-day "-1d")
+                     (org-agenda-span 1)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Yesterday *\n")))
 
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-span 1)
-                        (org-agenda-repeating-timestamp-show-all t)
-                        (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                        (org-agenda-overriding-header "\n* Today *\n")))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-span 1)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Today *\n")))
 
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-entry-types '(:deadline))
-                        (org-deadline-warning-days 7)
-                        (org-agenda-overriding-header "\n* Deadlines *\n")))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-entry-types '(:deadline))
+                     (org-deadline-warning-days 7)
+                     (org-agenda-overriding-header "\n* Deadlines *\n")))
 
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-start-day "+1d")
-                        (org-agenda-span 3)
-                        (org-agenda-repeating-timestamp-show-all t)
-                        (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                        (org-agenda-overriding-header "\n* Next *\n")))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-start-day "+1d")
+                     (org-agenda-span 3)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Next *\n")))
 
-               (todo "WAIT"
-                     ((org-agenda-overriding-header "* Waiting on *\n")))
+            (todo "WAIT"
+                  ((org-agenda-overriding-header "* Waiting on *\n")))
 
-               (todo "ACT"
-                     ((org-agenda-block-separator nil)
-                      (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                      (org-agenda-overriding-header "\n* Open Tasks *\n")))
+            (todo "ACT"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Open Tasks *\n")))
 
-               (todo "DELIGATED"
-                     ((org-agenda-block-separator nil)
-                      (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                      (org-agenda-overriding-header "\n* Monitor *\n")))
+            (todo "DELIGATED"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Monitor *\n")))
 
-               ))
-
-
-             ("." "Weekly Overview"
-              (
+            ))
 
 
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-span 7)
-                        (org-agenda-start-on-weekday 0)
-                        (org-agenda-repeating-timestamp-show-all t)
-                        (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                        (org-agenda-overriding-header "\n* Week *\n")))
-
-               (agenda ""
-                       ((org-agenda-block-separator nil)
-                        (org-agenda-entry-types '(:deadline))
-                        (org-deadline-warning-days 14)
-                        (org-agenda-overriding-header "\n* deadlines *\n")))
-
-               (todo "WAIT"
-                     ((org-agenda-overriding-header "* Waiting on *\n")))
-
-               (todo "ACT"
-                     ((org-agenda-block-separator nil)
-                      (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                      (org-agenda-overriding-header "\n* Open Tasks *\n")))
-
-               (todo "DELIGATED"
-                     ((org-agenda-block-separator nil)
-                      (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                      (org-agenda-overriding-header "\n* Monitor *\n")))
-
-               ))
+          ("." "Weekly Overview"
+           (
 
 
-             ))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-span 7)
+                     (org-agenda-start-on-weekday 0)
+                     (org-agenda-repeating-timestamp-show-all t)
+                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                     (org-agenda-overriding-header "\n* Week *\n")))
 
-     (defun my/org-agenda-inactive ()
-       (interactive)
-       (let ((org-agenda-include-inactive-timestamps t))
-         (org-agenda)))
+            (agenda ""
+                    ((org-agenda-block-separator nil)
+                     (org-agenda-entry-types '(:deadline))
+                     (org-deadline-warning-days 14)
+                     (org-agenda-overriding-header "\n* deadlines *\n")))
 
-     (setq org-agenda-ignore-properties '(effort appt stats category))
-     (setq org-agenda-todo-ignore-scheduled nil)
-     (setq org-agenda-todo-list-sublevels t)
-     (setq org-agenda-use-tag-inheritance nil)
+            (todo "WAIT"
+                  ((org-agenda-overriding-header "* Waiting on *\n")))
+
+            (todo "ACT"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Open Tasks *\n")))
+
+            (todo "DELIGATED"
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-overriding-header "\n* Monitor *\n")))
+
+            ))
 
 
-     (setq org-todo-keyword-faces
-           '(
-             ("ACT" . (:foreground "#cd5c60" :weight bold))
-             ("WAIT" . (:foreground "yellow"))
-             ("READ" . (:foreground))
+          ))
 
-             ("DELIGATED" . (:foreground "lightblue"))
-             ("DONE" . (:foreground))
-             ("CANCELED" . (:foreground "blue" :weight bold))
-             ))
+  (defun my/org-agenda-inactive ()
+    (interactive)
+    (let ((org-agenda-include-inactive-timestamps t))
+      (org-agenda)))
+
+  (setq org-agenda-ignore-properties '(effort appt stats category))
+  (setq org-agenda-todo-ignore-scheduled nil)
+  (setq org-agenda-todo-list-sublevels t)
+  (setq org-agenda-use-tag-inheritance nil)
+
+
+  (setq org-todo-keyword-faces
+        '(
+          ("ACT" . (:foreground "#cd5c60" :weight bold))
+          ("WAIT" . (:foreground "yellow"))
+          ("READ" . (:foreground))
+
+          ("DELIGATED" . (:foreground "lightblue"))
+          ("DONE" . (:foreground))
+          ("CANCELED" . (:foreground "blue" :weight bold))
+          ))
 
 #+end_src
 
@@ -699,6 +701,8 @@ Resources https://github.com/noctuid/general.el
       "b n" '(next-buffer :wk "buffer ->")
       "b k" '(kill-buffer :wk "kill buffer")
 
+      "a" '(:ignore t :wk "Start Application")
+      "a o" '(app/run-outlook :wk "Outlook")
 
       "u" '(universal-argument :wk "u-arg")
       "q" '(exit-minibuffer :wk "Exit minib")
@@ -826,14 +830,19 @@ Tangles this config to the init file
 #+begin_src emacs-lisp
 
 
-(defun my/insert-directory-files-as-links (directory)
-  "Insert links for all files in DIRECTORY."
-  (interactive "sEnter directory path: ")
-  (dolist (file (directory-files directory))
-    (when (not (string-prefix-p "." file)) ; Exclude hidden files
-      (insert (format "[[file:%s][%s]]\n" (expand-file-name file directory) file)))))
+  (defun my/insert-directory-files-as-links (directory)
+    "Insert links for all files in DIRECTORY."
+    (interactive "sEnter directory path: ")
+    (dolist (file (directory-files directory))
+      (when (not (string-prefix-p "." file)) ; Exclude hidden files
+        (insert (format "[[file:%s][%s]]\n" (expand-file-name file directory) file)))))
 
-;; Usage: (insert-directory-files-as-links \"~/my_directory\")
+  ;; Usage: (insert-directory-files-as-links \"~/my_directory\")
+
+
+  (defun app/run-outlook ()
+    (interactive)
+    (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
 
 #+end_src
 
