@@ -1,49 +1,49 @@
 ; (server-start) 
-(setq inhibit-startup-message t)
+  (setq inhibit-startup-message t)
 
-;; WINDOW
-(scroll-bar-mode -1) ;show scroll bars
-(set-fringe-mode 0) ;added window border
-(menu-bar-mode -1) ; top menu bar
-(tool-bar-mode -1)
-;; (tooltip mode -1)
+  ;; WINDOW
+  (scroll-bar-mode -1) ;show scroll bars
+  (set-fringe-mode 0) ;added window border
+  (menu-bar-mode -1) ; top menu bar
+  (tool-bar-mode -1)
+  ;; (tooltip mode -1)
 
-(setq visible-bell t)
+  (setq visible-bell t)
 
-;; Scroll
-;; (pixel-scroll-precision-mode)
+  ;; Scroll
+  ;; (pixel-scroll-precision-mode)
 
-;; Line Numbers
-(global-display-line-numbers-mode 1)
-(menu-bar--display-line-numbers-mode-relative)
-;; (display-line-numbers-type 'relative)
-(global-hl-line-mode 1)
+  ;; Line Numbers
+  (global-display-line-numbers-mode 1)
+  (menu-bar--display-line-numbers-mode-relative)
+  ;; (display-line-numbers-type 'relative)
+  (global-hl-line-mode 1)
 
-;; History
+  ;; History
 
-(setq history-length 25)
-(savehist-mode 1)
+  (setq history-length 25)
+  (savehist-mode 1)
 
-(setq recentf-max-saved-items 25)
-(recentf-mode 1)
+  (setq recentf-max-saved-items 25)
+  (recentf-mode 1)
 
-;; Auto update buffers
-(global-auto-revert-mode)
+  ;; Auto update buffers
+  (global-auto-revert-mode)
 
-;; Frame Parameters
+  ;; Frame Parameters
 
-;; (set-frame-parameter nil 'internal-border-width 20)
-(set-frame-parameter (selected-frame) 'alpha '(85 85))
+  ;; (set-frame-parameter nil 'internal-border-width 20)
+  (set-frame-parameter (selected-frame) 'alpha '(85 85))
 
-(add-to-list 'default-frame-alist '(internal-border-width . 20))
-(add-to-list 'default-frame-alist '(alpha-background  . 70))
+  (add-to-list 'default-frame-alist '(internal-border-width . 20))
+  (add-to-list 'default-frame-alist '(alpha-background  . 70))
 
-;; (add-to-list 'default-frame-alist '(width  . 100))
-;; (add-to-list 'default-frame-alist '(height . 40))
+  ;; (add-to-list 'default-frame-alist '(width  . 100))
+  ;; (add-to-list 'default-frame-alist '(height . 40))
 
 
-; (set-language-environment 'utf-8)
-; (set-default-coding-systems 'utf-8)
+;;  (set-language-environment 'utf-8)
+;;  (set-default-coding-systems 'utf-8)
 
 ; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
@@ -532,6 +532,10 @@
 
     "a" '(:ignore t :wk "Start Application")
     "a o" '(app/run-outlook :wk "Outlook")
+    "a c" '(app/run-calendar :wk "gCalendar")
+
+
+
 
     "u" '(universal-argument :wk "u-arg")
     "q" '(exit-minibuffer :wk "Exit minib")
@@ -628,3 +632,10 @@
 (defun app/run-outlook ()
   (interactive)
   (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
+
+
+
+(defun app/run-calendar ()
+  (interactive)
+  (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
+)

@@ -703,6 +703,10 @@ Resources https://github.com/noctuid/general.el
 
       "a" '(:ignore t :wk "Start Application")
       "a o" '(app/run-outlook :wk "Outlook")
+      "a c" '(app/run-calendar :wk "gCalendar")
+
+
+  
 
       "u" '(universal-argument :wk "u-arg")
       "q" '(exit-minibuffer :wk "Exit minib")
@@ -844,6 +848,12 @@ Tangles this config to the init file
     (interactive)
     (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
 
+
+
+  (defun app/run-calendar ()
+    (interactive)
+    (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
+  )
 #+end_src
 
 
