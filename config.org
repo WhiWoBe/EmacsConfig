@@ -843,17 +843,23 @@ Tangles this config to the init file
 
   ;; Usage: (insert-directory-files-as-links \"~/my_directory\")
 
-
   (defun app/run-outlook ()
     (interactive)
     (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
 
-
-
   (defun app/run-calendar ()
-    (interactive)
-    (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
-  )
+  "Open the specified app using Microsoft Edge Proxy."
+  (interactive)
+  (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe"
+                nil ; No buffer for output
+                nil ; No buffer for error messages
+                nil ; Don't display process
+                "--profile-directory=Default"
+                "--app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep"
+                "--app-url=https://calendar.google.com/calendar/r"
+                "--app-launch-source=4"))
+
+
 #+end_src
 
 
