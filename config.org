@@ -4,7 +4,9 @@
 #+DESCRIPTION: Personal Emacs Config
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
-  
+
+
+
 * INFO 
 
 The code blocks of this file get tangled into the file
@@ -31,7 +33,7 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   ;; (pixel-scroll-precision-mode)
 
   ;; Line Numbers
-  (global-display-line-numbers-mode 1)
+  (global-display-line-numbers-mode 0)
   (menu-bar--display-line-numbers-mode-relative)
   ;; (display-line-numbers-type 'relative)
   (global-hl-line-mode 1)
@@ -59,8 +61,8 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   ;; (add-to-list 'default-frame-alist '(height . 40))
 
 
-;;  (set-language-environment 'utf-8)
-;;  (set-default-coding-systems 'utf-8)
+  ;;  (set-language-environment 'utf-8)
+  ;;  (set-default-coding-systems 'utf-8)
 
 #+end_src
 
@@ -69,6 +71,8 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 Locations between my PC and the LAPTOP PC Differ, consider if statement to change var depending on
 the system you are using.
+
+At the moment File structure and Drive Name is the Same under Work and Private PC 
 
 #+begin_src emacs-lisp 
 
@@ -179,10 +183,6 @@ Since Emacs 20.1 use package is pre installed
         (list (format "%s %%S: %%j " (system-name))
               '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-  (defun my/clip-path-to-current-location ()
-    "Show the full path file name in the minibuffer."
-    (interactive)
-    (kill-new (buffer-file-name)))
 
  ;; (global-set-key [C-f1] 'show-file-name) ; Or any other key you want
 
@@ -254,6 +254,8 @@ Used the build in (fido-vertical-mode)  and switched to vertico and orderless
 
 ** Doom Modeline
 
+Default is fine
+
 #+begin_src emacs-lisp
 
   ;; (use-package doom-modeline
@@ -286,6 +288,43 @@ Used the build in (fido-vertical-mode)  and switched to vertico and orderless
   ;;  ([remap describe-command] . helpful-command)
   ;;  ([remap describe-variable] . counsel-describe-variable)
   ;;  ([remap describe-key] . helpful-key))
+
+#+end_src
+
+** AUCTeX & PDF-Tools
+
+PDF Tools needs to be copmpiled (pdf-tools-install) Requires Msys2 to Compile
+In the PDF Buffer it should show PDF-Tools as a Major Mode
+
+#+begin_src emacs-lisp
+
+  (use-package tex
+    :ensure auctex)
+
+  (use-package pdf-tools
+    :ensure t)
+
+  (setq pdf-view-use-scaling nil)
+
+  (pdf-tools-install)  ; Standard activation command
+; (pdf-loader-install) ; On demand loading, leads to faster startup time
+
+#+end_src
+
+** Python
+
+Indenting needs to be fixed
+
+#+begin_src emacs-lisp
+
+  ;; (use-package python-mode
+  ;; :ensure nil
+  ;; :custom
+  ;; (python-shell-interpreter "python3"))
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)))
 
 #+end_src
 
@@ -323,6 +362,7 @@ You can manually add files to the agenda ‘M-x org-agenda-file-to-front’
 By Default ive set emacs to create IDs when I store a Link if there is no custom ID.
 The my/capture functions set the variable to either use or not use an ID for this Capture.
 ~let~ will change that variable only within the function and leaves the global settings untouched.
+This Function is called with a shortcut
 
 #+begin_src emacs-lisp
 
@@ -590,6 +630,173 @@ The my/capture functions set the variable to either use or not use an ID for thi
 
 #+end_src
 
+*** Org Cite
+
+#+begin_src emacs-lisp
+
+    (setq bibtex-completion-pdf-field "file")
+
+  ;;   (setq org-cite-global-bibliography
+  ;;         '("d:/notebooks/org/bibliography/mylib.bib"))
+
+  ;; (use-package zotxt)
+    
+    ;; (use-package org-ref)
+
+
+    ;; (setq bibtex-completion-bibliography '("d:/notebooks/org/bibliography/references.bib"
+    ;;                                        "d:/notebooks/org/bibliography/mylib.bib"
+    ;;                                        "d:/notebooks/org/bibliography/master.bib"
+    ;;                                        "d:/notebooks/org/bibliography/archive.bib")
+    ;;       bibtex-completion-library-path '("d:/notebooks/org/bibliography/bibtex-pdfs/")
+    ;;       bibtex-completion-notes-path "d:/notebooks/org/bibliography/notes/"
+    ;;       bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+    ;;       bibtex-completion-additional-search-fields '(keywords)
+    ;;       bibtex-completion-display-formats
+    ;;       '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+    ;;         (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+    ;;         (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+    ;;         (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+    ;;         (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
+
+#+end_src
+
+*** Org Noter
+
+#+begin_src emacs-lisp
+
+  ;; (use-package org-noter
+  ;;   :custom
+  ;; (setq org-noter-notes-search-path '("d:/notebooks/org/bibliography/notes/"))
+  ;;(setq org-noter-default-notes-file-names '("refnotes.org")))
+
+  ;;  (setq org-noter-notes-search-path '("d:/notebooks/org/bibliography/notes/"))
+
+  (use-package org-noter
+    :after (:any org pdf-view)
+    :config
+    (setq
+     ;; The WM can handle splits
+     org-noter-notes-window-location 'horizontal-split
+     ;; Please stop opening frames
+     org-noter-always-create-frame nil
+     ;; I want to see the whole file
+     org-noter-hide-other nil
+
+     org-noter-default-notes-file-names '("refnotes.org")
+     ;; Everything is relative to the main notes file
+     org-noter-notes-search-path  '("d:/notebooks/org/bibliography/notes/")
+     org-noter-separate-notes-from-heading t))
+
+#+end_src
+
+
+#+begin_src emacs-lisp 
+
+    (use-package org-transclusion
+      :after org)
+
+    (add-hook 'org-mode-hook #'org-transclusion-mode)
+  (with-eval-after-load 'org-transclusion
+    (define-fringe-bitmap 'org-transclusion-fringe-bitmap
+      [17 34 68 136 68 34 17]
+      nil nil 'center))
+  
+  (custom-set-variables
+   '(org-startup-indented t)
+   '(org-transclusion-extensions
+     '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
+     )
+
+      (set-face-attribute
+       'org-transclusion-fringe nil
+       :foreground "green"
+       :background "green")
+
+#+end_src
+** Citar
+
+#+begin_src emacs-lisp
+  ;; (use-package citar
+  ;;   :no-require
+  ;;   :custom
+  ;;   (org-cite-global-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+  ;;   (org-cite-insert-processor 'citar)
+  ;;   (org-cite-follow-processor 'citar)
+  ;;   (org-cite-activate-processor 'citar)
+  ;;   (citar-at-point-function 'embark-dwim)
+  ;;   (citar-bibliography org-cite-global-bibliography))
+
+  (use-package citar
+    :custom
+    (org-cite-global-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+    (citar-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+    (org-cite-insert-processor 'citar)
+    (org-cite-follow-processor 'citar)
+    (org-cite-activate-processor 'citar))
+
+  (setq citar-notes-paths '("d:/notebooks/org/bibliography/notes"))  ;; using Org Noter 
+
+  ;; (setq citar-citeproc-csl-style )
+
+  (setq citar-templates
+        '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
+          (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
+          (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
+          (note . "Notes on ${author editor:%etal}, ${title}")))
+
+  ;; (use-package async)
+  ;; (require 'doi-utils)
+
+  (setq citar-indicators
+        (list citar-indicator-files ; plain text
+              citar-indicator-notes)) ; icon
+
+  (use-package citar-embark
+    :after citar embark
+    :no-require
+    :config (citar-embark-mode))
+
+
+#+end_src
+
+** Embark
+
+#+begin_src emacs-lisp
+
+  (use-package embark
+    :ensure t
+
+    :bind
+    (("C-." . embark-act)         ;; pick some comfortable binding
+     ("C-;" . embark-dwim)        ;; good alternative: M-.
+     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+    :init
+
+    ;; Optionally replace the key help with a completing-read interface
+    (setq prefix-help-command #'embark-prefix-help-command)
+
+    ;; Show the Embark target at point via Eldoc. You may adjust the
+    ;; Eldoc strategy, if you want to see the documentation from
+    ;; multiple providers. Beware that using this can be a little
+    ;; jarring since the message shown in the minibuffer can be more
+    ;; than one line, causing the modeline to move up and down:
+
+    ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+    ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+    :config
+
+    ;; Hide the mode line of the Embark live/completions buffers
+    (add-to-list 'display-buffer-alist
+                 '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                   nil
+                   (window-parameters (mode-line-format . none)))))
+
+#+end_src
+
 ** Google Calendar Import
 
 #+begin_src emacs-lisp
@@ -704,9 +911,8 @@ Resources https://github.com/noctuid/general.el
       "a" '(:ignore t :wk "Start Application")
       "a o" '(app/run-outlook :wk "Outlook")
       "a c" '(app/run-calendar :wk "gCalendar")
+      "a s" '(app/org-screenshot :wk "snipping tool")
 
-
-  
 
       "u" '(universal-argument :wk "u-arg")
       "q" '(exit-minibuffer :wk "Exit minib")
@@ -726,10 +932,14 @@ Resources https://github.com/noctuid/general.el
       "w o" '(delete-other-windows :wk "delete other window")
       "w v" '(split-window-right :wk "split vertical")
 
-      "e" '(:ignore t :wk "eval")
-      "e r" '(eval-region :wk "eval-r")
-      "e b" '(eval-buffer :wk "eval-b")
+      "E" '(:ignore t :wk "eval")
+      "E r" '(eval-region :wk "eval-R")
+      "E b" '(eval-buffer :wk "eval-B")
 
+      "e" '(:ignore t :wk "Embark")
+      "e e" '(embark-act :wk "Act")
+      "e d" '(embark-dwim :wk "Dwim")
+  
       "o" '(:ignore t :wk "org")
       "o a" '(org-agenda :wk "Agenda")
       "o A" '(my/org-agenda-inactive :wk "Agenda TS")
@@ -746,6 +956,7 @@ Resources https://github.com/noctuid/general.el
       "o s" '(org-schedule :wk "Schedule")
       "o t" '(org-set-tags-command :wk "Tags set/edit")
       "o u" '(my/org-unschedule :wk "Unschedule")
+      "o z" '(org-cite-insert :wk "Cite")
 
       ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
       "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
@@ -833,6 +1044,10 @@ Tangles this config to the init file
 
 #+begin_src emacs-lisp
 
+  (defun my/clip-path-to-current-location ()
+    "Show the full path file name in the minibuffer."
+    (interactive)
+    (kill-new (buffer-file-name)))
 
   (defun my/insert-directory-files-as-links (directory)
     "Insert links for all files in DIRECTORY."
@@ -844,22 +1059,43 @@ Tangles this config to the init file
   ;; Usage: (insert-directory-files-as-links \"~/my_directory\")
 
   (defun app/run-outlook ()
+    "Run Outlook"
     (interactive)
     (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
 
   (defun app/run-calendar ()
-  "Open the specified app using Microsoft Edge Proxy."
-  (interactive)
-  (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe"
-                nil ; No buffer for output
-                nil ; No buffer for error messages
-                nil ; Don't display process
-                "--profile-directory=Default"
-                "--app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep"
-                "--app-url=https://calendar.google.com/calendar/r"
-                "--app-launch-source=4"))
+    "Open the Calendar (MS Edge Proxy)"
+    (interactive)
+    (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe"
+                  nil ; No buffer for output
+                  nil ; No buffer for error messages
+                  nil ; Don't display process
+                  "--profile-directory=Default"
+                  "--app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep"
+                  "--app-url=https://calendar.google.com/calendar/r"
+                  "--app-launch-source=4"))
+
+  (defun app/org-screenshot ()
+    "Take a screenshot into a time stamped unique-named file in the
+          same directory as the org-buffer and insert a link to this file."  
+    (interactive)
+    (setq filename
+          (concat
+           (make-temp-name
+            (concat (buffer-file-name)
+                    "_"
+                    (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+    (shell-command "snippingtool /clip")
+    (shell-command (concat "powershell -command \"Add-Type -AssemblyName System.Windows.Forms;if ($([System.Windows.Forms.Clipboard]::ContainsImage())) {$image = [System.Windows.Forms.Clipboard]::GetImage();[System.Drawing.Bitmap]$image.Save('" filename "',[System.Drawing.Imaging.ImageFormat]::Png); Write-Output 'clipboard content saved as file'} else {Write-Output 'clipboard does not contain image data'}\""))
+    (insert (concat "[[file:" filename "]]"))
+    (org-display-inline-images))
 
 
+  (defun my/export ()
+    (interactive)
+    (setq inhibit-read-only t)
+    (org-export-dispatch)
+    (setq inhibit-read-only nil))
 #+end_src
 
 

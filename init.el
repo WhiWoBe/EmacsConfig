@@ -1,45 +1,45 @@
 ; (server-start) 
-  (setq inhibit-startup-message t)
+(setq inhibit-startup-message t)
 
-  ;; WINDOW
-  (scroll-bar-mode -1) ;show scroll bars
-  (set-fringe-mode 0) ;added window border
-  (menu-bar-mode -1) ; top menu bar
-  (tool-bar-mode -1)
-  ;; (tooltip mode -1)
+;; WINDOW
+(scroll-bar-mode -1) ;show scroll bars
+(set-fringe-mode 0) ;added window border
+(menu-bar-mode -1) ; top menu bar
+(tool-bar-mode -1)
+;; (tooltip mode -1)
 
-  (setq visible-bell t)
+(setq visible-bell t)
 
-  ;; Scroll
-  ;; (pixel-scroll-precision-mode)
+;; Scroll
+;; (pixel-scroll-precision-mode)
 
-  ;; Line Numbers
-  (global-display-line-numbers-mode 1)
-  (menu-bar--display-line-numbers-mode-relative)
-  ;; (display-line-numbers-type 'relative)
-  (global-hl-line-mode 1)
+;; Line Numbers
+(global-display-line-numbers-mode 0)
+(menu-bar--display-line-numbers-mode-relative)
+;; (display-line-numbers-type 'relative)
+(global-hl-line-mode 1)
 
-  ;; History
+;; History
 
-  (setq history-length 25)
-  (savehist-mode 1)
+(setq history-length 25)
+(savehist-mode 1)
 
-  (setq recentf-max-saved-items 25)
-  (recentf-mode 1)
+(setq recentf-max-saved-items 25)
+(recentf-mode 1)
 
-  ;; Auto update buffers
-  (global-auto-revert-mode)
+;; Auto update buffers
+(global-auto-revert-mode)
 
-  ;; Frame Parameters
+;; Frame Parameters
 
-  ;; (set-frame-parameter nil 'internal-border-width 20)
-  (set-frame-parameter (selected-frame) 'alpha '(85 85))
+;; (set-frame-parameter nil 'internal-border-width 20)
+(set-frame-parameter (selected-frame) 'alpha '(85 85))
 
-  (add-to-list 'default-frame-alist '(internal-border-width . 20))
-  (add-to-list 'default-frame-alist '(alpha-background  . 70))
+(add-to-list 'default-frame-alist '(internal-border-width . 20))
+(add-to-list 'default-frame-alist '(alpha-background  . 70))
 
-  ;; (add-to-list 'default-frame-alist '(width  . 100))
-  ;; (add-to-list 'default-frame-alist '(height . 40))
+;; (add-to-list 'default-frame-alist '(width  . 100))
+;; (add-to-list 'default-frame-alist '(height . 40))
 
 
 ;;  (set-language-environment 'utf-8)
@@ -111,10 +111,6 @@
        (list (format "%s %%S: %%j " (system-name))
              '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
- (defun my/clip-path-to-current-location ()
-   "Show the full path file name in the minibuffer."
-   (interactive)
-   (kill-new (buffer-file-name)))
 
 ;; (global-set-key [C-f1] 'show-file-name) ; Or any other key you want
 
@@ -187,6 +183,26 @@
 ;;  ([remap describe-command] . helpful-command)
 ;;  ([remap describe-variable] . counsel-describe-variable)
 ;;  ([remap describe-key] . helpful-key))
+
+(use-package tex
+    :ensure auctex)
+
+  (use-package pdf-tools
+    :ensure t)
+
+  (setq pdf-view-use-scaling nil)
+
+  (pdf-tools-install)  ; Standard activation command
+; (pdf-loader-install) ; On demand loading, leads to faster startup time
+
+;; (use-package python-mode
+;; :ensure nil
+;; :custom
+;; (python-shell-interpreter "python3"))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 
 (use-package evil
   :init
@@ -454,6 +470,145 @@
 :custom
 (org-bullets-bullet-list '("#" "##" "###" "####" "#####" "######")))
 
+(setq bibtex-completion-pdf-field "file")
+
+;;   (setq org-cite-global-bibliography
+;;         '("d:/notebooks/org/bibliography/mylib.bib"))
+
+;; (use-package zotxt)
+
+  ;; (use-package org-ref)
+
+
+  ;; (setq bibtex-completion-bibliography '("d:/notebooks/org/bibliography/references.bib"
+  ;;                                        "d:/notebooks/org/bibliography/mylib.bib"
+  ;;                                        "d:/notebooks/org/bibliography/master.bib"
+  ;;                                        "d:/notebooks/org/bibliography/archive.bib")
+  ;;       bibtex-completion-library-path '("d:/notebooks/org/bibliography/bibtex-pdfs/")
+  ;;       bibtex-completion-notes-path "d:/notebooks/org/bibliography/notes/"
+  ;;       bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+  ;;       bibtex-completion-additional-search-fields '(keywords)
+  ;;       bibtex-completion-display-formats
+  ;;       '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+  ;;         (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+  ;;         (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+  ;;         (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+  ;;         (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
+
+;; (use-package org-noter
+;;   :custom
+;; (setq org-noter-notes-search-path '("d:/notebooks/org/bibliography/notes/"))
+;;(setq org-noter-default-notes-file-names '("refnotes.org")))
+
+;;  (setq org-noter-notes-search-path '("d:/notebooks/org/bibliography/notes/"))
+
+(use-package org-noter
+  :after (:any org pdf-view)
+  :config
+  (setq
+   ;; The WM can handle splits
+   org-noter-notes-window-location 'horizontal-split
+   ;; Please stop opening frames
+   org-noter-always-create-frame nil
+   ;; I want to see the whole file
+   org-noter-hide-other nil
+
+   org-noter-default-notes-file-names '("refnotes.org")
+   ;; Everything is relative to the main notes file
+   org-noter-notes-search-path  '("d:/notebooks/org/bibliography/notes/")
+   org-noter-separate-notes-from-heading t))
+
+(use-package org-transclusion
+    :after org)
+
+  (add-hook 'org-mode-hook #'org-transclusion-mode)
+(with-eval-after-load 'org-transclusion
+  (define-fringe-bitmap 'org-transclusion-fringe-bitmap
+    [17 34 68 136 68 34 17]
+    nil nil 'center))
+
+(custom-set-variables
+ '(org-startup-indented t)
+ '(org-transclusion-extensions
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
+   )
+
+    (set-face-attribute
+     'org-transclusion-fringe nil
+     :foreground "green"
+     :background "green")
+
+;; (use-package citar
+;;   :no-require
+;;   :custom
+;;   (org-cite-global-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+;;   (org-cite-insert-processor 'citar)
+;;   (org-cite-follow-processor 'citar)
+;;   (org-cite-activate-processor 'citar)
+;;   (citar-at-point-function 'embark-dwim)
+;;   (citar-bibliography org-cite-global-bibliography))
+
+(use-package citar
+  :custom
+  (org-cite-global-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+  (citar-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar))
+
+(setq citar-notes-paths '("d:/notebooks/org/bibliography/notes"))  ;; using Org Noter 
+
+;; (setq citar-citeproc-csl-style )
+
+(setq citar-templates
+      '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
+        (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
+        (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
+        (note . "Notes on ${author editor:%etal}, ${title}")))
+
+;; (use-package async)
+;; (require 'doi-utils)
+
+(setq citar-indicators
+      (list citar-indicator-files ; plain text
+            citar-indicator-notes)) ; icon
+
+(use-package citar-embark
+  :after citar embark
+  :no-require
+  :config (citar-embark-mode))
+
+(use-package embark
+  :ensure t
+
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+  :init
+
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Show the Embark target at point via Eldoc. You may adjust the
+  ;; Eldoc strategy, if you want to see the documentation from
+  ;; multiple providers. Beware that using this can be a little
+  ;; jarring since the message shown in the minibuffer can be more
+  ;; than one line, causing the modeline to move up and down:
+
+  ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  :config
+
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
 (require 'icalendar)
 
 (setq diary-file "d:/notebooks/org/cal.org")
@@ -533,8 +688,7 @@
     "a" '(:ignore t :wk "Start Application")
     "a o" '(app/run-outlook :wk "Outlook")
     "a c" '(app/run-calendar :wk "gCalendar")
-
-
+    "a s" '(app/org-screenshot :wk "snipping tool")
 
 
     "u" '(universal-argument :wk "u-arg")
@@ -555,9 +709,13 @@
     "w o" '(delete-other-windows :wk "delete other window")
     "w v" '(split-window-right :wk "split vertical")
 
-    "e" '(:ignore t :wk "eval")
-    "e r" '(eval-region :wk "eval-r")
-    "e b" '(eval-buffer :wk "eval-b")
+    "E" '(:ignore t :wk "eval")
+    "E r" '(eval-region :wk "eval-R")
+    "E b" '(eval-buffer :wk "eval-B")
+
+    "e" '(:ignore t :wk "Embark")
+    "e e" '(embark-act :wk "Act")
+    "e d" '(embark-dwim :wk "Dwim")
 
     "o" '(:ignore t :wk "org")
     "o a" '(org-agenda :wk "Agenda")
@@ -575,6 +733,7 @@
     "o s" '(org-schedule :wk "Schedule")
     "o t" '(org-set-tags-command :wk "Tags set/edit")
     "o u" '(my/org-unschedule :wk "Unschedule")
+    "o z" '(org-cite-insert :wk "Cite")
 
     ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
     "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
@@ -619,6 +778,11 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
 
+(defun my/clip-path-to-current-location ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (kill-new (buffer-file-name)))
+
 (defun my/insert-directory-files-as-links (directory)
   "Insert links for all files in DIRECTORY."
   (interactive "sEnter directory path: ")
@@ -629,17 +793,40 @@
 ;; Usage: (insert-directory-files-as-links \"~/my_directory\")
 
 (defun app/run-outlook ()
+  "Run Outlook"
   (interactive)
   (call-process "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"))
 
 (defun app/run-calendar ()
-"Open the specified app using Microsoft Edge Proxy."
-(interactive)
-(call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe"
-              nil ; No buffer for output
-              nil ; No buffer for error messages
-              nil ; Don't display process
-              "--profile-directory=Default"
-              "--app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep"
-              "--app-url=https://calendar.google.com/calendar/r"
-              "--app-launch-source=4"))
+  "Open the Calendar (MS Edge Proxy)"
+  (interactive)
+  (call-process "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe"
+                nil ; No buffer for output
+                nil ; No buffer for error messages
+                nil ; Don't display process
+                "--profile-directory=Default"
+                "--app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep"
+                "--app-url=https://calendar.google.com/calendar/r"
+                "--app-launch-source=4"))
+
+(defun app/org-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the
+        same directory as the org-buffer and insert a link to this file."  
+  (interactive)
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat (buffer-file-name)
+                  "_"
+                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+  (shell-command "snippingtool /clip")
+  (shell-command (concat "powershell -command \"Add-Type -AssemblyName System.Windows.Forms;if ($([System.Windows.Forms.Clipboard]::ContainsImage())) {$image = [System.Windows.Forms.Clipboard]::GetImage();[System.Drawing.Bitmap]$image.Save('" filename "',[System.Drawing.Imaging.ImageFormat]::Png); Write-Output 'clipboard content saved as file'} else {Write-Output 'clipboard does not contain image data'}\""))
+  (insert (concat "[[file:" filename "]]"))
+  (org-display-inline-images))
+
+
+(defun my/export ()
+  (interactive)
+  (setq inhibit-read-only t)
+  (org-export-dispatch)
+  (setq inhibit-read-only nil))
