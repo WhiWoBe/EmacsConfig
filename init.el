@@ -18,6 +18,7 @@
 (menu-bar--display-line-numbers-mode-relative)
 ;; (display-line-numbers-type 'relative)
 (global-hl-line-mode 1)
+(set-face-background hl-line-face "#716969")
 
 ;; History
 
@@ -46,22 +47,23 @@
 ;;  (set-default-coding-systems 'utf-8)
 
 ; (setq default-directory (getenv "DRIVE_D"))
-(defvar my/DRIVE_D "d:/")
-(defvar my/DRIVE_C "c:/")
-(defvar my/WORK_KROENER_FODLER "d:/kroener")
-(defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
+      (defvar my/DRIVE_D "d:/")
+      (defvar my/DRIVE_C "c:/")
+      (defvar my/WORK_KROENER_FODLER "d:/kroener")
+      (defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
 
-(defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
-                     (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)))
+      (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
+                           (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)
+(expand-file-name "D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
 
-(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
+      (defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
 
-(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
-;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
-;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
-;; (defvar my/org-templates "d:/notebooks/org/.templates")
-(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
-(defvar my/trash-directory "~/.config/emacs/tmp/trash")
+      (defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
+      ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
+      ;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
+      ;; (defvar my/org-templates "d:/notebooks/org/.templates")
+      (defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
+      (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
  (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
@@ -190,7 +192,7 @@
   (use-package pdf-tools
     :ensure t)
 
-  (setq pdf-view-use-scaling nil)
+;  (setq pdf-view-use-scaling nil)
 
   (pdf-tools-install)  ; Standard activation command
 ; (pdf-loader-install) ; On demand loading, leads to faster startup time
@@ -232,6 +234,10 @@
   :hook (org-mode . tmi/org-mode-setup)
   :config
 
+  (setq org-fontify-todo-headline t)
+  (setq org-fontify-done-headline t)
+
+  (setq org-insert-heading-respect-content t)
   (setq org-directory my/org-dir-files) ;;Default location of Org files
   (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
   (setq org-ellipsis " +")
@@ -356,7 +362,7 @@
 (setq org-agenda-custom-commands
       '(
 
-        ("," "Dayliy Overview"
+        ("D" "Day"
          (
 
           (agenda ""
@@ -383,7 +389,7 @@
           (agenda ""
                   ((org-agenda-block-separator nil)
                    (org-agenda-start-day "+1d")
-                   (org-agenda-span 3)
+                   (org-agenda-span 2)
                    (org-agenda-repeating-timestamp-show-all t)
                    (org-agenda-entry-types '(:timestamp :sexp :scheduled))
                    (org-agenda-overriding-header "\n* Next *\n")))
@@ -399,28 +405,53 @@
           (todo "DELIGATED"
                 ((org-agenda-block-separator nil)
                  (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                 (org-agenda-overriding-header "\n* Monitor *\n")))
+                 (org-agenda-overriding-header "\n* Deligated *\n")))
+
+          (todo "Next"
+                ((org-agenda-overriding-header "* Project NEXT *\n")))
+
+          (todo "Execution&Monitoring"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Active *\n")))
+
+          (todo "Planning"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Plan *\n")))
+
+          (todo "Initiation"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Init *\n")))
 
           ))
 
 
-        ("." "Weekly Overview"
+        ("W" "Week"
          (
 
 
           (agenda ""
                   ((org-agenda-block-separator nil)
-                   (org-agenda-span 7)
+                   (org-agenda-span 14)
                    (org-agenda-start-on-weekday 0)
                    (org-agenda-repeating-timestamp-show-all t)
-                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                   (org-agenda-overriding-header "\n* Week *\n")))
+                   (org-agenda-entry-types '(:timestamp :sexp :scheduled :deadline))
+                   (org-agenda-overriding-header "\n* 14D *\n")))
+          ))
+
+        ("M" "Month"
+         (
+
 
           (agenda ""
                   ((org-agenda-block-separator nil)
-                   (org-agenda-entry-types '(:deadline))
-                   (org-deadline-warning-days 14)
-                   (org-agenda-overriding-header "\n* deadlines *\n")))
+                   (org-agenda-span 31)
+                   (org-agenda-start-on-weekday 0)
+                   (org-agenda-repeating-timestamp-show-all t)
+                   (org-agenda-entry-types '(:timestamp :sexp :scheduled :deadline))
+                   (org-agenda-overriding-header "\n* Month *\n")))
 
           (todo "WAIT"
                 ((org-agenda-overriding-header "* Waiting on *\n")))
@@ -433,12 +464,58 @@
           (todo "DELIGATED"
                 ((org-agenda-block-separator nil)
                  (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                 (org-agenda-overriding-header "\n* Monitor *\n")))
+                 (org-agenda-overriding-header "\n* Deligated *\n")))
+
+          (todo "Next"
+                ((org-agenda-overriding-header "* Project NEXT *\n")))
+
+          (todo "Execution&Monitoring"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Active *\n")))
+
+          (todo "Planning"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Plan *\n")))
+
+          (todo "Initiation"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                 (org-agenda-overriding-header "\n* Init *\n")))
 
           ))
 
+        ("/" "Project Overview"
 
+         (
+          (agenda ""
+                  ((org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-span 30)
+                   (org-deadline-warning-days 30)
+                   (org-agenda-overriding-header "\n* Project Agenda *\n")))
+
+          (todo "Next"
+                ((org-agenda-overriding-header "* Next Step *\n")))
+
+          (todo "Execution&Monitoring"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'regexp ":exclude:"))
+                 (org-agenda-overriding-header "\n* Active *\n")))
+
+          (todo "Planning"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'regexp ":exclude:"))
+                 (org-agenda-overriding-header "\n* Planning *\n")))
+
+          (todo "Initiation"
+                ((org-agenda-block-separator nil)
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'regexp ":exclude:"))
+                 (org-agenda-overriding-header "\n* Ini *\n")))
+
+          ))
         ))
+
 
 (defun my/org-agenda-inactive ()
   (interactive)
@@ -457,9 +534,28 @@
         ("WAIT" . (:foreground "yellow"))
         ("READ" . (:foreground))
 
+        ("Next" . (:foreground "red"))
+        ("DONE" . (:foreground "green"))
+        ("CANCELED" . (:foreground "grey"))
+        ("HOLD" . (:foreground "yellow"))
+
+        ("Initiation" . (:background "#118ab2" :foreground "black"))
+        ("Planning" . (:background "#ffd166" :foreground "black"))
+        ("Execution&Monitoring" . (:background "#ef476f" :foreground "#black" :bold t :weight bold :box (:line-width 2 :style released-button)))
+        ("Closing" . (:background "#718355" :foreground "black"))
+        ("Done" . (:background "#06d6a0" :foreground "black"))
+        ("Canceled" . (:background "grey" :foreground "black"))
+        ("Hold" . (:background "lightgrey" :foreground "black"))
+
+        ("WIP" . (:foreground "red" :weight italic :box ))
+        ("GEPRÜFT" . (:foreground "yellow"))
+        ("FREI" . (:foreground "green"))
+        ("INTERN" . (:foreground "red"))
+        ("RÜCKSPRACHE" . (:foreground "yellow"))
+
         ("DELIGATED" . (:foreground "lightblue"))
         ("DONE" . (:foreground))
-        ("CANCELED" . (:foreground "blue" :weight bold))
+        ("CANCELED" . (:foreground "blue"))
         ))
 
 (setq org-agenda-window-setup 'reorganize-frame) 
@@ -529,10 +625,15 @@
     nil nil 'center))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-safe-remote-resources
+   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
  '(org-startup-indented t)
  '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
-   )
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
 
     (set-face-attribute
      'org-transclusion-fringe nil
@@ -626,6 +727,9 @@
 (use-package ob-mermaid
   :ensure t)
 ;; (setq ob-mermaid-cli-path "~/mermaid/node_modules/.bin/mmdc")
+
+(use-package htmlize
+  :ensure t)
 
 (use-package dired
   :ensure nil
@@ -830,3 +934,14 @@
   (setq inhibit-read-only t)
   (org-export-dispatch)
   (setq inhibit-read-only nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+ '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
