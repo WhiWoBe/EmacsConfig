@@ -625,15 +625,10 @@
     nil nil 'center))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-safe-remote-resources
-   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
  '(org-startup-indented t)
  '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
+   )
 
     (set-face-attribute
      'org-transclusion-fringe nil
@@ -777,22 +772,22 @@
 
     "TAB TAB" '(comment-line :wk "Comment lines")
 
-    "B" '(:ignore t :wk "bookmarks")
+    "B" '(:ignore t :wk "Bookmarks")
     "B b" '(list-bookmarks :wk "List bookmarks")
     "B s" '(bookmark-set :wk "Set bookmarks")
     "B S" '(bookmark-save :wk "Save bookmarks")
 
-    "b" '(:ignore t :wk "buffer")
+    "b" '(:ignore t :wk "Buffer")
     "b b" '(switch-to-buffer :wk "switch buffer")
     "b i" '(ibuffer :wk "ibuffer")
     "b p" '(previous-buffer :wk "<- buffer")
     "b n" '(next-buffer :wk "buffer ->")
     "b k" '(kill-buffer :wk "kill buffer")
 
-    "a" '(:ignore t :wk "Start Application")
-    "a o" '(app/run-outlook :wk "Outlook")
-    "a c" '(app/run-calendar :wk "gCalendar")
-    "a s" '(app/org-screenshot :wk "snipping tool")
+    "r" '(:ignore t :wk "Run")
+    "r o" '(app/run-outlook :wk "Outlook")
+    "r c" '(app/run-calendar :wk "gCalendar")
+    "r s" '(app/org-screenshot :wk "snipping tool")
 
 
     "u" '(universal-argument :wk "u-arg")
@@ -839,8 +834,14 @@
     "o u" '(my/org-unschedule :wk "Unschedule")
     "o z" '(org-cite-insert :wk "Cite")
 
+
+    "s" '(:ignore t :wk "snippets")
+    "s s" '(yas-insert-snippet :wk "Insert Snippet")
+    "s i" '(org-insert-structure-template :wk "Insert Block")
+    "s n" '(yas-new-snippet :wk "New Snippet")
+
     ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
-    "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
+    ;;"o ," '(org-cycle-agenda-files :wk "cycle agenda files")
 
     )
   )
@@ -857,6 +858,11 @@
       `((".*" ,"~/.config/emacs/tmp/backups/" t)))
 
 (setq bookmark-default-file my/bookmarks)
+
+(use-package yasnippet
+   :config
+   (setq yas-snippet-dirs '("D:/notebooks/org/.templates/yasnippets/"))
+   (yas-global-mode 1))
 
 (defun my/org-babel-tangle-config ()
   (when (string-equal (file-name-directory (buffer-file-name))
@@ -934,14 +940,3 @@
   (setq inhibit-read-only t)
   (org-export-dispatch)
   (setq inhibit-read-only nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))

@@ -837,6 +837,7 @@ This Function is called with a shortcut
        :background "green")
 
 #+end_src
+
 ** Citar
 
 #+begin_src emacs-lisp
@@ -1028,22 +1029,22 @@ Resources https://github.com/noctuid/general.el
 
       "TAB TAB" '(comment-line :wk "Comment lines")
 
-      "B" '(:ignore t :wk "bookmarks")
+      "B" '(:ignore t :wk "Bookmarks")
       "B b" '(list-bookmarks :wk "List bookmarks")
       "B s" '(bookmark-set :wk "Set bookmarks")
       "B S" '(bookmark-save :wk "Save bookmarks")
 
-      "b" '(:ignore t :wk "buffer")
+      "b" '(:ignore t :wk "Buffer")
       "b b" '(switch-to-buffer :wk "switch buffer")
       "b i" '(ibuffer :wk "ibuffer")
       "b p" '(previous-buffer :wk "<- buffer")
       "b n" '(next-buffer :wk "buffer ->")
       "b k" '(kill-buffer :wk "kill buffer")
 
-      "a" '(:ignore t :wk "Start Application")
-      "a o" '(app/run-outlook :wk "Outlook")
-      "a c" '(app/run-calendar :wk "gCalendar")
-      "a s" '(app/org-screenshot :wk "snipping tool")
+      "r" '(:ignore t :wk "Run")
+      "r o" '(app/run-outlook :wk "Outlook")
+      "r c" '(app/run-calendar :wk "gCalendar")
+      "r s" '(app/org-screenshot :wk "snipping tool")
 
 
       "u" '(universal-argument :wk "u-arg")
@@ -1071,7 +1072,7 @@ Resources https://github.com/noctuid/general.el
       "e" '(:ignore t :wk "Embark")
       "e e" '(embark-act :wk "Act")
       "e d" '(embark-dwim :wk "Dwim")
-  
+
       "o" '(:ignore t :wk "org")
       "o a" '(org-agenda :wk "Agenda")
       "o A" '(my/org-agenda-inactive :wk "Agenda TS")
@@ -1090,8 +1091,14 @@ Resources https://github.com/noctuid/general.el
       "o u" '(my/org-unschedule :wk "Unschedule")
       "o z" '(org-cite-insert :wk "Cite")
 
+  
+      "s" '(:ignore t :wk "snippets")
+      "s s" '(yas-insert-snippet :wk "Insert Snippet")
+      "s i" '(org-insert-structure-template :wk "Insert Block")
+      "s n" '(yas-new-snippet :wk "New Snippet")
+
       ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
-      "o ," '(org-cycle-agenda-files :wk "cycle agenda files")
+      ;;"o ," '(org-cycle-agenda-files :wk "cycle agenda files")
 
       )
     )
@@ -1099,8 +1106,9 @@ Resources https://github.com/noctuid/general.el
 
 #+end_src
 
-* Window Behaviour and Buffers
 
+
+* Window Behaviour and Buffers
 
 #+begin_src emacs-lisp
 
@@ -1130,6 +1138,19 @@ Resources https://github.com/noctuid/general.el
 
  (setq bookmark-default-file my/bookmarks)
 
+#+end_src
+
+* Org Super agenda
+
+* Yasnippet
+
+#+begin_src emacs-lisp
+
+  (use-package yasnippet
+     :config
+     (setq yas-snippet-dirs '("D:/notebooks/org/.templates/yasnippets/"))
+     (yas-global-mode 1))
+  
 #+end_src
 
 * AUTOTANGLE
@@ -1169,8 +1190,6 @@ Tangles this config to the init file
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
 
 #+end_src
-
-* Org Super agenda
 
 * Custom Functions
 
