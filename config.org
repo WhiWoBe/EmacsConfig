@@ -107,20 +107,23 @@ considering another Theme like doom-old
 
 #+begin_src emacs-lisp 
 
-   ;; Font Settings
-   (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
-   (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
+     ;; Font Settings
+     ;; (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
 
-   ;; Theme Settings
-   (setq modus-themes-region'(bg-only))
-   (setq modus-themes-mode-line '(accented borderless padded))
-   (setq modus-themes-org-blocks 'gray-background)
-   (load-theme 'modus-vivendi t)
+     ;; (set-face-attribute 'default nil :font "Verdana" :height 160)
+     ;; (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
+     ;; (set-face-attribute 'default nil :font "3270 Nerd Font" :height 180)
+     (set-face-attribute 'default nil :font "Iosevka Term Curly" :height 180)
 
+     ;; Theme Settings
+     (setq modus-themes-region'(bg-only))
+     (setq modus-themes-mode-line '(accented borderless padded))
+     (setq modus-themes-org-blocks 'gray-background)
+     (load-theme 'modus-vivendi t)
 
-  ;; Icons
-  (use-package all-the-icons
-  :if (display-graphic-p))
+    ;; Icons
+    (use-package all-the-icons
+    :if (display-graphic-p))
 
 #+end_src
 
@@ -228,7 +231,7 @@ This Function is called with a shortcut
     (setq org-insert-heading-respect-content t)
     (setq org-directory my/org-dir-files) ;;Default location of Org files
     (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
-    (setq org-ellipsis " +")
+    (setq org-ellipsis "…")
     (setq org-return-follows-link t)
     (setq org-log-done 'time) ;; timestamp on done
     (setq org-log-into-drawer t)
@@ -549,7 +552,7 @@ Switched to Superagenda [2024-05-31 Fr]
 
 #+end_src
 
-** Org Super agenda
+** Org Super Agenda
 
 #+begin_src emacs-lisp
 
@@ -709,14 +712,64 @@ Switched to Superagenda [2024-05-31 Fr]
 
 #+end_src
 
+** Org Agenda Property
+
+#+begin_src emacs-lisp
+
+  (use-package org-agenda-property
+    :ensure t)
+  (setq org-agenda-property-list '("assigned")) 
+
+#+end_src
+
+** Org Download
+
+#+begin_src emacs-lisp
+
+  (use-package org-download
+    :ensure t)
+  (setq org-download-image-org-width 20)
+
+#+end_src
+
+** Org Modern 
+
+#+begin_src emacs-lisp
+
+  (use-package org-modern
+    :ensure t)
+
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
+  (setq org-auto-align-tags nil)
+  (setq org-hide-emphasis-markers t)
+
+  (setq org-pretty-entities t)
+
+  (setq org-tags-column 0)
+  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+
+  (global-org-modern-mode)
+  (setq line-spacing 0.3)
+  
+  (setq org-modern-fold-stars 
+   '(("▶" . "▼")
+    ("▷" . "▽")
+    ("⯈" . "⯆")
+    ("▹" . "▿")
+    ("▸" . "▾")))
+
+#+end_src
+
 ** Org Bullets
 
 #+begin_src emacs-lisp
 
-  (use-package org-bullets
-  :hook (org-mode . org-bullets-mode)
-  :custom
-  (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
+  ;; (use-package org-bullets
+  ;;   :hook (org-mode . org-bullets-mode)
+  ;;   :custom
+  ;;   (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
 
 #+end_src
 

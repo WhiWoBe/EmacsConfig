@@ -67,15 +67,18 @@
 (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
- (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
- (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
+ ;; (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
+
+ ;; (set-face-attribute 'default nil :font "Verdana" :height 160)
+ ;; (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
+ ;; (set-face-attribute 'default nil :font "3270 Nerd Font" :height 180)
+ (set-face-attribute 'default nil :font "Iosevka Term Curly" :height 180)
 
  ;; Theme Settings
  (setq modus-themes-region'(bg-only))
  (setq modus-themes-mode-line '(accented borderless padded))
  (setq modus-themes-org-blocks 'gray-background)
  (load-theme 'modus-vivendi t)
-
 
 ;; Icons
 (use-package all-the-icons
@@ -139,7 +142,7 @@
   (setq org-insert-heading-respect-content t)
   (setq org-directory my/org-dir-files) ;;Default location of Org files
   (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
-  (setq org-ellipsis " +")
+  (setq org-ellipsis "…")
   (setq org-return-follows-link t)
   (setq org-log-done 'time) ;; timestamp on done
   (setq org-log-into-drawer t)
@@ -580,10 +583,42 @@
          ("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/Project_Agenda_Overview.html"))
         ))
 
-(use-package org-bullets
-:hook (org-mode . org-bullets-mode)
-:custom
-(org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
+(use-package org-agenda-property
+  :ensure t)
+(setq org-agenda-property-list '("assigned"))
+
+(use-package org-download
+  :ensure t)
+(setq org-download-image-org-width 20)
+
+(use-package org-modern
+  :ensure t)
+
+(add-hook 'org-mode-hook #'org-modern-mode)
+(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
+(setq org-auto-align-tags nil)
+(setq org-hide-emphasis-markers t)
+
+(setq org-pretty-entities t)
+
+(setq org-tags-column 0)
+(set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+
+(global-org-modern-mode)
+(setq line-spacing 0.3)
+
+(setq org-modern-fold-stars 
+ '(("▶" . "▼")
+  ("▷" . "▽")
+  ("⯈" . "⯆")
+  ("▹" . "▿")
+  ("▸" . "▾")))
+
+;; (use-package org-bullets
+;;   :hook (org-mode . org-bullets-mode)
+;;   :custom
+;;   (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
 
 (setq bibtex-completion-pdf-field "file")
 
