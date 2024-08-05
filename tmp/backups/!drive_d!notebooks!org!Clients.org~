@@ -1,0 +1,230 @@
+:PROPERTIES:
+:ID:       792a577e-fdf0-40c6-a6b1-2ad82ca30ecd
+:END:
+#+STARTUP: content inlineimages
+#+TODO: ACT(a) WAIT(w) DELIGATED(d) | Sale(s) NoSale(n) 
+
+
+** Clients
+   :PROPERTIES:
+   :COLUMNS: %25ITEM %TODO %PRIORITY %TAGS %SCHEDULED %DEADLINE
+   :END:
+*** WAIT [#A] Dr. Kropp                     :work:
+DEADLINE: <2024-02-09 Fr>
+:PROPERTIES:
+:Created: [2024-01-12 Fri 08:45]
+:SourceLink: 
+:SourcePath: 
+:ID:       cab74c6e-5503-453d-9839-77afdadfde59
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-09 Fr 11:57] \\
+  Gestern Geliefert, warte auf Lieferschein und übernahme.
+- Note taken on [2024-02-07 Mi 09:45] \\
+  Zusage erhalten, Lieferung Organisieren
+- Note taken on [2024-02-05 Mo 22:33] \\
+  Waiting for the Leasing Contract
+- Note taken on [2024-01-29 Mon 13:09] \\
+  Leasingangebot angenommen, Ist aber im Urlaub, meldet sich nächste Woche.
+- Note taken on [2024-01-29 Mon 10:07] \\
+  Dr. Kropp angeschrieben wegen abschluss
+- Note taken on [2024-01-18 Thu 09:07] \\
+  Leasingangebot an Dr. Kropp
+- Note taken on [2024-01-17 Wed 17:31] \\
+  Anruf Kropp, Müdigkeit leistungsfähigkeit besser, 36 10% // 20%
+  Er ist zufrieden Angebot wird von Ela estellt
+- Note taken on [2024-01-17 Wed 12:06] \\
+  Whatsapp nachricht geschrieben
+- Note taken on [2024-01-15 Mon 20:54] \\
+  Email Versendet
+:END:
+
+*** WAIT [#A] Schüller Hannover                                      :work:
+DEADLINE: <2024-02-15 Do>
+:PROPERTIES:
+:Created: [2024-01-12 Fri 10:08]
+:SourceLink: 
+:SourcePath: 
+:ID:       6c50f742-ca0f-47a6-940a-618d7139648b
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-09 Fr 12:27] \\
+  Termin am 15.03. Brauche noch Name der Praxis anschrift.
+  Gerät muss noch organisiert werden.
+- Note taken on [2024-02-09 Fr 12:00] \\
+  Whatsapp, Termin erneut angefragt
+- Note taken on [2024-01-12 Fri 13:00] \\
+  Telefonat Warte auf Rückmeldung wegen Termin
+:END:
+
+*** WAIT [#B] Wirzius Viernow Nachbereireitung                        :work:
+:PROPERTIES:
+:Created: [2024-01-17 Wed 11:46]
+:SourceLink: [[id:33c3f20b-fe52-4f14-9191-d5d4dab13db4][Log [8/9]​]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:ID:       ac110df0-845b-440a-85c4-cdb244adc764
+:END:
+:LOGBOOK:
+- Note taken on [2024-01-17 Wed 14:18] \\
+  Infos gesendet. Lorenz kümmert sich um Flyer und ersatzflasche
+:END:
+**** DONE GOÄ, infos, Patienten Flyer, quick Guide 
+CLOSED: [2024-01-17 Wed 13:28]
+**** DONE neue Flasche cryo
+CLOSED: [2024-01-26 Fri 10:48]
+**** DONE Doku an Ela
+CLOSED: [2024-01-17 Wed 14:08]
+**** WAIT Rücksprache Dr. Viernow
+DEADLINE: <2024-02-09 Fr>
+:LOGBOOK:
+- Note taken on [2024-02-05 Mo 22:32] \\
+  todaz the rental contract runs out. get in contact this week
+:END:
+
+*** WAIT [#C] Daniel Muigg                                            :work: 
+:PROPERTIES:
+:Created: [2024-01-24 Wed 18:59]
+:SourceLink: [[id:d6e4f275-24e1-4fb8-9182-426d185037ea][Log [1/2]​]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-01-24 Wed 19:00] \\
+  Hab mit Alexey Telefoniert. Er will das es über peter läuft, da
+  mit Peter auch eine engere Partnerschaft im Raum steht
+- Note taken on [2024-01-24 Wed 19:00] \\
+  wollte mit Alexey Sprechen wegen Vertrieblicher Aktivität bzw.
+  Umgehen der Distribution.
+:END:
+Comments:
+
+*** WAIT [#B] Nina Kollmar                                            :work: 
+:PROPERTIES:
+:Created: [2024-01-26 Fri 18:49]
+:SourceLink: [[file:/mnt/d/notebooks/org/Journal.org::*Log][Log]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-02 Fr 08:37] \\
+  Konditionen an Frau Kollmar gesendet
+- Note taken on [2024-01-31 Wed 07:43] \\
+  Anfrage von Frau Kollmar, Peter erstellt Mietkaufangebot
+- Note taken on [2024-01-26 Fri 18:50] \\
+  Telefonnummern zwischen Frau Kollmar und Ulli ausgetauscht
+:END:
+Comments:
+
+*** WAIT [#A] Dangast                                                 :work: 
+:PROPERTIES:
+:Created: [2024-01-29 Mon 13:07]
+:SourceLink: [[file:/mnt/d/notebooks/org/Journal.org::*Log][Log]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-09 Fr 11:55] \\
+  War in Dangast, COVIVID ist überlastet Bestellungen klappen nicht
+  Eva wartet auf COVIVID Konto für den Vertrag
+- Note taken on [2024-02-09 Fr 11:55] \\
+  - [ ] Tablet
+  - [ ] Ständer
+  - [ ] Revisionskit
+  - [X] Akademie
+  - [X] Workshops
+  - [X] Buchtitel
+  - [X] Bestellformular
+- Note taken on [2024-01-31 Wed 07:38] \\
+  Eva schobert Name falsch geschrieben, wartet auf Bankkonto
+- Note taken on [2024-01-30 Tue 14:23] \\
+  Leasingvertrag versendet
+- Note taken on [2024-01-29 Mon 13:07] \\
+  Welche Adresse? Frage an Eva
+- Note taken on [2024-01-29 Mon 13:07] \\
+  Info von Ulli Leasingvertrag für Dangast
+:END:
+Comments:
+
+*** WAIT Dr Fehmer                                                    :work: 
+DEADLINE: <2024-02-15 Do>
+:PROPERTIES:
+:Created: [2024-01-31 Mi 17:00]
+:SourceLink: [[id:1ee0b132-b290-4963-8937-24f2a55a0275][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-02 Fr 08:53] \\
+  Müssen den Vertrag noch überarbeiten
+- Note taken on [2024-02-02 Fr 08:53] \\
+  Infos von Peter
+
+  ReOxy 36.000€ inkl
+  Laser 12.500€ inkl
+  MP100 14.500€ inkl mit V-Actor
+
+  63.000€ Gesamt 48 mon 10% // Original 71.500€
+- Note taken on [2024-01-31 Mi 17:10] \\
+  Anruf Corry Laserneedle ca.16.000
+- Note taken on [2024-01-31 Mi 17:02] \\
+  Anruf Kai, Absprache, kommt mit. Preise Besprechen
+- Note taken on [2024-01-31 Mi 17:01] \\
+  Anruf Fehmer von Ulli, Jörg Wertenbruch, Chirotherapie, Chron.Schmerzsyndrom,
+  mp 100, ReOxy, Laserneedle
+
+  Termin am 15.02. in der Mozartstraße 4 Bonn
+
+  DR TOBIAS FEHMER 
+  Facharzt für Orthopädie und Unfallchirurgie
+  Facharzt für Chirurgie
+  Spezielle Unfallchirurgie • Handchirurgie • Notfallmedizin •
+  Physikalische Therapie und Balneologie
+
+  PRIVATPRAXIS
+  für Orthopädie und Chiropraktik
+  Mozartstraße 4-10
+  53115 Bonn
+  TEL 0228 446 231 46
+  FAX 0228 446 231 47
+:END:
+Comments:
+
+*** WAIT Dr. Bleuel                                                   :work:
+:PROPERTIES:
+:Created: [2024-02-09 Fr 09:44]
+:SourceLink: [[id:7b050c25-cb33-49ac-a91b-7c3ded017676][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-09 Fr 11:23] \\
+  Email Gessendet
+:END:
+Comments: Angebot GOÄ und Studien
+
+*** ACT Dr. Michels                                                   :work: 
+DEADLINE: <2024-02-29 Do>
+:PROPERTIES:
+:Created: [2024-02-02 Fr 09:02]
+:SourceLink: [[id:0d8725ea-e845-461c-ad77-7d96c0af6bad][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-02-02 Fr 09:03] \\
+  ReOxy und Laserix, Telefonat im November Rücksprache im Februar
+:END:
+Comments: 
+
+*** ACT Dr Dimov Kontakt aufnehmen                                    :work: 
+:PROPERTIES:
+:Created: [2024-01-30 Tue 10:46]
+:SourceLink: [[id:e95201fc-a2ac-43f7-ac60-8713ea1506f8][TOP 3 [/]​]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+:END:
+Comments: Therapro --> Webinar, Neugründung einer Praxis, --> Was ist Phase?
+
+
+Client data or alias || Title
+Phase || TODO States and promt on change?
+Product || Tags?
+Notes with timestamp
+
+
+

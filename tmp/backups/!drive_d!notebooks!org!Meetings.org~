@@ -1,0 +1,1966 @@
+#+STARTUP: show2levels inlineimages
+#+TODO: TO_PLAN(a) PLANNED(p) Open_Task(o) | DONE(d) CANCELED(c) 
+ 
+* Meeting Notes
+** TO_PLAN ReOxy Weekly Strategy Meeting 05  
+:PROPERTIES:
+:Created: [2024-05-27 Mo 10:03]
+:END:
+
+Date: <2024-06-03 Mo 09:00>
+Attendees: TMI PKR AGE RKO CKA MMI JGR JMA MST
+Location: Online
+
+*** Agenda
+
+1. ReOxy Compass Vorstellung
+2. Praxislounge Referenten
+   1. Vennemann durch RID
+3. DGPR Berlin
+4. Event Equipment
+5. Hot_Lead updates
+   1. Mario
+      1. Aquise Plan München
+   2. Jens
+   3. Joerg
+   4. TMI
+      1. MEDIAN verschoben
+      2. Meeting Milano Solongevity
+      3. Innsbruck Burtscher
+6. Power BI
+   
+*** Notes
+
+*** Tasks
+- [ ] 
+
+** Open_Task Axel Vorbereitung Median  
+:PROPERTIES:
+:Created: [2024-05-28 Di 09:03]
+:END:
+
+Date: <2024-05-28 Di 09:00>
+Attendees: AGE TMI
+Location:
+
+*** Agenda
+
+1. Timeline
+2. 
+3.
+   
+*** Notes
+
+Wissenschaftliche leitung
+Timeline erstellen. Pressemitteilung, 85% Post COVID rehabilitanten sind nach 1 Jahr wieder im Arbeitsleben.
+
+Charite -> Bad Gottleuba -> Flechtingen
+600 EUR netto
+
+Konnten es nicht verstehen. Das der Kaufpreis so negativ aufgenommen wurde.
+
+Wie kann man es wirtschaftlich darstellen.
+
+Zezovski
+Sasbine Rest
+
+48 Monate
+
+*** Tasks
+- [ ] Timeline erstellen TMI
+
+** Open_Task aimediq Weekly 02 
+:PROPERTIES:
+:Created: [2024-05-27 Mo 09:49]
+:END:
+
+Date: <2024-05-27 Mo 11:00>
+Attendees: TMI Alexey Mario Galina Veronica
+Location: Online
+
+*** Agenda
+
+1. Introduction Mario
+2. ReOxy Tech USPs
+   1. Presentation Westhues
+   2. Introduction Westhues
+3. Schega
+4. Prof. Katharina Huefner
+   1. 36.000 Brutto
+5. Sale in Turkey?
+6. Ukraine
+7. Altitude Chart
+   
+*** Notes
+
+*** Tasks
+- [ ] Galina will send SRT overview to Veronica
+- [ ] Filtration about PSA Westhues Veronica
+
+** Open_Task Sologevity Affiliation Meeting  
+:PROPERTIES:
+:Created: [2024-05-16 Do 07:28]
+:END:
+
+Date: <2024-05-16 Do 09:00>
+Attendees: PKR TMI TOMMASO SOLOGEVITY CEO BERETTA
+Location:
+
+*** Agenda
+
+1. What we discussed last time [[id:73032c55-20bf-406d-9a5e-8a055c442a34][Solongevity Meeting Beretta and CEO]]
+2. Affiliation 50%
+   1. Understanding the Concept of Royalty
+   2. Redistribution?
+   3. Agreement
+3. Purchase 1st Devce
+   1. provision of 2nd device
+   2. Clinical Study
+   3. Sharing of outcomes
+   4. Purchasement option for 2nd device
+   5. Full launch
+4. What do they need to move forward at their desired pace
+   
+*** Notes
+Mice data supports Rejuvination with IHHT They wanna replicate in Humans
+Cardiopulmonary VO2 Max.
+
+Buismess Mode. Opening additional clinics
+opening clinical in clinical.
+
+40 Specialist who are intrested in the program
+
+Idea
+Diagnostic and Therepeutic concept selling.
+They want state of the art tech.
+They bring to market what they checked efficacy on
+Physiological and Longjevity.
+
+*** Tasks
+- [ ] Delivery in September
+- [X] Visit in June
+
+** Open_Task aimediq projects  
+:PROPERTIES:
+:Created: [2024-05-13 Mo 19:54]
+:END:
+
+Date: <2024-05-15 Mi 11:30>
+Attendees: TMI ALEXEY VERONICA GALINA
+Location: ONLINE
+
+*** Agenda
+
+1. IT Datasafety
+2. Anke Steinmetz
+3. Schega
+4. Projects
+   
+*** Notes
+
+
+
+*** Tasks
+:PROPERTIES:
+:ID:       cb7c586a-efbd-4e6e-98cf-1b89b330f461
+:END:
+- [ ] Information gathering from the clients
+  - [ ] what data format(s) they are working with
+  - [ ] what would be acceptable for them for their systems?
+
+** Open_Task aimediq projects and marketing update  
+:PROPERTIES:
+:Created: [2024-05-02 Do 14:54]
+:END:
+
+Date: <2024-05-02 Do 15:00>
+Attendees: 
+Location:
+
+*** Agenda
+
+1. Competitors and Critics
+2. [[id:6fe69090-b1e0-4f28-b720-f262c9941b1b][Projects]]
+3. Marketing Strategy
+   
+*** Notes
+
+Pidretty still active
+9th of may conference call with pidretty.
+
+*** Tasks
+- [ ] Argumentation on why the Parameters in the ReOxy have been chosen.
+- [ ] Write up info for Schega
+- [ ] Follow up on Device usage
+- [X] Project Charter
+
+** Open_Task aimediq Data Transfer and Integration  
+:PROPERTIES:
+:Created: [2024-04-30 Di 10:58]
+:END:
+
+Date: <2024-04-30 Di 11:00>
+Attendees: TMI, Alexey, Petr
+Location:
+
+*** Agenda
+
+1. Requirements 
+2. Transfer
+3. Integration
+   
+*** Notes
+
+Etherno
+
+*** Tasks
+- [X] Alexey Forwards me to Etherno
+- [ ] Petr Shares an internal timeline
+- [ ] Gain Insight on Reqiuirements
+
+** Open_Task Cryofoss  
+:PROPERTIES:
+:Created: [2024-04-22 Mo 11:44]
+:END:
+
+Date: <2024-04-23 Di 09:00>
+Attendees: TMI RID AGE AAL AK FHI Christian Goetzner JMA MMI MST SMA MBU
+Location: Online
+
+*** Agenda
+1. Introduction
+2. Cryolight vs Cryofoss
+3. Tommaso Questions (Email)  
+*** Notes
+
+21.300 Brutto
+
+Gas Botte Size
+10 KG Füllgewicht
+Flaschennorm?
+Westfahlen
+Orthenauer Gase GmbH Pfandgebühr 200€
+
+est.Number of Treatments
+ca. 45
+
+Accecoriess
+
+brochures
+
+treatment protocols
+
+*** Tasks
+- [ ] GOA infos und Abrechnungen Christian Goetzner
+
+* Completed
+** DONE AiMediq Italy Plan and Current Distributor  
+CLOSED: [2024-01-19 Fri 09:30]
+:PROPERTIES:
+:Created: [2024-01-18 Thu 08:52]
+:ID:       04c29047-a57d-472d-9270-5616fdcbc154
+:END:
+
+Date: <2024-01-18 Thu 14:00>
+Attendees: 
+Location:
+
+*** Agenda
+1. [[id:3856d6d5-b7ad-4183-b317-7416aa6a69ee][Prof Pridretti and Baretta]]
+2. [[id:f29f1fe5-95e6-4184-98d0-b174842e89a3][Sizilien Enweisung]] 
+3. Herr Back
+*** Notes
+Italy Distributor ist rein Schulmedizinisch unterwegs, keine AktivitÃ¤t bei ReOxy
+
+Alexey ins gewissen geredet wegen gerÃ¤tepreis.
+
+Sizilien Bestellt gerÃ¤t wird direkt an Senisan geliefert dann uni palermo
+Alessandro Perego. Anscheiben, Vorstellung.
+
+anpeilen 31. 01.
+RÃ¼ckmeldung Petr. wannm Lieferung.
+
+Pidretty
+Baretta
+*** Tasks
+- [ ] 
+
+** DONE Mario Swiss Mountain  
+CLOSED: [2024-01-17 Wed 20:00]
+:PROPERTIES:
+:Created: [2024-01-17 Wed 15:58]
+:ID:       93cc13cb-b66d-440f-96e8-64ceeb227004
+:END:
+
+Date: <2024-01-17 Wed 15:58>
+Attendees: Mario Milanovic, TMI
+Location: Online
+
+*** Agenda
+1. Kontaktaufnahme zu Hans-JÃ¼rg Buff Kaufmann Investor
+*** Notes
+https://buff-medical-resort.de/
+
+Amortisation
+ProduktbroschÃ¼re
+Testimonials wo wirds eingesetzt und wofÃ¼r
+Patienten Zielgruppe
+ - Darmbeschwerden. Metbolismus
+ - Salutogenese
+ - 4. Quartal 2024
+Entschlackung ErnÃ¤hrung
+
+Metabolisches Syndrom ZellulÃ¤rer Stoffwechsel
+Cholisterin Kardiologie Diabetes
+
+*** Tasks
+- [ ] @Mario Schreibt ein Erstanschreiben
+
+** DONE ReOxy Wartungsplan 2024
+CLOSED: [2024-01-15 Mon 11:00]
+:PROPERTIES:
+:Created: [2024-01-15 Mon 08:15]
+:ID:       b640e89f-afaf-4f2e-9cd9-5e4bb09683b5
+:END:
+
+Date: <2024-01-15 Mon 10:00>
+Location: Online
+Attendees: Michaela Stross, Laura Viscigalla, TMI
+
+*** Agenda
+1. Wartungen
+2. KostentrÃ¤ger
+3. Ansprechpartner
+
+*** Notes
+[[file:/mnt/d/kroener/OneDrive - KrÃ¶ner Medizintechnik/TMI/04_Projects/proj_ReOxy/Service/ReOxy wartung.xlsx][Aktuell Mietstellungen]]
+Festplattentausch in Fronau mit Wartungen kombinieren
+Laura bekommt den Newsletter ???
+
+*** Tasks
+- [X] Wartungen planen @Laura
+- [X] Fronau mit alex absprechen @Laura
+- [X] Laura und Ela anmeldung Newsletter und tech bulleting @TMI 
+
+** DONE Aimediq Marketing Meeting 
+CLOSED: [2024-01-15 Mon 19:05]
+:PROPERTIES:
+:Created: [2024-01-15 Mon 08:30]
+:ID:       4d90b5d2-48cd-4a98-8ed5-3791a380e058
+:END:
+
+Date: <2024-01-15 Mon 11:00>
+Location: Online
+Attendees: Alexey, Vanessa, TMI, Veronica, Petr
+
+*** Agenda
+
+- Newsletter/blog post co-creation - ReOxy use case
+  - Possibility of using Dr. Lipkin's experience with the device
+    - General context of ReOxy use (goal, targeted disease, expected outcomes),
+    - The current state of progress in the ReOxy application (results? Involved people?),
+    - Discuss possible next steps and general organization (contact person on Lipkin's side?).
+
+- Upcoming event - TheraPro 2024
+  - Information on this event (target audience, communication actions),
+  - LinkedIn post and strategy.
+    
+*** Notes
+Newsletter und Service Newsletter an Laura@shockwave Ela@medical
+*** Tasks
+- [ ] Collect Interesting topics @Alexey And Galina
+- [X] collect some topics @TMI
+  - How did you get in Contact with the Therapy
+  - Where do you see great potential in certain Patient groups
+  - How would you describe the Way the Therapy works
+- [ ] Meeting in two Weeks @Veronica
+  
+** DONE Einweisung Eva Schobert  
+CLOSED: [2024-01-11 Thu 19:10]
+
+Date: <2024-01-03 Wed 12:10>
+Attendees: TMI, Eva Schobert, Lasse Schobert 
+Location: Online
+
+*** Agenda
+1.
+2. 
+3. 
+
+*** Notes
+
+*** Tasks
+- [ ] 
+
+** DONE Dr. Baretta 
+CLOSED: [2024-01-22 Mon 07:32]
+:PROPERTIES:
+:Created: [2024-01-19 Fri 10:28]
+:ID:       77a90925-bf34-426b-98a4-32e2ae562dc4
+:END:
+
+Date: <2024-01-19 Fri 16:00>
+Attendees: Peter, Alexey, Dr. Baretta
+Location:
+
+*** Agenda
+1. Intoduction
+2. Scheduling
+3. 
+*** Notes
+
+Scientist and Physician, Logevity and Aging related, and Classical
+Clinical Application Diagnostic etc.
+
+Alexe asked for joined Colaboration
+
+Scheduling:
+Earlyest Delivery 2nd of march opening of clinic end of march
+
+Ideally shipped to downtown Milano mit march.
+Starting payments in April Finalizing in Mai.
+
+Longjevity accelerator, Combining diffrent technologies,
+
+Request for further Locations in Europe
+
+*** Tasks
+
+- [ ] Email to Dr. Baretta with Studies and introduction of Tommaso
+
+** DONE Onboarding Mario  
+CLOSED: [2024-01-29 Mo 20:34]
+:PROPERTIES:
+:Created: [2024-01-22 Mon 13:55]
+:ID:       f4904612-34a8-472a-ac38-b94f33a5aee4
+:END:
+
+Date: <2024-01-23 Tue 10:00>
+Attendees: Ela, Corry, Mario, TMI
+Location: Online
+
+*** Agenda
+1. Intro Michaela Stross
+2. Akquise
+   1. Kaltakquise
+      1. Bei KrÃ¶ner eher nicht
+   2. Service
+   3. Messen und Kongresse
+   4. Workshops
+   5. Mailings
+   6. Online
+3. Leads CRM Eintragungen
+   1. Leadphasen
+      1. Interesse
+      2. Angebot
+      3. Probe/Demo/NÃ¤heres Interesse
+      4. Abschluss
+4. Rapidmail
+*** Notes
+
+*** Tasks
+- [ ] NÃ¤chste woche Meeting online @Ela und @Mario
+
+** DONE AIMEDIQ Newsletter Meeting  
+CLOSED: [2024-01-29 Mon 12:33]
+:PROPERTIES:
+:Created: [2024-01-29 Mon 08:28]
+:END:
+
+Date: <2024-01-29 Mon 11:00>
+Attendees: Vanessa Verocia TMI
+Location: Online
+
+*** Agenda
+1. Goals
+2. Target Audience
+3. Tailored Questions
+*** Notes
+
+[[file:Tasks.org::*AIMEDIQ Newsletter][AIMEDIQ Newsletter]]
+
+**** Veronica
+
+- Overview of the new combinatory protocol developed by Dr. Lipke,
+- Highlight the significance of Dr. Lipke contribution and the involved chains of clinics,
+- Present achievements and benefits for the patients,
+- Emphase the successful integration of ReOxy with existing hospital protocols,
+- Focus on post-COVID | long-COVID rehabilitation
+
+**** TMI
+
+***** General
+
+Focus on CAD and COVID since we can showcase the intendet use.
+Overall we need to Create content that engages people.
+-> Creating a follower base
+
+KISS. Generate Attention by referencing a current Challenge
+that these customers deal with. Make a Proposal. Link to further information.
+Cusomers are categorized into New, Aware and Engaged into the Topic.
+
+The Order changes depending on Customer. Qiestons I get asked the most often are
+- What is it?
+  - Oxygen Therapy?
+- How does it work?
+  - Does it need Oxygen Tank?
+  - What does it do in the Body
+- Where is it used?
+- How long does treatment take?
+- How can I see/measure that the Patient is getting better?
+- Whats the Clinical Evidence?
+- How is Reimbursement?
+- Does it have HRV?
+
+***** Target Audience
+
+****** New (Customer who does not know about IHHT)
+
+Topics
+- What is it
+- How does it work
+- Where is it used
+- Who uses it
+- What do patients say
+
+  Key Challenge: Show that it works and creates money
+  
+****** Aware (New Customer who knows about IHHT, considering to offer the treatment)
+
+- Overview of Clinical effects
+  - Where is the biggest measurable Benefits derived from clinical data.
+  - What are the Parameters to observe.
+  - What do Patients say
+  - Where is it used. References
+  - How is it integrated in diffrent areas (Clinic vs Dr. Office)
+  - Biological Effects
+
+    Key Challenge: Show whats needed to implement and how to reimburse and
+    why to choose ReOxy over the Competitors
+
+****** Competitor Customer
+
+- Advantages of ReOxy
+  - Comparison of Gas Separation techniques
+  - Target SpO2
+  - Parameters
+  - Automation
+  - Showcse of Clinical Data and Research
+- Where IHHT shows limitations
+- Facsts Vs. Myths | Clinical Data(Trials) vs fundamental Research(HIF Research)
+
+  Key Challenge: Differentiate from others by displaying that we work diffrently.
+  we dont want to talk to all potential users want to talk to the doctors.
+
+***** Channels and Methods
+- Linkedin Shorts
+  - Show IHHT under Ultrasound
+  - Show ReOxy in Action
+- Blog Posts
+- Interview Audio/Video
+- Mailings
+- Workshops
+
+***** Materials Needed
+-  
+  
+*** Tasks
+- [ ] Create Folder to Share what information we have @Vanessa
+- [ ] Share the Presentation form our Reference Doctors @TMI
+- [ ] Create an outline for Tailored Questions based on the Gathered Information
+
+** DONE Mario ReOxy Abläufe Aquise und Recherche  
+CLOSED: [2024-02-05 Mo 22:44]
+:PROPERTIES:
+:Created: [2024-02-01 Do 10:05]
+:ID:       b3ed0e22-ba12-4d1d-9c2d-3d7d0517569a
+:END:
+
+Date: <2024-02-01 Do 10:00>
+Attendees: 
+Location:
+
+*** Agenda
+1. Recap Ela CRM
+   1. Kontaktmanager, Kollegen in CC setzen
+2. Abläufe
+   1. Auf den Mailings ist meine Email Hinterlegt
+   2. auf den Websites ist die info@kroener hinterlegt
+   3. Für Preisuaskünfte brauchen wir eine Adresse
+3. Aquise
+   Grundsätzlich muss man mit fast jedem kunden bevor eine Verkaufchance entsteht 5-6 Kommunikationen haben
+   1. Phase Interesse
+      1. Adressauskunft?
+      2. Infos zum Amortisations Modell Leasing etc?
+      3. Allgemeine Infos
+      Die fragen kann man nutzen um in Phase 2 zu kommen
+   2. Phase 2 Angebotsphase
+      1. Angebot an Kunden mit Abrechnungsmöglichkeiten
+      2. Invesment
+      3. ROI
+      4. Weitere Infos
+      5. ggf angebot einer Demo/Probe
+   3. Phase 3 Demo / Probe
+   4. Abschluss/ Verhandlung
+4. Recherche
+   1. Hotleads und Anfragen durch unsere Kanäle
+   2. Recherche eher bei High Profile Kunden
+   3. Kaltaquise eher weniger.
+
+
+*** Notes
+
+MarketingTreffen im Februar.
+
+*** Tasks
+
+- [ ] Literaturrecherche @Mario
+- [ ] Nächste Woche Turgau @Mario
+- [X] Dann nächstes Meeting nach Italien @TMI
+
+** DONE Dr. Beretta Milano 
+CLOSED: [2024-02-07 Mi 09:44]
+:PROPERTIES:
+:Created: [2024-02-05 Mo 22:41]
+:ID:       c348d70d-b038-47a9-abb9-47a6ee1d3324
+:END:
+
+Date: <2024-02-06 Di 13:00>
+Attendees: Dr. Beretta, TMI, Tommaso 
+Location:
+
+*** Agenda
+1. ReOxy Introduction
+2. Training
+3. Questions
+*** Notes
+
+Ask mr Baretta a couple of Interview Questions
+
+*** Tasks
+- [ ] 
+
+** DONE Tommaso ReOxy Training  
+CLOSED: [2024-02-07 Mi 09:44]
+:PROPERTIES:
+:Created: [2024-02-06 Di 09:47]
+:ID:       cec72ca8-75b1-4b49-a482-61b5ca54f363
+:END:
+
+Date: <2024-02-06 Di 10:30>
+Attendees: 
+Location:
+
+*** Agenda
+1. Introduction
+2. Training
+3. Advanced Service Errors and Maintainance
+*** Notes
+
+*** Tasks
+- [ ] 
+
+** DONE ReOxy Strategie Meeting Varnhalt  
+CLOSED: [2024-02-21 Mi 09:05]
+:PROPERTIES:
+:Created: [2024-02-12 Mo 09:26]
+:END:
+
+Date: <2024-02-13 Di 11:00>
+Attendees: Ela, Peter, Vanessa, Corry, Mario, Jörg Grossmann
+Location: Varnhalt
+
+*** Agenda
+
+Pause um 14:30 Spieker
+
+1. Customers
+   1. Map
+      https://www.google.com/maps/d/u/0/edit?hl=en&mid=1_9B89ht_TCho3n6Gq_I7YFMifcecZtI&ll=51.453430037398945%2C8.573647774584142&z=7
+   2. Leads
+      1. Current
+      2. Generation
+      3. Communication
+2. KOLs
+   1. Dr. Schüller
+   2. Prof Doehner
+   3. Ulli Leimer Lipke (COVIVID)
+3. Sales
+   1. Amortization Models
+      1. Buy
+      2. Lease
+      3. Rent
+      4. Pay per use?
+      5. Value Proposition
+      6. GOÄ   
+   2. Argumentation
+      1. Professional Medical Device
+      2. Evdence
+      3. Training
+      4. Projects
+4. Competitors
+   1. Mitovit
+   2. TUR
+   3. Cellgym
+   4. Höhenbalance
+   5. Hypoxbreath
+5. Infomaterial
+   1. www.Reoxy-IHHT.de
+   2. aimediq.com
+   3. Kroener-Reoxy
+      
+*** Notes
+
+**** Pre Meeting Thoughts and notes
+Several Calls from Patients in the Area of Stuttgart. MITOVIT users in the area.
+
+Wir haben folgende Zielgruppe
+- Kardio
+- Hausärzte
+- Stoffwechsel
+- Pneumo
+
+Wir haben folgende tools
+- Amortisationsmodelle
+  - Exclusiv an kliniken geräte günstig verkaufen
+    unter mindestabnahmemenge von masken oder pay per use
+  - Vollpreisig mit argumenten für Teureres gerät
+    - Medizinprodukt
+    - Filtrationstechnik
+    - Test
+    - Evidenz
+- Markteing
+- Vertrieb
+
+Am ende steht die frage nach ressourcen. Um es einfach zu sagen, das projekt kann nur
+so weit skalieren wie es Menschen gibt die sich für das Thema hingeben.
+
+Patientenflyer
+
+- Allgemeines Wohlbefinden raus!
+
+
+***** Geprüfte Medizinische Sauerstofftherapie
+
+****** Zur Therapie von Herz Kreislauferkrankungen und Verbesserung Ihrer Lebensqualität
+
+***** Medizinischer Höhensimulator -/generator
+
+****** Zur Behandlung von Herz Kreislauf und Stoffwechsel -erkrankungen in Simulierter Höhe
+
+***** Herz-Kreislauf-Therapie in simulierter Höhe
+
+****** Ihr Weg zur besseren Gesundheit und Lebensqualität
+
+*** Tasks
+- [ ] HRV (Biosign) oder RSA oder VNS mit anbieten?
+- [ ] Kundenbesuch mit Jörg bei Frau Dr. Hess
+- [ ] Trennverfahren analysieren
+- [ ] FAQ schreiben
+- [ ] 3 USPs
+- [ ] 3 für was steht ReOxy es
+- [ ] Die Kanäle bedienen
+- [ ] Unterscheidung zur Konkurrenz
+  - [ ] Vorsprung druch Technik
+    - [ ] Höchste Medizinische Standards
+      - [ ] Abschaltmechanismus
+      - [ ] Spezielles Trennverfahren
+      - [ ] Atemflusskurve
+      - [ ] Personalisiert
+    
+** DONE Peter ReOxy Varnhalt
+CLOSED: [2024-02-21 Mi 09:04]
+:PROPERTIES:
+:Created: [2024-02-13 Di 09:37]
+:END:
+
+Date: <2024-02-13 Di 09:37>
+Attendees: 
+Location:
+
+*** Agenda
+1. 
+2. 
+3. 
+*** Notes
+
+Things to discuss with Peter Tomorrow
+
+- Fehmer
+  Preise, Marge für Kai ist % klein. 1.000 aud die Radiale drauf?
+
+  14.500 Stosswelle 
+  
+- Patientenflyer
+  Finalisierung
+
+- Ulli, Poster
+  Würde ich gerne übernehmen
+
+- Back, Alexey
+  Wie weiter?
+
+- Pidretti
+  Wie weiter?
+
+- Palermo gerät angekommen?
+
+- Spiecker Heute Telefonat?
+  37.000 14.500
+  bekommt angebote
+
+- Schüller 15.03.
+Spanien
+
+- Doehner?
+  
+- Beretta
+  Alexey call Israel guys wants to present ReOxy at longevity conference.
+  May be interferes with dr beretta. There is chance to delay or cooperate next year.
+  More... Beretta, there is a logevity conference in march, Beretta will go there.
+  He unfortunately cannot participate in the way he would like to, because its to early and the
+  clinic is not open yet. Alexey proposed the Israeli Docs to go there aswell and hold a talk
+  and introduce them.
+
+  Wir wollen keine Polischen fehler hier machen und offen kommunizieren
+  
+- Schott
+  Online präsi 27.02. Klinik Bad Reichenhall der Deutschen Rentenversicherung Bayern Süd
+
+- Österreich
+  sorbion austria
+
+- Treating with the Power of the mountain
+
+*** Tasks
+- [ ] 
+
+** DONE Post Marketing Meeting  
+CLOSED: [2024-02-21 Mi 09:05]
+:PROPERTIES:
+:Created: [2024-02-20 Di 08:49]
+:END:
+
+Date: <2024-02-20 Di 09:00>
+Attendees: Konrad K Vanessa Jenny Corry Mario TMI
+Location:
+
+*** Agenda
+1. Recap 
+2. Charter
+3. Pillars
+*** Notes
+
+*** Recap
+
+4k Video
+Welche werte wollen wir nach aussen tragen
+Unterschiedlicche SM kanäle unterschiedlich bedienen
+Hauptziel Marke Kröner darstellen,
+3 Saülen
+- Expertise
+- Service
+- Technik
+
+  Bessere Planen  und Struckturierung der Campain
+  Welche Ressourcen haben wir.
+
+  Viel neues um dinge schneller und effektiver zu gestalten
+
+  mehr gesichter.
+
+  Lifestyle oder emotion vor produkt.
+
+  Solution Selling
+
+*** Project Charter
+
+**** Buisness Case
+
+Wir sind auf social media unstruckturiert und stellen produkte in den fordergrund.
+Social Media ist ein medium das in erster linie social is.
+
+Darstellen wer wir sind und was wir tun. Zeigen das und unsere arbeit etwas wert it.
+Wargenommen werden.
+
+Wessen bedürfnis decken wir dadurch.
+
+Kröners selbstdarstellung. Vermittlung an den Kunden wer wir sind.
+
+Persönliche Vorstellung. Es geht nicht darum mehr zu verkaufen
+
+Recruiting
+
+***** Scope
+***** Time
+
+Milestones
+- Peter Freigabe 
+- Online Meeting
+- Erster Post nach den Guidelines
+- 3 Monate
+
+***** Cost
+
+**** Objectives
+
+Quantify Qualify
+
+20 Likes für ein bild und kommentare.
+Berichte von KOLS werden geteilt und kommentiert.
+Aktualisierte Profile.
+
+Aktualisierung der Profil Links
+
+
+**** Deliverables
+
+1-2 posts pro woche auf folgen plattformen Linkedin Insta und Facebook
+Veranstaltung.
+
+Bericht von den Veranstaltungen
+Infopost um auf Bedürfnisse festzulegen
+
+Videocon und erstellung
+Guidelines für fotos und Videos  sowie den vorang des teilens
+
+Update der soacial media kanäle
+
+3 pinned posts mit den 3 Säulen
+
+
+**** Stakeholders
+
+Peter Axel und Rolf Entscheiden
+
+Vanessa
+Jenny
+Corry
+Konrad
+
+Firma Kroener
+KOLs
+
+**** Roles and Responibilities
+
+Verantwortlich heißt verantwortlich für die umsetzung oder delegation bzw. monitoring
+
+Vanessa
+für Inhalt und das Posten
+Aktualisierung des Profils auf Linkedin Insta und Facebook
+Neue Beschreibung
+3 Pinned Posts (Säulen)
+Aktualisierung der Profil Links Backend websiteeinbindung 
+
+
+Jenny
+mitveranwortlich für die zusammenstellung und das einholen von inhalten
+Video and picture Guidelines
+
+Corry Videocon
+
+Peter
+Entscheidungstäger für die umsetzung Finanzen und freigabe, rechtlich
+
+Vertrieb
+hat die Rolle Inhalte zu produzieren.
+
+
+**** Assumptions & Risks
+
+- Anxiety commenting Hemmschwelle
+  Chatgpt und infos von den Content erstellern (vertrieb)
+
+Guidelines werden nicht eingehalten
+- erklären was sie davon haben.
+- wird nicht gepostet.
+
+  Project Stuck
+  
+
+*** Tasks
+- [ ] 
+
+** DONE Beretta Export and Data  
+CLOSED: [2024-03-05 Di 13:56]
+:PROPERTIES:
+:Created: [2024-02-23 Fr 13:25]
+:END:
+
+Date: <2024-02-23 Fr 13:30>
+Attendees: 
+Location:
+
+*** Agenda
+1. USB
+2. Params
+3. HKT
+   
+*** Notes
+
+one or two parameters to measure improvement of the person.
+
+25th Longjevity
+Milano
+
+Moreover he asked me which are the parameters to look
+before and after the ReOxy cycle (12)
+which indicates improvement for the patient. 
+
+In particular he ask me if it was possible to monitor
+the time between hypoxic and hyperoxic phases,
+looking if it change from therapy number 1 to the last one. 
+
+He also asked me if there were some articles about hematocritus
+change after ReOxy treatment cycles.
+
+The last thing he asked me if there is a
+software for parameter analysis during the patient cycle.
+
+*** Tasks
+- [ ] 
+
+** DONE Bad Reichenhall ReOxy Presentation  
+CLOSED: [2024-03-05 Di 13:56]
+:PROPERTIES:
+:Created: [2024-02-27 Di 12:56]
+:END:
+
+Date: <2024-02-27 Di 14:00>
+Attendees: 
+Location:
+
+*** Agenda
+1. Vorstellung
+2. [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/04_Projects/proj_Praxislounge_Kompakt/KurzPräsis/][Presentation]] 
+3. Demo
+4. Fragen
+*** Notes
+ [[http://www.reoxy-ihht.de][web]] 
+
+*** Tasks
+- [ ] 
+
+** DONE Aimediq Greifswald Anke Steinmetz  
+CLOSED: [2024-03-05 Di 13:56]
+:PROPERTIES:
+:Created: [2024-03-01 Fr 11:49]
+:END:
+
+Date: <2024-03-01 Fr 12:00>
+Attendees: TMI Alexey Anke Steinmetz
+Location:
+
+*** Agenda
+1. Colaboration
+2. 
+3. 
+*** Notes
+
+Prof Hegeli not available.
+Colaboration. looking for annoucements from BMBF for.
+Förderrichtlinien. Or Pilot? Doctor Thesis,
+
+Big intrest from patients. At the moment there is no real
+treatment options.
+
+Alexey would provide devices, both options ok.
+
+Ideas dor the study, Fatigue and cognitive defecits
+because there is the least to offer.
+
+Which scores and tests to include.
+FAS? MOCCA? REHACOM?
+
+CROSSOVER?
+
+6 Weeks Therapy, Intesity?
+
+
+*** Tasks
+- [ ] 
+
+** DONE Aimediq Research Opportunities  
+CLOSED: [2024-03-14 Do 15:35]
+:PROPERTIES:
+:Created: [2024-03-05 Di 13:48]
+:END:
+
+Date: <2024-03-05 Di 16:00>
+Attendees: TMI Alexey Galina Petr
+Location:
+
+*** Agenda
+
+1. Greifswald
+   
+2. Ludger
+   
+3. Zwick
+   
+4. Schega
+   makes sense accorfing to alexey because Mitovit
+   
+5. Pidretti
+   alexey will reach out again
+   
+*** Notes
+
+Why the F... did we not get any info on this
+https://academic.oup.com/eurheartj/article/44/Supplement_2/ehad655.2594/7391009
+
+*** Tasks
+- [ ] 
+
+** DONE Gerätestatus  
+CLOSED: [2024-03-14 Do 15:35]
+:PROPERTIES:
+:Created: [2024-03-11 Mo 08:52]
+:END:
+
+Date: <2024-03-11 Mo 09:00>
+Attendees: Peter Ela TMI
+Location:
+
+*** Agenda
+1. Gerätestatus
+2. 
+3. 
+*** Notes
+
+Ein Gerät bestellt.
+Schüller
+
+*** Tasks
+- [ ] 
+
+** DONE Alexey Peter aimediq Restructure and Noahlabs  
+CLOSED: [2024-04-09 Di 15:30]
+:PROPERTIES:
+:Created: [2024-03-15 Fr 13:55]
+:END:
+
+Date: <2024-03-13 Mi 16:45>
+Attendees: 
+Location:
+
+*** Agenda
+1. Company Restructure
+2. Schega
+3. Noahlabs
+*** Notes
+
+Meeting mit Alexey,
+Schega,
+Ulli, Data Collection,
+Next week Videocon with Noahlabs and aimediq
+
+Look into
+https://www.timely-project.com/projectteam
+https://www.timely-project.com 
+
+*** Tasks
+- [X] PKR Meeting vereinbaren für 21.
+
+** DONE Noahlabs Followup  
+CLOSED: [2024-04-09 Di 15:31]
+:PROPERTIES:
+:Created: [2024-03-28 Do 12:06]
+:END:
+
+Date: <2024-03-28 Do 13:30>
+Attendees: PKR, Alexey, Petr, Oliver Weiss, TMI 
+Location: Online
+
+*** Agenda
+1. Charter and Buisness Case [[id:070754c8-ba93-4cdb-8854-c6070ba9d8fb][Notes]]
+2. Data
+3. Arrangements and questions
+   
+*** Notes
+
+Offering a software Harware Combination
+Tracking Symptoms and Systems.
+
+NoahLabs is a Softwarehouse integrating third party Hardware.
+They integrate Dashboards for COVIVID.
+
+*** Tasks
+- [ ] 
+
+** DONE Alexey Schega  
+CLOSED: [2024-04-09 Di 15:30]
+:PROPERTIES:
+:Created: [2024-03-14 Do 15:31]
+:END:
+
+Date: <2024-03-14 Do 15:30>
+Attendees: Galina, TMI, Petr, Alexey
+Location: 
+
+*** Agenda
+
+1. Luxembourg Distributor
+2. Schega
+3. Longjevity
+4. Zwick
+5. Anke Steinmetz
+   
+*** Notes
+
+I meant spreadsheets for the sales people.
+
+Info on Number of Patients an Duration of the Initial testing?
+Info on Number of patients for the planned trial? and Timeline.
+Check number of devices and rental or other agreement.
+Sham, Provision of Ananomized Data possible. 
+
+*** Tasks
+- [ ] 
+
+** DONE Aimediq Kroener Noahlabs  
+CLOSED: [2024-04-23 Di 08:50]
+:PROPERTIES:
+:Created: [2024-03-20 Mi 12:29]
+:ID:       6254c357-eaa8-4dff-8fdc-29ee94daa8dd
+:END:
+
+Date: <2024-03-20 Mi 12:30>
+Attendees: 
+Location: Oliver Weiss, Alexey, Petr, TMI, PKR
+
+*** Agenda
+
+1. Introduction
+2. Data Collection
+3. Requests from Mr. Weiss
+   
+*** Notes
+:PROPERTIES:
+:ID:       070754c8-ba93-4cdb-8854-c6070ba9d8fb
+:END:
+
+It is important to Mr Weiss to get a better Overview of the Buisness case. That means for us we have to display
+how we can add value to their model.
+
+From My understanding they do b2b and the doctor sells the app subscription and device rental to the end patient
+for the duration of the Treatment. Peter has experience with this model and will handle the buisness side.
+Ulrike can give advice on the current numbers and her model with Noahlabs.
+
+For now there are a couple of Prequesites to be met before advancing.
+See the Tasks section. After these Tasks are cleared we will have a discussion at starnberger see with the involved
+Stakeholders.
+
+*** Charter
+
+**** General
+
+*!This is a first draft.!*
+
+The Project is seperated in two areas.
+
+1. Data provision by aimediq and Bitmos (getting the data into the cloud)
+
+2. Data integration on the side of Noahlabs (creating and providing ReOxy dashboards for COVIVID app)
+
+In order to not blow the scope This Charter outlines only this Pilot Project with covivid.
+
+
+**** Goal & Scope
+
+Inclusion of the ReOxy data into Noahlabs API (COVIVID app) API.
+Provisioning of the Data to the COVIVID app users to the satisfaction of COVIVID
+Creating positive Revenue or a profitable outcome for the  involved Parties
+while keeping cost and scope low with potential for extension of capabilities and cooperation.
+
+**** Limit
+
+For now the scope would be limited to COVIVID as a pilot Project. The ReOxy data will not be analyzed by AI.
+
+Data from the Patients will be handled after regulations and guidelines. Since Noahlabs knows this area better they
+will advise.
+
+There will be no changes to the Hardware of any device for this Project. Aimediqs advance to interface via Lan
+or other means is a seperate project. One exeption may GDPR update from aimediq.
+(Upgrade to SSD and Operator Credentials) this could prove beneficial to the Project but is handled on the side of
+aimediq.
+
+Avoid changes to the raw data that impact the functionality of the COVIVID app provided by noahlabs after the integration.
+Smaller adjustments can be negotiated between the parties. Since advancement in this area are quick and
+might impact either side i have covered this in the Risk analysis section.
+
+No Changes to the data and or dashboards requested by COVIVID during the Project unless mutually agreed upon.
+There is a high risk of this blowing the scope.
+
+**** Buisness Case
+
+Mr Weiss specifically asked for
+
+- the number of devices in germany
+- Projection of ReOxy sales in Germany
+- International Activity
+- Projection of international sales
+  
+**** Napkin Math
+
+since nearly all users of the ReOxy in Germany operate the devices at high capacity the number of patients
+treated should be displayed as well. Ulrike told me she has about 100 Treatments per Week in her office alone(2 devices).
+
+In flechtingen 3(devices) they had around 900 Patients last year. Averaging 25 patients per device per month
+
+those are probably the highest "output" locations
+
+Our partners at Covivd have 13 devices at the moment. 3 more are are planned. However they also do more treatments
+per patient then Flechtingen and one less per week, impacting the calculation. I tried to be moderate.
+
+I Estimated about 175 patients per month at COVIVID.
+(this is a Napkin Math with additional 20% contingency and a guess...
+I will collect some more data on mask sales for 2023 and make a better calculation.)
+
+**** Case
+
+  At Covivid there are currently 13 ReOxys deployed since Feb 2023. 3 more are alreaady in a concrete planning phase. 
+  About 175 patients treated per month at COVIVID.
+
+  Patients frequently ask for their ReOxy data. While the ReOxy data could be provided it is a hassle to do so,
+  additionally providing the Treatment graphs and data currently cannot provide a good analysis that
+  the patient can understand.
+
+  NoahLabs app and the offered devices meet the medical standard and are novel. They would allow
+  valuable data for the patient as they can monitor evident and easy to unbderstand parameters
+  (Resting Heart Rate and BP as well as questionairs). They can also provide relevant infos for the
+  doctor in a convinient way.
+
+  Introduction of the devices offered by Noahlabs for monitoring treatment process as well as providing a 
+  convienient way for patients and doctors to acees Treatment data would add Value to the ReOxy, and solve a challenge.
+
+  The Question of the Patient ("Have I gotten better") can be answered by the docor by a click on a buttin
+  using the noahlabs app. More Explicitly
+
+  *"did i get better" would be answered with per ex. "your resting HR improved by x amount"
+  "your BP improved" Your overall wellbeing has improved.*
+  
+  In turn that would mean if the Patient or Doctor wants a convinient way to acess the data, Noahlabs would be
+  the Provider and would become an integral part of data Distribution to the docors and the Patient when using the ReOxy.
+
+  *if you want patient reports we have a partner for that!*
+  
+  In short: If the Patient wants to know how they improved by using ReOxy the app and devices from noahlabs
+  offer a evidence based easy to use novel solution.
+
+  This would also open up possibilities to monitor further evidence based approaches in Cardiac Rehab.
+  Per ex we have seen significant improvements in 6mwt in several modalities with ReOxy. incl. COVID19
+  Measuring those end points through the app would be one idea of many.
+
+
+**** Stakeholders Roles and Responsibilities
+
+
+***** COVIVID
+Resposibility:
+Provision of required datapoints prior to project start.
+
+***** Kröner Medizintechnik
+Resposibility:
+Buisness adn financial decisions for the project (Peter Kroener in agreement with Alexey Platonenko)
+Project Management and Communications between the parties on the side of
+Kroener aimediq and bitmos (Thomas Michaelsen)
+
+***** aimediq
+
+aimediq provides the data and is responsible for reaching the API of Noahlabs.
+
+Resposibility:
+provisioning of NDA, 
+provisioning of Data samples, 
+Assisting Noahlabs for inqueries about data samples and possibilities 
+connecting Noahlabs and Bitmos (Petr Golitsyn)
+
+***** Bitmos
+Allocation of resources for the software dev (Dirk Westhues)
+Programming the service or application that "pushes" the data to the api(Ihor Rhozko)
+
+***** Noahlabs
+
+Noahlabs integrates CSV or PDF data and creates dashboards to be available to the docors and patients.
+
+Responsibility:
+(TBD by NOAHLABS)
+
+**** Risks an Precautions
+
+***** Data not compatible
+in that case we need to see what options there are if any and start basically from scratch
+
+***** Data adjustments needed
+Depending on the nature of adjustments. If that would require changes on the function of ReOxy
+or Noahlabs devices this will likely not be feasable and blow the Project scope.
+
+If changes require a "post export" remodeling of the format or content of the exportet .txt files
+we would have to check between aimediq bitmos and Noahlabs Software departments wether a solution
+can be found. This would also mean we start from scratch
+
+Since it acnnot be ruled out that either party advances there should be an agreement of maintainance timefrime
+for the COVIVID app that the paries mutually agree upon.
+
+***** In or Post Project client requests for adjustments
+COVIVID has to clearly state what data is required and how it should be displayed before the Project starts.
+Any adjustments would likely impact all stakeholders and require time and effort and hold the
+rist of blowing the scope. This should be discussed and agreed upon from the start.
+
+***** any party drops out of buisness or sells its buisness
+on the side of Kroener aimediq and Bitmos the resources allocated may be less then on the side of Noahlabs
+this needs to be cleared first before any statements in this regard. However the Parties should know
+that this is a risk and plan accordingly by having a good understanding of required Resources.
+The Stakeholders would have to agree on how to proceed this risk.
+
+***** Buisness not profitable.
+Since this is a pilot it should be a first implementation with limited resources to check feasability in a
+KIS approach. Colaboration with a bigger scope should be thought of after this pilot project.
+Resources should be clear and either covered upfront or otherwise agreed upon and not tied to the following sales.
+Therefore the follow up buisness model should  be a standalone agreement between the party
+and not be calculated into the Project cost. 
+
+**** Additions
+
+We agree that in case this is a suscessful and profital project for all parties that in the future we are open
+to widen the scope and start further projects in other areas. We also agree that in order to get a better feel for
+the opportunity and transperancy towards NOAHlabs that we have to provide an overview on future company goals and
+possibilites of further colaboration and that these points may have to be adressed during the project.
+
+*** Tasks
+Stept are to be done in order
+- [X] Exchange of NDA Between the parties. (Petr or Alexey)
+- [X] Presenting a Buisness case to Mr. Weiss (Peter Kroener)
+- [X] Providing Data Samples to Mr. Weiss (aimediq)
+
+  The following is in preperation for starnberger see.
+- [X] getting further details on Noahlabs buisness model(TMI)
+- [X] collecting data on number of patients(by Mask sales 2023)
+- [X] Updating the Charter with the collected information
+- [X] Creating a Work breakdown structure template for the meeting.
+  
+** DONE COVIVID Starnberg Presentation prep  
+CLOSED: [2024-04-23 Di 08:49]
+:PROPERTIES:
+:Created: [2024-04-09 Di 14:59]
+:END:
+
+Date: <2024-04-09 Di 15:30>
+Attendees: Dr Schueller TMI
+Location: Hannover Eilenriedstift
+
+*** Agenda
+1. Leasing Stoßwelle
+2. Leasing ReOxy
+3. Echo EF Video Comments
+4. Beretta
+5. Presentation Outline [[id:741e7692-d4b2-4c13-921e-196a36f7e376][Technik]]
+
+*** Notes
+
+**** Echo EF Video Comments
+
+**** Presentation
+
+*** Tasks
+- [ ] 
+
+** DONE Corry Vanessa Marketing ReOxy Post DGK  
+CLOSED: [2024-05-13 Mo 08:54]
+:PROPERTIES:
+:Created: [2024-04-09 Di 10:52]
+:END:
+
+Date: <2024-04-09 Di 11:00>
+Attendees: Vanessa Corry Mario TMI 
+Location: Online
+
+*** Agenda
+1. Linkedin Post DGK
+2. Schega
+3. 
+*** Notes
+
+Titel Veränderung der EF unter IHHT beim gesunden Patienten
+
+Ausganswert
+Gemessene werte
+Wert am ende
+Vorher Test
+
+Wáhrend des DGK Mannheim in zusammenarbeit mit canon
+VIlenen dank an ... und das model
+
+*** Tasks
+- [X] Acrylblock
+- [X] Sprech schüller finalisier Posts
+- [X] Longjevity öschberghof
+- [X] Case Reports Outline
+- [X] Wir brauchen Interviewfragen
+
+** DONE ReOxy Weekly Strategy Meeting 01  
+CLOSED: [2024-05-13 Mo 08:54]
+:PROPERTIES:
+:Created: [2024-04-24 Mi 08:26]
+:END:
+
+Date: <2024-04-24 Mi 10:30>
+Attendees: JGR RKO AGE CKA PKR JMA MMI 
+Location: Online
+
+*** Agenda
+
+1. Leads
+2. Projekte
+3. Follow ups Weekly Monday
+   1. Montags 9:00
+4. Perspective
+
+*** Notes
+
+[[id:6fe69090-b1e0-4f28-b720-f262c9941b1b][Projects]]
+
+Ansprache Axel. ReOxy +1Mio
+Dafür brauchen wir regelmäßige Absprache
+
+Marketing
+Technisch
+Medizinisch
+Skills der KMT ins Marketing aufnehmen.
+
+Protokolle Spezifisch
+Equipment for Events
+Mietstellung Preise
+Eiheitliches Probestellungs Modell
+
+*** Tasks
+
+- [X] Struckturiet die Themen abarbeiten
+- [X] Word Document mit Anregungen und Punkten
+- [X] Project Entscheidungen
+
+** DONE Bridging Minds Beretta Schueller  
+CLOSED: [2024-05-13 Mo 08:55]
+:PROPERTIES:
+:Created: [2024-04-26 Fr 18:23]
+:END:
+
+Date: <2024-04-26 Fr 14:00>
+Attendees: 
+Location:
+
+*** Agenda
+
+1. Introduction
+2. Biomarkers 
+3. Further Steps
+   Meeting on 06.
+   Possible second device
+   Paying one Device
+   
+*** Notes
+
+*** Tasks
+- [ ] 
+
+** DONE ReOxy Weekly Strategy Meeting 02 
+CLOSED: [2024-05-13 Mo 08:55]
+:PROPERTIES:
+:Created: [2024-05-06 Mo 08:19]
+:END:
+
+Date: <2024-05-06 Mo 09:00>
+Attendees: TMI MST AGE PKR CKA
+Location:
+
+*** Agenda
+
+1. Leads?
+2. [[id:6fe69090-b1e0-4f28-b720-f262c9941b1b][Projects]]
+3. Assignments
+4. Dr. Meyer
+   
+*** Notes
+
+Dr. Schüller HRV?
+Friederike? Service ReOxy?
+
+*** Tasks
+:PROPERTIES:
+:ID:       5ef3030a-53ef-4103-8122-5dd46eba3635
+:END:
+- [X] Email Veronika Vanessa Flyer übersetzen
+- [X] Stuhl suchen
+- [X] Hersteller HRV kontaktieren Probestellung Leihstellung Schüller Zusammenarbeit
+  
+** DONE Solongevity Meeting Beretta and CEO  
+CLOSED: [2024-05-13 Mo 08:55]
+:PROPERTIES:
+:Created: [2024-05-06 Mo 09:57]
+:ID:       73032c55-20bf-406d-9a5e-8a055c442a34
+:END:
+
+Date: <2024-05-06 Mo 11:00>
+Attendees: 
+Location:
+
+*** Agenda
+
+1. Status
+2. Purchasement
+3. Affliliation
+
+*** Notes
+
+Technology is very interesting with huge potential Discuissed with the network
+a research protocol cooperation to measure biological and physiological measures
+
+Mid june Soft opening.
+
+how do we move forward, how we can help.
+
+Proposal from Solongevity:
+Commerical cooperation with us and sell ReOxy through affiliations franchising.
+New clinics and partners adapting the sologevity model would be bound to use ReOxy.
+Solongevity would recieve Affiliation Royalty 50%. They also offer Marketing colaboration.
+
+What does that mean in regards to device delivery and purchasements
+I think we would like to move one step at a time
+
+- Follow up meeting where we cover the topics on how to go on.
+Affiliation Royalty 50%
+
+- Agreement between the parties
+
+- Purchasement of the First Machine (Payment Mid June)
+28.000 Mid June
+
+- Provide a second Septermber/ October for the clinical study. 
+
+- Clinical Study Combination approach
+Baselinme T1 T2 (2mo follow up)
+30 people for research
+PRP, Stem Cell 
+
+- Timeframe 4-5 Months. Then option to Purchase 2nd device for regular price.
+
+- Solongevity Full Launch 2025
+
+  Open Questions (TMI)
+  how do
+  - Serviceing of devices in Italy
+  - Training in Italy
+  factor into this.
+  
+*** Tasks
+- [ ] 
+
+** DONE Bitmos Filtertechnik  
+CLOSED: [2024-05-13 Mo 08:57]
+:PROPERTIES:
+:Created: [2024-03-11 Mo 08:53]
+:END:
+
+Date: <2024-03-11 Mo 10:00>
+Attendees: Dirk Westhues, CKA, TMI, MMI
+Location:
+
+*** Agenda
+
+1. Geräte Repertaur?
+2. Technik allgemein
+3. Filtertechnik
+4. Competitors
+   
+*** Notes
+
+**** Notes CKA
+
+Protokoll:
+
+Herr Westhues kennt Cellgym, hat aber noch in keines reingeschaut.
+
+PSA Pressure Swing Addsorbtion Technology
+ReOxy trennt Gase; Volumen: 25liter/ Minute
+
+4 Röhren, 1 Kompressor, Ventile, Elektronik, Schläuche
+2 große Röhren trennen die Gase (Zeolith, Kügelchen 0,4mm) Kügelchen haben Membranfunktion
+Die filtert. Stickstoff kann da unter Druck rein, Stickstoff ist so lange in den Kügelchen gebunden, wie der Kompressor Druck aufbaut (2bar)
+Stickstoff wird eliminiert rausgeschmissen: Sauerstoff plus Edelgase bleiben übrig
+Sauerstoffgehalt geht hoch bis 90%-95%, Luft hat 21% Sauerstoff, Stickstoff 0% Sauerstoff
+	Diese drei Komponenten mischen sich online zu dem „Gemisch“ was wir für die unterschiedlichen Phasen benötigen
+
+Das machen beide Säulen nacheinander und so können die Hypoxischen und Hyperoxischen Phasen optimal angesteuert werden
+
+
+Wettbewerb: es ist nicht klar, wie die Konkurrenzgeräte die Gasgemische zur Verfügung stellen
+
+
+**** Notes TMI
+
+Sauerstoffkonzentrator werden von bitmos seit 25J hergestellt
+PSA Technologie Pressure Swing adsorbtion.
+
+4 Röhren 2 davon mit Ceullit
+ein Kompressor, erzeugt Druck
+Ventile
+Elektronik Pneumatik(Schläuche)
+
+Sauerstoff wird nicht erzeugt, Sticktoff wird filtriert Die Gase werden Getrennt.
+Sauerstoff + Edelgase // Sauerstoff
+
+Diese gase werden neu zusammengemischt --> Hypoxisch und Hyperoxisch
+
+Initial gab es ein gerät mit 12 Sieben?
+
+Die Saülen werden geflutet und Sticksoff von dem
+Ceullit aufgenommen Sauerstoff wird weitergeleitet
+
+Gebundener Sticktoff wird abgelassen.
+
+Stickstoff wird nur solage im ceullit gebunden
+wie der Komplressor den Druck aufrecht erhält.
+ca. 2bar
+
+Eine Säule wird beladen, eine wird entladen.
+
+Reservoirs werden mit den getrennten gasen gefüllt,
+und neu gemischt.
+
+Das gasgemisch wird direkt am beutel zusammen
+gemischt.
+
+Flow Kurve Technischer parameter nice to have.
+
+
+Volumen 25l/ min
+
+Sequel 
+
+Membrantechnologie
+Hochenergetisch, HochtemperaturIndustielle anwendung
+
+Umgedrehte Brennstoffzelle
+
+Oscar Filenius Hypoxbreath
+
+Mitovit https://creatinghealth.de/mitovit-im-detail/ 
+Verbreitung über IGAF https://www.igafev.com/
+- VNS
+- Hypoxie Normoxie Hyperoxie
+- Softwareanbindung und Berichte
+- Hypoxietest
+
+  Aktuell keine Med Zulassung
+
+TUR
+- https://www.cellair-one.com/ 
+- Therapie Presets
+- 2a
+- Hypoxietest
+  
+Hypoxbreath
+https://hypox-breath.com/
+
+- Multi Level Phasen (Presets)
+- Softwareanbindung via APP / Tablet
+- "med" 2a
+- Hypoxietest (Breath holding?)
+
+Cellgym
+https://cellgym.de/#ger%C3%A4te
+
+- 2a
+- Softwareanbindung via Tablet
+- HRV?
+
+Cellit
+https://cellit-ihht.de/
+
+- 2a
+
+ReOxy
+
+- 2b
+- Hypoxietest
+
+Keine HRV, keine Anbindung
+
+Höhenbalance
+
+- 2a
+- Hypoxietest
+
+*** Tasks
+- [X] Zusammenfassung erstellen
+- [X] Sales Argumente Verfassen, Einfach und verständlich
+- [X] Oscar Filenius Hypoxbreath anschauen
+
+** DONE EMTT Preise Argumente  
+CLOSED: [2024-05-31 Fr 16:00]
+:PROPERTIES:
+:Created: [2024-04-29 Mo 09:24]
+:END:
+
+Date: <2024-04-29 Mo 11:00>
+Attendees: SMA CKA AGE MMI RBU JMA KBR AAL
+Location: Online
+
+*** Agenda
+
+1. 
+2. 
+3.
+   
+*** Notes
+
+Induktive Spannung
+- Electroporation
+- Piezoeffekt
+
+Konvulsion vs Poration
+
+Martin Ringeisen
+
+Erzeugung Induktive Spannung durch Schwingende
+Magnetische Felder
+
+Bei jedem Impuls (8hz) werden mehrere einzelimpulse abgegeben.
+10x10mT pro Hz.
+
+*** Tasks
+- [ ] 
+
+** DONE ReOxy Weekly Strategy Meeting 04  
+CLOSED: [2024-05-31 Fr 16:03]
+:PROPERTIES:
+:Created: [2024-05-24 Fr 10:52]
+:END:
+
+Date: <2024-05-27 Mo 09:00>
+Attendees: TMI AGE PKR JMA CKA MST JGR MMI
+Location:
+
+*** Agenda
+
+1. Angebote
+   1. Format Kauf und Leasingangebote CRM vs Vorlage
+   2. Mietangebote? 2 Formate
+   3. Preise Probestellung 4Wo 500
+   4. Preise Miete 1000 Netto
+      Mietpre 975 Netto
+   5. Preise Liste 42.000 vs 39.900
+      42 ink Steuer
+      Leasing 39.900 48 mon 10%
+   6. Italien (Formulare und VAT etc. + Miete Allemanno)
+      Wie gestalten? (Cryfoss noch nicht im System)
+2. Hot Leads besprechen
+   1. Prof. Katharina Huefner (Burtscher)
+      1. Brutto
+         Istanbul?
+   2. MEDIAN
+   3. Zentrum Ulli
+3. Kundenfragen in der Aquise
+   1. Wer wird angesprochen?
+   2. Was Fragen/Wie reagieren die Kontakte?
+   3. Wo seht ihr die größte herrausforderung im Kundenkontakt?
+      JGR mit den ärzten zu sprechen.
+      Psychatrische Klinik.
+   4. Trefft ihr auf Mitbewerb?
+   5. Welche Argumente funktionieren?
+      Vergleich Vorher nachher
+4. Mitbewerb Service
+   1. Die O2 Sensoren (Intern, nicht der Fingeclip) die den Sauerstoffgehalt der Zugeführten
+      Luft Messen, können entweder Chemisch oder Elektrisch messen. Der Mitbewerb nutzt
+      das Chemische Verfahren, die Sensoren werden nach einem Jahr ungenau und müssen oft
+      getauscht werden, die Wartung kostet ca. 1500 - 2000€. Die Sensoren im ReOxy sind
+      hingegen Wartungsfrei und überprüfen ihre funktion im Selbsttest bei jedem einschaltvorgang.
+      Zudem bietet der Mitbewerb auch nur 1 Jahr garantie.(Vielleicht genau aus diesem Grund)
+5. Acrylblöcke verfügbar.
+   1. Preis?  EUR 35 -> Service Jenny
+   2. Idee blöcke und Marketingmaterial aufstellen, dann Probestellung
+   
+*** Notes
+
+Meeting mit Axel vor MEDIAN
+
+*** Tasks
+- [X] Intoduction Westhues Petr Veronica Mario
+- [X] Westhues Präsi
+
+** DONE ReOxy Weekly Strategy Meeting 03  
+CLOSED: [2024-05-31 Fr 15:59]
+:PROPERTIES:
+:Created: [2024-05-10 Fr 13:54]
+:END:
+
+Date: <2024-05-13 Mo 09:00>
+Attendees: 
+Location:
+
+*** Agenda
+
+1. Praxislounge Referenten
+   1. Dr.Meyer
+   2. Nicole Vennemann
+
+      Beide würden Vortragen. Dr. Meyer hat bereits 7 Patienten.(Cardio COPD)
+      Frau Vennemann wäre mehr Orthopädisch. Ps CEO von MEDIAN ist Patient bei ihr.
+      Axel fühlt vor.
+
+      Entscheidung in ca 4 Wochen
+      
+2. Project update und assignments
+
+   1. Service und Marketingmaterial
+      1. Thekenaufsteller
+      2. Cardio Broschüre aimediq
+   2. ReOxy Technik Darstellung
+      1. Filtertechink
+      2. SRT
+   3. ReOxy Effekt Darstellung
+   4. Eventausstattung
+
+      Updates, Erste zusammenfassung und weiteres Vorgehen
+
+3. Adressen Umgebung München für Aquise (Mario)
+
+4. Agenda für weitere Meetings
+
+   1. Leads und Kontakte
+   2. Aquiseprozess
+   3. Projektupdates
+   
+*** Notes
+
+*** Tasks
+
+- [X] Share Case Report
+- [X] Intoduction Westhues Petr Veronica Mario
+- [X] Westhues Präsi
+- [X] Meeting Agenda Nächste woche vorbereiten
+  Was braucht der Vertrieb. Was sind die Kundenfragen.
+  Wo hackt es. Wo braucht es unterstützung
+
+** DONE aimediq Weekly 01
+CLOSED: [2024-05-31 Fr 16:03]
+:PROPERTIES:
+:Created: [2024-05-20 Mo 11:03]
+:END:
+
+Date: <2024-05-20 Mo 11:03>
+Attendees: 
+Location: Alexey Veronica TMI 
+
+*** Agenda
+
+1. Schega
+2. Operational and Service
+3. Marketing
+   
+*** Notes
+
+*** Tasks
+- [X] Aimediq Weekly 01 
+

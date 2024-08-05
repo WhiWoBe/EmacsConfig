@@ -1,0 +1,47 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("ReOxy_Guide.org"
+ (filename . "d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org")
+ (front-context-string . "#+TITLE: ReOxy C")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26179 4595 211557 0))
+("Capture_Mobile"
+ (filename . "/mnt/d/Dropbox/Dropbox/org/org_capture_mobile.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 11)
+ (last-modified 26023 33029 419661 879000))
+("JOURNAL"
+ (filename . "d:/notebooks/org/Journal.org")
+ (front-context-string . "t\n\n***** Log [/]")
+ (rear-context-string . " Update Task Lis")
+ (position . 929)
+ (last-modified 26020 60564 264453 653000))
+("TASKS"
+ (filename . "d:/notebooks/org/Tasks.org")
+ (front-context-string . "#+STARTUP: conte")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26020 60548 440304 628000))
+("MEETINGS"
+ (filename . "d:/notebooks/org/Meetings.org")
+ (front-context-string)
+ (rear-context-string . "asks\n- [ ] \n\n  \n")
+ (position . 1581)
+ (last-modified 26020 60503 96423 823000))
+("org-capture-last-stored"
+ (filename . "d:/notebooks/org/Journal.org")
+ (front-context-string . "[2024-07-04 Do 1")
+ (rear-context-string . "ung\n\n***** Log\n\n")
+ (position . 97181)
+ (last-modified 26246 54784 610259 0))
+("org-refile-last-stored"
+ (filename . "d:/notebooks/org/Meetings.org")
+ (front-context-string . "** DONE Marketin")
+ (rear-context-string . "* Tasks\n- [ ] \n\n")
+ (position . 55036)
+ (last-modified 26242 19937 638706 0))
+)

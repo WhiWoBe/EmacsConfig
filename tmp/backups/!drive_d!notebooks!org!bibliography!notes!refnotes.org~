@@ -1,0 +1,642 @@
+* TODO Burtscher et al. - 2023 - Mechanisms underlying the health benefits of inter
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/AQMCNVIU/Burtscher et al. - 2023 - Mechanisms underlying the health benefits of inter.pdf
+:END:
+** Summary
+This Paper outlines the Mechanisms and potential Health Benefits of IHT/IHHT
+
+** Limitations
+*** Unclear definitions of Terms
+:PROPERTIES:
+:NOTER_PAGE: (4 0.657117278424351 . 0.10941176470588235)
+:END:
+
+#+BEGIN_QUOTE
+The mechanistic foci of interest vary substantially
+among hypoxia studies conducted in diverse populations,
+using myriad methods, protocols, technologies and
+terminologies (Panza et al., 2023).
+#+END_QUOTE
+
+*** Benefits and Detriments depends on dose
+:PROPERTIES:
+:NOTER_PAGE: (16 0.10205908683974933 . 0.6352941176470588)
+:ID:       bff0c669-0692-4e8f-a41a-a3d1674dd639
+:END:
+
+#+BEGIN_QUOTE
+Whether IH is beneficial or detrimental
+depends on the hypoxic dose, individual predispositions,
+physical activity, medications and many other factors
+which limit comparability of studies and generalization to
+other conditions or populations.
+#+END_QUOTE
+
+*** Knowledge gap
+:PROPERTIES:
+:NOTER_PAGE: (4 0.6763652641002685 . 0.8599999999999999)
+:END:
+
+#+BEGIN_QUOTE
+A crucial
+knowledge gap is the impact of the hypoxic dose on
+the contributions of different adaptive mechanisms
+#+END_QUOTE
+
+** Terminology and Definitions
+:PROPERTIES:
+:NOTER_PAGE: (6 0.09265890778871978 . 0.10647058823529411)
+:ID:       c7b9de7b-0bb6-4adc-9364-319596b8ec49
+:END:
+
+#+BEGIN_QUOTE
+ Hypoxia
+A condition in which oxygen supply does not match oxygen demand
+
+ Hypoxaemia
+A partial pressure of oxygen in the arterial blood below 60 mmHg (8 kPa) or haemoglobin
+oxygen saturation below 90%
+
+ Hyperoxia
+elevated oxygen tension
+
+ Acute hypoxia
+Initial phase of hypoxia exposure with most pronounced (patho)physiological responses
+
+ Chronic hypoxia
+Prolonged (continuous or intermittent) hypoxia (days to years)
+
+ Functional hypoxia
+Physical exercise or extensive motor-cognitive exercise
+
+ Continuous hypoxia
+Exposure of an organism to uninterrupted hypoxia, as occurring during high-altitude
+
+ Intermittent hypoxia
+(1) high-frequency intermittent hypoxia, e.g. obstructive sleep
+apnoea, elicits mostly maladaptive responses;
+(2) low-frequency intermittent hypoxia, e.g. intermittent hypoxia
+exposure/conditioning, elicits mostly adaptive
+responses.
+
+ Intermittent hypoxia conditioning, acute intermittent hypoxia, intermittent hypoxia training
+
+Also termed IHE (see below), acute
+intermittent hypoxia (this term is mainly used in studies on the potential of intermittent
+hypoxia to modulate respiratory plasticity and/or if subjects with spinal cord injury are
+exposed to intermittent hypoxia)
+
+ Intermittent hypoxia exposure/conditioning (IHE/IHC) versus intermittent hypoxia hyperoxic exposure/conditioning (IHHE/IHHC)
+
+repeated 4–8 min exposures to hypoxia, i.e. fractions of
+inspired oxygen (FIO2 = 10–15%, alternating with 2–5 min exposures to normoxia (IHE:
+FIO2 = 21%) or hyperoxia (IHHE: FIO2 = 30–35%), totalling 35–40 min/session applied 3–5
+times per week for 3–8 weeks. IHHE has also been termed intermittent hypoxia
+hyperoxic conditioning (IHHC)
+#+END_QUOTE
+
+** Mechanism
+
+*** Systemic
+:PROPERTIES:
+:NOTER_PAGE: (8 0.3406445837063563 . 0.5235294117647058)
+:END:
+
+#+BEGIN_QUOTE
+Systemic oxygen sensing
+The molecular mechanisms summarized above
+collaborate with and enable systemic oxygen sensing,
+leading to direct hypoxia responses. The hypoxic
+ventilatory response (HVR) in humans and most other
+mammals increases alveolar ventilation to compensate
+for reduced inspiratory PO2 and is initiated by chemo-
+receptors, particularly the glomus cells of the carotid
+bodies (Iturriaga et al., 2021; Teppema & Dahan,
+2010). When they sense decreased arterial PO2 and
+increased lactate concentration (Chang et al., 2015;
+Torres-Torrelo et al., 2021), the glomus cells activate
+sensory neurons of the petrosal ganglia. These neurons
+transmit sensory impulses via the glossopharyngeal nerve
+to specialized neurons in the nucleus tractus solitarii
+(Forster & Smith, 2010) to activate the sympathetic
+nervous system-mediated acute ventilatory chemo-
+reflex response (Iturriaga et al., 2021). Facilitated by
+pulmonary vasoconstriction, this response increases
+minute ventilation and the ventilation–perfusion ratio
+(Kemp et al., 2002; Pamenter & Powell, 2016).
+#+END_QUOTE
+
+**** Ventilatory response
+:PROPERTIES:
+:NOTER_PAGE: (10 0.5429722470904208 . 0.5229411764705882)
+:END:
+
+#+BEGIN_QUOTE
+Ventilatory response and respiratory facilitation. Hypo-
+xia sensing by the arterial chemosensors activates the
+sympathetic nervous system and induces a ventilatory
+response. IH elicits two primary forms of ventilatory
+plasticity: progressive augmentation of the HVR during
+IH and ventilatory long-term facilitation (vLTF) after-
+ward (Puri et al., 2021). vLTF is triggered by activation of
+serotonergic neurons in the raphe nuclei (Xing et al., 2014)
+and modifications in the phrenic motor neurons (Nichols
+& Mitchell, 2021) increasing respiratory motor output
+and, thereby, minute ventilation (Pamenter & Powell,
+2016).
+#+END_QUOTE
+
+**** Neuroprotection
+:PROPERTIES:
+:NOTER_PAGE: (10 0.20188003581020592 . 0.5229411764705882)
+:END:
+
+#+BEGIN_QUOTE
+Neuroprotection. With their high oxygen demand and
+limited antioxidant defences (Sorce & Krause, 2009)
+neurons are highly vulnerable to ROS (Benderro et al.,
+2012; Lee et al., 2005). The potential for ischaemic pre-
+conditioning to improve the brain’s innate capacity to
+resist and repair ischaemic injury is well recognized
+(Dirnagl et al., 2009) and IH conditioning may similarly
+increase the brain’s structural and functional resilience
+(Burtscher, Mallet, Burtscher et al., 2021; Rybnikova
+et al., 2022). Antioxidant defences bolstered by IH
+conditioning may minimize neuronal vulnerability to
+ROS (Burtscher, Mallet, Burtscher et al., 2021). Improved
+neurogenesis is another potential IH mechanism
+benefiting the brain, as demonstrated in mice (Li et al.,
+2023).
+#+END_QUOTE
+
+*** Organ
+
+**** Bones
+:PROPERTIES:
+:NOTER_PAGE: (10 0.11817367949865712 . 0.908235294117647)
+:END:
+
+#+BEGIN_QUOTE
+in
+clinical studies IH conditioning inhibited bone
+resorption biomarkers and stimulated bone formation
+(Camacho-Cardenosa et al., 2022; Timon et al., 2022).
+#+END_QUOTE
+
+*** Cellular
+:PROPERTIES:
+:NOTER_PAGE: (9 0.4668755595344673 . 0.09470588235294117)
+:END:
+
+#+BEGIN_QUOTE
+Cellular benefits of mild intermittent hypoxia
+Hormesis and cellular resilience. Hypoxia conditioning
+aims to induce adaptations to hypoxic stress that
+enhance resilience to subsequent stress.
+#+END_QUOTE
+
+**** Cellular Stress Response
+:PROPERTIES:
+:NOTER_PAGE: (9 0.8513876454789615 . 0.09235294117647058)
+:END:
+
+#+BEGIN_QUOTE
+Mitochondria acutely respond to hypoxia by
+increasing electron transport efficiency to maintain
+ATP production.
+#+END_QUOTE
+
+**** Mitochondria Benefits
+:PROPERTIES:
+:NOTER_PAGE: (9 0.16159355416293644 . 0.7494117647058823)
+:END:
+
+#+BEGIN_QUOTE
+Prolonged continuous
+hypoxia may decrease mitochondrial mass by reducing
+mitochondrial biogenesis, increasing mitophagy and
+altering mitochondrial morphology and dynamics
+(Burtscher, Hohenauer et al., 2023), effects that
+have not been well characterized for IH. Hypo-
+xia/reoxygenation through aberrant fusion can produce
+‘donut-shaped’ mitochondria (Liu & Hajnoczky, 2011)
+or megamitochondria (Hao et al., 2023), morphologies
+potentially contributing to functional recovery or auto-
+phagic regulation, respectively.
+The remarkable plasticity of mitochondria (oxidative
+phosphorylation efficiency, substrate utilization flexibility
+and reliance on alternative metabolic pathways) to
+hypoxia and other stressors renders them primary
+candidates to mediate beneficial hypoxia conditioning
+effects. Improved mitochondrial quality control by
+upregulated mitophagy and enhanced anti-oxidative
+mechanisms likely contributes to improved cellular
+resilience effected by hypoxia conditioning, but empirical
+evidence regarding the hypoxic doses that elicit these
+protective effects is scarce, particularly for IH.
+#+END_QUOTE
+
+*** Genetic
+:PROPERTIES:
+:NOTER_PAGE: (6 0.7936436884512086 . 0.08705882352941176)
+:END:
+
+#+BEGIN_QUOTE
+Transcription factors: HIFs, Nrf2 and NF-κB. Three
+powerful transcription factors mediate adaptations and/or
+maladaptations to hypoxic environments. HIF-activated
+genes primarily augment the blood’s oxygen-carrying
+capacity via erythropoiesis, oxygen delivery to tissues
+(vascular remodelling) and oxygen-independent ATP
+production (glucose transport and glycolysis) (Semenza,
+2012).
+#+END_QUOTE
+
+**** Transcription factors mediating hypoxia responses
+:PROPERTIES:
+:NOTER_PAGE: (7 0.8102059086839749 . 0.17176470588235293)
+:END:
+
+#+BEGIN_QUOTE
+Figure 2. Transcription factors mediating hypoxia responses that bolster hypoxia/ischaemia resistance
+#+END_QUOTE
+
+* Adzigbli et al. - 2022 - Effects of hypoxia and reoxygenation on mitochondr
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/NCU4QVV3/Adzigbli et al. - 2022 - Effects of hypoxia and reoxygenation on mitochondr.pdf
+:END:
+* Behrendt et al. - 2022 - Effects of Intermittent Hypoxia–Hyperoxia on Perfo
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/UJAPM6K2/Behrendt et al. - 2022 - Effects of Intermittent Hypoxia–Hyperoxia on Perfo.pdf
+:END:
+** Inclusion Criteria
+:PROPERTIES:
+:NOTER_PAGE: (6 0.2518813634351483 . 0.09058823529411764)
+:END:
+
+``Comparison''
+
+Placebo Sham
+Performance or Health Related
+Published English Peer Reviewed
+
+** Studie Selection Results
+:PROPERTIES:
+:NOTER_PAGE: (6 0.7985834440017707 . 0.5294117647058824)
+:END:
+
+``Study Selection''
+
+#+BEGIN_QUOTE
+After the full-text assessment,
+eight studies [66, 106–112] met our inclusion criteria
+and were qualitatively analysed.
+#+END_QUOTE
+
+"6 were carried out using the ReOxy"
+
+** Physical Performance
+:PROPERTIES:
+:NOTER_PAGE: (11 0.35723771580345287 . 0.5158823529411765)
+:END:
+
+#+BEGIN_QUOTE
+In two studies, exercise tolerance
+(i.e. time until exhaustion while performing the Bruce
+or modified Bruce protocol) was increased at the end
+of the intervention
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Significant improvements
+in peak oxygen consumption have been observed in
+older patients with coronary artery disease
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+physical work capacity of young athletes
+with overtraining syndrome (i.e. the power at a heart
+rate of 170 beats/min, PWC 170) was improved after
+4 weeks of IHHE
+#+END_QUOTE
+
+``improvement in the six-minute walk''
+*** Effects on Physical Performance
+:PROPERTIES:
+:NOTER_PAGE: (16 0.48295706064630367 . 0.5894117647058823)
+:END:
+
+#+BEGIN_QUOTE
+IHHE
+might have positive effects on physical performance in
+specific populations, such as in geriatric patients [106].
+The improvements in physical performance could be
+explained by specific cardiovascular and muscular adap-
+tations to IHHE, e.g. the regulation of inflammatory
+response, angiogenesis, improved glycolysis, glucose
+transport, and vasodilatation as well as mitochondrial
+functioning
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+An increased physical performance was also
+observed in young track and field athletes with overtrain-
+ing syndrome, evidenced by an improved physical work
+capacity and balance of the autonomic nervous system
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Three studies [107, 109, 110] imply that IHHE might
+be an effective intervention to increase peak oxygen
+consumption in patients with cardiovascular disease
+by 12.6–43.2%
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+the
+observed effects of IHHE cannot be generalized to other
+populations such as healthy individuals.
+#+END_QUOTE
+
+Because healthy athletes have a higher level of cardiorespiratory Fitness
+** Conginitve Performance
+:PROPERTIES:
+:NOTER_PAGE: (15 0.3833554670208057 . 0.09588235294117646)
+:END:
+
+Patients with MCI
+
+``Cognitive Performance''
+
+``improvements in global cognitive functions''
+
+#+BEGIN_QUOTE
+increase of neuroprotective
+proteins (i.e. amyloid precursor proteins) and a decrease
+in circulating biomarkers of Alzheimer’s disease
+#+END_QUOTE
+
+*** Effects on Cognitive Performance
+:PROPERTIES:
+:NOTER_PAGE: (17 0.11199645861000443 . 0.5129411764705882)
+:END:
+
+#+BEGIN_QUOTE
+research in vari-
+ous populations suggesting that IH can be applied as a
+therapeutic modality in order to preserve or enhance
+brain functions.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+investigations in animals and
+humans have found an improved cerebrovascular func-
+tion
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Bayer et al. [106] found that global
+cognitive performance only improved in those patients
+who underwent the combination of the multimodal
+training program and the IHHE.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Serebrovska et al. [111] reported a better cognitive per-
+formance one day after the last IHHE session,
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+there is some
+evidence that intermittent hypoxic exposure alone [56]
+or in combination with resistance training [40] and pro-
+longed hypoxic exposure in combination with endurance
+training [39] can improve cognitive performance in older
+patients with mild cognitive impairment or in healthy
+older people.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+future studies should investigate the neu-
+robiological mechanisms driving these cognitive perfor-
+mance enhancements by assessing changes on the (1)
+molecular and cellular level (e.g. changes in brain-derived
+neurotrophic factor),
+#+END_QUOTE
+
+** Haematological, Metabolic, and Haemodynamic Parameters
+:PROPERTIES:
+:NOTER_PAGE: (15 0.8233731739707836 . 0.09529411764705882)
+:END:
+
+Patients with CAD
+
+``Increases in reticulocytes''
+
+#+BEGIN_QUOTE
+two other stud-
+ies did not observe such a change in patients with car-
+diac comorbidities [109] as well as young athletes with
+overtraining syndrome [108].
+#+END_QUOTE
+
+``reduction in total cholesterol level''
+
+#+BEGIN_QUOTE
+In another study [112], no change in total choles-
+terol was observed in older patients with metabolic dis-
+ease.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Only
+one study [110] noticed a tendency towards a decrease
+in low-density lipoprotein cholesterol in patients with
+coronary arterial disease.
+#+END_QUOTE
+
+``High-density lipoprotein cholesterol
+was increased after 3 weeks''
+
+``one study [110] reported a decrease in triglyc-
+eride levels''
+
+``In patients with prediabetes, fasting
+blood glucose concentration was reduced''
+
+#+BEGIN_QUOTE
+decrease in body mass index, waist
+and hip circumference, and inflammatory markers in
+patients with metabolic syndrome
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+in geriatric patients [106] and cardiac outpatients
+[109], no changes in systolic and diastolic blood pres-
+sure as well as heart rate were observed. In one study
+[107], both resting systolic and diastolic blood pres-
+sure as well as heart rate were decreased
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+parasympathetic drive was increased (i.e. high-frequency
+power of heart rate variability), while the sympathetic
+tone was decreased
+#+END_QUOTE
+
+``increase in left ventricular ejection fraction''
+
+#+BEGIN_QUOTE
+did not differ between patients
+who conducted 5 weeks of IHHE and patients who per-
+formed 8 weeks of the standard rehabilitation program
+and 3 weeks of sham IHHE
+#+END_QUOTE
+
+
+*** Effects on Heamatological Metabolic and Heamodynamic
+:PROPERTIES:
+:NOTER_PAGE: (18 0.4493138556883577 . 0.10176470588235294)
+:END:
+
+#+BEGIN_QUOTE
+Three studies [107–109] focussed on haematological
+parameters without detecting changes in haemoglobin
+concentration.
+#+END_QUOTE
+
+``whereas other studies reported an increase in haemo-
+globin concentration [49]''
+
+#+BEGIN_QUOTE
+It can be assumed
+that haemoglobin mass increases on average by 1.1% per
+100 h of hypoxia [140] and that the minimum duration
+to reach an acclimatization effect and trigger haemato-
+logical responses would be at least 12 h per day with a
+hypoxia intensity corresponding to altitudes of 2500–
+3000 m ­(FiO2 = ~ 0.155–0.145)
+#+END_QUOTE
+
+``Total cholesterol was significantly
+reduced in three studies''
+
+#+BEGIN_QUOTE
+there is currently little
+evidence supporting a positive effect of IHHE on blood
+lipid profile.
+#+END_QUOTE
+
+*** Conclusion and Perspective
+:PROPERTIES:
+:NOTER_PAGE: (22 0.2474546259406817 . 0.09647058823529411)
+:END:
+
+#+BEGIN_QUOTE
+the current systematic review
+provides first hints that IHHE can be a non-pharmacolog-
+ical intervention strategy for improving peak oxygen con-
+sumption, exercise tolerance, and cognitive performance
+as well as reducing cardiometabolic risk factors (particu-
+larly blood glucose level, systolic and diastolic blood pres-
+sure) in older patients with cardiovascular and metabolic
+diseases or cognitive impairment.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+The
+evidence concerning the effects of IHHE on total choles-
+terol, high- and low-density lipoprotein cholesterol, and
+triglyceride blood level as well as erythropoiesis and hae-
+moglobin mass is still inconclusive.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+the cellular
+and molecular changes (e.g. nitric oxide, erythropoie-
+tin, HIF-1α) driving the adaptations to IHHE or IHHT
+should be examined.
+#+END_QUOTE
+* Shafieesabet et al. - 2023 - Treatment effect of respiratory therapy with inter
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/9J67XTHI/Shafieesabet et al. - 2023 - Treatment effect of respiratory therapy with inter.pdf
+:END:
+** Methods:
+:PROPERTIES:
+:NOTER_PAGE: (1 0.2990909090909091 . 0.09823529411764705)
+:END:
+
+#+BEGIN_QUOTE
+A prospective, single-center, randomized controlled trial was conducted in 145 (37 men) patients with post COVID19 conditions aged
+27-84 years, who were admitted to a hospitalized rehabilitation program (duration 27±5 days).
+#+END_QUOTE
+** Results:
+:PROPERTIES:
+:NOTER_PAGE: (1 0.3940909090909091 . 0.09294117647058822)
+:END:
+
+#+BEGIN_QUOTE
+The IHHT group demonstrated in comparison to controls a signiﬁcant improved primary endpoint (6MWT difference, IHHT group vs
+controls: 91.7 vs. 32.5m, P<0.001), improved stair climbing (SCT -1.9 vs. -0.5 sek, P<0.001), improved QoL (EQ5-D analog scale change 31.3
+vs. 2.9, P<0.001), improved fatigue (FAS -8.9 vs. 3.6, P<0.001) and improved perceived health (MCRS -10.3 vs. -2, P<0.001, all IHHT group vs.
+controls). The IHHT group exhibited a signiﬁcant increase in hemoglobin content and a signiﬁcant decrease in CRP compared to baseline
+(P<0.001), whereas these changes were not observed in the control group.
+#+END_QUOTE
+* ab1552_1
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/L98N8AXN/ab1552_1.pdf
+:END:
+** Methods:
+:PROPERTIES:
+:NOTER_PAGE: (1 0.4417637271214642 . 0.11058823529411764)
+:END:
+
+#+BEGIN_QUOTE
+In a prospective, controlled trial 150 consecutive patients with post-COVID-19 condition
+#+END_QUOTE
+** Results:
+:PROPERTIES:
+:NOTER_PAGE: (1 0.5307820299500832 . 0.09705882352941175)
+:END:
+
+#+BEGIN_QUOTE
+Patients receiving IHHT were younger than patients of the control group (51.1±11.5 vs. 59.5±10.4
+years, p<0.001). Furthermore, systolic blood pressure was lower in the IG (129.0±15.1) compared
+to the CG (138.5±16.8 mmHg), p<0.001 at baseline. Heart rate and parameters of lung function at
+baseline were comparable.
+In both groups the 6MWD increased significantly during rehabilitation: In the IG from 357.4m to
+441m (p<0.001) and in the CG from 355.2m to 399.8m (p<0.001). The change in 6MWD was
+significantly higher in the IG group (83.6±45.8m) than in the CG (44.6±75.2m), p<0.001. IHHT was
+well-tolerated by all subjects.
+#+END_QUOTE
+* Trumbower et al. - 2017 - Effects of acute intermittent hypoxia on hand use 
+:PROPERTIES:
+:NOTER_DOCUMENT: c:/Users/thmsm/Zotero/storage/6FTPRA4P/Trumbower et al. - 2017 - Effects of acute intermittent hypoxia on hand use .pdf
+:END:
+** DISCUSSION
+:PROPERTIES:
+:NOTER_PAGE: (2 0.891566265060241 . 0.6235294117647058)
+:END:
+
+Small sample size
+
+#+BEGIN_QUOTE
+We demonstrate that daily AIH 1
+hand opening practice enhances hand function in
+persons with chronic cSCI, extending earlier reports
+of improved respiratory function in rodents2 and leg
+function in humans.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Repetitive
+AIH may elicit synergistic benefits with AIH 1
+task-specific training after SCI.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+We hypothesize that AIH 1
+task-specific training also may result in beneficial
+BDNF/TrkB signaling in humans; however, this
+possibility remains unknown.
+#+END_QUOTE

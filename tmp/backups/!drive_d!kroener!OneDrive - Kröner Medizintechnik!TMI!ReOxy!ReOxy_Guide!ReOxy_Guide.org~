@@ -1,0 +1,2848 @@
+#+TITLE: ReOxy Compass
+#+DESCRIPTION: ReOxy Projekt Wiki
+#+AUTHOR: Thomas Michaelsen
+#+EMAIL:  tmichaelsen@kroener-medical.de
+#+description:
+#+keywords:
+#+subtitle:
+#+STARTUP: inlineimages
+#+MACRO: p call_get_prop("$1")
+#+MACRO: pr call_get_prop[:results raw]("$1")
+#+options: html-link-use-abs-url:nil html-postamble:auto
+#+options: html-preamble:t html-scripts:nil html-style:t
+#+options: html5-fancy:t tex:t
+#+options: toc:nil num:nil H:2 ^:nil pri:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+html_content_class: content
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.6.6)
+#+cite_export: csl ~/Zotero/styles/american-medical-association.csl
+#+SETUPFILE: "D:\kroener\OneDrive - Kröner Medizintechnik\TMI\ReOxy\ReOxy_Guide\export2\org\theme-readtheorg.setup"
+#+TODO: WIP GEPRÜFT | FREI
+#+TODO: INTERN RÜCKSPRACHE | KUNDE 
+#+TODO: Initiation(i) Planning(p) Execution&Monitoring(e) Closing(l) | Done(d) Canceled(c) Hold(h)
+#+TODO: TODO(T) Next(N) | DONE(D) CANCELED(C) HOLD(H)
+
+* Document constants :noexport:
+:PROPERTIES:
+:QM: Anastasia Schukowski ASC
+:VU: Michaela Stross MST
+:PM: Thomas Michaelsen TMI
+:ADMsued: Mario Milanovic MMI
+:ADMost: Jens Masur JMA
+:FHV1: Jörg Grossmann
+:FHV2: Horst Schott
+:Service: Franziska Hiller
+:Wartung: Laura Viszigalla
+:Marketing: Vanessa Wehle
+:VL: Corry Kalmbach
+:END:
+* Document code :noexport:
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq org-confirm-babel-evaluate nil)
+#+END_SRC
+
+#+NAME: starup
+#+begin_src elisp :results none
+(setq fill-column 120)
+#+end_src
+
+#+name: get_prop
+#+begin_src elisp :var prop="QM" :results none
+  (car (org-property-values prop))
+#+end_src
+
+#+NAME: py
+#+begin_src python
+  p ="Hello zusammen"
+  return p
+#+end_src
+
+* About
+
+#+begin_abstract
+Dies ist ein umfangreicher Guide zum ReOxy. Er ist eine Zusammenfassung aus
+allen vorherigen Quellen der SharePoint-Websites, meinen persönlichen Notizen,
+aktuell laufenden Projekten und jede menge Informationen.
+Die vorangegangenen Versuche, alles an einem Ort zusammenzuhalten, trafen auf
+einige Probleme. Die infos waren an 3 Orten hinterlegt und die
+Pflege davon war ein Chaos... Um das zu umgehen, bedient sich dieses Dokument
+automatisch an vorgegebenen quellen, dokumentiert und aktualisiert
+sich fast vollständig von selbst und kann in alle gängigen Formate
+(PDF, HTML, Office) übertragen werden, denn es ist nur Text mit etwas Code :).
+
+Um ihn zu nutzen, solltet ihr eine Verknüpfung mit OneDrive anlegen,
+da ansonsten die Videolinks und Bilder nicht vollständig funktionieren werden.
+
+Fragen und Rückmeldungen bitte per E-Mail an tmichaelsen@kroener-medical.de.
+Dieser Guide ist kein offizielles Dokument
+Er ist vertraulich und darf nicht an dritte weitergeleitet werden!!! 
+#+end_abstract
+
+*Folgende Kennzeichnungen Beachten !!!*
+
+** WIP In Bearbeitung nicht geprüft
+** GEPRÜFT In Bearbeitung Faktencheck erfolgt
+** FREI Freigegebene Infos und Argumente
+** INTERN Interne Infos nicht an Kunden
+** KUNDE Infos und Dokumente können an Kunden gegeben werden
+** RÜCKSPRACHE Weitergabe nur nach Rücksprache
+
+#+TOC: headlines 4
+
+
+* INTERN Zuständigkeiten
+
+Siehe QM:
+Liste der aktuell gültigen Systemdokumente -> Organigramm -> Vertrieb
+Zugang zum QM erhaltet ihr über {{{p(QM)}}}
+
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2001%2E01%20Organigramm%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Organigramm]]
+
+- Vertriebsunterstützung {{{p(VU)}}}
+- PM Anwendung Schulung Vertrieb {{{p(PM)}}}
+- Vertriebsleitung {{{p(VL)}}}
+- Außendienst Süd {{{p(ADMsued)}}}
+- Außendienst Ost {{{p(ADMost)}}}
+- Freier Handelsvertreter {{{p(FHV1)}}}
+- Freier Handelsvertreter {{{p(FHV2)}}}
+- Service {{{p(Service)}}}
+- Wartung {{{p(Wartung)}}}
+- Marketing {{{p(Marketing)}}}
+
+
+* Vertrieb
+:PROPERTIES:
+:ID:       c09fdb78-a9aa-47d6-83d9-ec376292d4d9
+:END:
+** WIP Lead Abläufe und Akquise
+
+Leads werden in 4 Phasen aufgeteilt.
+
+- [[id:b0916ed7-c6b6-4756-a5b0-b6519d0df174][Interesse Erstkontakt]]
+- [[id:ad96d863-6b32-4571-a853-e60a015c77c0][Angebot]]
+- [[id:f82f8a71-12b6-4860-afc4-22e14ac7dcd4][Demo- Probestellung]]
+- [[id:a90cf8f9-4f94-464e-96b4-602fbc6e9622][Abschluss]]
+
+In der Chancenbewertung sollte zwischen Ärzten Physiotherapeuten und Heilpraktikern unterschieden werden.
+Alle Kommunikationen an die Vertriebsunterstützung {{{p(VU)}}} weiterleiten und gemeinsam im CRM festhalten.
+
+Die Punkte [[id:c09fdb78-a9aa-47d6-83d9-ec376292d4d9][Vertrieb]] und [[id:c384679f-592c-481a-9fd7-843ba3bef0fe][ReOxy]] haben viele Informationen um fragen des Kunden zu Beantworten.
+
+Die Methode und der Wirkmechanismus ist unter [[id:741e7692-d4b2-4c13-921e-196a36f7e376][IHT/IHHT Verfahren]] aufgeführt.
+Dies geht sehr ins detail. Der Abschnitt [[id:b80ef341-e309-4c6c-ab1c-130de6ab8679][Functional and Behavioural Effects]] ist Praxisorientiert
+einfach zu verstehen und am ende der wichtigste.
+ 
+
+Häufige Kundenrückfragen sind unter dem FAQ aufgeführt.
+
+#+begin_quote
+Der ReOxy ist deutlich teurer als andere IHHT geräte. Entscheidend ist durch USPs
+und durch die Amortisation den Preis zu argumentieren. In den erfolgreichen Verkäufen
+an Neukunden, hatte ich in der Vergangenheit gute erfolge mit
+- [[id:39623d02-daaf-4eef-bef8-0d9bd35be308][GOÄ]]
+- [[id:8357b0a8-cd8c-4140-86b9-266f46328cdd][USPs]]
+- [[id:70b105f8-f439-4373-a005-ef1bbe09c99b][Stärkste Literaturnachweise]]
+- "Alle anwender werden von Medizinischem Fachpersonal Ausgebildet"
+#+end_quote
+
+*** Interesse Erstkontakt
+:PROPERTIES:
+:ID:       b0916ed7-c6b6-4756-a5b0-b6519d0df174
+:END:
+
+- Lead Quelle festhalten
+  - Kaltakquise
+  - Anruf
+  - Website Anfragen (bitte festhalten von welcher)
+  - Mailing etc.
+- Recherche durchführen
+  - Kunde bei Kroener? Wenn ja mit Kontaktperson (ADM) absprechen!
+  - Kunden googeln
+  - Arzt, HP, Physio
+  - Fachgebiet
+  - Besonderheiten und Interessen z.B.
+    - Longevity
+    - Arbeitsmedizin
+    - Key Opinion Leader
+- Adressangaben einholen bzw. prüfen und erste Infos Verschicken.
+
+  #+begin_quote
+  Oft wenden sich Kunden an uns zur Preisabfrage. Wenn man zu früh Preisauskunft gibt ohne die USPs oder
+  die Wirtschaftlichkeit des ReOxy darzustellen hat man i.d.R. verloren. Man sollte versuchen
+  die Kunden ans Telefon zu bekommen.
+  #+end_quote
+
+*** Angebot
+:PROPERTIES:
+:ID:       ad96d863-6b32-4571-a853-e60a015c77c0
+:END:
+
+- Demo / Miete
+- Kauf / Leasing
+- Mietkauf nach Absprache möglich
+- Sonderkonditionen und Studienangebote (mit {{{p(PM)}}} absprechen!)
+
+Vorlagen in der Liste der aktuell gültigen Systemdokumente
+
+#+begin_quote
+Alle Angebote vor Versand mit der Vertriebsunterstützung {{{p(VU)}}} absprechen!
+#+end_quote
+
+*** Demo- Probestellung
+:PROPERTIES:
+:ID:       f82f8a71-12b6-4860-afc4-22e14ac7dcd4
+:END:
+
+Siehe 
+
+*** Abschluss
+:PROPERTIES:
+:ID:       a90cf8f9-4f94-464e-96b4-602fbc6e9622
+:END:
+
+*** Hilfestellungen zum Ablauf
+
+**** Anschreiben
+
+Emails Personalisieren bezug nehmen auf Recherche.
+Wervolle Infos
+
+- [[id:c384679f-592c-481a-9fd7-843ba3bef0fe][ReOxy]]
+- [[id:94a4d176-6b43-4d70-8c70-a8275f73c818][Einweisung Flyer Angebote und Broschüren]]
+
+**** Textbausteine und Beispiele
+
+**** WIP Argumentation
+
+In der Übersicht zum [[id:42c41c42-a497-421a-b830-51b2a151948a][Mitbewerb]] sind die Geräte aufgelistet. Teilweise haben
+die keine Medizinische Zulassung. Im kundengespräch wird mir häufig gesagt.
+Gerät X,Y kann das selbe und ist günstiger. Gute argumente findet man unter
+
+- [[id:39623d02-daaf-4eef-bef8-0d9bd35be308][GOÄ]]
+Der Mitbewerb rechnet aufgrund der Gerätetechnik weniger ab. ca. EUR 80-120
+- [[id:8357b0a8-cd8c-4140-86b9-266f46328cdd][USPs]]
+  - [[id:979fbec7-b872-40b8-8100-2e4a9ef78e07][ReOxy Trennverfahren]]
+  - [[id:ae69053c-df58-4b4a-8171-6115a9bfda15][HypoxieTest und SRT]]
+    Berücksichtigt Puls und Atemvolumen
+- [[id:70b105f8-f439-4373-a005-ef1bbe09c99b][Stärkste Literaturnachweise]]
+  Studien sind zum Großteil mit dem ReOxy erfolgt.
+  Das einzige Mitbewerberprodukt das in Studien genutzt wurde
+  wird nicht mehr hergestellt.
+- Keine Mitgliedschaft in einem Verein nötig um Fachinformationen und
+  schulungen zu bekommen, wie z.B. bei MITOVIT oder HYPOXBREATH.
+  Einige Kunden haben hier tausende von EUR gezahlt um an Seminaren
+  teilzunehmen
+
+  Neue Info: Der Sensor der den Sauerstoffgehalt in der Luft misst muss beim Mitbewerb
+  getauscht werden. Die Sensoren nutzen ein anderes Verfahren als der ReOxy und werden nach c.a. 1J ungenau.
+  Die kosten für den Tausch betragen 1500 - 2000 EUR. Daher ist die Garantiezeit anderer Hersteller
+  auch bei 1 Jahr.
+
+Wie argumentiert der Mitbewerb?
+
+Deren Geräte können intensivere Einstellungen vornehmen, haben mehr features und sind günstiger.
+Keines dieser features ist fundiert begründet. Die intensiven Einstellungen sind teilweise gefährlich
+da hier die Sättigung zu weit abfallen kann. Zudem generieren die G
+
+Die Story des Mitbewerb ist die Wirkung der IHHT auf die Mitochondrien und den Nobelpreis 2019.
+IHHT hat nie einen Nobelpreis bekommen. Die Forscher haben den hypoxisch induzierten Faktor entdeckt.
+Einen grundlegenden Mechanismus im Menschlichen Körper der bei vielen Krankheiten eine rolle spielt,
+es ist keine Therapiegrundlage. Die argumentation hier ist schwammig, ich kann auch nicht raten
+hier in eine Debatte einzusteigen. Für details habe ich das Thema hier analysiert: [[id:3489d946-a323-47cd-85e3-fe511a3f28d7][Cellular and Genetic]]
+
+** WIP Verkaufsunterlagen und Dokumente
+
+*** INTERN Geräteanforderung
+
+QM: Liste der aktuell gültigen Systemdokumente -> Geräteanforderung
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2004%2E61%20Ger%C3%A4teanforderung%20ReOxy%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Link]]
+
+An {{{p(VU)}}}
+
+*** KUNDE Einweisung Flyer Angebote und Broschüren
+CLOSED: [2024-03-17 So 09:36]
+:PROPERTIES:
+:ID:       94a4d176-6b43-4d70-8c70-a8275f73c818
+:END:
+
+QM: Liste der aktuell gültigen Systemdokumente -> Liste der aktuell gültigen ReOxy Dokumente
+Zugang Über {{{p(QM)}}}
+
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2004%2E13%20Liste%20der%20aktuell%20g%C3%BCltigen%20ReOxy%20Dokumente%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Link]]
+
+*** KUNDE Wirtschaftlichkeitsberechnung
+
+QM: Liste der aktuell gültigen Systemdokumente -> Liste der aktuell gültigen ReOxy Dokumente
+Zugang Über {{{p(QM)}}}
+
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2004%2E13%20Liste%20der%20aktuell%20g%C3%BCltigen%20ReOxy%20Dokumente%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Link]]
+
+Die Wirtschaftlichkeitsberechnung dient als Vorlage, die Ziffern gehen erfahrungsgemäß
+in 90% der fälle durch. Leistungsbeschreibung beachten! Einige Anwender rechnen weniger ab.
+Realistisch kann man jedoch mit EUR 160-180 rechnen.
+
+
+**** INTERN GOÄ
+:PROPERTIES:
+:ID:       39623d02-daaf-4eef-bef8-0d9bd35be308
+:END:
+
+
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org_20240514_093922_foBrIS.png]]
+
+#+begin_quote
+Hinweis an den Kunden! Einige Ziffern sind an die Gerätetechnik gebunden und können mit
+anderen IHHT Geräten nicht abgerechnet werden! Damit die Abrechnung durchgeht muss außerdem
+die Leistungsbeschreibung beachtet werden. Ein Vollständiges Abrechnungsbeispiel mit
+Leistungsbeschreibung sollte erst bei der Einweisung an den Kunden weitergeleitet werden.
+#+end_quote
+
+**** Selbstzahler
+Orientiert sich an den GOÄ Ziffern aber wird niedriger Faktorisiert.
+
+*** KUNDE Bestellung Verbrauchsmaterial
+
+**** KUNDE Für Demos und Mietstellungen 
+CLOSED: [2024-03-17 So 09:36]
+
+QM: Liste der aktuell gültigen Systemdokumente -> Bestellformular (Standard)
+
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2004%2E21%20ReOxy%20Bestellformular%20Normal%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Link]]
+
+**** RÜCKSPRACHE Nach Kauf bzw. Übernahme
+
+QM: Liste der aktuell gültigen Systemdokumente -> Bestellformular (Rabattiert)
+
+[[https://kroenermedizintechnik-my.sharepoint.com/personal/aschukowski_kroener-medical_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem%2FFB%2004%2E56%20ReOxy%20Bestellformular%20%2D%20Rabattiert%2Epdf&parent=%2Fpersonal%2Faschukowski%5Fkroener%2Dmedical%5Fde%2FDocuments%2FQM%2DSystem&ga=1][Link]]
+
+** WIP Einweisung
+
+Die Einweisung erfolgt durch den ADM.
+Wenn es Verkaufsfördernd ist kann man dem Kunden angeben das die Einweisung durch medizinisches Fachpersonal erfolgt.
+Thomas Michaelsen Gesundheits-- und Krankenpfleger mit Fachweiterbildung für Intensiv und Heimbeatmung (DIGAB)
+
+*** Allgemeine Systemübersicht, Gerätemenü, Geräteeinstellungen
+PLACEHOLDER QUICK GUIDE
+*** Umgang mit Zubehör (Aufsetzen der Maske, Anbringung des Sensor, Anschluss Atemschlauch)
+PLACEHOLDER QUICK GUIDE
+*** Anwendung und Auswertung der Ergebnisse
+PLACEHOLDER QUICK GUIDE
+*** Verwaltung von Patientendatenbanken und Datenexporte
+**** Verwaltung
+
+Die Patientendaten sind auf der Festplatte des ReOxy hinterlegt.
+Die Festplatte ist im Bildschirm eingebaut.
+
+Um Patientendaten zu löschen, den Patienten auswählen und auf Patient Löschen drücken.
+  
+#+begin_quote
+WICHTIG! Die Patientendaten sind nicht vollständig gelöscht! Dies geschieht erst wenn
+das Betriebssystem neu aufgespielt wurde. Dies ist besonders wichtig bei Miet-
+oder Demostellungen. [[id:dea27458-1d1d-461b-b893-855ba4688015][Neuinstallation des Betriebssystems]] Das wird durch den Service Übernommen
+#+end_quote
+
+**** FREI Datenexport über USB
+CLOSED: [2024-05-14 Di 09:41]
+
+Die Daten werden Über den USB eingangs an der Rückseite des ReOxy
+Exportiert. Zum Export braucht man einen USB stick im FAT32 Format(standard)
+auf dem stick muss ein Ordner mit dem Namen "reoxy" angelegt sein.
+Es kann auf mehrere arten Exportiert werden.
+
+Das Vorgehen ist in der GBA 9.19 beschrieben. Exportformate in PDF oder CSV möglich.
+
+#+begin_quote
+Der Kursbericht ist zu empfehlen. Es ist vom Ablauf her am einfachsten. Nach der letzten Therapie
+den Patienten auswählen -> Kursbericht -> export
+#+end_quote
+
+****** Kursbericht
+
+Patient > Patienten auswählen > Kursbericht > Export
+
+****** Exportfunktion
+
+Datenexport
+
+**** GEPRÜFT Datenexport auf einen anderen ReOxy
+
+Nach dem anschließen eines Admin USB Sticks wird unter
+"Geräteinfo" eine Exportfunktion freigeschaltet. Infos dazu über den Service
+
+**** WIP ReOxy Reporter
+
+Dies ist ein fortgeschrittenes verfahren für Anwender mit mehreren ReOxy's
+Mit dem Programm können Exporte mit von unterschiedlichen Geräten im Excel format
+zusammengeführt werden.
+
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/08_Software/ReOxyReporter/Using of ReOxy Reporter.pdf][ReOxy Reporter Manual]]
+
+1. Legen Sie alle exportierten TXT-Dateien mit Patienten- und Dateninformationen in ein beliebiges Verzeichnis,
+zum Beispiel C:\ReOxyDaten.
+
+
+2. Legen Sie die Datei ReOxyReporter.exe auf Ihrem Desktop ab.
+   
+ [[file:Assets/ReOxy_Reporter/Step_1.png]]
+
+3. ReOxyReporter Starten
+   
+[[file:Assets/ReOxy_Reporter/Step_2.png]]
+
+4. Drücken sie auf den “Search patients” button.
+   
+[[file:Assets/ReOxy_Reporter/Step_3.png]] 
+
+
+5. Wählen Sie das Verzeichnis mit allen aus ReOxy exportierten TXT-Dateien aus und drücken Sie "OK".
+   
+[[file:Assets/ReOxy_Reporter/Step_4.png]] 
+
+
+Eine Liste aller gefundenen Patienten wird angezeigt.
+
+*** Meldungen, Alarme und Fehlerbehebungen 
+*** Hinweise zur Reinigung und Desinfektion – gemäß Gebrauchsanweisung 
+*** Informationen zur Wartung und Service- technischen Kontrolle 
+
+* IHT/IHHT
+:PROPERTIES:
+:ID:       741e7692-d4b2-4c13-921e-196a36f7e376
+:END:
+
+Infos zum Verfahren, Wirkmechanismus, Gerätetechnik und Mitbewerb
+
+** GEPRÜFT IHHT/IHT Verfahren
+
+- IHHT
+  Intermittent Hypoxia Hyperoxia
+  Hypoxische Phase
+
+- IHT
+  Intermittent Hypoxia Normoxia
+
+Intermittierende Hypoxie Hyperoxie Therapie, kurz IHHT ist ein verfahren bei dem
+Im wechsel viel und wenig Sauerstoff über eine Atemmaske zur Verfügung gestellt wird.
+Der Patient atmet die verdünnte Atemluft über eine Atemmaske ein.
+
+Ist im Grunde ist es ein umgedrehter Sauerstoffkonzentrator.
+Obwohl es einige Unterschiede gibt wird es oft wie ein Höhentraining beschrieben.
+Das ist nicht ganz korrekt, allerdings ein ganz gutes mittel um das Thema verständlich zu machen. 
+
+** WIP IHT/IHHT Mechanism
+
+How does IHHT/IHT Work
+
+To better understand the Mechanism and Clinical benefits we have to analyse
+the Therapy on several levels. As a rule of Thumb we can say that the further
+we go down the following list the less is known and the more abstract it gets.
+We will look in depth at two recent Reviews.
+
+[cite:@behrendtEffectsIntermittentHypoxia2022] Behrendt, Bielitzki & Behrens et al. (2022) Effects of Intermittent Hypoxia–Hyperoxia on Performance- and Health-Related Outcomes in Humans: A Systematic Review, Sports Medicine - Open.
+Is outlining the Clinical Evidence and focuses on the functional impact of IHHT 
+
+[cite:@burtscherMechanismsUnderlyingHealth2023] Burtscher, Citherlet & Camacho-Cardenosa et al. (2023) Mechanisms Underlying the Health Benefits of Intermittent Hypoxia Conditioning, The Journal of Physiology.
+Focuses on the Mechanisms and potential Health Benefits of IHT/IHHT 
+
+*** WIP Glossary 
+
+The Reviews and Supporting papers urge for a consistent Terminology.[cite:@behrendtEffectsIntermittentHypoxia2022; @panzaIntermittentHypoxiaCall2023; @burtscherMechanismsUnderlyingHealth2023] 
+The reasons for this are the following
+
+- Hypoxia Normoxia are relative Terms
+- Terminology has unclear definitions
+- Different Terminology between Different Fields (Sleep Apnea, Intermittent Hypoxia, Cancer Research)
+- Dose Dependency of The benefit vs detrimental effects
+- Knowledge Gap about the dose contributions to different Mechanisms
+
+  In order to give a clearer picture we will define what we talk about according recommendations from 2023
+
+#+begin_quote
+Hypoxia
+A condition in which oxygen supply does not match oxygen demand
+
+Hypoxaemia
+A partial pressure of oxygen in the arterial blood below 60 mmHg (8 kPa) or haemoglobin
+oxygen saturation below 90%
+
+Hyperoxia
+elevated oxygen tension
+
+Acute hypoxia
+Initial phase of hypoxia exposure with most pronounced (patho)physiological responses
+
+Chronic hypoxia
+Prolonged (continuous or intermittent) hypoxia (days to years)
+
+Functional hypoxia
+Physical exercise or extensive motor-cognitive exercise
+
+Continuous hypoxia
+Exposure of an organism to uninterrupted hypoxia, as occurring during high-altitude
+
+Intermittent hypoxia
+(1) high-frequency intermittent hypoxia, e.g. obstructive sleep
+apnoea, elicits mostly maladaptive responses;
+(2) low-frequency intermittent hypoxia, e.g. intermittent hypoxia
+exposure/conditioning, elicits mostly adaptive
+responses.
+
+Intermittent hypoxia conditioning, acute intermittent hypoxia, intermittent hypoxia training
+Also termed IHE (see below), acute
+intermittent hypoxia (this term is mainly used in studies on the potential of intermittent
+hypoxia to modulate respiratory plasticity and/or if subjects with spinal cord injury are
+exposed to intermittent hypoxia)
+
+Intermittent hypoxia exposure/conditioning (IHE/IHC) versus intermittent hypoxia hyperoxic exposure/conditioning (IHHE/IHHC)
+repeated 4–8 min exposures to hypoxia, i.e. fractions of
+inspired oxygen (FIO2 = 10–15%, alternating with 2–5 min exposures to normoxia (IHE:
+FIO2 = 21%) or hyperoxia (IHHE: FIO2 = 30–35%), totalling 35–40 min/session applied 3–5
+times per week for 3–8 weeks. IHHE has also been termed intermittent hypoxia
+hyperoxic conditioning (IHHC)
+
+#+end_quote
+
+
+#+begin_quote
+
+IHHT/IHT
+same as IHHE/IHE T stands either for treatment or Therapy
+
+AIH Acute Intermittent Hypoxia
+Basically another term for IHE/IHC/IHT
+
+#+end_quote
+
+*** GEPRÜFT Functional and Behavioural Effects
+:PROPERTIES:
+:ID:       b80ef341-e309-4c6c-ab1c-130de6ab8679
+:END:
+
+#+begin_comment
+Clinical effects show and measure more direct benefits for the Patients. Per ex. How far can you walk?
+How do you feel today?
+#+end_comment
+
+These are clinical effects show an improvement in Symptoms
+or functional tests. Main Resources is the Systematic review [cite:@behrendtEffectsIntermittentHypoxia2022] and
+the two Trials from Schueller et al.[cite:@schullerEFFECTSCOMPLEMENTARYINTERMITTENT]. Doehner et al.[cite:@shafieesabetTreatmentEffectRespiratory2023]  
+
+***** Improvements in Physical Performance
+
+- Exercise Tolerance
+- Physical work capacity in OTS
+- Stair Climbing
+- 6MWT
+- Maximum hand-grip
+
+***** Improvements in Cognitive Performance
+- Fatigue
+- Concentration
+- MOCA
+
+***** Perceived Health
+- Scores
+
+***** Decreased appetite
+- This has been described in high altitude as Hypoxia induces leptin.
+
+*** GEPRÜFT System Level Effects
+
+#+begin_comment
+System Level effects show direct and long term responses to hypoxia that are measurable
+by equipment often Present in a doctors office. Like a Spirometer or an ECG
+#+end_comment
+
+  The Main Resource from here on out is the Review on Mechanisms
+  from Burtscher et al.[cite:@burtscherMechanismsUnderlyingHealth2023]
+
+#+begin_comment
+Basically the Body senses low O2 and sends a signal to the Breathing centre which in turn
+tells the body to compensate for the lack of oxygen and sends the signals down the spine
+to the breathing muscles and the heart.
+#+end_comment
+
+  Whether and how central Chemoreceptors directly modulate hypoxia responses
+  in humans is still debated. Classically chemoreceptors respond to pH and CO2.
+  The main nuclei involved are the brain-stem pre-Bötzinger complex, retrotrapezius
+  nucleus and raphe magnus nucleus.
+
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org_20240510_143117_lWrMjU.png]]  
+  
+  Contrary to the classic model, In a Hypoxic state there also a chemoreflex response.
+  It is assumed that this works through our Peripheral Chemoreceprors sensing low oxygen
+  and or lactate and send a signal to the brain stem this induces Serotonin leading to
+  a Neuro mediated Hypoxic Ventilatory Response and increased Cardiac output,
+  additionally it can have positive effects on the Nervous system.
+  
+  The molecular mechanisms(per ex Mitochondria and HIF) collaborate with and enable this
+  systemic oxygen sensing Leading to the hypoxic ventilatory response (HVR) instantiated
+  by chemoreceprors particularly the cartoid bodies.
+  Neurons transmit sensory impulses to activate the nervous system mediating the acute
+  ventilatory chemoreflex response.
+
+
+  It seems like the Cardiac and Ventilatory response to Intermittent Hypoxia
+  accumulates when repeated and may benefit from additional task specific
+  Training in certain modalities.
+
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org_20240510_141341_y1u4PW.png]] 
+
+ 
+
+  The Cardiac and Ventilatory responses of Intermittent Hypoxia are Neuromediated
+  Therefore we will start with the Nervous system.
+ 
+**** GEPRÜFT Nervous System
+
+Our Brain works with frequencies. As a processor on a PC Hypoxia seems to influence
+those frequencies and interacts with our Nervous System.
+
+We can observe some indications per ex. in increased maximum hand-grip or in the
+Improvement of Heart Rate Variability
+
+Current Model:
+
+AIH(IHE) induced motor plasticity is based largely on models of respiratory
+Motor plasticity
+
+Hypoxia -> Cartoid Body -> Respiratory Center -> Serotonin -> BDNF
+
+- Q pathway triggered by mild AIH
+- S pathway triggered by severe AIH and is dangerous for humans (were not doing that with IHHT)
+https://www.youtube.com/watch?v=qdOPGbdgYKk
+
+#+CAPTION: In panel a: Neural network model of tAIH-induced plasticity, including hypoglossal (XII), phrenic and limb motor neurons (MN).
+#+CAPTION: In panel b: Working model of cellular mechanisms giving rise to tAIH-induced motor plasticity. Moderate acute intermittent hypoxia (Po2 >40 mmHg) activates carotid body chemo-afferent neurons that then activate raphe serotonergic neurons and trigger serotonin release in widespread motor nuclei. Serotonin activates Gq coupled 5-HT receptors, initiating phrenic motor facilitation via the Q pathway (serotonin-induced, BDNF protein synthesis). Spinal tissue hypoxia also stimulates glia to release of ATP/adenosine into the extracellular space; subsequent binding to Gs coupled adenosine 2A receptors on motor neurons elicits a distinct intracellular signaling cascade that either: 1) elicits a distinct form of phrenic motor plasticity (but only at severe levels of tissue hypoxia), and/or 2) inhibits the Q pathway via cross-talk inhibition.
+#+CAPTION: In panel c: tAIH effects are widespread among motor neuron pools, leading to plasticity of many motor systems, including: tongue/upper airway (XII), breathing (C3-C5), grasping (C6-T1) and locomotion (L4-S4). Thus, tAIH elicits global effects on motor neurons that elicit outcomes depending on the target muscle. The impact of AIH is enhanced by combination with task specific training, amplifying BDNF/TrkB effects within the targeted (task specific) motor system.
+[[file:Assets/Schematic representations of tAIH-Induced motor plasticity.jpg]]
+
+Trumbower et. al. 2017 [cite:@trumbowerEffectsAcuteIntermittent2017] demonstrated
+in a small crossover Study the effect of IHE on Hand Function in Spinal Cord Injury.
+There have been trials on rats and humans. AIH(IHE) may have synergistic effects
+with task specific training and could be connected with BDNF.
+https://www.youtube.com/watch?v=nLrLzXcXr7M
+
+This has been followed up by several Authors[cite:@tanAcuteIntermittentHypoxia2020] 
+
+**** GEPRÜFT Ventilatory/ Respiratory System
+Initiated by Cartoid body sensing low arterial po2 and increased lactate.
+activates sympathetic nervous system mediated acute ventilatory chemo reflex
+response. Leading to Pulmonary vasoconstriction increasing Minute Ventilation
+
+- Progressive augmentation of Hypoxic Ventilary Response (HVR) during IH
+- Serotonin Triggered long term facilitation (vLTF)
+
+#+CAPTION: Fig. 2. A recording of breath-by-breath minute ventilation values recorded from a human participant before, during and following exposure to 12 episodes of hypoxia (Puri et al., 2021)[cite:@puriComprehensiveReviewRespiratory2021] 
+[[file:Assets/1-s2.0-S0014488621001151-gr2.jpg]] 
+
+
+#+begin_comment
+may be greater in Males then Females and seems to be stronger in
+Wakefulness then when asleep
+#+end_comment
+
+Increased also Ventilation leads to excretion of Bicarbonate as a response
+to respiratory alcalosis.
+
+Current Theory:
+Crosstalk of locus coeruleus and pre boetsinger complex(Regulating Breathing Rhythm).
+preBötC neurons display inspiratory-related activity and project to,
+synapse onto, and activate the locus coeruleus, the key arousal centre of the brain.[cite:@yackleTransformationOurUnderstanding2023]
+
+https://www.youtube.com/watch?v=79g_TsgIRJY
+
+**** Cardio Vascular System
+
+autonomic acute cardiovascular adjustment to hypoxia
+
+- Increased heart rate
+- Cardiac output
+- Peripheral resistance
+- Systemic arterial BP
+
+Decreased heart rate could explain decreased resting heart rates observed in cardiac
+patients.
+
+A systematic meta-analysis of studies on patients with cardiovascular diseases
+demonstrated reductions in resting heart rates (mean difference: −5.4 beat/min),
+systolic BP (mean difference: −13.7 mmHg) and diastolic BP (mean difference: −7.9 mmHg)
+in hypertensive patients (Glazachev et al., 2021).[cite:@glazachevSafetyEfficacyIntermittent2021]
+
+HRV
+
+*** WIP Organ
+
+- Heart
+  Increase in left ventricular ejection fraction
+  
+- Lung
+  FEV1 MV
+  
+- Brain
+  Cognitive Scores
+  
+- Bones
+  in clinical studies IH conditioning inhibited bone
+  resorption biomarkers and stimulated bone formation
+  
+*** WIP Biomarkers
+
+The changes in Biomarkers have not been consistently observed. This might be
+due to different protocols Modalities, and low amount of study participants.
+Increase in hb can also occur due to the reduction in plasma volume therefore
+Haematocrit must be considered.
+
+- CRP
+- Interleukine
+- Lipid Profile
+- Reticulocytes
+- Haemoglobin
+
+Recent Studies[cite:@schullerEFFECTSCOMPLEMENTARYINTERMITTENT] [cite:@shafieesabetTreatmentEffectRespiratory2023] [cite:@burtscherIntermittentHypoxiaIncreases2004]
+have demonstrated Changes in CRP and Haemoglobin.
+
+*** WIP Cellular and Genetic
+:PROPERTIES:
+:ID:       3489d946-a323-47cd-85e3-fe511a3f28d7
+:END:
+
+#+begin_comment
+Cellular and Epigenetic effects are often used for fundamental research. They are
+models that try to explain how something works. Like the law of physics. However they do not
+proof that something works. Its like Falling down the stairs and looking up the law of physics
+vs. using a handrail next time.
+#+end_comment
+
+This is a field of ongoing research.
+The Biological in vivo proof of IHHT/IHT in this area is not there.
+Additionally a lot of research has been done in vitro(in the petry dish)
+and cannot be translated 1:1 to the human body.
+
+For this im again looking at the Review from Burtscher et al.[cite:@burtscherMechanismsUnderlyingHealth2023].
+And Molecular science from the nobel price 2019.
+
+Hypoxia conditioning aims to induce adaptations to hypoxic stress that
+enhance resilience to subsequent stress.
+
+This is based on the principles of Homoeostasis and Hormesis.
+Since Mitochondria and HIF interact it is difficult to separate them
+although mitochondria quality control might also be mediated by HIF
+independent pathways. Some Theories state that Mitochondrial Quality Control
+is based rather on re-oxygenation then hypoxia.(ROS mediation)
+
+***** Mitochondria
+
+From the Review.
+
+Prolonged continuous hypoxia may decrease mitochondrial mass by reducing
+mitochondrial biogenesis, increasing mitophagy and altering mitochondrial
+morphology and dynamics. Effects that have not been well characterized for IH.
+
+Hypoxia/re-oxygenation through aberrant fusion can produce ‘donut-shaped’
+mitochondria (Liu & Hajnoczky, 2011) or megamitochondria, morphologies
+potentially contributing to functional recovery or auto-phagic regulation,
+respectively.
+
+The remarkable plasticity of mitochondria (oxidative phosphorylation efficiency,
+substrate utilization flexibility and reliance on alternative metabolic pathways) to
+hypoxia and other stressors renders them primary candidates to mediate
+beneficial hypoxia conditioning effects.
+
+Improved mitochondrial quality control by
+upregulated mitophagy and enhanced anti-oxidative mechanisms likely
+contributes to improved cellular resilience effected by hypoxia conditioning,
+but empirical evidence regarding the hypoxic doses that elicit these
+protective effects is scarce, particularly for IH.
+
+***** HIF1a
+
+#+CAPTION: Nobel Prize in Physiology or Medicine 2019: How Cells Sense and Adapt to Oxygen Availability. Under normoxic conditions, Hif-1 alpha is hydroxylated at two proline residues. It then associates with VHL and is tagged with ubiquitin resulting in proteasomal degradation. Under hypoxic conditions, Hif-1 alpha translocates to the cell nucleus and associates with Hif-1 beta. This complex then binds to the HRE region of the DNA resulting in the transcription of genes that are involved in a multitude of processes including erythropoesis, glycolysis, and angiogenesis.
+[[file:Assets/1920px-HIF_Nobel_Prize_Physiology_Medicine_2019_Hegasy_ENG.png]]
+The Expression of HIF under Hypoxia has to the best of my
+knowledge not been measured for IHHE/IHE.
+
+**** WIP HIF and Mitochondria Theory
+
+The following is a lot of interpretation from my side.
+Take it with a spoon full of salt.
+
+The claim is that Hypoxia leads to mitoptosis and biogenisis
+by disrupting homoeostasis(Survival of the fittest).
+ATP is low -> We reduce oxygen -> damaged mitochondria die -> Mito Quality
+goes up -> ATP rises.
+
+My Question:
+
+Is it plausible...
+to assume that IHHT impacts oxygen saturation on the tissue level
+to an extend where HIF gets expressed and or these Mitochondrial effects occur?
+
+Mitochondira consume Oxygen. HIF relies on Oxygen for stabilization.
+In Vitro Studies have shown different results in Various Hypoxia Protocols.
+Some show HIF activity some don't. These protocols also try to mimic conditions
+of sleep apnea and are usually several hours (6-20) long.
+
+In the Studie of Semenza showing HIF expression Variation over oxygen Tension
+it is shown in HELA Cells that HIF expression goes up the lower we go in O2[cite:@jiangHypoxiainducibleFactorLevels1996]
+[[file:Assets/hif1levelsvary.png]]
+
+Is it plausible that we reach relevant levels in tissue.
+
+PLACEHOLDER: Picture of Organs with o2%
+
+Is it reasonable to assume that we reduce oxygen concentration to lets say 2% in the Liver.
+
+We have to consider that Tissue oxygenation is also dependent on Vascularisation.
+In an Athlete Muscle Tissue O2 will drop less then in elderly people.
+Remember that hypoxia is relative.
+
+The answer I leave up to you. But i do have some more Questions.
+
+What are the steps between Mitochondrial Improvement and Functional improvement.
+How many damaged Mitochondria does a PCS patient have compared to a healthy one
+and how many do we need to "repair" in order to see improvement.
+How do we measure that?
+
+Additionally
+In the Cell About 90% of Oxygen is used up by Mitochondria.
+Lets say my Mitochondria are Hyperactive. HIF gets expressed more because
+the there is less oxygen available? 
+
+In return lets say my Mitochondria are less active(damaged).
+HIF gets expressed less because there is more than enough oxygen available
+to hydroxilate? Therefore at least the HIF mediated Quality control of Mitochondria
+would not be active?
+
+In altitude Training the first acute ventilatory response is followed by a
+shift in Blood plasma, followed by increase in hb (~1% per 4-5 days of continuous exposure)
+to increase this in a meaningful amount you need 3-4 weeks at altitude of 2.5-3.500m
+with exercise. The Peripheral increase in Oxygen capacity through revascularization
+and Mitochondrial biogenisis takes even longer. For a long time it has been thought
+that Altitude exposure alone would massively increase your oxidative capacity
+that's not really the case.
+
+Interview Dr. Grégoire Millet
+https://youtu.be/5ln8U1e3BS4?si=htSftCHZlHUsC5NH&t=1850
+
+
+#+begin_comment
+
+HIF Theory overall might have some issues too
+
+https://forbetterscience.com/2020/10/07/gregg-semenza-real-nobel-prize-and-unreal-research-data/
+
+#+end_comment
+
+Overall over the past 3 years and countless Hours of searching papers
+i did not find the paper that has an answer that i can give with a good conscience.
+This is why this is ongoing base research and I admit this is too complicated
+for me to make sense of.
+
+***** Conclusion
+
+- The Terminology between the fields is not coherent,
+  please consider what your reading carefully
+
+- mild IHHE with the ReOxy is safe. There have been no reports of serious side effects
+
+- The Studies by Schueller et al. show positive effects in LongCovid Patients
+  These are Studies in IHHE with the largest amounts of Participants up to date
+  with remarkable results.
+
+- IHHE has Potential as a non-pharmacological intervention strategy
+  - improving peak oxygen consumption
+  - exercise tolerance
+  - cognitive performance
+  - reducing cardiometabolic risk factors
+    (particularly blood glucose level systolic and diastolic blood pressure)
+    in older patients with cardiovascular and metabolic diseases or cognitive impairment.
+  
+- The evidence concerning the effects of IHHE on total lipid Profile
+  and erythropoiesis is still inconclusive
+  
+- The effect of Long Term Ventilatory Facilitation after IHHE
+  for Patients in with dysfunctional Breathing after COVID has had little attention.
+  
+- the cellular and molecular changes should be examined in IHHE/IHE.
+  
+- There is a lot more to talk about... feel free to read the papers in the References
+  and join the conversation.
+
+*** References
+
+#+print_bibliography:
+** WIP ReOxy
+:PROPERTIES:
+:ID:       c384679f-592c-481a-9fd7-843ba3bef0fe
+:END:
+
+Der ReOxy ist ein Medizinprodukt der Klasse iib zur Durchführung einer IHHT®.
+Die Zweckbestimmung (Notified Body) ist die Erhöhung der Belastungstoleranz bei KHK.
+Ein Kernaspekt der Therapie mit dem ReOxy ist die Individuelle Dosierung der Hypoxie
+dies geschieht über den SRT® Algorithmus. Die Hypoxische Dosis wird an die Reaktion
+von Herz- Atmung und Sauerstoffsättigung des Patienten angepasst.
+
+*** WIP USPs
+:PROPERTIES:
+:ID:       8357b0a8-cd8c-4140-86b9-266f46328cdd
+:END:
+
+**** Medizinprodukt Klasse 2b
+:PROPERTIES:
+:ID:       92ed1336-55ef-4fc3-86f7-0cf88190a79b
+:END:
+Die erhöhte Risikoklasse (IIB) hängt damit zusammen das der ReOxy für eine medizinische
+Zweckbestimmung hat. Also für die Behandlung von Patienten mit der Diagnose KHK
+zugelassen ist. näheres dazu unter Medizinische Zweckbestimmung 
+
+**** Medizinische Zweckbestimmung
+Zweckbestimmung: Erhöhung der Toleranz gegenüber Belastung bei älteren Menschen mit
+Koronarer Herzkrankheit. Das ist quasi die Indikation. In der GBA sind außerdem
+Kontraindikationen aufgelistet.
+
+Der ReOxy ist das einzige IHHT gerät mit Zweckbestimmung / Indikation und Kontraindikationen.
+Diese Vorgaben werden vom notified body TÜV geprüft und abgenommen.
+Das ist wichtig denn alle anderen IHHT Geräte haben keine Zweckbestimmung oder den Zweck
+Stickstoff von Sauerstoff zu trennen. Das ist ein starkes argument in Kliniken und
+Ethikräten(Studien) und ein klarer Ausschluss für die Konkurrenz. Das ist mit ein Grund
+warum in der Studienlage zur IHHT zum Großteil der ReOxy zu finden ist.
+
+Auch die Kontraindikationen haben etwas positives. Die klare Beschreibung einiger KI´s
+zeigt das es bei bestimmten Krankheitsstadien (leichte bis mittlere Herzschwäche) sicher ist.
+
+**** Sicherheitsabschaltung
+Im Hintergrund läuft immer ein Sicherungsmechanismus mit gestuften Prioritäten.
+
+***** Stufe 1
+Hinweis am Bildschirm unten links. Kein Alarm.
+Beispiel: IQ low (Signalqualität vom Sensor niedrig)
+
+***** Stufe 2
+Warnung und Alarm
+Beispiel: SpO2 unter Alarmgrenze 80%
+Alarmton innerhalb von 25 Sekunden unterdrücken. Sonst Eskaliert der Alarm zu stufe 3
+
+***** Stufe 3
+Warnung und Alarm
+Beispiel: Sensor nicht am Patienten
+Der ReOxy schaltet nach 25 Sekunden ab senst bei unterdrücktem Alarm
+
+
+#+begin_quote
+Die Abschaltung ist für viele kontraintuitiv. Der Patient hat einen niedrigen O2,
+der Alarm wird nicht unterdrückt und das gerät schaltet ab während der Patient eine
+niedrige Sättigung hat. Macht erst mal keinen Sinn denn der Patient braucht O2.
+Die Abschaltung ist darin begründet das die Messung der Sauerstoffgemisches einen
+Fehler aufweist. Also der O2% wert eine Fehlmessung abgibt. Das würde wiederum dazu
+führen das trotz niedriger Sättigung des Patienten der ReOxy weiterhin eine Hypoxische
+Mischung verabreicht und während der Bildschirm 35% anzeigt. Aus Sicherheitsgründen
+schaltet der ReOxy zu dem Zustand normal zustand der immer bekannt ist. Raumluft.
+Daher schaltet sich der ReOxy ab öffnet alle Ventile und führt beim Neustart einen
+Selbsttest durch um zu prüfen ob der O2 sensor(im gerät am Ventil) richtig misst.
+#+end_quote
+
+**** Automatische Ermittlung aller Behandlungsparameter anhand Kardiovaskulärer Trigger
+:PROPERTIES:
+:ID:       340c4558-fc4e-475b-961f-4f718a4979c1
+:END:
+Siehe [[id:ae69053c-df58-4b4a-8171-6115a9bfda15][HypoxieTest und SRT]]
+
+In der Praxis zeigt sich bei schwereren fällen und einigen Off label Indikationen, das
+der Hypoxie test nicht ideal ist. Die Einstellungen sollten Manuell vorgenommen werden SRT ist weiterhin
+im Hintergrund aktiv.
+
+**** Validierte Evidenz aus der Charité
+Siehe Studien
+**** Darstellung der Flussvolumenkurve
+Zeigt den Durchfluss des Luftgemisch am ReOxy. Man kann erkennen das die Atemarbeit sich
+nach und nach in der Hypoxie erhöht und erkennen ob der Patient
+hyperventiliert. (Roter strich am oberen rand der Kurve)
+
+**** Zuverlässiges Trennverfahren (Pressure Swing Adsorption)
+Siehe Filtertechnik
+
+**** Hergestellt in Düsseldorf
+Made in Germany.
+
+*** GEPRÜFT Anwendungsgebiete
+
+**** Indikation Zweckbestimmung
+Die vorgesehene therapeutische Indikation des ReOxy ist die Verbesserung der körperlichen Belastbarkeit
+bei erwachsenen und älteren Patienten mit koronarer Herzkrankheit (KHK).
+(GBA 3.3 Vorgesehene Verwendung)
+
+**** Off Label
+
+***** Herzfehler
+***** Metabolisches Syndrom
+***** COVID19
+***** Pre-Diabetes
+***** Spinal Cord Injury
+***** Over-training Syndrome
+
+*** WIP Gerätetechnik
+
+**** AIMEDIQ Test SRT DESC
+
+STUDY METHOD
+
+***** Name
+Respiratory therapy based on short-term intermittent exposure to hypoxia with individual dosing of the load (Reoxy therapy)
+***** Description
+Reoxy therapy is a method of hypoxic conditioning based on short-term exposure to moderate hypoxia with individual dosing of the intensity of hypoxic load.
+The patient is supplied through a breathing mask in an interval (intermittent) mode with a nitrogen-oxygen gas mixture with varying (from 10 vol.% to 40 vol.%) oxygen content. The supply of a hypoxic mixture (hypoxic load) alternates with the supply of an oxygenated gas mixture (reduction). Thus, one cycle of the procedure consists of “hypoxic” and oxygenated intervals, the duration of which is set individually for each patient from 1 to 6 minutes. The average number of cycles in one procedure is 5-8.
+Before the first procedure, the body's ability to adapt to hypoxia will be assessed by conducting a modified hypoxic test (HT-M).
+HT-M is a functional two-phase stress test based on short-term inhalation through a face mask of normobaric isocapnic nitrogen-oxygen gas mixtures with varying (from 10 vol.% to 40 vol.%) oxygen content to assess the individual response of the body to hypoxic exposure (desaturation phase) and features of recovery during the reoxygenation phase. Adapted for all categories of patients, including patients with severely reduced functionality
+The purpose of testing is to calculate individual parameters of the procedure
+HT-M parameters:
+- O2 concentration in the hypoxic nitrogen-oxygen gas mixture – 11%
+- O2 concentration in the hyperoxic nitrogen-oxygen gas mixture in the recovery phase (oxygenation) – 35-40%
+- maximum duration of the hypoxic phase (time of supply of the hypoxic gas mixture) - 10 minutes
+- duration of the hyperoxic phase (time of supply of the hyperoxic gas mixture) – until the initial parameters of PR and SpO2 are restored
+***** Calculation of individual parameters of the IGGT procedure
+Given the high variability of the response to the effects of hypoxia*, the individual target SpO2 level (SpO2 t), corresponding to the minimum SpO2 value recorded during the hypoxic test, will be used as the main parameter.
+
+A number of authors have shown that different patients, with equal parameters of external hypoxic exposure, can experience different levels of endogenous hypoxic load, as evidenced by differences in changes in SpO2 levels. This is due to the fact that the body’s adaptive response to hypoxia is determined both by the current physiological state of the body and by individual sensitivity to oxygen deficiency, which largely depends on genotype, age, the presence of concomitant diseases, medication use and other factors. 
+Therefore, the level of hypoxic load will be calculated strictly individually, based on the adaptive capabilities of each patient’s body at the time of the procedure:
+
+- The time required for desaturation (dT) from baseline SpO2 to trough level and the time required to recover to baseline SpO2 (rT) will be used to calculate the duration of hypoxic and hyperoxic intervals in a single cycle. This study will set the threshold for dT at 10 minutes or lower to maintain a fixed degree of homogeneity among participants.
+- The O2 concentration in the hypoxic gas mixture will be maintained at the level required to achieve SpO2 t and will not change throughout the entire duration of the procedure.
+- The O2 concentration in the hyperoxic gas mixture will be the same for all patients and will be 35-40 vol. %
+- The total duration of the procedure is 45-60 minutes, while the total cumulative duration of hypoxic exposure for 1 single procedure is 30 +/- 5 minutes.
+
+***** Methodology
+****** Hypoxic test
+Before the test begins, baseline levels are measured
+heart rate (min-1), SpO2 (%), SBP and DBP
+The patient inhales nitrogen-oxygen gas mixtures through a tightly pressed face mask, which remains on the face throughout the test.
+Registration of PE and SpO2 occurs throughout the entire test using pulse oximetry (finger sensor)
+When you press the test start button, a hypoxic gas mixture is supplied to the mask.
+The hypoxic phase of the test ends automatically when one of the criteria is reached:
+•	increase in emergency situation by 30% or more
+•	decrease in SpO2 below 83%
+•	after 10 minutes (preset duration of the hypoxic phase)
+•	subjective criteria: dizziness, nausea, feeling of shortness of breath, shortness of breath, pain in the heart or other subjective sensations of deterioration
+Upon reaching the first three criteria, the phase change (switching to the supply of a hyperoxic gas mixture to the mask) occurs automatically. When the above subjective sensations appear, the hypoxic phase is completed manually.
+After restoration of the initial SpO2 level and state of emergency, the test is considered completed. The patient removes the mask and pulse oximeter sensor.
+
+If during the test the SpO2 level does not fall below 90%, the test results are considered not applicable for use as parameters for the subsequent procedure. The test must be repeated, reducing the O2 concentration in the inhaled gas mixture by 1%.
+Before the 4th and 7th IHHT procedures, repeated testing is carried out to correct the hypoxic load parameters
+****** Reoxy therapy procedure
+Before starting the procedure, the baseline levels of heart rate (min-1), SpO2 (%), SBP and DBP are measured
+The patient inhales nitrogen-oxygen gas mixtures through a tightly pressed face mask, which remains on the face throughout the procedure.
+Registration of emergency and SpO2 occurs throughout the entire procedure using pulse oximetry (finger sensor)
+When you press the button to start the procedure, a hypoxic gas mixture is supplied to the mask.
+Switching of gas flows will occur automatically according to the specified parameters.
+The procedure ends automatically after a preset time has elapsed. The patient removes the mask and pulse oximeter sensor.
+After the procedure is completed, the levels of SBP and DBP are measured again
+***** Mode
+The total duration of the procedure is 45-60 minutes
+5 times per week
+2 hours before PT
+***** Providing a method
+To carry out HT-M and the reoxy therapy procedure, a Reoxy respiratory therapy unit with a built-in “hypoxic test” program will be used.
+During an IHHT session, the software automatically adjusts the switching of the gas mixture depending on changes in physiological parameters (blood oxygen saturation and heart rate) in response to hypoxic and hyperoxic exposure (biofeedback control).
+***** Epidemiological safety
+To ensure sanitary and hygienic requirements, the ReOxy respiratory therapy unit used in the study has a multi-stage filtration and purification system for the supplied gas mixture, as well as an external port (connector) for connecting an individual breathing circuit through an antibacterial / antiviral filter, providing protection against viral and bacterial contamination both the patient and the device. The use of a two-port mask as part of an individual breathing circuit ensures a unidirectional flow of the gas mixture from the device to the patient, exhalation is carried out into the environment.
+
+
+
+
+
+**** WIP ReOxy Trennverfahren
+:PROPERTIES:
+:ID:       979fbec7-b872-40b8-8100-2e4a9ef78e07
+:END:
+
+Das Luftgemisch wird über einen Konzentrator bereitgestellt.
+Die Technik dahinter nennt sich Pressure Swing Adsorption(PSA) und ist ein Medizinischer Standard
+im Bereich der Sauerstoffkonzentration. Der Hersteller Bitmos arbeitet seit über 20 Jahren
+mit Sauerstoffkonzentratoren und Pulsoxymetrie.
+
+Aufbau nach PSA Technologie „Pressure Swing Adsorption“:
+-	2 große Druckbehälter mit Adsorptionsmittel – Zeolith – in ähnlicher Form wie Silikagel
+-	2 weitere Druckbehälter mit Umgebungsluft
+-	ReOxy Kompressor in Parallelschaltung an beide Zeolith-Druckbehälter
+-	Behälter über 3-Wege Mischventil mit einem 5l resp. 2x 3l Atembeutel gekoppelt
+Prozessablauf:
+-	In den beiden Zeolithbehältern wird Stickstoff von Sauerstoff und anderen Edelgasen im Adsorptionstrennverfahren getrennt und mit einem Druck von ca. 2bar gespeichert - Nach erfolgtem Druckabfall wird der Stickstoff abgelassen resp. beigemischt
+-	Die Trennung erfolgt redundant - PSA „Pressure Swing Adsorption“, um die jeweiligen hypoxischen und hyperoxischen Phasen gewährleisten zu können.
+-	Mittels 3-Wege-Mischventil wird im Anschluss die Prozessatemluft aus den Druckbehältern mit den folgenden erforderlichen Konzentrationen online zusammengemischt:
+chypox:		ca. 10-15 % O2
+chyperox :	ca. 34 % O2 
+-	Die endgültige Prozessluft wird über einen Atembeutel (5l resp. 2x 3l) dem Patienten zugeführt
+Wichtig:
+Bei übermäßigem starkem Einatmen der Prozessluft durch den Patienten, kann der Atembeutel vorschnell entleert werden. Dies würde sich sowohl im Atem-Flow-Chart (rote waagrechte Linie, als Endmarkierung der Skala/Ordinate) als auch im c-O2-Chart (ein plötzlicher periodischer Anstieg und Abfall des Graphen) widerspiegeln.
+
+Im ReOxy werden Sauerstoff und Stickstoff voneinander getrennt(Filtriert) und in einem 6L reservoir
+(Ambu Beutel) neu zusammengemischt. Der Inhalt des Beutels wird dann vom Patienten
+leer geatmet. Eine Besonderheit des ReOxy ist die live Zusammenmischung unter Monitoring des
+Flussvolumen. D.h. im Gegensatz zu anderen Geräten wird die Luft nur bereitgestellt.
+Es wird KEIN positiver Atemwegsdruck durch das gerät aufgebaut. Der Patient leistet die
+Atemarbeit selbst.
+
+**** INTERN Hypoxie Test und SRT
+:PROPERTIES:
+:ID:       ae69053c-df58-4b4a-8171-6115a9bfda15
+:END:
+
+Der Hypoxie Test des ReOxy kann die Einstellungen für die Therapie automatisch und individuell ermitteln.
+Dazu wird der Patient für 10 - 20min (i.d.R 10min) einer Hypoxischen Dosis von 11-15% (i.d.R. 11%) ausgesetzt.
+
+Darauf kommt es zu folgenden Körperlichen Reaktionen
+  
+  - Der Sauerstoff Gehalt im Blut SpO2 reduziert sich.
+  - Die Puls-rate steigt an.
+
+    Wenn eines der Folgenden Endkriterien Erfüllt wird... 
+
+  - SpO2 <84%
+  - Pulsschwankung von 30% vom Ausgangswert
+  - Erreichen der Voreingestellten Zeit
+
+    ...schaltet der ReOxy von Hypoxie auf Hyperoxie.
+
+    In der Hyperoxischen Phase werden nun 35 - 40 % Sauerstoff bereitgestellt
+    bis der Patient mit der Sättigung wieder bei ca. 98% angekommen ist.
+    
+#+CAPTION: Plot einer CSV Datei. SpO2 Dunkelgrün; Puls Blau; O2 Konzentration Hellgrün; Umschalt und Endpunkt Lila; Phasenindikator Gelb
+#+ATTR_HTML: :alt csv plot image :title CSV Plot :align left
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org_20240317_121126_K4SgTF.png]]
+  
+
+Nun ermittelt der ReOxy durch das SRT® folgende Behandlungsparameter.
+
+    
+    - O2 Konzentration (Intensität)
+    - Ziel SpO2 (Umschaltpunkt des SpO2 in der Therapie)
+    - Max. Hypoxische Dauer (zeit bis zum erreichen des gemessenen Endkriteriums)
+    - Max. Hyperoxische Dauer (Zeit der reoxygenierung)
+
+** GEPRÜFT Studien
+https://www.aimediq.com/de/clinical-evidence/
+https://reoxy-ihht.de/
+
+*** Stärkste Literaturnachweise
+:PROPERTIES:
+:ID:       70b105f8-f439-4373-a005-ef1bbe09c99b
+:END:
+
+**** Charité
+:PROPERTIES:
+:ID:       7eda5612-ce0e-4b0f-b4d5-9407a6bd8e41
+:END:
+Treatment effect of respiratory therapy with intermittent hypoxic-hyperoxic training (IHHT) on functional capacity in patients with post COVID19 conditions: a controlled treatment trial
+https://academic.oup.com/eurheartj/article/44/Supplement_2/ehad655.2594/7391009
+
+**** Systematic Review
+
+In diesem Review aus Magdeburg wurden 1085 Artikel betrachtet, von denen nur acht Studien die Einschlusskriterien erfüllten.
+
+Effects of Intermittent Hypoxia–Hyperoxia on Performance- and Health-Related Outcomes in Humans: A Systematic Review - Sports Medicine - Open
+https://sportsmedicine-open.springeropen.com/articles/10.1186/s40798-022-00450-x
+
+- Wiederholte IHHT Anwendungen am Menschen (>18 Jahre)
+- Performance oder Gesundheitsbezogene Outcomes
+- Englisch, peer-reviewed Science Journal
+- Kontrollgruppe (Sham / Placebo)
+
+Sechs dieser Studien wurden mit dem ReOxy durchgeführt.
+
+*** Webinar Dr Schüller
+
+KRÖNER Online Akademie: https://kroener-medical.de/unternehmen/online-akademie.html
+Kennwort: KrönersAkademie
+Im Suchfeld ReOxy eingeben.
+** WIP Infos und Links
+
+[[https://reoxy-ihht.de/][ReOxy Website]]
+
+[[https://kroener-medical.de/therapiemoeglichkeiten/ihht/reoxy.html][Kroener Website]]
+
+Entwickler
+https://www.aimediq.com/
+
+Hersteller
+https://www.bitmos.de/impressum
+
+** WIP Mitbewerb
+:PROPERTIES:
+:ID:       42c41c42-a497-421a-b830-51b2a151948a
+:END:
+
+*** Übersicht
+
+|                 | ReOxy        | Mitovit    | MT-1  | Cellit       |
+|-----------------+--------------+------------+-------+--------------|
+| Hersteller      | aimediq      | Commit     | TUR   | Mededge GmbH |
+| Zulassung       | IIb          | keine      | IIa   | keine        |
+| Zweckbestimmung | KHK          | keine      | keine |              |
+| Hypoxie Test    | Ja           | Ja         | ?     | ?            |
+| Reaktion Puls   | Ja           | Nein       | Nein  |              |
+| O² min          | 10-15        |            |       |              |
+| O² max          | 35-40        |            |       |              |
+| Ziel SpO2       | 83-90        |            |       |              |
+| O² Volumenstrom | 25 lpm       |            |       |              |
+| Verbrauch       | max 550 W    |            |       |              |
+| Lärmpegel       | 55 dba       |            |       |              |
+| HRV             | Nein         |            |       |              |
+| Besondeheiten   | SRT          | Schaltbare |       |              |
+|                 | Flussvolumen | Normoxie   |       |              |
+
+
+|                 | ReOxy        | Hypoxbreath | -advanced   | -med                        | -med advanced               |
+|-----------------+--------------+-------------+-------------+-----------------------------+-----------------------------|
+| Hersteller      | aimediq      | HF Concepts | HF Concepts | HF Concepts                 | HF Concepts                 |
+| Zulassung       | IIb          | keine       | keine       | IIa                         | IIa                         |
+| Zweckbestimmung | KHK          | ?           | ?           | ?                           |                             |
+| Hypoxie Test    | Ja           |             |             |                             |                             |
+| Reaktion Puls   | Ja           | Nein        |             | Nein                        |                             |
+| O² min          | 10-15        | 9 - 16      | 7,5 - 16    | 7,5 - 20                    | 7,5 - 20                    |
+| O² max          | 35-40        | 34          | 34          | 34                          | 34                          |
+| Ziel SpO2       | 83-90        | bis 70      | bis 70      | bis 70                      | bis 70                      |
+| O² Volumenstrom | 25 lpm       |             |             |                             |                             |
+| Verbrauch       | max 550 W    |             |             |                             |                             |
+| Lärmpegel       | 55 dba       |             |             | 42 dBa                      |                             |
+| HRV             | Nein         | Ja          | Ja          | Ja                          | Ja                          |
+| Besondeheiten   | SRT          |             |             | SMART Hyperoxie-Mode        | SMART Hyperoxie-Mode        |
+|                 | Flussvolumen |             |             | Multilevel-Phasen-Steuerung | Multilevel-Phasen-Steuerung |
+
+
+|                 | ReOxy        | Gecko   | Cellair One    | home    | pro      | lounge  |
+|-----------------+--------------+---------+----------------+---------+----------+---------|
+| Hersteller      | aimediq      | cellgym | cellgym / TUR? | cellgym | cellgym  | cellgym |
+| Zulassung       | IIb          | keine   | IIa            | keine   | keine    | keine   |
+| Zweckbestimmung | KHK          | nein    | ?              | nein    | nein     | nein    |
+| Hypoxie Test    | Ja           | nein    | ?              | nein    | nein     | nein    |
+| Reaktion Puls   | Ja           |         | Nein           |         |          |         |
+| O² min          | 10-15        |         |                | 9-16%   | 9-34%    | 9-34%   |
+| O² max          | 35-40        |         |                | 36%     | 34       | 34      |
+| Ziel SpO2       | 83-90        |         |                |         |          |         |
+| O² Volumenstrom | 25 lpm       |         |                |         |          |         |
+| Verbrauch       | max 550 W    |         |                |         |          |         |
+| Lärmpegel       | 55 dba       |         |                |         |          |         |
+| HRV             | Nein         |         | Ja             | Nein    | Optional | ?       |
+| Besondeheiten   | SRT          |         |                |         |          |         |
+|                 | Flussvolumen |         |                |         |          |         |
+
+**** Commit Health
+Mitovit
+Costs about 23.000 without VAT
+Commit Health got popular by selling VNS analysis.
+They also Sell Supplements.
+KOL is Dr. med. Siddhartha Popat from [[https://www.igafev.com/][IGAF]]
+
+Flyer und Broschüren [[D:\kroener\OneDrive - Kröner Medizintechnik\TMI\ReOxy\01_Competitors\MITOVIT_Produktinformation.pdf][Broschüre]]
+Website [[https://creatinghealth.de/mitovit-im-ueberblick-2/][Link]]
+
+**** Cellgym
+Gecko and Cellair one.
+I've heard that the Cell air one is actually sold by TUR.
+At least TUR sells a device called Cellair one.
+They have several KOLs look at the Website https://cellgym.de/
+            
+**** HF Concepts
+Hypoxbreath
+Ranging from around 19.000 to 26.000 without VAT
+Egor egorov is one of the Lecturers. They have a so called
+HCC [[https://hccacademy.de/][Academy]] 
+
+Website: https://hypox-breath.com/
+https://hypoxbreath-academy.de/
+
+**** TUR                                                  
+I've heard they are in a legal dispute with Cellgym.
+Apparently they have quite some issues with the technical side.
+Strangely i cannot find the German Website for the device any more.
+In Switzerland they sell the MT1 wich is equivalent to the
+Cellair one. Website: https://fit4life.ch/ihht/produkte/mt-1/
+
+
+
+*** Argumente des mitbewerbs
+** WIP Anwender
+*** Key Opinion Leader
+
+*** Standorte
+
+https://www.google.com/maps/d/u/0/viewer?hl=en&mid=1_9B89ht_TCho3n6Gq_I7YFMifcecZtI&ll=50.713566482510956%2C11.82966809148437&z=7
+
+* WIP Service
+
+** Zuständigkeiten
+
+Service Über {{{p(Service)}}}
+Wartungen über {{{p(Wartung)}}}
+
+** WIP Datenexport auf einen anderen ReOxy
+
+! Alle Patientendaten auf dem Zielgerät werden gelöscht.
+
+** WIP Neuinstallation des Betriebssystems
+:PROPERTIES:
+:ID:       dea27458-1d1d-461b-b893-855ba4688015
+:END:
+
+! Alle Daten auf dem Gerät werden gelöscht.
+
+* Projects
+:PROPERTIES:
+:ID:       6fe69090-b1e0-4f28-b720-f262c9941b1b
+:END:
+
+Sammlung aktueller Projekte. Dies ist keine Chancen-liste, dazu bitte das Power BI nutzen.
+
+** Legende
+
+Liste der Aktuell Laufende Projekte. Die Projekte werden von {{{p(PM)}}} bearbeitet.
+Die Phasen werde wie folgt aufgeteilt
+
+*** Initiation Phase                                              :exclude:
+Einleitung und Vorstellung des Projekts und der Idee
+Mit Erstellung des Project Charters. Project Charter
+im Jeweiligen Onedrive Ordner
+
+*** Planning Phase                                                :exclude:
+Planung und Zuweisung der Aufgaben
+
+*** Execution&Monitoring Phase                                    :exclude:
+Ausführung der aufgaben mit zweiwöchentlichen Update
+
+*** Closing Phase                                                 :exclude:
+Abschluss
+
+** Overview :noexport:
+
+#+BEGIN: columnview :hlines 1 :id global :format "%5ITEM(Project) %TODO(Phase) %tags %10next(Anstehend) %SCHEDULED %assets(Invest) %condition(Konditionen)" :match "showintable={true}" 
+| Project                     | Phase                | tags            | Anstehend                                       | SCHEDULED             | Invest              | Konditionen                     |
+|-----------------------------+----------------------+-----------------+-------------------------------------------------+-----------------------+---------------------+---------------------------------|
+| Praxislounge Referenten     | Planning             | :Marketing:KOL: | PL Referenten suchen(TMI)                       | [2024-06-10 Mo]       |                     |                                 |
+| Nicole Vennemann            | Execution&Monitoring | :Client:        | Mietvertragsverlängerung/ Vortag? (TMI/MST/AGE) | [2024-06-10 Mo]       | 1 ReOxy             | Miete                           |
+| Dr. Meyer Hachenburg        | Execution&Monitoring | :Client:        | Vortrag PL                                      | [2024-06-10 Mo]       | 1 ReOxy             | Miete                           |
+| Raul Borgmann               | Execution&Monitoring | :Client:        | Lieferung(MMI)                                  |                       | 1 ReOxy             | Kostenlos Probe                 |
+| MEDIAN                      | Execution&Monitoring | :Client:        | Meeting MEDIAN CEO(TMI/AGE)                     | [2024-06-10 Mo 11:30] | 3 ReOxy             | Miete                           |
+| Isabelle von Loga           | Execution&Monitoring | :Client:        | Rückmeldung in 2 Wochen                         | [2024-06-06 Do]       | 1 ReOxy             | Leihgabe                        |
+| Schüller ReOxy Patient      | Execution&Monitoring | :Client:KOL:    | Rücksprache im Juli(TMI)                        | [2024-07-08 Mo]       | 1 ReOxy             | Miete                           |
+| ReOxy Tech USPs             | Execution&Monitoring | :Marketing:     | Collecting Tech USP infos(aimediq)              | [2024-06-10 Mo]       |                     |                                 |
+| ReOxy Effect Visualisierung | Planning             | :Marketing:     | HRV Demo Veranlassen(TMI)                       |                       | Demo Kostenlos      | Gerät kostet EUR 6000           |
+| Event Equipment             | Planning             | :Marketing:     | Vorschläge Stuhl Liege(ALLE)                    |                       | Sitz oder Ligefläge | ~500                            |
+| Acryl Block                 | Closing              | :Marketing:     | Aufnahme ins Bestellformular(TMI AEN)           |                       |                     |                                 |
+| Case_Study_Vorlage          | Closing              | :Marketing:     | Case Report Teilen(TMI)                         |                       |                     |                                 |
+| Altitude_Chart              | Execution&Monitoring | :Marketing:     | Vanessa Korrekturen                             |                       |                     |                                 |
+| Data_Sync_and_Analysis      | Execution&Monitoring | :DEV:           | Infos bei kunden einholen(TMI)                  |                       |                     |                                 |
+| Service Update              | Execution&Monitoring | :Service:       | ReOxy Meeting Petr(FHI)                         | [2024-05-29 Mi]       |                     |                                 |
+| Service Brochure            | Execution&Monitoring | :Service:       | Meeting CKA VWE nach Acryl Block                |                       |                     |                                 |
+| Magdeburg Schega            | Execution&Monitoring | :Research:      | Vertrag aimediq(TMI)                            | [2024-05-29 Mi]       | 1 ReOxy             | Miete                           |
+| Greifswald                  | Hold                 | :Research:      | Email aimediq                                   | [2024-06-03 Mo]       |                     |                                 |
+| Innsbruck Burtscher         | Hold                 | :Research:      | Vertrag aimediq(TMI)                            |                       | 1 ReOxy             | Miete                           |
+| Italy_2024_01_23            | Execution&Monitoring | :Italy:         | Gas Bottles(PKR)                                |                       |                     |                                 |
+| SoLongjevity                | Execution&Monitoring | :Client:Italy:  | Meeting Beretta CEO Peter(TMI PKR TOMMASO)      |                       | 1 ReOxy             | Leigabe (Kauf Juni Sonderpreis) |
+| Dott Campanini              | Execution&Monitoring | :Client:Italy:  | Verkaufsgespräch im August(TOMMASO)             | [2024-08-05 Mo]       | 1 ReOxy             | Miete                           |
+| Allemanno                   | Execution&Monitoring | :Client:Italy:  | Rückmeldung und Anpassungen                     | [2024-06-03 Mo]       | 1 ReOxy 1 Cryofos   | Miete 1500 3 Monate             |
+| Palermo Clinic              | Hold                 | :Client:Italy:  | Gerät zu Tommaso(PKR)                           |                       | 1 ReOxy             |                                 |
+| Back                        | Hold                 |                 | Rückmeldung Back (PKR)                          | [2024-06-03 Mo]       |                     |                                 |
+#+END:
+
+** [[file:Project_Task_List.html][Projekt Aufgabenliste]]
+** [[file:Project_Agenda_Overview.html][Projekt Agenda]]
+
+** Execution&Monitoring Praxislounge Referenten :Marketing:KOL:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI CKA
+:next: PL Referenten suchen(TMI)
+:Project:  Praxislounge
+:CATEGORY: Praxislounge
+:END:
+*** DONE KMT Meeting PL Referenten aussuchen
+CLOSED: [2024-06-03 Mo 09:07] SCHEDULED: <2024-06-03 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-03 Mo 09:07] \\
+  Nicole Vennemann
+:END:
+*** DONE Case Report an Axel
+CLOSED: [2024-06-03 Mo 10:36]
+*** TODO Mehrere Referenten haben abgesagt Umplanen
+SCHEDULED: <2024-06-27 Do>
+*** TODO Rückmeldung Joerg Wertenbr
+SCHEDULED: <2024-07-03 Mi>
+*** Next Referenten vorbereiten
+DEADLINE: <2024-09-06 Fr>
+*** Next Vortrag planen und unterstützen
+
+** Execution&Monitoring Nicole Vennemann :Client:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI AGE JGR
+:next: Mietvertragsverlängerung/ Vortag? (TMI/MST/AGE)
+:assets: 1 ReOxy
+:condition: Probestellung 500 2 monate dann leasing 1J
+:Project:  Praxislounge
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 12:04] \\
+  Probestellung verlängert um 1 Monat
+  im Anschluss Leasing 1 Jahr mit rückkaufoption
+- Note taken on [2024-05-13 Mo 20:04] \\
+  Anruf nachfrage wegen einstellungen bei Post COVID.
+  Hypoxie Test im Niedergelassenen bereich schwierig
+:END:
+
+*** DONE Gespräch Miete Kauf Leasing(AGE)
+CLOSED: [2024-05-28 Di 13:41]
+*** DONE Info CEO MEDIAN
+CLOSED: [2024-05-28 Di 13:41]
+*** DONE Mietvertragsverlängerung
+CLOSED: [2024-06-17 Mo 10:21] SCHEDULED: <2024-06-17 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-11 Di 15:49] \\
+  Mietvertrag verschickt
+:END:
+
+*** DONE Gespräch Vortrag PL (RID)
+CLOSED: [2024-06-20 Do 09:29] SCHEDULED: <2024-06-10 Mo>
+
+*** DONE Initial Absage ruckfrage gesendet
+CLOSED: [2024-07-01 Mo 08:13] SCHEDULED: <2024-06-26 Mi>
+*** CANCELED PL Referent?
+CLOSED: [2024-07-01 Mo 08:13] SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-17 Mo 10:29] \\
+  Doch warschienlich absage schaue nach Dr. Meyer,
+  hatte angeboten nur Case report zu machen
+- Note taken on [2024-06-03 Mo 10:35] \\
+  Jepp
+:END:
+
+*** TODO Leasingvertrag?
+SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-07-01 Mo 08:13] \\
+  Nicole Vennemann hatte gefragrt noch einen monat zu mieten
+  würde aber auch ins Leasing gehen
+:END:
+
+** Execution&Monitoring Dr. Meyer Hachenburg :Client:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Vortrag PL
+:assets: 1 ReOxy
+:condition: Probestellung Miete 500 3mon
+:Project:  Praxislounge
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 12:06] \\
+  Referent?
+- Note taken on [2024-05-13 Mo 18:48] \\
+  Hat Schwierigkeiten mit dem Hypoxie Test.
+  Einstellungen zu intensiv. Protokoll angepasst.
+- Note taken on [2024-05-13 Mo 18:48] \\
+  Guter Kunde, Kardio, 20 Patienten, 3 Monate je 500 Netto, KOL? Referent?
+  Patienten Entscheiden er kauft.
+
+:END:
+
+*** DONE Gespräch Vortrag PL
+CLOSED: [2024-06-26 Mi 08:53] SCHEDULED: <2024-06-25 Di>
+:LOGBOOK:
+- Note taken on [2024-06-26 Mi 08:53] \\
+  Im Urlaub sonst guter ansatz
+- Note taken on [2024-06-20 Do 09:30] \\
+  Gespraech geplant
+:END:
+
+*** CANCELED PL Referent?
+CLOSED: [2024-06-26 Mi 08:53] SCHEDULED: <2024-07-01 Mo>
+*** Next Verkaufsgespräch ende Juli (TMI)
+*** Next Webinar?
+
+** Execution&Monitoring Raul Borgmann :Client:
+:PROPERTIES:
+:Created: [2024-01-17 Wed 11:44]
+:SourceLink: [[id:33c3f20b-fe52-4f14-9191-d5d4dab13db4][Log [6/9]​]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:showintable: true
+:assigned: MMI
+:next: Lieferung(MMI)
+:assets: 1 ReOxy
+:condition: Probestellung Kostenlos 1 mon
+:END:
+:LOGBOOK:
+- Note taken on [2024-04-26 Fr 18:28] \\
+  Device from Vienna will be used for Raul
+  Mario will setup the delivery and re-introduction
+- Note taken on [2024-02-02 Fr 08:34] \\
+  Brauche einen ReOxy für ihn
+:END:
+
+*** DONE Lieferung MMI
+CLOSED: [2024-06-20 Do 09:31] SCHEDULED: <2024-06-13 Do>
+*** TODO Rücksprache in 4w Kauf etc.
+SCHEDULED: <2024-07-08 Mo>
+** Planning München Akquise :Client:
+:PROPERTIES:
+:showintable: true
+:assigned: MMI
+:next: Lieferung(MMI)
+:assets: 
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-04-26 Fr 18:28] \\
+  Device from Vienna will be used for Raul
+  Mario will setup the delivery and re-introduction
+- Note taken on [2024-02-02 Fr 08:34] \\
+  Brauche einen ReOxy für ihn
+:END:
+
+*** DONE Idee Vorstellung(MMI)
+CLOSED: [2024-06-03 Mo 10:19] SCHEDULED: <2024-06-03 Mo>
+
+*** DONE Abstimmung und Infos KHK
+CLOSED: [2024-06-26 Mi 08:54] SCHEDULED: <2024-06-25 Di>
+*** DONE Adresssammlung (MMI)
+CLOSED: [2024-06-26 Mi 08:54]
+*** Next Versuch bei 4 Kardiologen
+SCHEDULED: <2024-06-27 Do>
+*** Next Anschreiben (MMI TMI)
+*** Next Besuch (MMI)
+** Execution&Monitoring MEDIAN :Client:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI AGE PKR
+:next: Meeting MEDIAN CEO(TMI/AGE)
+:assets: 3 ReOxy
+:condition: Miete siehe Umsatzliste MST
+:Project:  MEDIAN
+:END:
+
+*** Assets:
+
+- ReOxy Atemtherapie Gerät	64210140	Median Klinik Flechtingen	Miete	600	Leasinggerät		
+- ReOxy Atemtherapie Gerät	64210158	Median Klinik Flechtingen	Miete	600	Leasinggerät		
+- ReOxy Atemtherapie Gerät	64220220	Median Klinik Flechtingen	Miete	600	Leasinggerät	15.01.2023	
++ 800 Masken pro Jahr ca. 6400E
+
+*** DONE Kontakt MEDIAN CEO via Nicole Vennemann (AGE)
+CLOSED: [2024-05-24 Fr 12:45]
+*** DONE KMT Meeting Update
+CLOSED: [2024-06-03 Mo 10:38] SCHEDULED: <2024-06-03 Mo>
+*** DONE Time-line Präsi erstellen(TMI)
+CLOSED: [2024-06-10 Mo 08:12] DEADLINE: <2024-06-06 Do> SCHEDULED: <2024-06-03 Mo>
+:PROPERTIES:
+:Created: [2024-05-28 Di 14:36]
+:SourceLink: [[id:8d756c8d-acaf-495e-8d37-6b2ccf89f924][TOP 3 [/]​]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+*** DONE Meeting MEDIAN CEO
+CLOSED: [2024-06-10 Mo 15:46] SCHEDULED: <2024-06-10 Mo>
+*** DONE Meeting Summary
+CLOSED: [2024-06-10 Mo 15:46]
+*** DONE Info Schüller
+CLOSED: [2024-06-11 Di 12:52] SCHEDULED: <2024-06-11 Di>
+*** DONE Feedback Abwarten
+CLOSED: [2024-06-24 Mo 14:37] SCHEDULED: <2024-06-17 Mo>
+*** TODO Meeting 2
+SCHEDULED: <2024-07-18 Do>
+:LOGBOOK:
+- Note taken on [2024-07-01 Mo 12:36] \\
+  Rescheduled
+- Note taken on [2024-06-25 Di 10:16] \\
+  Info Dr Schüller 2 geräte für eddicks
+:END:
+
+*** TODO Marketing Vorbereiten
+SCHEDULED: <2024-06-28 Fr> DEADLINE: <2024-07-02 Di>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:34] \\
+  Mit schueller gesprochen er checkt die Reviews und meldet sich n. Woche
+:END:
+
+** Execution&Monitoring Isabelle von Loga :Client:
+:PROPERTIES:
+:Created: [2024-05-24 Fr 10:10]
+:SourceLink: [[id:7392b6ae-f800-47a7-b314-071f5144d933][MISC [0/6]​]]
+:SourcePath: d:/notebooks/org/Journal.org
+:showintable: true
+:assigned: TMI PKR
+:next: Rückmeldung in 2 Wochen
+:assets: 1 ReOxy
+:condition: Leihgabe
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-24 Fr 10:10] \\
+  Gestern ausgeliefert MpOne und ReOxy.
+  Check in 2 Wochen
+- Note taken on [2024-05-20 Mo 10:55] \\
+  Aholung und Einweisung geplant
+- Note taken on [2024-05-13 Mo 19:18] \\
+  Gerät geht weiter zu Elisabeth (kontakt von Peter)
+- Note taken on [2024-05-13 Mo 19:18] \\
+  Schweiz Probestellung ggf Cooperation. 
+:END:
+
+*** DONE Lieferung
+CLOSED: [2024-05-23 Do 12:00]
+
+*** DONE Feedback und weiteres Vorgehen
+CLOSED: [2024-06-10 Mo 08:59] SCHEDULED: <2024-06-06 Do>
+*** DONE KMT Meeting Update
+CLOSED: [2024-06-10 Mo 15:47] SCHEDULED: <2024-06-10 Mo>
+*** DONE Abhulung Etrugul im Juni Planen
+CLOSED: [2024-06-20 Do 09:31] SCHEDULED: <2024-06-12 Mi>
+
+*** DONE 1 Monat in Stellung
+CLOSED: [2024-06-20 Do 09:46] SCHEDULED: <2024-06-20 Do>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:45] \\
+  Feedback gut, braucht noch ein paar sitzungen
+:END:
+
+*** TODO 1 Monat 2 wochen feedback
+SCHEDULED: <2024-07-04 Do>
+
+*** Abholung
+
+** Execution&Monitoring ReOxy AIMEDIQ Marketing :SalesDocs:Marketing:
+:PROPERTIES:
+:Created: [2024-05-02 Do 17:46]
+:SourceLink: [[id:b6e490b1-d71c-45a9-ad4f-de6beb2b42dd][TOP 3 [3/3]​]]
+:SourcePath: d:/notebooks/org/Journal.org
+:showintable: true
+:assigned: TMI
+:next: Tabelle von aimediq anfordern(TMI AIMEDIQ)
+:assets:
+:condition:
+
+*** Next Write Marketing Project Charter for aimediq
+*** TODO Collect USPS
+**** DONE KMT SRT Textentwurf
+CLOSED: [2024-05-13 Mo 12:07]
+[[id:ae69053c-df58-4b4a-8171-6115a9bfda15][HypoxieTest und SRT]]
+**** DONE Filter Draft MMI
+CLOSED: [2024-05-13 Mo 12:07]
+[[id:979fbec7-b872-40b8-8100-2e4a9ef78e07][ReOxy Trennverfahren]]
+**** DONE aimediq Meeting Update(Veronica)
+CLOSED: [2024-06-03 Mo 12:03] SCHEDULED: <2024-06-03 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-01 Sa 10:52] \\
+  Collecting Tech USP infos(Veronica)
+:END:
+**** DONE aimediq Meeting Update Draf (Veronica)
+CLOSED: [2024-06-24 Mo 14:38] SCHEDULED: <2024-06-24 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:35] \\
+  1st draft complete gave some Feedback waiting for draft 2
+- Note taken on [2024-06-10 Mo 15:49] \\
+  in Progress
+:END:
+**** DONE SRT Draft aimediq
+CLOSED: [2024-06-24 Mo 14:48]
+**** DONE Filter Draft AIMEDIQ
+CLOSED: [2024-06-24 Mo 14:48]
+**** TODO Argumentation on chosen Parameters (Galina)
+SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:36] \\
+  Check Galinas Draft
+:END:
+
+*** Next Distill USPs
+*** Next READ Hypoxie Compendium Höhenbalance                       
+:PROPERTIES:
+:Created: [2024-03-04 Mo 16:19]
+:SourceLink: [[id:05b7c125-f45a-4151-8bda-850c652ff899][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+:END:
+Comments: 
+*** Present Distilled USPs
+
+** Planning ReOxy Kroener Marketing Campaigns :Marketing:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Case Report Teilen(TMI)
+:assets: 
+:condition: 
+:END:
+*** Planning Sport (CKA)
+**** DONE Explore ReOxy Flyer
+CLOSED: [2024-07-01 Mo 08:25]
+**** DONE Meeting Jens Corry
+CLOSED: [2024-07-01 Mo 08:25] SCHEDULED: <2024-06-27 Do>
+**** TODO Feedback
+SCHEDULED: <2024-07-01 Mo>
+*** Initiation Psychosomatik
+**** TODO Joerg input
+SCHEDULED: <2024-07-01 Mo>
+**** TODO Study Review
+**** Next Flyer
+*** Planning Cardio
+**** DONE Meeting Schüller
+CLOSED: [2024-06-26 Mi 08:59] SCHEDULED: <2024-06-18 Di>
+:LOGBOOK:
+- Note taken on [2024-06-24 Mo 14:41] \\
+  am 18.06.erfolgt. Schüller schaut auf die Reviews
+:END:
+**** TODO Schüller Feedback
+SCHEDULED: <2024-07-02 Di>
+
+**** TODO Aimediq Broschüre übersetzung
+SCHEDULED: <2024-07-01 Mo>
+**** Next Refine
+**** Next Broschüre freigeben
+**** Next ins QM aufnehemn
+*** Next Atemtherapie
+** Planning ReOxy Effect Visualisierung :Marketing:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI CKA MMI
+:next: HRV Demo Veranlassen(TMI)
+:assets: Demo Kostenlos
+:condition: Gerät kostet EUR 6000
+:Project:  ReOxy Effect Visualisierung
+:CATEGORY: Effect Vis
+:END:
+*** HRV
+**** DONE Info HRV einholen
+CLOSED: [2024-05-13 Mo 12:09]
+Medi Geräte kosten 6000€ VK. Aktuell nur MDD Geräte.
+Demo möglich Kooperation interessant
+https://site.biosign.de/
+**** TODO KMT Meeting Demo Termine
+SCHEDULED: <2024-06-17 Mo>
+**** Next Gerät Demo Veranlassen
+
+** Planning Event Equipment :Marketing:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI CKA JHU
+:next: Vorschläge Stuhl Liege(ALLE)
+:assets: 
+:condition: ~500
+:Project:  Event Equipment
+:END:
+
+*** DONE Vorschläge Sammeln
+CLOSED: [2024-06-18 Di 07:43] SCHEDULED: <2024-06-17 Mo>
+Sitz oder Liegegelegenheit für den ReOxy, Kosmetikstuhl, Behandlung-liege
+Evtl. Messe Zusammenarbeit mit Ultrasound, Spiro, EKG Herstellern anpeilen
+
+*** TODO Bespannung Liege (Vanessa)
+SCHEDULED: <2024-06-27 Do>
+:LOGBOOK:
+- Note taken on [2024-06-18 Di 07:44] \\
+  Bespannung für die Behandlungsliege mit ReOxy und Kroener Logos
+:END:
+
+** Done Schüller ReOxy Patient :Client:KOL:
+CLOSED: [2024-06-20 Do 09:32]
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Rücksprache im Juli(TMI)
+:assets: 1 ReOxy
+:condition: Miete siehe Umsatzliste MST
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-13 Mo 19:20] \\
+  3 Monatige Mietstellung für Patientin durch Dr. Schueller
+:END:
+
+ReOxy Patient von Dr. Schüller wird von ihm privat betreut.
+
+*** DONE KMT Meeting Update
+CLOSED: [2024-06-10 Mo 15:48] SCHEDULED: <2024-06-10 Mo>
+*** DONE Rücksprache wie weiter im Juli
+CLOSED: [2024-06-10 Mo 08:58] SCHEDULED: <2024-06-05 Mi>
+*** DONE Abholung abgeschlossen
+CLOSED: [2024-06-20 Do 09:32] SCHEDULED: <2024-06-12 Mi>
+
+** Done Acryl Block :Marketing:
+CLOSED: [2024-06-18 Di 07:43]
+:PROPERTIES:
+:showintable: true
+:assigned: VWE
+:next: Aufnahme ins Bestellformular(TMI AEN)
+:assets:
+:condition: 
+:END:
+
+*** DONE Entscheidung welche Version
+CLOSED: [2024-05-13 Mo 11:40]
+*** DONE Erstellung des Acrylblocks
+CLOSED: [2024-05-24 Fr 12:48]
+*** DONE Infos Jenny Preise und Bestellung
+CLOSED: [2024-06-03 Mo 10:59] SCHEDULED: <2024-06-03 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-03 Mo 10:54] \\
+  35 inkl zzgl. Versand
+:END:
+*** DONE KMT Preise kommunizieren
+CLOSED: [2024-06-18 Di 07:43] SCHEDULED: <2024-06-17 Mo>
+  35 inkl zzgl. Versand
+*** DONE Aufnahme in Bestellformular
+CLOSED: [2024-06-18 Di 07:43]
+
+** Done Case_Study_Vorlage :Marketing:
+CLOSED: [2024-06-18 Di 07:42]
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Case Report Teilen(TMI)
+:assets: 
+:condition: 
+:END:
+
+*** DONE Update the Last corrections from Corry then provide it.
+CLOSED: [2024-05-13 Mo 19:40]
+*** DONE Case Report Vorlage ausfüllen
+CLOSED: [2024-05-29 Mi 15:40]
+*** DONE Case Report Teilen
+CLOSED: [2024-05-29 Mi 15:40]
+*** DONE Start Case Study Project
+CLOSED: [2024-06-18 Di 07:42]
+** Execution&Monitoring Altitude_Chart(aimediq) :Marketing:
+:PROPERTIES:
+:showintable: true
+:assigned: VWE
+:next: Vanessa Korrekturen
+:assets:
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 12:37] \\
+  Forwarded to Vanessa for Corrections and translation.
+  One Version for Schüller and Ulli
+- Note taken on [2024-05-20 Mo 10:51] \\
+  Finalization, Takled to Veronica waiting on Update
+:END: 
+
+*** DONE Vanessa Korrekturen
+CLOSED: [2024-05-31 Fr 16:40]
+*** DONE Poster drucken lassen(JHU)
+CLOSED: [2024-06-20 Do 09:32] SCHEDULED: <2024-06-12 Mi>
+*** DONE Senden an Schüller und Ulli A1
+CLOSED: [2024-06-24 Mo 10:02] SCHEDULED: <2024-06-24 Mo>
+*** TODO Sendung angekommen
+SCHEDULED: <2024-06-26 Mi>
+*** Next Preis Festlegen
+*** Next Senden an COVIVID
+*** Allgemeine Version Freigeben(Veronica)
+*** Aufnahme ins Bestellformular?
+
+** Planning IHHT_Interview_Outline :Marketing:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI AIMEDIQ
+:next: Interview Fragen Sammeln(TMI)
+:assets:
+:condition:
+:Project:  Interviews
+:END:
+
+*** TODO Interview Fragen Sammeln
+**** DONE aimediq Meeting interview questions
+CLOSED: [2024-06-03 Mo 12:00] SCHEDULED: <2024-06-03 Mo>
+**** TODO Revisit
+SCHEDULED: <2024-07-01 Mo>
+**** Next Client Questions
+**** Next Kroener Questions
+*** Next Setting definieren Text Video etc.
+*** Script erstellen
+*** Equipment vorbereiten
+**** DONE Camera
+CLOSED: [2024-06-01 Sa 11:03]
+**** Lighting
+**** Mic
+
+** Execution&Monitoring Data_Sync_and_Analysis(aimediq) :DEV:
+:PROPERTIES:
+:Created: [2024-05-20 Mo 10:44]
+:SourceLink: [[id:cb7c586a-efbd-4e6e-98cf-1b89b330f461][Tasks]]
+:SourcePath: d:/notebooks/org/Meetings.org
+:showintable: true
+:assigned: TMI
+:next: Infos bei kunden einholen(TMI)
+:assets:
+:condition: 
+:Project:  DataSync
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 11:56] \\
+  Check GDPR Update
+- Note taken on [2024-05-20 Mo 10:45] \\
+  - [ ] Information gathering from the clients
+    - [ ] what data format(s) they are working with
+    - [ ] what would be acceptable for them for their systems?
+:END:
+
+*** DONE aimediq Meeting Update
+CLOSED: [2024-06-26 Mi 08:56] SCHEDULED: <2024-06-24 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:38] \\
+  Andrez presented data option (Json) we will chekc next week for proposals
+:END:
+
+*** DONE Infos einholen welche Daten gebraucht werden
+CLOSED: [2024-06-26 Mi 08:56]
+  - [ ] Information gathering from the clients
+    - [ ] what data format(s) they are working with
+    - [ ] what would be acceptable for them for their systems?
+*** TODO an aimediq kommunizieren
+SCHEDULED: <2024-06-27 Do>
+*** TODO Roadmap von aimediq einholen
+*** Next GDPR Update Testen
+*** Kontakt Etherno
+
+** Planning Table_of_Biomarkers(aimediq) :SalesDocs:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Tabelle von aimediq anfordern(TMI AIMEDIQ)
+:assets:
+:condition:
+
+*** TODO aimediq Meeting Tabelle anfordern
+SCHEDULED: <2024-07-15 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:38] \\
+  Too much at the moment, waiting
+:END:
+
+*** Next Tabelle Formatieren
+*** Zu Akquise unterlagen hinzufügen
+
+** Execution&Monitoring Service Update :Service:
+:PROPERTIES:
+:Created: [2024-04-29 Mo 14:16]
+:SourceLink: [[id:9c181f70-8822-466c-8b07-d5ce251a239a][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:ID:       1cf8e161-4b38-44ee-9c98-3911f0dc453f
+:showintable: true
+:assigned: TMI CKA FHI LVI
+:next: ReOxy Meeting Petr(FHI)
+:assets: 
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-20 Mo 10:58] \\
+  Service Training erfolgt
+- Note taken on [2024-05-28 Di 11:54] \\
+  Service Ordner teilen
+  Offene Fragen wegen Service die mit Petr geklaert werden sollten
+  an Alexey weiterleiten
+- Note taken on [2024-05-17 Fr 06:41] \\
+  Heute service Schulung
+- Note taken on [2024-05-15 Mi 08:27] \\
+  ReOxy Service Meeting
+- Note taken on [2024-04-29 Mo 14:34] \\
+  ReOxy Analyzer testen
+- Note taken on [2024-04-29 Mo 14:33] \\
+  Serviceordner Teilen
+:END:
+
+*** DONE ReOxy Service Training
+CLOSED: [2024-05-20 Mo 10:59]
+*** TODO aimediq Meeting address open service Meeting request (petr)
+SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-26 Mi 08:55] \\
+  Forwarded to Alexey on Monday, Check next monday
+:END:
+
+*** Next GDPR Update
+*** ReOxy Analyser
+*** Guides
+**** Filterwechsel.pdf
+**** TMI_ReOxy_ServiceFAQ.pptx
+
+** Execution&Monitoring Service Brochure :Service:
+:PROPERTIES:
+:showintable: true
+:assigned: TMI CKA VWE
+:next: Meeting CKA VWE nach Acryl Block
+:assets:
+:condition: 
+:END:
+
+Doppelseite Din A4 Zubehör Wartung STK Wartungsvertrag
+
+*** DONE Meeting Planen CKA VWE (Nach Acryl block)
+CLOSED: [2024-07-01 Mo 08:20] SCHEDULED: <2024-06-27 Do 09:00>
+sammeln welche infos gebraucht werden um Broschüre zu erstellen
+
+*** Fotos Flyer KSW Style(TMI)
+SCHEDULED: <2024-07-08 Mo>
+
+*** Wartungsvertrag(CKA VWE FHI TMI)
+SCHEDULED: <2024-07-08 Mo>
+
+*** Gewährleisungsverlängerung(CKA VWE FHI TMI)
+SCHEDULED: <2024-07-08 Mo>
+:LOGBOOK:
+- Note taken on [2024-07-01 Mo 08:19] \\
+  Kombi 3 Jahre 1500 Brutto - 5 Jahre 3000 Brutto Listenpreis.
+:END:
+
+** Execution&Monitoring Magdeburg Schega :Research:
+:PROPERTIES:
+:Created: [2024-01-12 Fri 10:10]
+:ID:       318c2a23-b54c-42c9-b19a-50305ffbc92f
+:showintable: true
+:assigned: TMI
+:next: Vertrag aimediq(TMI)
+:assets: 1 ReOxy
+:condition: Miete
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-29 Mi 10:10] \\
+  Vertrag noch nihct erhalten
+- Note taken on [2024-05-28 Di 11:30] \\
+  Warte auf Vertrag Galina
+- Note taken on [2024-05-15 Mi 15:02] \\
+  Nimmt das  angebot an
+  Mietstellung bis 20.09. verlängern
+  3 Geräte mietfrei durch aimediq
+  geräte benötigt ab eine woche vor 15.07.
+  Mietvertrag
+  Research Contracts aimediq
+- Note taken on [2024-05-15 Mi 08:33] \\
+  Anruf tom Behrend. Brauchen 3 weitere geräte für
+  die Studie heute klärung mit alexey
+- Note taken on [2024-04-09 Di 08:39] \\
+  Einweisung erfolgt. Pilot Studie wird Herzkatheter unter IHHT druchführen sowie Muskel Biopsie vor und nach IHHT. Anschließend wird
+  eine Studie mit 4 geräten erfolgen.
+- Note taken on [2024-03-21 Do 16:00] \\
+  Bestätigung erhalten und versendet an Tom und Schega
+- Note taken on [2024-03-15 Fr 11:07] \\
+  Einweisung mit Tom Klären für den 8. um 12:30
+  Infos für Treffen mit Prof. Schega vorbereiten
+- Note taken on [2024-03-15 Fr 11:06] \\
+  Nach mehrfachem Austausch mit Lutz Schega Mietangebot versendet.
+  Warte Auf Rückmeldung von Frau Zufelde wegen Zusage.
+  Lieferung geplant für den 8. um 12:00
+- Note taken on [2024-03-12 Di 09:03] \\
+  Tom Abstract link zugeschickt Doehner et. al.
+- Note taken on [2024-03-12 Di 09:00] \\
+  Mit Tom Letzte woche Gesprochen. Warte auf rückmeldung wegen Interview
+:END:
+
+ReOxy_Proposal - Pilot Study IHHE in HFrEF_final_v2._08012024docx.docx
+*** DONE Antwort Lutz Schega
+CLOSED: [2024-05-20 Mo 10:57]
+Benötigt 3 weitere Geräte für ca. 10w Start zwischen 15. und 22.07.
+*** DONE Zusage aimediq
+CLOSED: [2024-05-20 Mo 10:57]
+*** DONE aimediq meeting Vertrag?
+CLOSED: [2024-06-20 Do 09:40] SCHEDULED: <2024-06-17 Mo>
+*** DONE Vertrag aimediq an Schega
+CLOSED: [2024-06-18 Di 07:38] SCHEDULED: <2024-05-29 Mi>
+:LOGBOOK:
+- Note taken on [2024-06-18 Di 07:38] \\
+  Fianlly
+- Note taken on [2024-06-10 Mo 15:56] \\
+  Still waiting....
+:END:
+*** DONE [#A] Mietvertrag verlängerung
+CLOSED: [2024-07-02 Di 14:21] SCHEDULED: <2024-06-24 Mo>
+*** TODO Feedback Schega
+SCHEDULED: <2024-07-10 Mi>
+:LOGBOOK:
+- Note taken on [2024-06-24 Mo 14:39] \\
+  Klinik ausgelastet ggf wird um 2 wochen verschoben warte auf Feedback
+:END:
+
+*** Next Lieferung Planen
+
+** Planning Greifswald :Research:
+:PROPERTIES:
+:Created: [2024-05-13 Mo 19:53]
+:SourceLink: [[id:805fae5b-7ee2-42be-90d5-6937bcc97c6d][Greifswald]]
+:SourcePath: d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/ReOxy_Guide/ReOxy_Guide.org
+:ID:       805fae5b-7ee2-42be-90d5-6937bcc97c6d
+:showintable: true
+:assigned: TMI
+:next: Email aimediq
+:assets:
+:condition:
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 13:22] \\
+  aimediq schreibt email
+- Note taken on [2024-05-24 Fr 09:29] \\
+  keine rückmeldung
+- Note taken on [2024-05-17 Fr 06:37] \\
+  Auskunft Frau Lücker, Frau Steinmetz meldet sich nächste Woche
+:END:
+
+Studienprotokoll IHHT_05.03.2024_LÜ.docx
+
+*** DONE aimediq meeting update
+CLOSED: [2024-06-20 Do 09:40] SCHEDULED: <2024-06-17 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:40] \\
+  Meeting took place waiting for further information.
+  Planned start aimed at september
+:END:
+
+*** TODO Check with aimediq
+SCHEDULED: <2024-07-01 Mo>
+
+*** Next Planned Start around september
+SCHEDULED: <2024-09-02 Mo>
+
+** Hold Innsbruck Burtscher :Research:
+CLOSED: [2024-05-28 Di 12:53]
+:PROPERTIES:
+:showintable: true
+:assigned: TMI
+:next: Vertrag aimediq(TMI)
+:assets: 1 ReOxy
+:condition: Miete
+:END:
+
+
+*** DONE Preise Kommunizieren
+CLOSED: [2024-05-28 Di 12:53]
+*** Next Anfrage Innsbruck abwarten
+
+** Execution&Monitoring Italy_2024_01_23 :Italy:
+:PROPERTIES:
+:Created: [2024-02-09 Fr 09:56]
+:SourceLink: [[id:4b6208ba-f7d4-46cc-ba4b-32386faf18bc][Log [2/8]​]]
+:SourcePath: d:/notebooks/org/Journal.org
+:showintable: true
+:assigned: TMI PKR TOMMASO ALESSANDRO
+:next: Gas Bottles(PKR)
+:assets:
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-13 Mo 19:20] \\
+  Projekte in Italien
+- Note taken on [2024-05-28 Di 11:45] \\
+  - Gas bottle: the topic is a bit complicated, I talked with Alessandro
+    but from my point of view the solution is a bit complicated.
+    I will text Peter asking for a meeting, are you available next week?
+  - Registration for Eudamed Medical device Platform: in progress?
+  - Registration on Italian Ministery of Health: in progress?
+- Note taken on [2024-05-28 Di 11:36] \\
+  Gas Bottles for Cryofos are a problem
+- Note taken on [2024-04-22 Mo 12:03] \\
+  Meeting vorgbereitet Leads Checken und weiteres Vorgehen abklären
+- Note taken on [2024-03-26 Di 05:48] \\
+  Ausserdem Flyer übersetzen
+- Note taken on [2024-03-26 Di 05:42] \\
+  SN erhalten Tommaso hat mir 30% Staatszulage geshickt, ich brauche dazu
+  Energieplakette bzw zertifikat und Aussage über beitrag zur Digitalen Wende
+- Note taken on [2024-03-12 Di 08:48] \\
+  Angebotsvorlage und Einweisungsnachweis zugeschickt, Brauche SN vom gerät für Lieferschein
+- Note taken on [2024-02-16 Fr 12:44] \\
+  Wollte übersetzung an tommaso schicken
+  
+:END:
+*** DONE Meeting Tommaso Gorgio Varnhalt
+CLOSED: [2024-05-28 Di 13:04]
+Tommaso braucht support meeting in Baden Baden
+mit ?Georgio um weiteres zu besprechen.
+*** DONE IFU Translation
+CLOSED: [2024-06-11 Di 15:53] SCHEDULED: <2024-06-11 Di>
+*** DONE Info Leasing
+CLOSED: [2024-06-10 Mo 15:46] SCHEDULED: <2024-06-04 Di>
+:LOGBOOK:
+- Note taken on [2024-06-10 Mo 15:45] \\
+  Grenke Leasing vertrag ist unterzeichnet
+:END:
+
+*** DONE Lieferung Cryo
+CLOSED: [2024-07-01 Mo 07:34] SCHEDULED: <2024-06-24 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:27] \\
+  Lieferung veranlasst montag pruefen
+:END:
+
+*** DONE Tommaso Demolager anlegen
+CLOSED: [2024-06-26 Mi 09:04] SCHEDULED: <2024-06-17 Mo>
+
+*** TODO Gas bottles
+SCHEDULED: <2024-06-24 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-20 Do 09:27] \\
+  Gas bottles checked final test when devices are there
+- Note taken on [2024-06-10 Mo 15:58] \\
+  Right size?
+:END:
+*** TODO IFU Rückfragen?
+SCHEDULED: <2024-06-24 Mo>
+
+*** TODO Firmierung ITA klaeren
+SCHEDULED: <2024-07-29 Mo>
+*** Next Übersetzungen
+**** Leasing
+**** Mietvertrag
+
+** Execution&Monitoring Solongjevity :Client:Italy:
+:PROPERTIES:
+:Created: [2024-01-12 Fri 10:11]
+:SourceLink:
+:SourcePath:
+:ID:       1a44fd0d-8aba-4353-bfd0-dc90ee1b1c20
+:showintable: true
+:assigned: TMI PKR TOMMASO
+:next: Meeting Beretta CEO Peter(TMI PKR TOMMASO)
+:assets: 1 ReOxy
+:condition: Leigabe (Kauf Juni Sonderpreis)
+:END:
+:LOGBOOK:
+- Note taken on [2024-06-01 Sa 09:37] \\
+  Meeting scheduled for next tuesday
+- Note taken on [2024-05-17 Fr 06:36] \\
+  PKR Visist schedule for Solongevity, go to Milano and
+  meet in person to arrage further details
+- Note taken on [2024-05-15 Mi 08:24] \\
+  Follow up mit Peter
+- Note taken on [2024-05-06 Mo 08:36] \\
+  Heute Meeting wegen kauf und weiterem Vorgehen
+- Note taken on [2024-04-26 Fr 18:28] \\
+  Next Meeting
+- Note taken on [2024-04-26 Fr 18:26] \\
+  Meeting today Bridging minds.
+  Beratta talked about a possible second device.
+  Commercial and buisness will be discussed initially on
+  6th. of may. They wanna look for epigenetic proof for the ReOxy
+- Note taken on [2024-04-02 Di 09:50] \\
+  Meeting Vereinbart
+- Note taken on [2024-03-26 Di 05:36] \\
+  Beretta Schüller Meeting Biomarkers
+- Note taken on [2024-03-19 Di 15:02] \\
+  Flug und Hotel buchen
+- Note taken on [2024-03-04 Mo 16:16] \\
+  Moreover he asked me which are the parameters to look
+  before and after the ReOxy cycle (12)
+  which indicates improvement for the patient. 
+
+  In particular he ask me if it was possible to monitor
+  the time between hypoxic and hyperoxic phases,
+  looking if it change from therapy number 1 to the last one. 
+
+  He also asked me if there were some articles about hematocritus
+  change after ReOxy treatment cycles.
+
+  The last thing he asked me if there is a
+  software for parameter analysis during the patient cycle.
+  
+- Note taken on [2024-03-01 Fr 11:14] \\
+  Longjevity Kongress Milano
+- Note taken on [2024-02-27 Di 12:54] \\
+  Warte auf Rückmeldung Galina
+- Note taken on [2024-02-26 Mo 15:23] \\
+  Einladung Longjevity erhalten, hatten ein meeting Biomarker bei Galina angefragt
+- Note taken on [2024-02-09 Fr 09:47] \\
+  Bitte nachfragen ob alles ok?
+- Note taken on [2024-01-22 Mon 13:47] \\
+  Termin bestätigt
+- Note taken on [2024-01-22 Mon 13:27] \\
+  Reply Dr. Baretta appontment 6th of Feb
+- Note taken on [2024-01-22 Mon 10:56] \\
+  Email Sent wit Tommaso in CC
+- Note taken on [2024-01-19 Fri 16:52] \\
+  Email Dr. Baretta with Studies and introduction of Tommas
+- Note taken on [2024-01-19 Fri 10:33] \\
+  Heute Meeting [[file:Meetings.org::*Dr. Baretta][Dr. Baretta]]
+- Note taken on [2024-01-18 Thu 12:57] \\
+  Delivery Arrived in Italy
+- Note taken on [2024-01-17 Wed 17:38] \\
+  Die einweisungen in Italien sollten mit Patienten Stattfinden
+  am besten alle einweisungen gemeinsam.
+- Note taken on [2024-01-17 Wed 17:38] \\
+  CALL Peter Italien Morgen nach Meeting mit Alexey Planen
+  Peter Schreibt eine Antwort.
+- Note taken on [2024-01-13 Sat 10:09] \\
+  Alexey introduced Prof Pidretti to us.
+:END:
+
+*** Assets:
+- ReOxy Atemtherapie Gerät Milano Beretta
+  Probestellung VK 28k 
+
+*** DONE Scheduled Meeting Beretta CEO Peter
+CLOSED: [2024-05-31 Fr 16:45]
+*** DONE KMT meeting update
+CLOSED: [2024-06-03 Mo 10:40] SCHEDULED: <2024-06-03 Mo>
+*** DONE Meeting Milano
+CLOSED: [2024-06-10 Mo 08:56] SCHEDULED: <2024-06-04 Di>
+*** DONE Konditionen Email PKR
+CLOSED: [2024-06-10 Mo 15:53] SCHEDULED: <2024-06-10 Mo>
+*** DONE Angebot/ Rechnung
+CLOSED: [2024-06-20 Do 09:43]
+*** TODO Verkauf ReOxy 1
+SCHEDULED: <2024-06-24 Mo>
+*** Next Termin ReOxy 2 und Schüller
+*** Next Bereitstellung ReOxy 2 (3)
+SCHEDULED: <2024-08-26 Mo>
+*** Interview Longevity allgemein und die Rolle der IHHT
+*** Solongevity Congress Herbst 2024
+
+** Execution&Monitoring Dott Campanini :Client:Italy:
+:PROPERTIES:
+:Created: [2024-05-13 Mo 11:22]
+:ID:       8a17c1a4-4a85-4c14-a903-d49ac2f4dbc9
+:showintable: true
+:assigned: TMI TOMMASO
+:next: Verkaufsgespräch im August(TOMMASO)
+:assets: 1 ReOxy
+:condition: Miete
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 11:36] \\
+  In Rental for 1200 3 months
+:END:
+
+*** DONE Rental Agreement
+CLOSED: [2024-05-28 Di 13:02]
+*** TODO Check im August bzgl. Verkauf
+SCHEDULED: <2024-08-08 Do>
+** Execution&Monitoring Allemanno :Client:Italy:
+:PROPERTIES:
+:Created: [2024-05-28 Di 11:35]
+:SourceLink: [[id:304c30f1-7843-4a07-80e9-df4c3da7b2c2][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:showintable: true
+:assigned: TMI TOMMASO
+:next: Rückmeldung und Anpassungen
+:assets: 1 ReOxy 1 Cryofos
+:condition: Miete 1500 3 Monate
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-29 Mi 15:33] \\
+  Angebot von Tommaso erhalten
+- Note taken on [2024-05-28 Di 11:35] \\
+  Check and send Quote
+- Note taken on [2024-05-24 Fr 13:06] \\
+  Tommaso hatte Allemanno bereits kommuniziert das die Mieten voll angerechnet werden
+  Angebot Gültig von 28.11.2024 bis 14.12.2024
+
+  Preis
+  ReOxy Euro 39.900 excl. VAT
+  Cryofoss 16.000 excl. VAT
+  Gesamt 55.900
+
+  Rental
+  3x 1500 excl. VAT (28.08. – 28.11.)
+
+  Memo Text
+  Die Mieten in Höhe von insgesamt 4.500 EUR laut Mietvertrag vom 15.05.2024 werden auf den Kaufpreis angerechnet.
+
+  ReOxy 36.900 excl VAT
+  Cryofos 14.500 excl VAT
+  Gesamt 51.400 excl VAT
+
+- Note taken on [2024-05-15 Mi 08:47] \\
+  1 ReOxy 28.08. Allemanno, Rental for 3 months for 1500 excl. VAT for ReOxy and Cryofos
+  1 ReOxy Sardinia
+  1 ReOxy Beretta
+  
+:END:
+
+3 Monate Miete
+ReOxy Miete 1000€ / Monat
+Cryofoss
+
+*** DONE Angebot erstellen kauf nach Miete
+CLOSED: [2024-05-29 Mi 11:39]
+*** DONE Rückmeldung und Anpassungen
+CLOSED: [2024-05-31 Fr 16:47]
+*** DONE Gasflaschen und Updates
+CLOSED: [2024-06-20 Do 09:24] SCHEDULED: <2024-06-04 Di>
+*** TODO Einweisung Cryo und Gasflaschen Testen
+SCHEDULED: <2024-06-24 Mo>
+*** Next Leasing bestaetigung
+*** Next Lieferung und Einweisung August
+SCHEDULED: <2024-07-29 Mo> DEADLINE: <2024-08-28 Mi>
+*** Verkauf im November
+SCHEDULED: <2024-11-28 Do>
+:LOGBOOK:
+- Note taken on [2024-06-18 Di 07:42] \\
+  Kaufvertrag bereits unterschrieben
+:END:
+
+** Execution&Monitoring ForMedical CO :Italy:
+*** DONE Gerät aussuchen
+CLOSED: [2024-06-18 Di 07:41] SCHEDULED: <2024-06-12 Mi>
+*** DONE Lieferung
+CLOSED: [2024-06-20 Do 09:43] SCHEDULED: <2024-06-19 Mi>
+:LOGBOOK:
+- Note taken on [2024-06-18 Di 07:41] \\
+  Check up
+- Note taken on [2024-06-18 Di 07:41] \\
+  Lieferung Organiesiert
+:END:
+*** DONE Inform Formedical and peter
+CLOSED: [2024-07-01 Mo 08:15] SCHEDULED: <2024-06-24 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-24 Mo 14:35] \\
+  Tried last Thursday. No answer from Office.
+  Forwarding the deliverynumber on Monday
+:END:
+
+*** TODO Check for arrival
+SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-07-01 Mo 08:15] \\
+  Call Lorenz
+:END:
+
+*** Next Einweisung
+*** Next Feedback
+*** Next Verkauf
+** Hold Sassory Sardinia :Client:Italy:
+CLOSED: [2024-05-31 Fr 16:54]
+:PROPERTIES:
+:Created: [2024-05-28 Di 11:47]
+:SourceLink: [[id:304c30f1-7843-4a07-80e9-df4c3da7b2c2][Log]]
+:SourcePath: d:/notebooks/org/Journal.org
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 11:48] \\
+  Check Loan of Use agreement. Trial Period in autumn.
+:END:
+
+*** TODO Loan of use agreement
+SCHEDULED: <2024-06-04 Di>
+
+*** Next Plan delivery and Introduction
+
+*** Delivery
+
+*** 1 month follow up Sale
+
+** Hold Palermo Clinic :Client:Italy:
+:PROPERTIES:
+:Created: [2024-01-17 Wed 17:39]
+:SourceLink: [[id:3c6e5920-2b22-4616-b360-bac6146cdb6e][Log​]]
+:SourcePath: /mnt/d/notebooks/org/Journal.org
+:ID:       f29f1fe5-95e6-4184-98d0-b174842e89a3
+:showintable: true
+:assigned: TMI PKR ALESSANDRO
+:next: Gerät zu Tommaso(PKR)
+:assets: 1 ReOxy
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-15 Mi 08:26] \\
+  Geraet soll zu tommaso, gerät wird aber noch für 5 Tage gebraucht
+  Habe keinen plan was da läuft
+- Note taken on [2024-04-09 Di 08:35] \\
+  Infos Diabetes an Marcia zur weiterleitung.
+  Rücksprache in 2W. Wie weiter
+- Note taken on [2024-03-28 Do 12:38] \\
+  Einweisung Erfolgt
+- Note taken on [2024-03-26 Di 05:39] \\
+  Heute Einweisung
+- Note taken on [2024-03-21 Do 15:58] \\
+  Termin am 26. Bleibe bis 27.
+  Fragt nach Patientenflyern und Broschüren
+- Note taken on [2024-03-15 Fr 11:18] \\
+  Gerät geprüft Montag wird es von allessandro in die Klinik gebracht.
+  Termine Zugeschickt
+- Note taken on [2024-02-27 Di 12:54] \\
+  Gerät in Technischer Prüfung
+- Note taken on [2024-02-16 Fr 12:36] \\
+  Gerät angekommen warte auf Termin
+- Note taken on [2024-02-09 Fr 11:27] \\
+  Email an Alessandro expected delivery on 12.02.2024
+  https://www.tnt.com/express/nl_nl/site/shipping-tools/tracking.html?cons=WW949171950RTM202402070819&searchType=CON&source=share
+- Note taken on [2024-02-02 Fr 08:35] \\
+  Anruf Sven: ReOxy ist unterwegs. Ende nächste Woche Rückmeldung
+- Note taken on [2024-01-19 Fri 10:25] \\
+  Info an alessandro, angeboten vor ort nach der einweisung ein paar patienten zu beahndeln
+  !!! Vielleicht klären ob alle über die Kontraindikationen aufgeklärt sind.
+- Note taken on [2024-01-19 Fri 09:43] \\
+  Semisan, Längeres Geschäftsverhältnis
+- Note taken on [2024-01-18 Thu 17:00] \\
+  Kontakt ist Alessandro Perego. Kontaktiert Via Email
+- Note taken on [2024-01-17 Wed 17:40] \\
+  Sizilien hat auch sein OK gegeben.
+  Lieferung in den nächsten 10 Tagen dann einweisung.
+  Warte auf Peters Rückmeldung
+:END:
+
+*** TODO Updates?
+SCHEDULED: <2024-06-17 Mo>
+
+*** TODO Gerät zu Tommaso
+
+** Hold Pidretty :Research:Italy:
+CLOSED: [2024-04-23 Di 20:27]
+:Created: [2024-01-12 Fri 10:11]
+:SourceLink:
+:SourcePath:
+:ID:       3856d6d5-b7ad-4183-b317-7416aa6a69ee
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-28 Di 12:57] \\
+  Hat sich nicht mehr gemeldet warte auf aimediq antwort
+- Note taken on [2024-02-16 Fr 12:28] \\
+  Pidretti Anschreiben
+- Note taken on [2024-01-18 Thu 12:57] \\
+  Delivery Arrived in Italy
+- Note taken on [2024-01-17 Wed 17:38] \\
+  Die einweisungen in Italien sollten mit Patienten Stattfinden
+  am besten alle einweisungen gemeinsam.
+- Note taken on [2024-01-17 Wed 17:38] \\
+  CALL Peter Italien Morgen nach Meeting mit Alexey Planen
+  Peter Schreibt eine Antwort.
+- Note taken on [2024-01-13 Sat 10:09] \\
+  Alexey introduced Prof Pidretti to us.
+:END:
+
+** Hold Aftersales_Update_2024_13_03 :Marketing:
+CLOSED: [2024-05-29 Mi 15:29]
+Nach Marketing
+
+** Hold Website_Update_2023_05_17 :Marketing:
+CLOSED: [2024-05-29 Mi 15:29]
+Nach Marketing
+
+- KlinischeEvidenzPivot-dbbaba54-e8ba-4605-b4a2-f817c9784330.xlsx
+- Pressemappe.sla
+- ReOxy_Praesentationsmappe.docx
+- WEB-1.pdf
+     
+** Hold KOL_Contact_Research_2023_12_11 :KOL:
+CLOSED: [2024-04-23 Di 20:21]
+- 20230906 wk Liste Kontakte Reoxy Poster Info Mails.docx
+- 210831 wk Kontakte High Class von DGP.docx
+- Adressabgleich-2024-01-09.xlsx
+- Bilder PM ERC
+- Teilnehmerliste_Runder_Tisch_Long_Covid_12.09.2023.pdf
+*** KOL Targets
+- Burtscher
+- Trumbower
+- Schega
+
+** Hold Patient_Marketing_2024_04_23 :Marketing:
+CLOSED: [2024-05-13 Mo 19:58]
+- ReOxy_Maps.url
+
+ReOxy Standorte online?  
+3d Aufsteller?
+
+** Hold Quick_Table_2023_08_04 :Marketing:
+CLOSED: [2024-05-13 Mo 19:58]
+- QuickGuide.pptx
+- QuickTable.pdf
+- QuickTable.sla
+
+** Hold Back
+:PROPERTIES:
+:Created: [2024-03-18 Mo 10:55]
+:SourceLink: [[id:8b62aa7c-0bfa-428d-9cc4-a3f8b3c3fca5][TOP 3 [/]​]]
+:SourcePath: d:/notebooks/org/Journal.org
+:showintable: true
+:assigned: TMI MMI
+:next: Rückmeldung Back (PKR)
+:assets:
+:condition: 
+:END:
+:LOGBOOK:
+- Note taken on [2024-05-20 Mo 10:55] \\
+  Aholung und Einweisung geplant
+- Note taken on [2024-05-13 Mo 19:18] \\
+  Gerät geht weiter zu Elisabeth (kontakt von Peter)
+- Note taken on [2024-05-13 Mo 19:18] \\
+  Schweiz Probestellung ggf Cooperation.
+- Note taken on [2024-05-17 Fr 06:40] \\
+  Abholung nächste Woche
+- Note taken on [2024-05-15 Mi 08:25] \\
+  Warte Auf Peters rückmeldung wegen abholung
+- Note taken on [2024-05-15 Mi 08:25] \\
+  Hat angerufen, soll feedback an Peter schreiben.
+  Ist die vermischung mit dem Fitnessbereich interessant?
+- Note taken on [2024-05-02 Do 09:27] \\
+  mit Peter gesprochen wg. abholung etc. warte auf rückmeldung
+- Note taken on [2024-04-29 Mo 14:40] \\
+  Geraet ins System einpflegen
+  Meeting morgen
+  Geaet zu Peters Kontakt bringen
+- Note taken on [2024-04-26 Fr 18:29] \\
+  Meeting verschoben, da kältekammer eingewiesen wurde.
+  Nächste Woche muss das meeting stattfinden.
+  anschließend abholung und bei Elisabeth vorstellen
+- Note taken on [2024-04-18 Do 09:03] \\
+  Gestern angerufen Videocall am Montag.
+  hat sich sehr bedeckt gehalten mit einer Aussage
+- Note taken on [2024-04-13 Sa 09:42] \\
+  Studie Gesendet
+- Note taken on [2024-04-13 Sa 08:33] \\
+  Infos zusenden
+- Note taken on [2024-03-21 Do 15:55] \\
+  Einweisung erfolgt Infos noch zusenden
+  - Studie
+  - nachfragen wegen Webinar
+    Kontakt nachhalten
+- Note taken on [2024-03-18 Mo 10:56] \\
+  Einweisung von Herrn Back am 20.03.Lieferung heute klären
+:END:
+
+*** DONE Abholung Back
+CLOSED: [2024-05-24 Fr 12:46]
+*** DONE Lieferung Elisabeth
+CLOSED: [2024-05-24 Fr 12:46]
+*** Next Rückmeldung? 
+SCHEDULED: <2024-07-01 Mo>
+:LOGBOOK:
+- Note taken on [2024-06-24 Mo 14:36] \\
+  Still no answer
+- Note taken on [2024-06-10 Mo 15:52] \\
+  still waiting
+:END:
+
+** Project Archive
+
+*** Canceled AUST
+CLOSED: [2024-04-23 Di 14:26]
+
+ReOxy Atemtherapie Gerät Wien Frei
+
+***** Charter                                                    :noexport:
+
+****** Buisness Need
+
+This was a planned but cancelled Research opportunity with Dr. Harun Zwick Co author of the
+Long COVID guidelines. He was sceptical but interested and hat the device for 4 Weeks.
+However he does not have the Capacity to do any trials at the moment.
+
+****** Goals
+
+Get the device in use (Paid)
+
+****** Scope and Limits
+
+******* Scope
+
+******* Limits
+
+****** Stakeholders
+
+****** Risks
+
+*** Canceled Ludger
+CLOSED: [2024-05-06 Mo 11:11]
+
+- ReOxy Atemtherapie Gerät Kiel
+
+**** Charter                                                     :noexport:
+
+***** Buisness Need
+
+Potential KOL. Device is there sind Q4 Last Year.
+Nothing has happened so far besides him giving a talk about reoxy without using it.
+
+***** Goals
+
+Ludger does a Trial or Treatments with the ReOxy. And helps us define a path on how
+we can contribute to making reoxy recongized in the more established medical interventions.
+Alternatively Ludger provides us with a contact of someone who he thinks would advance
+the Project.
+
+***** Scope and Limits
+
+****** Scope
+Device delivery
+Training
+Provision with clinical trials
+
+****** Limits
+Action plan from Ludger till Baden-Baden
+
+***** Stakeholders
+
+Ludger
+Kroener TMI SMA PKR
+
+***** Risks
+
+Ludger is convinced it does not work.
+Project Stuck.
+
+** Project Filetree
+     
+#+begin_src emacs-lisp :results none :exports none
+  (set-language-environment "UTF-8")
+#+end_src
+
+#+begin_src python :results output :exports results
+from pathlib import Path
+from itertools import islice
+
+space =  '    '
+branch = '|   '
+tee =    '|---->     '
+last =   '|---->     '
+
+
+def tree(dir_path: Path, level: int=-1, limit_to_directories: bool=False,
+         length_limit: int=1000):
+    """Given a directory Path object print a visual tree structure"""
+    dir_path = Path(dir_path) # accept string coerceable to Path
+    files = 0
+    directories = 0
+    def inner(dir_path: Path, prefix: str='', level=-1):
+        nonlocal files, directories
+        if not level: 
+            return # 0, stop iterating
+        if limit_to_directories:
+            contents = [d for d in dir_path.iterdir() if d.is_dir()]
+        else: 
+            contents = list(dir_path.iterdir())
+        pointers = [tee] * (len(contents) - 1) + [last]
+        for pointer, path in zip(pointers, contents):
+            if path.is_dir():
+                yield prefix + pointer + path.name
+                directories += 1
+                extension = branch if pointer == tee else space 
+                yield from inner(path, prefix=prefix+extension, level=level-1)
+            elif not limit_to_directories:
+                yield prefix + pointer + path.name
+                files += 1
+    print(dir_path.name)
+    iterator = inner(dir_path, level=level)
+    for line in islice(iterator, length_limit):
+        print(line)
+    if next(iterator, None):
+        print(f'... length_limit, {length_limit}, reached, counted:')
+    print(f'\n{directories} directories' + (f', {files} files' if files else ''))
+
+
+tree(Path("D:\kroener\OneDrive - Kröner Medizintechnik\TMI\ReOxy\\09_Projects"), level=2)
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+09_Projects
+|---->     .archive
+|   |---->     DGK_Post
+|   |---->     ReOxy_Amortisation
+|   |---->     ReOxy_Broschure
+|   |---->     ReOxy_PatientenFlyer
+|   |---->     ReOxy_Presentation
+|---->     Aftersales_2024_13_03
+|   |---->     Bild1.png
+|   |---->     Kibo_perspektiv_20130405-3.png
+|   |---->     Kroener0123_KR1-121.gif
+|   |---->     Kroener0123_KR1-122.gif
+|   |---->     Kroener0123_KR1-131.gif
+|   |---->     Kroener0123_KR1-18.gif
+|   |---->     Kroener0123_KR1-31.gif
+|   |---->     Kroener0123_KR1-45.gif
+|   |---->     Kroener0123_KR1-57.gif
+|   |---->     Kroener0123_KR1-70.gif
+|   |---->     Kroener0123_KR1-73.gif
+|   |---->     Kroener0123_KR1-75.gif
+|   |---->     Kroener0123_KR1-9.gif
+|   |---->     Kroener0123_KR1-92.gif
+|   |---->     KRO_ReOxy_A4_4Seiter_Final__Einzelseiten_web.pdf
+|   |---->     KRO_ReOxy_Flyer Wirtschaftlichkeitsberechnung V001_051223_lr.pdf
+|   |---->     KRO_ReOxy_Patientenflyer_98x210_V001_20.03.2024_1_web.pdf
+|   |---->     KRO_ReOxy_Patientenflyer_98x210_V001_20.03.2024_2_web.pdf
+|   |---->     MicrosoftTeams-image.png
+|   |---->     ReOxy.png
+|   |---->     ReOxy_brochure_wellbeing-patient_DE-2023-2.gif
+|   |---->     WEB-1.gif
+|---->     AIMEDIQ_Colab_Projects_2024_17_03
+|   |---->     Altitude_Chart
+|   |---->     General_Resources
+|   |---->     HypoxiaCompendium
+|   |---->     IHHT_Interview_Outline
+|   |---->     README.org
+|   |---->     Table_of_Biomarkers
+|---->     Case_Studies_2024_23_04
+|   |---->     SingleCaseReport-2.pdf
+|---->     COVIVID_Starnberg_2024_04_14
+|   |---->     2024-04-20_COVIVID.pptx
+|   |---->     2_IHHT_Starnberg.pptx
+|   |---->     DKG_ReOxy_Echo.mov
+|   |---->     Regmi_COVIVID_04_2024.pptx
+|   |---->     Rehabilitation Research 2020_ Therapeutic Intermittent Hypoxia as Primer for Motor Recov. after SCI.mp4
+|   |---->     TMI_ReOxy_COVIVID_Starnberg.pdf
+|   |---->     TMI_ReOxy_COVIVID_Starnberg.pptx
+|---->     Data_Analysis_2023_03_17
+|   |---->     CaseReports
+|   |---->     ReOxy_Reporter_Templates
+|   |---->     SRT_Visualization
+|---->     Italy_2024_01_23
+|   |---->     Documento di formazione ReOxy.pdf
+|   |---->     Milano
+|   |---->     Palermo
+|---->     KOL_Contact_Research_2023_12_11
+|   |---->     20230906 wk Liste Kontakte Reoxy Poster Info Mails.docx
+|   |---->     210831 wk Kontakte High Class von DGP.docx
+|   |---->     Adressabgleich-2024-01-09.xlsx
+|   |---->     Bilder PM ERC
+|   |---->     Teilnehmerliste_Runder_Tisch_Long_Covid_12.09.2023.pdf
+|---->     Patient_Marketing_2024_04_23
+|   |---->     ReOxy_Maps.url
+|---->     Quick_Table_2023_08_04
+|   |---->     QuickGuide.pptx
+|   |---->     QuickTable.pdf
+|   |---->     QuickTable.sla
+|---->     ReOxy_Guide
+|   |---->     Assets
+|   |---->     data
+|   |---->     index.html
+|   |---->     index.org
+|   |---->     ReOxy_Guide.html
+|   |---->     ReOxy_Guide.org
+|   |---->     ReOxy_Guide.org_20240317_115713_w5WXEG.png
+|   |---->     ReOxy_Guide.org_20240317_121126_K4SgTF.png
+|   |---->     ReOxy_Guide.pdf
+|   |---->     ReOxy_Guide.tex
+|   |---->     test.org
+|---->     Research_2024_06_03
+|   |---->     Evaluation of the effectiveness of Reoxy therapy.docx
+|   |---->     Greifswald
+|   |---->     ReOxy clinical trials.docx
+|   |---->     ReOxy Long Covid .pdf
+|   |---->     Schega
+|   |---->     Wien
+|---->     Service_2023_10_18
+|   |---->     Filterwechsel.docx
+|   |---->     Filterwechsel.pdf
+|   |---->     ReOxy Service WBS.pptx
+|   |---->     TMI_ReOxy_ServiceFAQ.pptx
+|   |---->     Updates
+|   |---->     Wartung
+|---->     Website_2023_05_17
+|   |---->     KlinischeEvidenzPivot-dbbaba54-e8ba-4605-b4a2-f817c9784330.xlsx
+|   |---->     Pressemappe.sla
+|   |---->     ReOxy_Praesentationsmappe.docx
+|   |---->     WEB-1.pdf
+
+37 directories, 60 files
+#+end_example
+
+* Events :Event:
+
+** DGPPR Berlin
+https://dgpr-kongress.de/
+
+*** DONE Messe Orga
+CLOSED: [2024-05-31 Fr 11:33]
+*** DONE KMT meeting update
+CLOSED: [2024-06-03 Mo 10:40] SCHEDULED: <2024-06-03 Mo>
+
+*** DONE Teilnahme
+CLOSED: [2024-06-20 Do 09:32] SCHEDULED: <2024-06-14 Fr>
+
+*** TODO Dr Langheim Kontakt Vortrag schueller 2025
+SCHEDULED: <2024-06-24 Mo>
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.57 in css mode. -->
+<html>
+  <head>
+    <title>Agenda View</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #ffffff;
+        background-color: #000000;
+      }
+      .custom {
+        /* (:background "#118ab2" :foreground "black") */
+        color: #000000;
+        background-color: #118ab2;
+      }
+      .custom-1 {
+        /* (:background "#ef476f" :foreground "#black" :bold t :weight bold :box (:line-width 2 :style released-button)) */
+        color: #black;
+        background-color: #ef476f;
+        font-weight: bold;
+      }
+      .custom-2 {
+        /* (:foreground "orange") */
+        color: #ffa500;
+      }
+      .custom-3 {
+        /* (:foreground "red") */
+        color: #ff0000;
+      }
+      .custom-4 {
+        /* (:background "#ffd166" :foreground "black") */
+        color: #000000;
+        background-color: #ffd166;
+      }
+      .org-super-agenda-header {
+        /* org-super-agenda-header */
+        color: #79a8ff;
+        font-size: 114%;
+        font-weight: bold;
+      }
+      .org-tag {
+        /* org-tag */
+        color: #e5cfef;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+
+<span class="org-super-agenda-header"> Project: Praxislounge</span>
+10.06.2024   <span class="custom-4">Planning</span> Praxislounge Referenten                                       <span class="org-tag">:Marketing:KOL:</span>
+             <span class="custom-3">TODO</span> PL Referenten suchen                                             <span class="org-tag">:Marketing:KOL::</span>
+             <span class="custom-2">Next</span> Case Report                                                      <span class="org-tag">:Marketing:KOL::</span>
+             <span class="custom-2">Next</span> Vortrag planen und unterst&#252;tzen                                  <span class="org-tag">:Marketing:KOL::</span>
+10.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> Nicole Vennemann                                         <span class="org-tag">:Client:</span>
+             <span class="custom-2">Next</span> Mietvertragsverl&#228;ngerung                                                <span class="org-tag">:Client::</span>
+             <span class="custom-2">Next</span> Gespr&#228;ch Vortrag PL                                                     <span class="org-tag">:Client::</span>
+
+<span class="org-super-agenda-header"> Project: ReOxy Effect Visualisierung</span>
+             <span class="custom-4">Planning</span> ReOxy Effect Visualisierung                                       <span class="org-tag">:Marketing:</span>
+             <span class="custom-2">Next</span> Ger&#228;t Demo Veranlassen                                               <span class="org-tag">:Marketing::</span>
+
+<span class="org-super-agenda-header"> Una</span>
+             <span class="custom-2">Next</span> Vortrag PL                                                              <span class="org-tag">:Client::</span>
+             <span class="custom-2">Next</span> Lieferung MMI                                                           <span class="org-tag">:Client::</span>
+             <span class="custom-2">Next</span> Meeting MEDIAN CEO                                                      <span class="org-tag">:Client::</span>
+             <span class="custom-2">Next</span> R&#252;cksprache wie weiter im Juli                                      <span class="org-tag">:Client:KOL::</span>
+             <span class="custom-2">Next</span> Collecting Tech USP infos(Veronica)                                  <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Voschl&#228;ge Sammeln                                                    <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Aufnahme in Bestellformular                                          <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Start Case Study Project                                             <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Vanessa Korrekturen                                                  <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Interview Fragen Sammeln                                             <span class="org-tag">:Marketing::</span>
+             <span class="custom-2">Next</span> Infos einholen welche daten gebraucht werden                               <span class="org-tag">:DEV::</span>
+             <span class="custom-2">Next</span> Tabelle von aimediq anfordern                                        <span class="org-tag">:SalesDocs::</span>
+             <span class="custom-2">Next</span> Service Meeting petr                                                   <span class="org-tag">:Service::</span>
+             <span class="custom-2">Next</span> Meeting Mit Corry und Vanessa(Nach acryl block)                        <span class="org-tag">:Service::</span>
+             <span class="custom-2">Next</span> Vertrag aimediq                                                       <span class="org-tag">:Research::</span>
+             <span class="custom-2">Next</span> Anfrage Innsbruck abwarten                                            <span class="org-tag">:Research::</span>
+             <span class="custom-2">Next</span> Gas bottles                                                              <span class="org-tag">:Italy::</span>
+             <span class="custom-2">Next</span> Scheduled Meeting Beretta CEO Peter                               <span class="org-tag">:Client:Italy::</span>
+             <span class="custom-2">Next</span> Check im August bzgl Verkauf                                      <span class="org-tag">:Client:Italy::</span>
+             <span class="custom-2">Next</span> R&#252;ckmeldung und anpassungen                                       <span class="org-tag">:Client:Italy::</span>
+             <span class="custom-2">Next</span> Ger&#228;t zu Tommaso                                                  <span class="org-tag">:Client:Italy::</span>
+             <span class="custom-2">Next</span> R&#252;ckmeldung Back
+10.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> Dr. Meyer Hachenburg                                     <span class="org-tag">:Client:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> Raul Borgmann                                            <span class="org-tag">:Client:</span>
+10.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> MEDIAN                                                   <span class="org-tag">:Client:</span>
+06.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> Isabelle von Loga                                        <span class="org-tag">:Client:</span>
+08.07.2024   <span class="custom-1">Execution&amp;Monitoring</span> Sch&#252;ller ReOxy Patient                               <span class="org-tag">:Client:KOL:</span>
+10.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> ReOxy Tech USPs                                       <span class="org-tag">:Marketing:</span>
+             <span class="custom-4">Planning</span> Event Equipment                                                   <span class="org-tag">:Marketing:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> Altitude_Chart                                        <span class="org-tag">:Marketing:</span>
+             <span class="custom-4">Planning</span> IHHT_Interview_Outline                                            <span class="org-tag">:Marketing:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> Data_Sync_and_Analysis                                      <span class="org-tag">:DEV:</span>
+             <span class="custom-4">Planning</span> Table_of_Biomarkers                                               <span class="org-tag">:SalesDocs:</span>
+             <span class="custom">Initiation</span> HypoxiaCompendium (ReOxy_guide)                                 <span class="org-tag">:SalesDocs:</span>
+29.05.2024   <span class="custom-1">Execution&amp;Monitoring</span> Service Update                                          <span class="org-tag">:Service:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> Service Brochure                                        <span class="org-tag">:Service:</span>
+29.05.2024   <span class="custom-1">Execution&amp;Monitoring</span> Magdeburg Schega                                       <span class="org-tag">:Research:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> Italy_2024_01_23                                          <span class="org-tag">:Italy:</span>
+             <span class="custom-1">Execution&amp;Monitoring</span> SoLongjevity                                       <span class="org-tag">:Client:Italy:</span>
+05.08.2024   <span class="custom-1">Execution&amp;Monitoring</span> Dott Campanini                                     <span class="org-tag">:Client:Italy:</span>
+03.06.2024   <span class="custom-1">Execution&amp;Monitoring</span> Allemanno                                          <span class="org-tag">:Client:Italy:</span>
+</pre>
+  </body>
+</html>

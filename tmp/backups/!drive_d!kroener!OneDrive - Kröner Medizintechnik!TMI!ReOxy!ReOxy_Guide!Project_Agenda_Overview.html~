@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.57 in css mode. -->
+<html>
+  <head>
+    <title>Agenda View</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #ffffff;
+        background-color: #000000;
+      }
+      .custom {
+        /* (:foreground "orange") */
+        color: #ffa500;
+      }
+      .custom-1 {
+        /* (:foreground "red") */
+        color: #ff0000;
+      }
+      .org-agenda-date {
+        /* org-agenda-date */
+        color: #00d3d0;
+      }
+      .org-agenda-date-weekend {
+        /* org-agenda-date-weekend */
+        color: #a4d0bb;
+      }
+      .org-agenda-date-weekend-today {
+        /* org-agenda-date-weekend-today */
+        color: #a4d0bb;
+        background-color: #203448;
+      }
+      .org-agenda-structure {
+        /* org-agenda-structure */
+        color: #79a8ff;
+        font-size: 114%;
+        font-weight: bold;
+      }
+      .org-scheduled {
+        /* org-scheduled */
+        color: #d2b580;
+      }
+      .org-scheduled-previously {
+        /* org-scheduled-previously */
+        color: #d0bc00;
+      }
+      .org-super-agenda-header {
+        /* org-super-agenda-header */
+        color: #79a8ff;
+        font-size: 114%;
+        font-weight: bold;
+      }
+      .org-tag {
+        /* org-tag */
+        color: #e5cfef;
+      }
+      .org-upcoming-deadline {
+        /* org-upcoming-deadline */
+        color: #ff9077;
+      }
+      .warning {
+        /* warning */
+        color: #d0bc00;
+        font-weight: bold;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="org-agenda-structure">
+* Deadlines *
+</span>
+<span class="org-agenda-date-weekend-today">Sunday      2 June 2024</span>
+<span class="org-upcoming-deadline">In   4 d.:  Projects-&gt;MEDIAN-&gt;   </span><span class="custom-1">TODO</span><span class="org-upcoming-deadline"> Time-line Pr&#228;si erstellen(TMI)</span>                      <span class="org-upcoming-deadline"><span class="org-tag">:Client::</span></span>
+
+&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+<span class="org-agenda-structure">Project Task List</span>
+<span class="org-agenda-date-weekend-today">Sunday      2 June 2024</span>
+
+<span class="org-super-agenda-header">  Overdue </span>
+<span class="org-scheduled-previously"><span class="warning">Projects-&gt;Magdeburg Schega-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled-previously"><span class="warning"> Vertrag aimediq an Schega</span></span>                          <span class="org-scheduled-previously"><span class="warning"><span class="org-tag">:Research::</span></span></span>
+<span class="org-agenda-date">Monday      3 June 2024 W23</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Praxislounge Referenten-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT Meeting PL Referenten aussuchen</span></span>    <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing:KOL::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Nicole Vennemann-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Mietvertragsverl&#228;ngerung</span></span>                             <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Nicole Vennemann-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> PL Referent?</span></span>                                         <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Dr. Meyer Hachenburg-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> PL Referent?</span></span>                                     <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Raul Borgmann-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Lieferung MMI</span></span>                                           <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;M&#252;nchen Akquise-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Idee Vorstellung(MMI)</span></span>                                 <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;MEDIAN-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT Meeting Update</span></span>                                             <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;MEDIAN-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Time-line Pr&#228;si erstellen(TMI)</span></span>                                 <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Isabelle von Loga-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT Meeting Update</span></span>                                  <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Sch&#252;ller ReOxy Patient-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT Meeting Update</span></span>                         <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:KOL::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;ReOxy Tech USPs(aimediq)-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq Meeting Update(Veronica)</span></span>          <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;ReOxy Effect Visualisierung-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT Meeting Demo Termine</span></span>               <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Event Equipment-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Vorschl&#228;ge Sammeln</span></span>                                 <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Acryl Block-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Infos Jenny Preise und Bestellung</span></span>                      <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;IHHT_Interview_Outline-&gt;Interview Fragen Sammeln-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq Meeting interview questions</span></span> <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Data_Sync_and_Analysis(aimediq)-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq Meeting Update</span></span>                   <span class="org-scheduled"><span class="warning"><span class="org-tag">:DEV::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Table_of_Biomarkers(aimediq)-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq Meeting Tabelle anfordern</span></span>     <span class="org-scheduled"><span class="warning"><span class="org-tag">:SalesDocs::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;ReOxy Compendium (aimediq)-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq meeting Ideas</span></span>                   <span class="org-scheduled"><span class="warning"><span class="org-tag">:SalesDocs::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Service Update-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq Meeting address open service Meeting request (petr)</span></span> <span class="org-scheduled"><span class="warning"><span class="org-tag">:Service::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Magdeburg Schega-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq meeting Vertrag?</span></span>                           <span class="org-scheduled"><span class="warning"><span class="org-tag">:Research::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Greifswald-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> aimediq meeting update</span></span>                                   <span class="org-scheduled"><span class="warning"><span class="org-tag">:Research::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;SoLongjevity-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT meeting update</span></span>                                 <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Events-&gt;DGPPR Berlin-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> KMT meeting update</span></span>                                          <span class="org-scheduled"><span class="warning"><span class="org-tag">:Event::</span></span></span>
+<span class="org-agenda-date">Tuesday     4 June 2024</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Italy_2024_01_23-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Gas bottles</span></span>                                           <span class="org-scheduled"><span class="warning"><span class="org-tag">:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Italy_2024_01_23-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Info Leasing</span></span>                                          <span class="org-scheduled"><span class="warning"><span class="org-tag">:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;SoLongjevity-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Meeting Milano</span></span>                                     <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Allemanno-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Gasflaschen und Updates</span></span>                               <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Sassory Sardinia-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Loan of use agreement</span></span>                          <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Palermo Clinic-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Updates?</span></span>                                         <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-agenda-date">Wednesday   5 June 2024</span>
+<span class="org-agenda-date">Thursday    6 June 2024</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Isabelle von Loga-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Feedback und weiteres Vorgehen</span></span>                      <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-agenda-date">Friday      7 June 2024</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Sch&#252;ller ReOxy Patient-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> R&#252;cksprache wie weiter im Juli</span></span>             <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:KOL::</span></span></span>
+<span class="org-agenda-date-weekend">Saturday    8 June 2024</span>
+<span class="org-agenda-date-weekend">Sunday      9 June 2024</span>
+<span class="org-agenda-date">Monday     10 June 2024 W24</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;MEDIAN-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Meeting MEDIAN CEO</span></span>                                             <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Altitude_Chart(aimediq)-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Senden an Sch&#252;ller und Ulli A1</span></span>             <span class="org-scheduled"><span class="warning"><span class="org-tag">:Marketing::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Service Brochure-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Meeting Planen CKA VWE (Nach Acryl block)</span></span>           <span class="org-scheduled"><span class="warning"><span class="org-tag">:Service::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;SoLongjevity-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Verkauf ReOxy 1</span></span>                                    <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Back-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> R&#252;ckmeldung?</span></span>
+<span class="org-agenda-date">Tuesday    11 June 2024</span>
+<span class="org-agenda-date">Wednesday  12 June 2024</span>
+<span class="org-agenda-date">Thursday   13 June 2024</span>
+<span class="org-agenda-date">Friday     14 June 2024</span>
+<span class="org-scheduled"><span class="warning">Events-&gt;DGPPR Berlin-&gt;    Teilnahme</span></span>                                                        <span class="org-scheduled"><span class="warning"><span class="org-tag">:Event::</span></span></span>
+<span class="org-agenda-date-weekend">Saturday   15 June 2024</span>
+<span class="org-agenda-date-weekend">Sunday     16 June 2024</span>
+<span class="org-agenda-date">Monday     17 June 2024 W25</span>
+<span class="org-agenda-date">Tuesday    18 June 2024</span>
+<span class="org-agenda-date">Wednesday  19 June 2024</span>
+<span class="org-agenda-date">Thursday   20 June 2024</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Isabelle von Loga-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> 1 Monat in Stellung</span></span>                                 <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client::</span></span></span>
+<span class="org-agenda-date">Friday     21 June 2024</span>
+<span class="org-agenda-date-weekend">Saturday   22 June 2024</span>
+<span class="org-agenda-date-weekend">Sunday     23 June 2024</span>
+<span class="org-agenda-date">Monday     24 June 2024 W26</span>
+<span class="org-agenda-date">Tuesday    25 June 2024</span>
+<span class="org-agenda-date">Wednesday  26 June 2024</span>
+<span class="org-agenda-date">Thursday   27 June 2024</span>
+<span class="org-agenda-date">Friday     28 June 2024</span>
+<span class="org-agenda-date-weekend">Saturday   29 June 2024</span>
+<span class="org-agenda-date-weekend">Sunday     30 June 2024</span>
+<span class="org-agenda-date">Monday      1 July 2024 W27</span>
+<span class="org-agenda-date">Tuesday     2 July 2024</span>
+<span class="org-agenda-date">Wednesday   3 July 2024</span>
+<span class="org-agenda-date">Thursday    4 July 2024</span>
+<span class="org-agenda-date">Friday      5 July 2024</span>
+<span class="org-agenda-date-weekend">Saturday    6 July 2024</span>
+<span class="org-agenda-date-weekend">Sunday      7 July 2024</span>
+<span class="org-agenda-date">Monday      8 July 2024 W28</span>
+<span class="org-agenda-date">Tuesday     9 July 2024</span>
+<span class="org-agenda-date">Wednesday  10 July 2024</span>
+<span class="org-agenda-date">Thursday   11 July 2024</span>
+<span class="org-agenda-date">Friday     12 July 2024</span>
+<span class="org-agenda-date-weekend">Saturday   13 July 2024</span>
+<span class="org-agenda-date-weekend">Sunday     14 July 2024</span>
+<span class="org-agenda-date">Monday     15 July 2024 W29</span>
+<span class="org-agenda-date">Tuesday    16 July 2024</span>
+<span class="org-agenda-date">Wednesday  17 July 2024</span>
+<span class="org-agenda-date">Thursday   18 July 2024</span>
+<span class="org-agenda-date">Friday     19 July 2024</span>
+<span class="org-agenda-date-weekend">Saturday   20 July 2024</span>
+<span class="org-agenda-date-weekend">Sunday     21 July 2024</span>
+<span class="org-agenda-date">Monday     22 July 2024 W30</span>
+<span class="org-agenda-date">Tuesday    23 July 2024</span>
+<span class="org-agenda-date">Wednesday  24 July 2024</span>
+<span class="org-agenda-date">Thursday   25 July 2024</span>
+<span class="org-agenda-date">Friday     26 July 2024</span>
+<span class="org-agenda-date-weekend">Saturday   27 July 2024</span>
+<span class="org-agenda-date-weekend">Sunday     28 July 2024</span>
+<span class="org-agenda-date">Monday     29 July 2024 W31</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Allemanno-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Lieferung und Einweisung August</span></span>                       <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-agenda-date">Tuesday    30 July 2024</span>
+<span class="org-agenda-date">Wednesday  31 July 2024</span>
+<span class="org-agenda-date">Thursday    1 August 2024</span>
+<span class="org-agenda-date">Friday      2 August 2024</span>
+<span class="org-agenda-date-weekend">Saturday    3 August 2024</span>
+<span class="org-agenda-date-weekend">Sunday      4 August 2024</span>
+<span class="org-agenda-date">Monday      5 August 2024 W32</span>
+<span class="org-agenda-date">Tuesday     6 August 2024</span>
+<span class="org-agenda-date">Wednesday   7 August 2024</span>
+<span class="org-agenda-date">Thursday    8 August 2024</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;Dott Campanini-&gt;    </span></span><span class="custom-1"><span class="warning">TODO</span></span><span class="org-scheduled"><span class="warning"> Check im August bzgl. Verkauf</span></span>                    <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-agenda-date">Friday      9 August 2024</span>
+<span class="org-agenda-date-weekend">Saturday   10 August 2024</span>
+<span class="org-agenda-date-weekend">Sunday     11 August 2024</span>
+<span class="org-agenda-date">Monday     12 August 2024 W33</span>
+<span class="org-agenda-date">Tuesday    13 August 2024</span>
+<span class="org-agenda-date">Wednesday  14 August 2024</span>
+<span class="org-agenda-date">Thursday   15 August 2024</span>
+<span class="org-agenda-date">Friday     16 August 2024</span>
+<span class="org-agenda-date-weekend">Saturday   17 August 2024</span>
+<span class="org-agenda-date-weekend">Sunday     18 August 2024</span>
+<span class="org-agenda-date">Monday     19 August 2024 W34</span>
+<span class="org-agenda-date">Tuesday    20 August 2024</span>
+<span class="org-agenda-date">Wednesday  21 August 2024</span>
+<span class="org-agenda-date">Thursday   22 August 2024</span>
+<span class="org-agenda-date">Friday     23 August 2024</span>
+<span class="org-agenda-date-weekend">Saturday   24 August 2024</span>
+<span class="org-agenda-date-weekend">Sunday     25 August 2024</span>
+<span class="org-agenda-date">Monday     26 August 2024 W35</span>
+<span class="org-scheduled"><span class="warning">Projects-&gt;SoLongjevity-&gt;    </span></span><span class="custom"><span class="warning">Next</span></span><span class="org-scheduled"><span class="warning"> Bereitstellung ReOxy 2 (3)</span></span>                         <span class="org-scheduled"><span class="warning"><span class="org-tag">:Client:Italy::</span></span></span>
+<span class="org-agenda-date">Tuesday    27 August 2024</span>
+<span class="org-agenda-date">Wednesday  28 August 2024</span>
+<span class="org-agenda-date">Thursday   29 August 2024</span>
+<span class="org-agenda-date">Friday     30 August 2024</span>
+</pre>
+  </body>
+</html>

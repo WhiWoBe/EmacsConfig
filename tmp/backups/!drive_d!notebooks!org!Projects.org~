@@ -1,0 +1,185 @@
+#+STARTUP: content inlineimages
+#+TODO: Initiation(i) Planning(p) Execution&Monitoring(e) | Closing(c) Done(d) CANCELED(C) 
+#+TODO: Thomas(t) Vanessa(v) Corry(c) 
+
+This is just a summary of Projects.
+Still have to find a solution on how to handle them
+
+* Projects
+
+** ReOxy
+ [[D:\kroener\OneDrive - Kröner Medizintechnik\TMI\ReOxy\09_Projects][proj_ReOxy]]
+
+#+begin_src emacs-lisp :results raw
+(let* ((directory "D:\\kroener\\OneDrive - Kröner Medizintechnik\\TMI\\ReOxy\\09_Projects") ; Replace with the actual directory path
+       (subdirs (directory-files directory t "^[^.].*" t))) ; Get subdirectories (exclude hidden files)
+  (mapconcat (lambda (subdir)
+               (when (file-directory-p subdir) ; Check if it's a directory
+                 (format "[[file:%s][%s]]" subdir (file-name-nondirectory subdir))))
+             subdirs "\n  ")) ; Indent subdirectories
+#+end_src
+
+#+RESULTS:
+
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/Study_opportunities][Study_opportunities]]
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/Service][Service]]
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/ReOxy_Guide][ReOxy_Guide]]
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/Marketing][Marketing]]
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/Data_Analysis][Data_Analysis]]
+  [[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/09_Projects/Contact_Research][Contact_Research]]
+
+#+begin_src emacs-lisp :results value
+  (let ((files (directory-files-recursively "D:\\kroener\\OneDrive - Kröner Medizintechnik\\TMI\\ReOxy\\09_Projects" "")))
+    (mapcar #'file-name-nondirectory files))
+
+#+end_src
+
+#+RESULTS:
+
+
+
+*** Initiation ReOxy_Evidence
+
+**** Charter
+***** Buisness Need
+
+ReOxy as a medical intervention needs more and better evidence.
+
+Evidence is needed on two Pillars
+
+- Biological effect (Basic Research on Cells)
+- Clinical Trials (Reseach on Patients an modalities)
+
+Our competition and to a lesser extend we advertise IHHT as a medical intervention
+that show imporovements in the main areas of Cognitive and Physical ability.
+This seems to be especially true within the elderly.
+
+The Evidence level is low. In order to advance on the market and in order to advance
+the current Technology and establish a market lead there needs to be better evidence which in turn
+informs the decisions for further development of the ReOxy
+
+Knowledge is power and can lead us to establish a market lead throuh sharing of knowledge
+and innovation
+
+***** Reseach opportunities
+****** Dr. Zwick Vienna
+Post COVID Randomized Placebo High Profile
+****** Lutz Schega, Tom Behrend
+****** Anke Steinmetz
+Fatigue Cognitive Function Crossover Placebo Randomized mid to high profile
+****** Pidretti
+Cardio
+****** Ludger, HIF Transcription under ReOxy
+Cell Research contact through Ludger
+
+***** Goals
+A set of Clinically validated paramters and biomarkers for specific modalities
+Proof of HIF activation of target genes under ReOxy
+High Caliber Contacts and KOLs
+Publication of two clinical trials in Journals with a higher IF than prior publications 
+
+***** Scope and Limits
+
+****** Scope
+
+Setup of clinical trials with priort testing periods and extensive training of the users
+One Training session takes two days. Per device estimate  is two training sessions.
+Development of a Sham device
+Clinical Trials for 2 Years
+Meetings with Researchers
+Funding of ?
+
+****** Limits
+Timeframe to peer review <2 years
+No Publication aimed at a low impact Journal
+No Extension of the Trial Protocol after start and additions before publication or cancellation.
+No support from me for further Research beyond 2 trials
+No Provisioning of Masks through Kroener
+No Provisioning of devices through Kroener without explicit agreement between Kroener and aimediq
+No clinical trial without proper prior listing at https://clinicaltrials.gov/
+Exeption is Base research, where it could inform further developments. In this case it might turn out
+that we do not want in published or rather published at a specific time.
+
+***** Stakeholders
+
+aimediq
+kroener
+researchers
+customers
+co-workers
+
+***** Risks
+
+Properly conducted trials show little or no significant improvements.
+Established KOLs turn against the treatment.
+Research starts poorly informed with lackluster prior communication and agreement on what to look for
+HIF turns out to play a substantial role and our competetors say "duh..."
+HIF turns out to not play a substantial role in the treatment with IHHT
+Competitors just grab the knowledge and sell it as their own.
+Findings lead to innovation for our competitors who do it faster
+Doing too many trials overexerting our capacity
+
+*** Execution&Monitoring ReOxy Reporter
+
+*** Planning Data Syncronization
+
+*** Execution&Monitoring Patient Flyer
+
+*** Initiation Interviews
+
+*** Execution&Monitoring Sales Training
+
+*** Planning Palermo
+
+*** Execution&Monitoring Beretta Longjevity
+
+
+** Airwaymedics
+*** Presentation to Bennerscheidt
+
+** Project Management
+*** Structures
+*** Google Course
+** Kroener
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/04_Projects/proj_Praxislounge_Kompakt][proj_Praxislounge_Kompakt]]
+** Laserix
+[[file:d:/kroener/OneDrive - Kröner Medizintechnik/TMI/04_Projects/proj_LASERIX_Custom_Settings_Update][proj_LASERIX_Custom_Settings_Update]]
+** Python
+what does learing pzthon get me.
+I can set up na framework for Data handleing for the ReOxy
+I can create automations for
+- Documents
+  - Automatic filling and printing for products
+    - Create a Template where you can specify the Files
+    - make a copy
+    - Fill out the copies
+    - Print
+    - delete
+*** hot_Windows 
+** Emacs Workflow
+** Finances
+*** Raisin.nl
+*** Savingsaccount
+*** Taxes
+** Programming
+*** Hotkeys
+Create a app that listens for hotkeys and starts various processes
+The app can be toggled by hotkey. It needs a cheat sheet with
+hotkeys and actions, some hotkeys create sub categories for assciated
+actions.
+
+**** Processes
+1. Run apps per hotkey
+   1. Outlook
+   2. Calendar
+   3. Emacs
+   4. Browser
+   5. Circular + Login
+   6. Timo + Login
+   7. Keepass + Login
+2. Run a Startup Script
+   1. Run outlook and place on Virtual Desktop
+   2. Run Calendar and place on Virtual Desktop
+   3. Run emacs and place on Virtual Desktop
+3. Copy Print and Fill Documents for Introduction
+   1. ReOxy
