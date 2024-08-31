@@ -78,12 +78,12 @@ At the moment File structure and Drive Name is the Same under Work and Private P
   ;; (setq default-directory (getenv "DRIVE_D"))
   (defvar my/DRIVE_D "d:/")
   (defvar my/DRIVE_C "c:/")
-  (defvar my/WORK_KROENER_FODLER "d:/kroener")
-  (defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
+  (defvar my/WORK_KROENER_FODLER "d:/office")
+  (defvar my/HOME_KROENER_FOLDER "d:/work/office")
 
   (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
                                     (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)
-                                    (expand-file-name "D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
+                                    (expand-file-name "D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
 
   (defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
 
@@ -94,8 +94,6 @@ At the moment File structure and Drive Name is the Same under Work and Private P
   (defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
   (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
-
-
 #+end_src
 
 #+RESULTS:
@@ -103,7 +101,7 @@ At the moment File structure and Drive Name is the Same under Work and Private P
 
 * Appearance Settings (Fonts and Themes)
 
-considering another Theme like doom-old
+considering another Theme like doom-old. Dont forget to Install the Fonts
 
 #+begin_src emacs-lisp 
 
@@ -524,7 +522,7 @@ Switched to Superagenda [2024-05-31 Fr]
   ;;          ("P" "Project Overview"
   ;;           (
   ;;            (agenda ""
-  ;;                    ((org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+  ;;                    ((org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
   ;;                     (org-agenda-span 30)
   ;;                     (org-deadline-warning-days 30)
   ;;                     (org-agenda-overriding-header "\n* Project Agenda *\n")))
@@ -554,6 +552,8 @@ Switched to Superagenda [2024-05-31 Fr]
 
 ** Org Super Agenda
 
+Org Super agenda only categorizes. If the results look weird remember, It does not filter. 
+
 #+begin_src emacs-lisp
 
   (use-package org-super-agenda
@@ -573,7 +573,7 @@ Switched to Superagenda [2024-05-31 Fr]
                      (org-agenda-span 'day)
                      (org-agenda-entry-types '(:deadline))
                      (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                     (org-deadline-warning-days 14)
+                     (org-deadline-warning-days 30)
                      (org-agenda-overriding-header "\n* Deadlines *\n")))
 
             (agenda ""
@@ -627,7 +627,7 @@ Switched to Superagenda [2024-05-31 Fr]
             (todo ""
                   ((org-agenda-overriding-header "* Open Task List *\n")
                    (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                   (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                    (org-super-agenda-groups
                     '(
                       (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
@@ -640,7 +640,7 @@ Switched to Superagenda [2024-05-31 Fr]
           ("P" "Project Task List"
            (
             (todo "" ((org-agenda-overriding-header "Project Task List")
-                      (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                      (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                       (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
 
                       (org-super-agenda-groups
@@ -665,13 +665,13 @@ Switched to Superagenda [2024-05-31 Fr]
                          (:discard (:tag ("Exclude")))
                          )))))
            nil
-           ("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/Project_Task_List.html"))
+           ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
 
           ("z" "Project Agenda Overview"
            (
             (agenda ""
                     ((org-agenda-block-separator nil)
-                     (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                     (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                      (org-agenda-prefix-format '(
                                                  (agenda . "%s %b  %?-2i %t")))
                      (org-agenda-entry-types '(:deadline))
@@ -680,7 +680,7 @@ Switched to Superagenda [2024-05-31 Fr]
                      (org-agenda-overriding-header "\n* Deadlines *\n")))
             (agenda ""
                     ((org-agenda-overriding-header "Project Task List")
-                     (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                     (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                      (org-agenda-span 90)
                      (org-agenda-repeating-timestamp-show-all t)
                      (org-agenda-skip-scheduled-if-done nil)
@@ -707,7 +707,7 @@ Switched to Superagenda [2024-05-31 Fr]
                                :scheduled future
                                :face 'warning))))))
            nil
-           ("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/Project_Agenda_Overview.html"))
+           ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
           ))
 
 #+end_src
@@ -718,7 +718,7 @@ Switched to Superagenda [2024-05-31 Fr]
 
   (use-package org-agenda-property
     :ensure t)
-  (setq org-agenda-property-list '("assigned")) 
+  (setq org-agenda-property-list '("assigned" "assets" "condition")) 
 
 #+end_src
 
@@ -733,6 +733,8 @@ Switched to Superagenda [2024-05-31 Fr]
 #+end_src
 
 ** Org Modern 
+
+Replacing Org Bullets.
 
 #+begin_src emacs-lisp
 
@@ -750,9 +752,8 @@ Switched to Superagenda [2024-05-31 Fr]
   (setq org-tags-column 0)
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
 
-  (global-org-modern-mode)
   (setq line-spacing 0.3)
-  
+
   (setq org-modern-fold-stars 
    '(("▶" . "▼")
     ("▷" . "▽")
@@ -760,6 +761,8 @@ Switched to Superagenda [2024-05-31 Fr]
     ("▹" . "▿")
     ("▸" . "▾")))
 
+  (global-org-modern-mode) ;; maybe redundant
+  
 #+end_src
 
 ** Org Bullets
@@ -856,6 +859,7 @@ For me ivy rich broke the buffer when starting dired.
 - Maybe use Distrotubes guide for Ivy https://www.youtube.com/watch?v=A4UothfExBM&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX&index=5
 - check out Alternatives https://github.com/emacs-tw/awesome-emacs?tab=readme-ov-file#other-awesome-lists:~:text=for%20key%2Dbindings.-,Minibuffer,-IDO%20%2D%20%5Bbuilt  
 Used the build in (fido-vertical-mode)  and switched to vertico and orderless
+Considering HELM
 
 #+begin_src emacs-lisp
 
@@ -1169,6 +1173,8 @@ Indenting needs to be fixed
 
 ** Djvu
 
+Dependency
+
 #+begin_src emacs-lisp
 
   (use-package djvu
@@ -1180,6 +1186,8 @@ Indenting needs to be fixed
 #+end_src
 
 ** ISpell
+
+Install Hunspell (precompiled or mysys + add path)
 
 #+begin_src emacs-lisp
 
@@ -1449,13 +1457,14 @@ Tangles this config to the init file
 
     (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
       ;; Dynamic scoping to the rescue
-      (write-region nil nil "d:/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
+      (write-region nil nil "d:/notebooks/Dropbox/org/Tasks_wr.org" nil nil nil nil))
 
     (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
       ;; Dynamic scoping to the rescue
-      (write-region nil nil "d:/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
+      (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
 
 #+end_src
+
 

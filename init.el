@@ -50,12 +50,12 @@
 ;; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
 (defvar my/DRIVE_C "c:/")
-(defvar my/WORK_KROENER_FODLER "d:/kroener")
-(defvar my/HOME_KROENER_FOLDER "d:/work/kroener")
+(defvar my/WORK_KROENER_FODLER "d:/office")
+(defvar my/HOME_KROENER_FOLDER "d:/work/office")
 
 (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
                                   (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)
-                                  (expand-file-name "D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
+                                  (expand-file-name "D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
 
 (defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
 
@@ -403,7 +403,7 @@
 ;;          ("P" "Project Overview"
 ;;           (
 ;;            (agenda ""
-;;                    ((org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+;;                    ((org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
 ;;                     (org-agenda-span 30)
 ;;                     (org-deadline-warning-days 30)
 ;;                     (org-agenda-overriding-header "\n* Project Agenda *\n")))
@@ -446,7 +446,7 @@
                    (org-agenda-span 'day)
                    (org-agenda-entry-types '(:deadline))
                    (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                   (org-deadline-warning-days 14)
+                   (org-deadline-warning-days 30)
                    (org-agenda-overriding-header "\n* Deadlines *\n")))
 
           (agenda ""
@@ -500,7 +500,7 @@
           (todo ""
                 ((org-agenda-overriding-header "* Open Task List *\n")
                  (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                 (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                 (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                  (org-super-agenda-groups
                   '(
                     (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
@@ -513,7 +513,7 @@
         ("P" "Project Task List"
          (
           (todo "" ((org-agenda-overriding-header "Project Task List")
-                    (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                    (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                     (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
 
                     (org-super-agenda-groups
@@ -538,13 +538,13 @@
                        (:discard (:tag ("Exclude")))
                        )))))
          nil
-         ("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/Project_Task_List.html"))
+         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
 
         ("z" "Project Agenda Overview"
          (
           (agenda ""
                   ((org-agenda-block-separator nil)
-                   (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                    (org-agenda-prefix-format '(
                                                (agenda . "%s %b  %?-2i %t")))
                    (org-agenda-entry-types '(:deadline))
@@ -553,7 +553,7 @@
                    (org-agenda-overriding-header "\n* Deadlines *\n")))
           (agenda ""
                   ((org-agenda-overriding-header "Project Task List")
-                   (org-agenda-files '("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
                    (org-agenda-span 90)
                    (org-agenda-repeating-timestamp-show-all t)
                    (org-agenda-skip-scheduled-if-done nil)
@@ -580,12 +580,12 @@
                              :scheduled future
                              :face 'warning))))))
          nil
-         ("D:/kroener/OneDrive - Kröner Medizintechnik/TMI/ReOxy/ReOxy_Guide/Project_Agenda_Overview.html"))
+         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
         ))
 
 (use-package org-agenda-property
   :ensure t)
-(setq org-agenda-property-list '("assigned"))
+(setq org-agenda-property-list '("assigned" "assets" "condition"))
 
 (use-package org-download
   :ensure t)
@@ -605,7 +605,6 @@
 (setq org-tags-column 0)
 (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
 
-(global-org-modern-mode)
 (setq line-spacing 0.3)
 
 (setq org-modern-fold-stars 
@@ -614,6 +613,8 @@
   ("⯈" . "⯆")
   ("▹" . "▿")
   ("▸" . "▾")))
+
+(global-org-modern-mode) ;; maybe redundant
 
 ;; (use-package org-bullets
 ;;   :hook (org-mode . org-bullets-mode)
@@ -1119,10 +1120,10 @@
 
   (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
     ;; Dynamic scoping to the rescue
-    (write-region nil nil "d:/Dropbox/Dropbox/org/Tasks_wr.org" nil nil nil nil))
+    (write-region nil nil "d:/notebooks/Dropbox/org/Tasks_wr.org" nil nil nil nil))
 
   (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
     ;; Dynamic scoping to the rescue
-    (write-region nil nil "d:/Dropbox/Dropbox/org/Journal_wr.org" nil nil nil nil)))
+    (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
