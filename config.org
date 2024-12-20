@@ -954,7 +954,8 @@ Default is fine
 
 ** AUCTeX & PDF-Tools
 
-PDF Tools needs to be compiled (pdf-tools-install) Requires Msys2 to Compile
+PDF Tools needs to be compiled see below (pdf-tools-install) on windows this Requires Msys2 to Compile
+alternatively you can copy the working folder from an existing msys2 installation
 In the PDF Buffer it should show PDF-Tools as a Major Mode
 
 #+begin_src emacs-lisp
