@@ -15,54 +15,58 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 #+begin_src emacs-lisp
 
-  ;; (server-start) 
-  (setq inhibit-startup-message t)
 
-  ;; WINDOW
-  (scroll-bar-mode -1) ;show scroll bars
-  (set-fringe-mode 0) ;added window border
-  (menu-bar-mode -1) ; top menu bar
-  (tool-bar-mode -1)
-  ;; (tooltip mode -1)
+  ;; Register Alt-TAB
+  (w32-register-hot-key [M-tab])
 
-  (setq visible-bell t)
+    ;; (server-start) 
+    (setq inhibit-startup-message t)
 
-  ;; Scroll
-  ;; (pixel-scroll-precision-mode)
+    ;; WINDOW
+    (scroll-bar-mode -1) ;show scroll bars
+    (set-fringe-mode 0) ;added window border
+    (menu-bar-mode -1) ; top menu bar
+    (tool-bar-mode -1)
+    ;; (tooltip mode -1)
 
-  ;; Line Numbers
-  (global-display-line-numbers-mode 0)
-  (menu-bar--display-line-numbers-mode-relative)
-  ;; (display-line-numbers-type 'relative)
+    (setq visible-bell t)
 
-  ;; Line Highlight
-  (global-hl-line-mode 1)
-  (set-face-background hl-line-face "#716969")
+    ;; Scroll
+    ;; (pixel-scroll-precision-mode)
 
-  ;; History
+    ;; Line Numbers
+    (global-display-line-numbers-mode 0)
+    (menu-bar--display-line-numbers-mode-relative)
+    ;; (display-line-numbers-type 'relative)
 
-  (setq history-length 25)
-  (savehist-mode 1)
+    ;; Line Highlight
+    (global-hl-line-mode 1)
+    (set-face-background hl-line-face "#716969")
 
-  (setq recentf-max-saved-items 25)
-  (recentf-mode 1)
+    ;; History
 
-  ;; Auto update buffers
-  (global-auto-revert-mode)
+    (setq history-length 25)
+    (savehist-mode 1)
 
-  ;; Frame Parameters
+    (setq recentf-max-saved-items 25)
+    (recentf-mode 1)
 
-  ;; (set-frame-parameter nil 'internal-border-width 20)
-  (set-frame-parameter (selected-frame) 'alpha '(85 85))
+    ;; Auto update buffers
+    (global-auto-revert-mode)
 
-  (add-to-list 'default-frame-alist '(internal-border-width . 20))
-  (add-to-list 'default-frame-alist '(alpha-background  . 70))
+    ;; Frame Parameters
 
-  ;; (add-to-list 'default-frame-alist '(width  . 100))
-  ;; (add-to-list 'default-frame-alist '(height . 40))
+    ;; (set-frame-parameter nil 'internal-border-width 20)
+    (set-frame-parameter (selected-frame) 'alpha '(85 85))
 
-  ;;  (set-language-environment 'utf-8)
-  ;;  (set-default-coding-systems 'utf-8)
+    (add-to-list 'default-frame-alist '(internal-border-width . 20))
+    (add-to-list 'default-frame-alist '(alpha-background  . 70))
+
+    ;; (add-to-list 'default-frame-alist '(width  . 100))
+    ;; (add-to-list 'default-frame-alist '(height . 40))
+
+    ;;  (set-language-environment 'utf-8)
+    ;;  (set-default-coding-systems 'utf-8)
 
 #+end_src
 
@@ -276,7 +280,7 @@ This Function is called with a shortcut
                                                     (lambda ()
                                                       (org-datetree-find-date-create
                                                        (org-date-to-gregorian (org-today)) t)
-                                                      (re-search-forward "^\\*.+ Log" nil t)))
+                                                  (re-search-forward "^\\*.+ Log.+]" nil t)))
              (file "d:/notebooks/org/.templates/Journal_Template.org")
              :prepend nil
              :jump-to-captured nil
@@ -291,9 +295,7 @@ This Function is called with a shortcut
              :empty-lines-before 0
              :empty-lines-after 0
              )
-
             )
-
           ;; Org global TODO States
           ;; (setq org-todo-keywords
           ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
@@ -1341,6 +1343,7 @@ Resources https://github.com/noctuid/general.el
       "o t" '(org-set-tags-command :wk "Tags set/edit")
       "o u" '(my/org-unschedule :wk "Unschedule")
       "o z" '(org-cite-insert :wk "Cite")
+      "o TAB" '(complete-symbol :wk "Completion")
 
   
       "s" '(:ignore t :wk "snippets")

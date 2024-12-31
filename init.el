@@ -1,51 +1,54 @@
-;; (server-start) 
-(setq inhibit-startup-message t)
+;; Register Alt-TAB
+(w32-register-hot-key [M-tab])
 
-;; WINDOW
-(scroll-bar-mode -1) ;show scroll bars
-(set-fringe-mode 0) ;added window border
-(menu-bar-mode -1) ; top menu bar
-(tool-bar-mode -1)
-;; (tooltip mode -1)
+  ;; (server-start) 
+  (setq inhibit-startup-message t)
 
-(setq visible-bell t)
+  ;; WINDOW
+  (scroll-bar-mode -1) ;show scroll bars
+  (set-fringe-mode 0) ;added window border
+  (menu-bar-mode -1) ; top menu bar
+  (tool-bar-mode -1)
+  ;; (tooltip mode -1)
 
-;; Scroll
-;; (pixel-scroll-precision-mode)
+  (setq visible-bell t)
 
-;; Line Numbers
-(global-display-line-numbers-mode 0)
-(menu-bar--display-line-numbers-mode-relative)
-;; (display-line-numbers-type 'relative)
+  ;; Scroll
+  ;; (pixel-scroll-precision-mode)
 
-;; Line Highlight
-(global-hl-line-mode 1)
-(set-face-background hl-line-face "#716969")
+  ;; Line Numbers
+  (global-display-line-numbers-mode 0)
+  (menu-bar--display-line-numbers-mode-relative)
+  ;; (display-line-numbers-type 'relative)
 
-;; History
+  ;; Line Highlight
+  (global-hl-line-mode 1)
+  (set-face-background hl-line-face "#716969")
 
-(setq history-length 25)
-(savehist-mode 1)
+  ;; History
 
-(setq recentf-max-saved-items 25)
-(recentf-mode 1)
+  (setq history-length 25)
+  (savehist-mode 1)
 
-;; Auto update buffers
-(global-auto-revert-mode)
+  (setq recentf-max-saved-items 25)
+  (recentf-mode 1)
 
-;; Frame Parameters
+  ;; Auto update buffers
+  (global-auto-revert-mode)
 
-;; (set-frame-parameter nil 'internal-border-width 20)
-(set-frame-parameter (selected-frame) 'alpha '(85 85))
+  ;; Frame Parameters
 
-(add-to-list 'default-frame-alist '(internal-border-width . 20))
-(add-to-list 'default-frame-alist '(alpha-background  . 70))
+  ;; (set-frame-parameter nil 'internal-border-width 20)
+  (set-frame-parameter (selected-frame) 'alpha '(85 85))
 
-;; (add-to-list 'default-frame-alist '(width  . 100))
-;; (add-to-list 'default-frame-alist '(height . 40))
+  (add-to-list 'default-frame-alist '(internal-border-width . 20))
+  (add-to-list 'default-frame-alist '(alpha-background  . 70))
 
-;;  (set-language-environment 'utf-8)
-;;  (set-default-coding-systems 'utf-8)
+  ;; (add-to-list 'default-frame-alist '(width  . 100))
+  ;; (add-to-list 'default-frame-alist '(height . 40))
+
+  ;;  (set-language-environment 'utf-8)
+  ;;  (set-default-coding-systems 'utf-8)
 
 ;; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
@@ -189,7 +192,7 @@
                                                   (lambda ()
                                                     (org-datetree-find-date-create
                                                      (org-date-to-gregorian (org-today)) t)
-                                                    (re-search-forward "^\\*.+ Log" nil t)))
+                                                (re-search-forward "^\\*.+ Log.+]" nil t)))
            (file "d:/notebooks/org/.templates/Journal_Template.org")
            :prepend nil
            :jump-to-captured nil
@@ -204,9 +207,7 @@
            :empty-lines-before 0
            :empty-lines-after 0
            )
-
           )
-
         ;; Org global TODO States
         ;; (setq org-todo-keywords
         ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
@@ -671,15 +672,9 @@
     nil nil 'center))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(org-startup-indented t)
  '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
- '(package-selected-packages
-   '(gnuplot-mode gnuplot yasnippet which-key vertico pdf-tools org-transclusion org-super-agenda org-noter org-modern org-download org-agenda-property orderless ob-mermaid nov marginalia magit htmlize general evil-collection djvu citar-embark auctex all-the-icons)))
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
 
     (set-face-attribute
      'org-transclusion-fringe nil
@@ -1039,6 +1034,7 @@
     "o t" '(org-set-tags-command :wk "Tags set/edit")
     "o u" '(my/org-unschedule :wk "Unschedule")
     "o z" '(org-cite-insert :wk "Cite")
+    "o TAB" '(complete-symbol :wk "Completion")
 
 
     "s" '(:ignore t :wk "snippets")
@@ -1133,14 +1129,3 @@
     (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
