@@ -156,8 +156,9 @@
   (require 'org-id)
   (setq org-id-link-to-org-use-id t) ;; (org-id-method) 
   (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+ ;; (org-id-update-id-locations '("d:\\notebooks\\org\\.data\\.win_org-id-locations"))
 
-  ;;Set Faces
+ ;; Set Faces
 
   (custom-set-faces
    '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
@@ -431,158 +432,147 @@
 ;;      (org-agenda)))
 
 (use-package org-super-agenda
-  :ensure t)
-(require 'org-super-agenda)
-(org-super-agenda-mode t)
-(setq org-super-agenda-keep-order nil)
-                                        ; (org-agenda nil "a")
-(setq org-super-agenda-header-separator "\n")
+      :ensure t)
+    (require 'org-super-agenda)
+    (org-super-agenda-mode t)
+(setq org-super-agenda-keep-order t) 
+                                            ; (org-agenda nil "a")
+    (setq org-super-agenda-header-separator "\n")
 
-(setq org-agenda-custom-commands
-      '(
-        ("D" "Day"
-         (
-          (agenda ""
-                  ((org-agenda-block-separator nil)
-                   (org-agenda-span 'day)
-                   (org-agenda-entry-types '(:deadline))
-                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                   (org-deadline-warning-days 30)
-                   (org-agenda-overriding-header "\n* Deadlines *\n")))
+    (setq org-agenda-custom-commands
+          '(
 
-          (agenda ""
-                  ((org-agenda-block-separator nil)
-                   (org-agenda-span 1)
-                   (org-agenda-repeating-timestamp-show-all t)
-                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                   (org-agenda-overriding-header "\n* Today *\n")
-                   (org-super-agenda-groups
-                    '((:name "Tasks"
-                             :todo "ACT"
-                             :order 1)
-                      (:name "Waiting on"
-                             :todo "WAIT"
-                             :order 1)
-                      (:name "Other"
-                             :todo t
-                             :order 2)))))
+            ("d" "Day"
+             (
+              (agenda ""
+                      ((org-agenda-block-separator nil)
+                       (org-agenda-span 'day)
+                       (org-agenda-entry-types '(:deadline))
+                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                       (org-deadline-warning-days 30)
+                       (org-agenda-overriding-header "\n* Deadlines *\n")))
 
-          (agenda ""
-                  ((org-agenda-block-separator nil)
-                   (org-agenda-start-day "+1d")
-                   (org-agenda-span 2)
-                   (org-agenda-repeating-timestamp-show-all t)
-                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                   (org-agenda-overriding-header "\n* Upcoming *\n")))
+              (agenda ""
+                      ((org-agenda-block-separator nil)
+                       (org-agenda-span 1)
+                       (org-agenda-repeating-timestamp-show-all t)
+                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                       (org-agenda-overriding-header "\n* Today *\n")
+                       (org-super-agenda-groups
+                        '((:name "Tasks"
+                                 :todo "ACT"
+                                 :order 1)
+                          (:name "Waiting on"
+                                 :todo "WAIT"
+                                 :order 1)
+                          (:name "Other"
+                                 :todo t
+                                 :order 2)))))
 
-          (todo ""
-                ((org-agenda-overriding-header "* Open Task List *\n")
-                 (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                 (org-agenda-files '("D:/notebooks/org/Tasks.org" "D:/notebooks/org/Meetings.org"))
-                 (org-super-agenda-groups
-                  '((:name ""
-                           :todo "ACT"
-                           :order 1)
-                    (:name ""
-                           :todo "WAIT"
-                           :order 1)
-                    (:name ""
-                           :todo "DELIGATED"
-                           :order 1)
-                    (:name "Meeting"
-                           :file-path ("D:/notebooks/org/Meetings.org")
-                           :order 2)
-                    (:name "Other"
-                           :todo t
-                           :order 2)))))
+              (agenda ""
+                      ((org-agenda-block-separator nil)
+                       (org-agenda-start-day "+1d")
+                       (org-agenda-span 2)
+                       (org-agenda-repeating-timestamp-show-all t)
+                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                       (org-agenda-overriding-header "\n* Upcoming *\n")))
 
-          (todo ""
-                ((org-agenda-overriding-header "* Open Task List *\n")
-                 (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                 (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                 (org-super-agenda-groups
-                  '(
-                    (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                    ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
-                    ;; (:auto-outline-path t)
-                    ;; (:auto-property "Project")
-                    (:discard (:tag ("Exclude")))))))
-          ))
+              (todo ""
+                    ((org-agenda-overriding-header "* Open Task List *\n")
+                     (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
+                     (org-agenda-files '("D:/notebooks/org/Tasks.org" "D:/notebooks/org/Meetings.org"))
+                     (org-super-agenda-groups
+                      '((:name ""
+                               :todo "ACT"
+                               :order 1)
+                        (:name ""
+                               :todo "WAIT"
+                               :order 1)
+                        (:name ""
+                               :todo "DELIGATED"
+                               :order 1)
+                        (:name "Meeting"
+                               :file-path ("D:/notebooks/org/Meetings.org")
+                               :order 2)
+                        (:name "Other"
+                               :todo t
+                               :order 2)))))
+              ))
 
-        ("P" "Project Task List"
-         (
-          (todo "" ((org-agenda-overriding-header "Project Task List")
-                    (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                    (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
+            ("P" "Project Task List"
+             (
+              (todo "" ((org-agenda-overriding-header "Project Task List")
+                        (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                        (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
 
-                    (org-super-agenda-groups
-                     '(
-                       ;; (:auto-outline-path t)
-                       ;; (:auto-property "Project")
-                       ;; (:auto-tags t)
-                       ;; (:auto-category t)
-                       ;; (:name "Client Projects"
-                       ;;        :tag "Client"
-                       ;;        :order 1)
-                       ;; (:name "Research Projects"
-                       ;;        :tag "Research"
-                       ;;        :order 2)
-                       ;; (:name "Marketing Projects"
-                       ;;        :tag "Marketing"
-                       ;;        :order 3)
-                       ;; (:name "Italy"
-                       ;;        :tag "Italy"
-                       ;;        :order 4)
-                       (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                       (:discard (:tag ("Exclude")))
-                       )))))
-         nil
-         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
+                        (org-super-agenda-groups
+                         '(
+                           ;; (:auto-outline-path t)
+                           ;; (:auto-property "Project")
+                           ;; (:auto-tags t)
+                           ;; (:auto-category t)
+                           ;; (:name "Client Projects"
+                           ;;        :tag "Client"
+                           ;;        :order 1)
+                           ;; (:name "Research Projects"
+                           ;;        :tag "Research"
+                           ;;        :order 2)
+                           ;; (:name "Marketing Projects"
+                           ;;        :tag "Marketing"
+                           ;;        :order 3)
+                           ;; (:name "Italy"
+                           ;;        :tag "Italy"
+                           ;;        :order 4)
+                           (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
+                           (:discard (:tag ("Exclude")))
+                           )))))
+             nil
+             ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
 
-        ("z" "Project Agenda Overview"
-         (
-          (agenda ""
-                  ((org-agenda-block-separator nil)
-                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                   (org-agenda-prefix-format '(
-                                               (agenda . "%s %b  %?-2i %t")))
-                   (org-agenda-entry-types '(:deadline))
-                   (org-agenda-span 1)
-                   (org-deadline-warning-days 60)
-                   (org-agenda-overriding-header "\n* Deadlines *\n")))
-          (agenda ""
-                  ((org-agenda-overriding-header "Project Task List")
-                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                   (org-agenda-span 90)
-                   (org-agenda-repeating-timestamp-show-all t)
-                   (org-agenda-skip-scheduled-if-done nil)
-                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                   (org-agenda-include-diary nil)
-                   (org-agenda-current-time-string "")
-                   (org-agenda-time-grid '((daily) () "" ""))
-                   (org-agenda-prefix-format '(
-                                               (agenda . "%b  %?-2i %t ")))
-                   (org-super-agenda-groups
-                    '(
-                      ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
-                      ;; (:auto-outline-path t)
-                      ;; (:auto-planning t)
-                      ;; (:auto-property "Project")
-                      ;; (:auto-tags t)
-                      ;; (:auto-category t)
-                      (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                      (:discard (:tag ("Exclude")))
-                      (:name " Overdue "  ; Optionally specify section name
-                             :scheduled past
-                             :face 'warning)
-                      (:name ""  ; Optionally specify section name
-                             :scheduled future
-                             :face 'warning))))))
-         nil
-         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
-        ))
+            ("z" "Project Agenda Overview"
+             (
+              (agenda ""
+                      ((org-agenda-block-separator nil)
+                       (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                       (org-agenda-prefix-format '(
+                                                   (agenda . "%s %b  %?-2i %t")))
+                       (org-agenda-entry-types '(:deadline))
+                       (org-agenda-span 1)
+                       (org-deadline-warning-days 60)
+                       (org-agenda-overriding-header "\n* Deadlines *\n")))
+              (agenda ""
+                      ((org-agenda-overriding-header "Project Task List")
+                       (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                       (org-agenda-span 90)
+                       (org-agenda-repeating-timestamp-show-all t)
+                       (org-agenda-skip-scheduled-if-done nil)
+                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                       (org-agenda-include-diary nil)
+                       (org-agenda-current-time-string "")
+                       (org-agenda-time-grid '((daily) () "" ""))
+                       (org-agenda-prefix-format '(
+                                                   (agenda . "%b  %?-2i %t ")))
+                       (org-super-agenda-groups
+                        '(
+                          ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
+                          ;; (:auto-outline-path t)
+                          ;; (:auto-planning t)
+                          ;; (:auto-property "Project")
+                          ;; (:auto-tags t)
+                          ;; (:auto-category t)
+                          (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
+                          (:discard (:tag ("Exclude")))
+                          (:name " Overdue "  ; Optionally specify section name
+                                 :scheduled past
+                                 :face 'warning)
+                          (:name ""  ; Optionally specify section name
+                                 :scheduled future
+                                 :face 'warning))))))
+             nil
+             ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
+            ))
 
 (use-package org-agenda-property
   :ensure t)
@@ -593,29 +583,30 @@
 (setq org-download-image-org-width 20)
 
 (use-package org-modern
-  :ensure t)
+    :ensure t)
 
-(add-hook 'org-mode-hook #'org-modern-mode)
-(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+;; force agenda to start at top
+(add-hook 'org-agenda-finalize-hook #'org-agenda-find-same-or-today-or-agenda 90)
+  (setq org-auto-align-tags nil)
+  (setq org-hide-emphasis-markers t)
 
-(setq org-auto-align-tags nil)
-(setq org-hide-emphasis-markers t)
+  (setq org-pretty-entities t)
 
-(setq org-pretty-entities t)
+  (setq org-tags-column 0)
+  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
 
-(setq org-tags-column 0)
-(set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+  (setq line-spacing 0.3)
 
-(setq line-spacing 0.3)
+  (setq org-modern-fold-stars 
+   '(("▶" . "▼")
+    ("▷" . "▽")
+    ("⯈" . "⯆")
+    ("▹" . "▿")
+    ("▸" . "▾")))
 
-(setq org-modern-fold-stars 
- '(("▶" . "▼")
-  ("▷" . "▽")
-  ("⯈" . "⯆")
-  ("▹" . "▿")
-  ("▸" . "▾")))
-
-(global-org-modern-mode) ;; maybe redundant
+  (global-org-modern-mode) ;; maybe redundant
 
 ;; (use-package org-bullets
 ;;   :hook (org-mode . org-bullets-mode)
@@ -672,9 +663,15 @@
     nil nil 'center))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(org-startup-indented t)
  '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
+ '(package-selected-packages
+   '(yasnippet which-key vertico pdf-tools org-transclusion org-super-agenda org-noter org-modern org-download org-agenda-property orderless ob-mermaid nov marginalia magit htmlize gnuplot-mode gnuplot general evil-collection djvu citar-embark auctex all-the-icons)))
 
     (set-face-attribute
      'org-transclusion-fringe nil
@@ -1129,3 +1126,14 @@
     (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+ '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
