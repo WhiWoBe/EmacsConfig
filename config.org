@@ -962,8 +962,8 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
   (use-package pdf-tools
     :ensure t)
 
-  (pdf-tools-install)  ; Standard activation command
-  ;; (pdf-loader-install) ; On demand loading, leads to faster startup time
+  (pdf-loader-install) ; On demand loading, leads to faster startup time
+  ;; (pdf-tools-install)  ; Standard activation command
   ;;  (setq pdf-view-use-scaling nil)
 
 #+end_src

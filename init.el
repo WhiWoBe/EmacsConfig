@@ -663,15 +663,9 @@
     nil nil 'center))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(org-startup-indented t)
  '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode))
- '(package-selected-packages
-   '(yasnippet which-key vertico pdf-tools org-transclusion org-super-agenda org-noter org-modern org-download org-agenda-property orderless ob-mermaid nov marginalia magit htmlize gnuplot-mode gnuplot general evil-collection djvu citar-embark auctex all-the-icons)))
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
 
     (set-face-attribute
      'org-transclusion-fringe nil
@@ -751,8 +745,8 @@
 (use-package pdf-tools
   :ensure t)
 
-(pdf-tools-install)  ; Standard activation command
-;; (pdf-loader-install) ; On demand loading, leads to faster startup time
+(pdf-loader-install) ; On demand loading, leads to faster startup time
+;; (pdf-tools-install)  ; Standard activation command
 ;;  (setq pdf-view-use-scaling nil)
 
 (use-package evil
@@ -1126,14 +1120,3 @@
     (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:family "Fira Code Mono" :height 1.0))))
- '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 0.9)))))
