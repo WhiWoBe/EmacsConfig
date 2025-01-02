@@ -1,91 +1,123 @@
 ;; Register Alt-TAB
 (w32-register-hot-key [M-tab])
 
-  ;; (server-start) 
-  (setq inhibit-startup-message t)
+;; (server-start) 
+(setq inhibit-startup-message t)
 
-  ;; WINDOW
-  (scroll-bar-mode -1) ;show scroll bars
-  (set-fringe-mode 0) ;added window border
-  (menu-bar-mode -1) ; top menu bar
-  (tool-bar-mode -1)
-  ;; (tooltip mode -1)
+;; WINDOW
+(scroll-bar-mode -1) ;show scroll bars
+(set-fringe-mode 0) ;added window border
+(menu-bar-mode -1) ; top menu bar
+(tool-bar-mode -1)
+(setq visible-bell t)
+;; (tooltip-mode -1)
 
-  (setq visible-bell t)
+;; Scroll
+(pixel-scroll-precision-mode)
 
-  ;; Scroll
-  ;; (pixel-scroll-precision-mode)
+;; Line Numbers
+(global-display-line-numbers-mode 1)
+(menu-bar--display-line-numbers-mode-relative)
+;; (display-line-numbers-type 'relative)
 
-  ;; Line Numbers
-  (global-display-line-numbers-mode 0)
-  (menu-bar--display-line-numbers-mode-relative)
-  ;; (display-line-numbers-type 'relative)
+;; Line Highlight
+(global-hl-line-mode 1)
+(set-face-background hl-line-face "#716969")
 
-  ;; Line Highlight
-  (global-hl-line-mode 1)
-  (set-face-background hl-line-face "#716969")
+;; History
+(setq history-length 30)
+(savehist-mode 1)
 
-  ;; History
+(setq recentf-max-saved-items 30)
+(recentf-mode 1)
 
-  (setq history-length 25)
-  (savehist-mode 1)
+;; Auto update buffers
+(global-auto-revert-mode)
 
-  (setq recentf-max-saved-items 25)
-  (recentf-mode 1)
+;; Ensure Emacs starts in fullscreen mode
+(add-hook 'window-setup-hook #'toggle-frame-maximized t)
 
-  ;; Auto update buffers
-  (global-auto-revert-mode)
+;; Frame Parameters
+(set-frame-parameter nil 'internal-border-width 10)
+(set-frame-parameter (selected-frame) 'alpha '(75 75))
 
-  ;; Frame Parameters
+;; (add-to-list 'default-frame-alist '(internal-border-width . 20))
+;; (add-to-list 'default-frame-alist '(alpha-background  . 10))
 
-  ;; (set-frame-parameter nil 'internal-border-width 20)
-  (set-frame-parameter (selected-frame) 'alpha '(85 85))
+;; (add-to-list 'default-frame-alist '(width  . 100))
+;; (add-to-list 'default-frame-alist '(height . 40))
 
-  (add-to-list 'default-frame-alist '(internal-border-width . 20))
-  (add-to-list 'default-frame-alist '(alpha-background  . 70))
+;; Set the coding system to UTF-8
+(set-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
-  ;; (add-to-list 'default-frame-alist '(width  . 100))
-  ;; (add-to-list 'default-frame-alist '(height . 40))
-
-  ;;  (set-language-environment 'utf-8)
-  ;;  (set-default-coding-systems 'utf-8)
-
-;; (setq default-directory (getenv "DRIVE_D"))
 (defvar my/DRIVE_D "d:/")
 (defvar my/DRIVE_C "c:/")
 (defvar my/WORK_KROENER_FODLER "d:/office")
-(defvar my/HOME_KROENER_FOLDER "d:/work/office")
-
+(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
+(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
+(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
+(defvar my/trash-directory "~/.config/emacs/tmp/trash")
 (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
                                   (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)
                                   (expand-file-name "D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
 
-(defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
-
+;; (setq default-directory (getenv "DRIVE_D"))
 ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
 ;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
 ;; (defvar my/org-templates "d:/notebooks/org/.templates")
-(defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
-(defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
-(defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 ;; Font Settings
- ;; (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font-20"))
 
- ;; (set-face-attribute 'default nil :font "Verdana" :height 160)
- ;; (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 160)
- ;; (set-face-attribute 'default nil :font "3270 Nerd Font" :height 180)
- (set-face-attribute 'default nil :font "Iosevka Term Curly" :height 180)
+;; Set default font
+(set-face-attribute 'default nil :font "FiraCode Nerd Font Reg" :height 180)
 
- ;; Theme Settings
- (setq modus-themes-region'(bg-only))
- (setq modus-themes-mode-line '(accented borderless padded))
- (setq modus-themes-org-blocks 'gray-background)
- (load-theme 'modus-vivendi t)
+;; Customize faces for org-mode levels
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :height 1.4 :weight bold :foreground "#ff9e3b"))))  ;; Modus Vivendi Orange
+ '(org-level-2 ((t (:inherit outline-2 :height 1.3 :weight bold :foreground "#3bd9ff"))))  ;; Modus Vivendi Cyan
+ '(org-level-3 ((t (:inherit outline-3 :height 1.2 :weight bold :foreground "#8cdd00"))))  ;; Modus Vivendi Green
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1 :weight bold :foreground "#ff6262"))))  ;; Modus Vivendi Red
+ '(org-level-5 ((t (:inherit outline-5 :height 1.0 :weight bold :foreground "#f1fa8c"))))  ;; Modus Vivendi Yellow
+
+ ;; Customize faces for org-mode blocks
+ '(org-block ((t (:family "FiraCode Nerd Font Mono Ret" :background "#0b0b0b" :foreground "#dcdcdc" :extend t))))  ;; Modus Vivendi Base00
+ '(org-block-begin-line ((t (:background "#1e1e1e" :foreground "#a3a3a3" :extend t))))  ;; Modus Vivendi Base01
+ '(org-block-end-line ((t (:background "#1e1e1e" :foreground "#a3a3a3" :extend t))))  ;; Modus Vivendi Base01
+
+ ;; Customize faces for comments
+ '(font-lock-comment-face ((t (:slant italic :foreground "#6272a4"))))  ;; Dracula Comment Color
+
+ ;; Customize faces for strings
+ '(font-lock-string-face ((t (:foreground "#98c379"))))  ;; Solarized Green
+
+ ;; Customize faces for keywords
+ '(font-lock-keyword-face ((t (:weight bold :foreground "#d73a49"))))  ;; GitHub Red
+
+ ;; Customize faces for function names
+ '(font-lock-function-name-face ((t (:weight bold :foreground "#61afef"))))  ;; Solarized Blue
+
+ ;; Customize faces for variables
+ '(font-lock-variable-name-face ((t (:foreground "#b58900"))))  ;; Solarized Yellow
+
+ ;; Customize faces for constants
+ '(font-lock-constant-face ((t (:foreground "#268bd2"))))  ;; Solarized Blue
+
+ ;; Customize faces for types
+ '(font-lock-type-face ((t (:foreground "#2aa198"))))  ;; Solarized Cyan
+ )
+
+;; Theme Settings
+(setq modus-themes-region'(bg-only))
+(setq modus-themes-mode-line '(accented borderless padded))
+(setq modus-themes-org-blocks 'gray-background)
+(load-theme 'modus-vivendi t)
 
 ;; Icons
+
 (use-package all-the-icons
-:if (display-graphic-p))
+  :if (display-graphic-p))
+;; :config (all-the-icons-install-fonts))
 
 ;; (setq display-buffer-base-action
 ;; '((display-buffer-reuse-window
@@ -93,13 +125,10 @@
 ;;    display-buffer-same-window
 ;;    display-buffer-in-previous-window)))
 
-;; TANGLE
 (require 'package)
 
 ;; Package Sources
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")("org" . "https://orgmode.org/elpa/")("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -145,7 +174,7 @@
   (setq org-insert-heading-respect-content t)
   (setq org-directory my/org-dir-files) ;;Default location of Org files
   (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
-  (setq org-ellipsis "…")
+  (setq org-ellipsis " ")
   (setq org-return-follows-link t)
   (setq org-log-done 'time) ;; timestamp on done
   (setq org-log-into-drawer t)
@@ -156,18 +185,8 @@
   (require 'org-id)
   (setq org-id-link-to-org-use-id t) ;; (org-id-method) 
   (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
- ;; (org-id-update-id-locations '("d:\\notebooks\\org\\.data\\.win_org-id-locations"))
+  ;; (org-id-update-id-locations '("d:\\notebooks\\org\\.data\\.win_org-id-locations"))
 
- ;; Set Faces
-
-  (custom-set-faces
-   '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
-   '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
-   '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
-   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-   '(org-level-5 ((t (:inherit outline-5 :height 0.9))))
-   '(org-block ((t (:family "Fira Code Mono"  :height 1.0))))
-   )
 
   ;; Org Capture Templates
 
@@ -193,7 +212,7 @@
                                                   (lambda ()
                                                     (org-datetree-find-date-create
                                                      (org-date-to-gregorian (org-today)) t)
-                                                (re-search-forward "^\\*.+ Log.+]" nil t)))
+                                                    (re-search-forward "^\\*.+ Log.+]" nil t)))
            (file "d:/notebooks/org/.templates/Journal_Template.org")
            :prepend nil
            :jump-to-captured nil
@@ -204,16 +223,21 @@
           ("J" "Journal Outline" entry (file+olp+datetree "d:/notebooks/org/Journal.org" "Journal")
            (file "d:/notebooks/org/.templates/Journal_Outline_Template.org")
            :prepend nil
+           :immediate-finish t
            :jump-to-captured t
            :empty-lines-before 0
            :empty-lines-after 0
+           :after-finalize (lambda ()
+                             (message "Capture finalize hook called")
+                             (run-at-time "0.1 sec" nil 'my/jump-to-marker)
+                             (run-at-time "0.2 sec" nil 'my/press-a))
            )
           )
-        ;; Org global TODO States
-        ;; (setq org-todo-keywords
-        ;;	'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
         ))
 
+(defun my/org-current-date-time-string ()
+  "Return the current date and time as a string."
+  (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))
 
 ;; Disable Line Number in Org mode
 (defun my-display-numbers-hook ()
@@ -246,51 +270,330 @@
     (org-capture nil "J")
     ))
 
+(defun my/jump-to-marker ()
+  "Jump to the position marked with '******'."
+  (interactive)
+  (message "Jump to marker function called")  ;; This should show the message
+  (goto-char (point-min))
+  (search-forward "\n****** ")
+  (message "Jump completed"))  ;; This should show another message after jumping
+
+(defun my/press-a () "Simulate pressing the 'a' key."
+       (interactive)
+       (execute-kbd-macro "a"))
+
 ;; (defun my/capture-journal-without-id()
 ;;   (org-capture nil))
 ;; Org Refile
 
 (setq org-refile-targets
       (quote(("d:/notebooks/org/Tasks.org" :maxlevel . 1)
-             ("d:/notebooks/org/Meetings.org" :maxlevel . 1)
-             ("d:/notebooks/org/org_capture.org" :maxlevel . 1))))
+             ("d:/notebooks/org/Meetings.org" :maxlevel . 1))))
 
 (setq org-refile-use-outline-path nil)
 (setq org-refile-allow-creating-parent-nodes t)
 (setq org-outline-path-complete-in-steps nil)
 
 ;; Org-TODO
-
 (setq org-todo-keyword-faces
       '(
-        ("ACT" . (:foreground "#cd5c60" :weight bold))
-        ("WAIT" . (:foreground "yellow"))
-        ("READ" . (:foreground))
+        ("ACT" . (:foreground "#ff6c6b" :weight bold)) ;; Modus Vivendi Red
+        ("WAIT" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
+        ("READ" . (:foreground "#3bd9ff")) ;; Modus Vivendi Cyan
 
-        ("TODO" . (:foreground "red"))
-        ("Next" . (:foreground "orange"))
-        ("DONE" . (:foreground "green"))
-        ("CANCELED" . (:foreground "grey"))
-        ("HOLD" . (:foreground "yellow"))
+        ("TODO" . (:foreground "#ff6c6b")) ;; Modus Vivendi Red
+        ("Next" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
+        ("DONE" . (:foreground "#98be65")) ;; Modus Vivendi Green
+        ("CANCELED" . (:foreground "#a9a1e1")) ;; Modus Vivendi Grey
+        ("HOLD" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
 
-        ("Initiation" . (:background "#118ab2" :foreground "black"))
-        ("Planning" . (:background "#ffd166" :foreground "black"))
-        ("Execution&Monitoring" . (:background "#ef476f" :foreground "#black" :bold t :weight bold :box (:line-width 2 :style released-button)))
-        ("Closing" . (:background "#718355" :foreground "black"))
-        ("Done" . (:background "#06d6a0" :foreground "black"))
+        ("Initiation" . (:background "#005f87" :foreground "black")) ;; Modus Vivendi Blue
+        ("Planning" . (:background "#d79921" :foreground "black")) ;; Modus Vivendi Yellow
+        ("Execution&Monitoring" . (:background "#d33682" :foreground "black" :bold t :weight bold :box (:line-width 2 :style released-button))) ;; Modus Vivendi Magenta
+        ("Closing" . (:background "#005f87" :foreground "black")) ;; Modus Vivendi Blue
+        ("Done" . (:background "#98be65" :foreground "black")) ;; Modus Vivendi Green
         ("Canceled" . (:background "grey" :foreground "black"))
         ("Hold" . (:background "lightgrey" :foreground "black"))
 
-        ("WIP" . (:foreground "red" :weight italic :box ))
-        ("GEPRÜFT" . (:foreground "yellow"))
-        ("FREI" . (:foreground "green"))
-        ("INTERN" . (:foreground "red"))
-        ("RÜCKSPRACHE" . (:foreground "yellow"))
+        ("WIP" . (:foreground "#ff6c6b" :weight italic :box )) ;; Modus Vivendi Red
+        ("GEPRÜFT" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
+        ("FREI" . (:foreground "#98be65")) ;; Modus Vivendi Green
+        ("INTERN" . (:foreground "#ff6c6b")) ;; Modus Vivendi Red
+        ("RÜCKSPRACHE" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
 
-        ("DELIGATED" . (:foreground "lightblue"))
-        ("DONE" . (:foreground))
-        ("CANCELED" . (:foreground "blue"))
+        ("DELIGATED" . (:foreground "#3bd9ff")) ;; Modus Vivendi Cyan
+        ("DONE" . (:foreground "#98be65")) ;; Modus Vivendi Green
+        ("CANCELED" . (:foreground "#a9a1e1")) ;; Modus Vivendi Grey
         ))
+
+(use-package org-super-agenda
+  :ensure t)
+(require 'org-super-agenda)
+(org-super-agenda-mode t)
+(setq org-super-agenda-keep-order t) 
+                                        ; (org-agenda nil "a")
+(setq org-super-agenda-header-separator "\n")
+
+(setq org-agenda-custom-commands
+      '(
+        ("d" "Day"
+         (
+
+          (todo ""
+                ((org-agenda-overriding-header "* GOALS *\n")
+                 (org-agenda-prefix-format '((todo . " %?-12t")))
+                 (org-agenda-hide-tags-regexp ".") ;; Hides all tags
+                 (org-agenda-files '("D:/notebooks/org/Goals.org" ))
+                 (org-super-agenda-groups
+                  '(
+                    (:name ""
+                           :todo "->"
+                           :order 2)
+                    (:discard (:anything))
+                    ))
+                 ))
+
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-span 'day)
+                   (org-agenda-entry-types '(:deadline))
+                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                   (org-deadline-warning-days 30)
+                   (org-agenda-overriding-header "\n* Deadlines *\n")))
+
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-span 1)
+                   (org-agenda-repeating-timestamp-show-all t)
+                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                   (org-agenda-overriding-header "\n* Today *\n")
+                   (org-super-agenda-groups
+                    '((:name "Tasks"
+                             :todo "ACT"
+                             :order 1)
+                      (:name "Waiting on"
+                             :todo "WAIT"
+                             :order 2)
+                      (:name "Other"
+                             :todo t
+                             :order 3)))))
+
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-start-day "+1d")
+                   (org-agenda-span 2)
+                   (org-agenda-repeating-timestamp-show-all t)
+                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                   (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
+                   (org-agenda-overriding-header "\n* Upcoming *\n")))
+
+          (todo ""
+                ((org-agenda-overriding-header "* Open Task List *\n")
+                 (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
+                 (org-agenda-files '("D:/notebooks/org/Tasks.org" "D:/notebooks/org/Meetings.org"))
+                 (org-super-agenda-groups
+                  '(
+                    (:name ""
+                           :todo "ACT"
+                           :order 1)
+                    (:name ""
+                           :todo "WAIT"
+                           :order 2)
+                    (:name ""
+                           :todo "DELIGATED"
+                           :order 3)
+                    (:name "Meeting Tasks"
+                           :file-path ("D:/notebooks/org/Meetings.org")
+                           :order 4)
+                    ))
+
+                 ))
+
+          (todo ""
+                ((org-agenda-overriding-header "* Project Task List *\n")
+                 (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) ")))
+                 (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                 (org-super-agenda-groups
+                  '(
+                    (:name "Tasks"
+                           :todo "TODO"
+                           :order 1)
+                    (:name ""
+                           :todo "Next"
+                           :order 2)
+                    (:name "Projects"
+                           :todo "Execution&Monitoring"
+                           :order 3)
+                    (:name ""
+                           :todo "Planning"
+                           :order 4)
+                    (:name ""
+                           :todo "Initiation"
+                           :order 5)
+                    (:discard (:tag ("Exclude")))
+                    (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
+
+                    ))
+
+                 ))
+
+          ))
+
+        ("P" "Project Task List"
+         (
+          (todo "" ((org-agenda-overriding-header "Project Task List")
+                    (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                    (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
+
+                    (org-super-agenda-groups
+                     '(
+                       (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
+                       (:discard (:tag ("Exclude")))
+                       )))))
+         nil
+         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
+
+        ("z" "Project Agenda Overview"
+         (
+          (agenda ""
+                  ((org-agenda-block-separator nil)
+                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-prefix-format '(
+                                               (agenda . "%s %b  %?-2i %t")))
+                   (org-agenda-entry-types '(:deadline))
+                   (org-agenda-span 1)
+                   (org-deadline-warning-days 60)
+                   (org-agenda-overriding-header "\n* Deadlines *\n")))
+          (agenda ""
+                  ((org-agenda-overriding-header "Project Task List")
+                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
+                   (org-agenda-span 90)
+                   (org-agenda-repeating-timestamp-show-all t)
+                   (org-agenda-skip-scheduled-if-done nil)
+                   (org-agenda-entry-types '(:timestamp :sexp :scheduled))
+                   (org-agenda-include-diary nil)
+                   (org-agenda-current-time-string "")
+                   (org-agenda-time-grid '((daily) () "" ""))
+                   (org-agenda-prefix-format '(
+                                               (agenda . "%b  %?-2i %t ")))
+                   (org-super-agenda-groups
+                    '(
+                      ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
+                      ;; (:auto-outline-path t)
+                      ;; (:auto-planning t)
+                      ;; (:auto-property "Project")
+                      ;; (:auto-tags t)
+                      ;; (:auto-category t)
+                      (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
+                      (:discard (:tag ("Exclude")))
+                      (:name " Overdue "  ; Optionally specify section name
+                             :scheduled past
+                             :face 'warning)
+                      (:name ""  ; Optionally specify section name
+                             :scheduled future
+                             :face 'warning))))))
+         nil
+         ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
+        ))
+
+;; (use-package org-agenda-property
+;;   :ensure t)
+;; (setq org-agenda-property-list '("assigned" "assets" "condition"))
+
+(use-package org-download
+  :ensure t)
+(setq org-download-image-org-width 20)
+
+(use-package org-modern
+    :ensure t)
+
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+;; force agenda to start at top
+(add-hook 'org-agenda-finalize-hook #'org-agenda-find-same-or-today-or-agenda 90)
+  (setq org-auto-align-tags nil)
+  (setq org-hide-emphasis-markers t)
+
+  (setq org-pretty-entities t)
+
+  (setq org-tags-column 0)
+  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+
+  (setq line-spacing 0.3)
+
+  (setq org-modern-fold-stars 
+   '(("" . "")
+    ("" . "")
+    ("" . "")
+    ("" . "")
+    ("" . "")))
+
+  (global-org-modern-mode) ;; maybe redundant
+
+;; (use-package org-bullets
+;;   :hook (org-mode . org-bullets-mode)
+;;   :custom
+;;   (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
+
+(setq bibtex-completion-pdf-field "file")
+
+;;   (setq org-cite-global-bibliography
+;;         '("d:/notebooks/org/bibliography/mylib.bib"))
+
+;; (use-package zotxt)
+;; (use-package org-ref)
+
+;; (setq bibtex-completion-bibliography '("d:/notebooks/org/bibliography/references.bib"
+;;                                        "d:/notebooks/org/bibliography/mylib.bib"
+;;                                        "d:/notebooks/org/bibliography/master.bib"
+;;                                        "d:/notebooks/org/bibliography/archive.bib")
+;;       bibtex-completion-library-path '("d:/notebooks/org/bibliography/bibtex-pdfs/")
+;;       bibtex-completion-notes-path "d:/notebooks/org/bibliography/notes/"
+;;       bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+;;       bibtex-completion-additional-search-fields '(keywords)
+;;       bibtex-completion-display-formats
+;;       '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+;;         (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+;;         (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;         (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;         (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
+
+(use-package org-noter
+  :after (:any org pdf-view)
+  :config
+  (setq
+   ;; The WM can handle splits
+   org-noter-notes-window-location 'horizontal-split
+   ;; Please stop opening frames
+   org-noter-always-create-frame nil
+   ;; I want to see the whole file
+   org-noter-hide-other nil
+
+   org-noter-default-notes-file-names '("refnotes.org")
+   ;; Everything is relative to the main notes file
+   org-noter-notes-search-path  '("d:/notebooks/org/bibliography/notes/")
+   org-noter-separate-notes-from-heading t))
+
+(use-package org-transclusion
+    :after org)
+
+  (add-hook 'org-mode-hook #'org-transclusion-mode)
+(with-eval-after-load 'org-transclusion
+  (define-fringe-bitmap 'org-transclusion-fringe-bitmap
+    [17 34 68 136 68 34 17]
+    nil nil 'center))
+
+(custom-set-variables
+ '(org-startup-indented t)
+ '(org-transclusion-extensions
+   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
+
+    (set-face-attribute
+     'org-transclusion-fringe nil
+     :foreground "green"
+     :background "green")
 
 ; (setq org-agenda-prefix-format '((agenda  . " %i %-12:c %?-12t %-12s")
 ;                                  (todo . "%i %-22b %s")))
@@ -431,264 +734,15 @@
 ;;    (let ((org-agenda-include-inactive-timestamps t))
 ;;      (org-agenda)))
 
-(use-package org-super-agenda
-      :ensure t)
-    (require 'org-super-agenda)
-    (org-super-agenda-mode t)
-(setq org-super-agenda-keep-order t) 
-                                            ; (org-agenda nil "a")
-    (setq org-super-agenda-header-separator "\n")
-
-    (setq org-agenda-custom-commands
-          '(
-
-            ("d" "Day"
-             (
-              (agenda ""
-                      ((org-agenda-block-separator nil)
-                       (org-agenda-span 'day)
-                       (org-agenda-entry-types '(:deadline))
-                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                       (org-deadline-warning-days 30)
-                       (org-agenda-overriding-header "\n* Deadlines *\n")))
-
-              (agenda ""
-                      ((org-agenda-block-separator nil)
-                       (org-agenda-span 1)
-                       (org-agenda-repeating-timestamp-show-all t)
-                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                       (org-agenda-overriding-header "\n* Today *\n")
-                       (org-super-agenda-groups
-                        '((:name "Tasks"
-                                 :todo "ACT"
-                                 :order 1)
-                          (:name "Waiting on"
-                                 :todo "WAIT"
-                                 :order 1)
-                          (:name "Other"
-                                 :todo t
-                                 :order 2)))))
-
-              (agenda ""
-                      ((org-agenda-block-separator nil)
-                       (org-agenda-start-day "+1d")
-                       (org-agenda-span 2)
-                       (org-agenda-repeating-timestamp-show-all t)
-                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                       (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                       (org-agenda-overriding-header "\n* Upcoming *\n")))
-
-              (todo ""
-                    ((org-agenda-overriding-header "* Open Task List *\n")
-                     (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                     (org-agenda-files '("D:/notebooks/org/Tasks.org" "D:/notebooks/org/Meetings.org"))
-                     (org-super-agenda-groups
-                      '((:name ""
-                               :todo "ACT"
-                               :order 1)
-                        (:name ""
-                               :todo "WAIT"
-                               :order 1)
-                        (:name ""
-                               :todo "DELIGATED"
-                               :order 1)
-                        (:name "Meeting"
-                               :file-path ("D:/notebooks/org/Meetings.org")
-                               :order 2)
-                        (:name "Other"
-                               :todo t
-                               :order 2)))))
-              ))
-
-            ("P" "Project Task List"
-             (
-              (todo "" ((org-agenda-overriding-header "Project Task List")
-                        (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                        (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-
-                        (org-super-agenda-groups
-                         '(
-                           ;; (:auto-outline-path t)
-                           ;; (:auto-property "Project")
-                           ;; (:auto-tags t)
-                           ;; (:auto-category t)
-                           ;; (:name "Client Projects"
-                           ;;        :tag "Client"
-                           ;;        :order 1)
-                           ;; (:name "Research Projects"
-                           ;;        :tag "Research"
-                           ;;        :order 2)
-                           ;; (:name "Marketing Projects"
-                           ;;        :tag "Marketing"
-                           ;;        :order 3)
-                           ;; (:name "Italy"
-                           ;;        :tag "Italy"
-                           ;;        :order 4)
-                           (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                           (:discard (:tag ("Exclude")))
-                           )))))
-             nil
-             ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
-
-            ("z" "Project Agenda Overview"
-             (
-              (agenda ""
-                      ((org-agenda-block-separator nil)
-                       (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                       (org-agenda-prefix-format '(
-                                                   (agenda . "%s %b  %?-2i %t")))
-                       (org-agenda-entry-types '(:deadline))
-                       (org-agenda-span 1)
-                       (org-deadline-warning-days 60)
-                       (org-agenda-overriding-header "\n* Deadlines *\n")))
-              (agenda ""
-                      ((org-agenda-overriding-header "Project Task List")
-                       (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                       (org-agenda-span 90)
-                       (org-agenda-repeating-timestamp-show-all t)
-                       (org-agenda-skip-scheduled-if-done nil)
-                       (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                       (org-agenda-include-diary nil)
-                       (org-agenda-current-time-string "")
-                       (org-agenda-time-grid '((daily) () "" ""))
-                       (org-agenda-prefix-format '(
-                                                   (agenda . "%b  %?-2i %t ")))
-                       (org-super-agenda-groups
-                        '(
-                          ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
-                          ;; (:auto-outline-path t)
-                          ;; (:auto-planning t)
-                          ;; (:auto-property "Project")
-                          ;; (:auto-tags t)
-                          ;; (:auto-category t)
-                          (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                          (:discard (:tag ("Exclude")))
-                          (:name " Overdue "  ; Optionally specify section name
-                                 :scheduled past
-                                 :face 'warning)
-                          (:name ""  ; Optionally specify section name
-                                 :scheduled future
-                                 :face 'warning))))))
-             nil
-             ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
-            ))
-
-(use-package org-agenda-property
-  :ensure t)
-(setq org-agenda-property-list '("assigned" "assets" "condition"))
-
-(use-package org-download
-  :ensure t)
-(setq org-download-image-org-width 20)
-
-(use-package org-modern
-    :ensure t)
-
-  (add-hook 'org-mode-hook #'org-modern-mode)
-  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
-;; force agenda to start at top
-(add-hook 'org-agenda-finalize-hook #'org-agenda-find-same-or-today-or-agenda 90)
-  (setq org-auto-align-tags nil)
-  (setq org-hide-emphasis-markers t)
-
-  (setq org-pretty-entities t)
-
-  (setq org-tags-column 0)
-  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
-
-  (setq line-spacing 0.3)
-
-  (setq org-modern-fold-stars 
-   '(("▶" . "▼")
-    ("▷" . "▽")
-    ("⯈" . "⯆")
-    ("▹" . "▿")
-    ("▸" . "▾")))
-
-  (global-org-modern-mode) ;; maybe redundant
-
-;; (use-package org-bullets
-;;   :hook (org-mode . org-bullets-mode)
-;;   :custom
-;;   (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
-
-(setq bibtex-completion-pdf-field "file")
-
-;;   (setq org-cite-global-bibliography
-;;         '("d:/notebooks/org/bibliography/mylib.bib"))
-
-;; (use-package zotxt)
-;; (use-package org-ref)
-
-;; (setq bibtex-completion-bibliography '("d:/notebooks/org/bibliography/references.bib"
-;;                                        "d:/notebooks/org/bibliography/mylib.bib"
-;;                                        "d:/notebooks/org/bibliography/master.bib"
-;;                                        "d:/notebooks/org/bibliography/archive.bib")
-;;       bibtex-completion-library-path '("d:/notebooks/org/bibliography/bibtex-pdfs/")
-;;       bibtex-completion-notes-path "d:/notebooks/org/bibliography/notes/"
-;;       bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
-
-;;       bibtex-completion-additional-search-fields '(keywords)
-;;       bibtex-completion-display-formats
-;;       '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-;;         (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-;;         (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;         (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;         (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
-
-(use-package org-noter
-  :after (:any org pdf-view)
-  :config
-  (setq
-   ;; The WM can handle splits
-   org-noter-notes-window-location 'horizontal-split
-   ;; Please stop opening frames
-   org-noter-always-create-frame nil
-   ;; I want to see the whole file
-   org-noter-hide-other nil
-
-   org-noter-default-notes-file-names '("refnotes.org")
-   ;; Everything is relative to the main notes file
-   org-noter-notes-search-path  '("d:/notebooks/org/bibliography/notes/")
-   org-noter-separate-notes-from-heading t))
-
-(use-package org-transclusion
-    :after org)
-
-  (add-hook 'org-mode-hook #'org-transclusion-mode)
-(with-eval-after-load 'org-transclusion
-  (define-fringe-bitmap 'org-transclusion-fringe-bitmap
-    [17 34 68 136 68 34 17]
-    nil nil 'center))
-
-(custom-set-variables
- '(org-startup-indented t)
- '(org-transclusion-extensions
-   '(org-transclusion-src-lines org-transclusion-font-lock org-transclusion-indent-mode)))
-
-    (set-face-attribute
-     'org-transclusion-fringe nil
-     :foreground "green"
-     :background "green")
-
-;; (fido-vertical-mode)
-
-;; Vertico
-
 (use-package vertico
   :init
   (vertico-mode)
+  ;; (setq vertico-scroll-margin 0) ;; Different scroll margin
+  ;; (setq vertico-count 20) ;; Show more candidates
+  ;; (setq vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (setq vertico-cycle t)  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  )
 
-  ;; Different scroll margin
-  ;; (setq vertico-scroll-margin 0)
-  ;; Show more candidates
-  ;; (setq vertico-count 20)
-  ;; Grow and shrink the Vertico minibuffer
-  ;; (setq vertico-resize t)
-  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  ;; (setq vertico-cycle t)
-  ) 
 (setq minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
@@ -706,18 +760,14 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-;; Enable rich annotations using the Marginalia package
+;; Marginalia
+
 (use-package marginalia
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
-  ;; available in the *Completions* buffer, add it to the
-  ;; `completion-list-mode-map'.
+  ;; available in the *Completions* buffer, add it to the `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
               ("M-A" . marginalia-cycle))
-  ;; The :init section is always executed.
   :init
-  ;; Marginalia must be activated in the :init section of use-package such that
-  ;; the mode gets enabled right away. Note that this forces loading the
-  ;; package.
   (marginalia-mode))
 
 ;; (use-package doom-modeline
@@ -745,8 +795,8 @@
 (use-package pdf-tools
   :ensure t)
 
-(pdf-loader-install) ; On demand loading, leads to faster startup time
-;; (pdf-tools-install)  ; Standard activation command
+(pdf-tools-install)  ; Standard activation command
+;; (pdf-loader-install) ; On demand loading, leads to faster startup time
 ;;  (setq pdf-view-use-scaling nil)
 
 (use-package evil
@@ -765,16 +815,6 @@
   :config
   (setq evil-collection-mode-list '(dashboard dired org vertico ibuffer))
   (evil-collection-init))
-
-;; (use-package citar
-;;   :no-require
-;;   :custom
-;;   (org-cite-global-bibliography '("d:/notebooks/org/bibliography/mylib.bib"))
-;;   (org-cite-insert-processor 'citar)
-;;   (org-cite-follow-processor 'citar)
-;;   (org-cite-activate-processor 'citar)
-;;   (citar-at-point-function 'embark-dwim)
-;;   (citar-bibliography org-cite-global-bibliography))
 
 (use-package citar
   :custom
@@ -836,19 +876,19 @@
                  nil
                  (window-parameters (mode-line-format . none)))))
 
-(require 'icalendar)
+;; (require 'icalendar)
 
-(setq diary-file "d:/notebooks/org/cal.org")
-(setq calendar-mark-diary-entries-flag t)
-(add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
-(setq diary-comment-start ";;")
-(setq diary-comment-end "")
-(setq org-agenda-include-diary t)
-(add-hook 'diary-mode-hook 'real-auto-save-mode)
-(add-hook 'diary-mode-hook #'abbrev-mode)
+;; (setq diary-file "d:/notebooks/org/cal.org")
+;; (setq calendar-mark-diary-entries-flag t)
+;; (add-to-list 'auto-mode-alist '("\\diary\\'" . diary-mode))
+;; (setq diary-comment-start ";;")
+;; (setq diary-comment-end "")
+;; (setq org-agenda-include-diary t)
+;; (add-hook 'diary-mode-hook 'real-auto-save-mode)
+;; (add-hook 'diary-mode-hook #'abbrev-mode)
 
-(use-package magit
-  :ensure t)
+;; (use-package magit
+;;   :ensure t)
 
 (use-package ob-mermaid
   :ensure t)
@@ -865,13 +905,14 @@
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-up-directory
     "l" 'dired-find-file))
+
 (setq delete-by-moving-to-trash t)
 (setq trash-directory my/trash-directory)
 
-(use-package yasnippet
-   :config
-   (setq yas-snippet-dirs '("D:/notebooks/org/.templates/yasnippets/"))
-   (yas-global-mode 1))
+;; (use-package yasnippet
+;;   :config
+;;   (setq yas-snippet-dirs '("D:/notebooks/org/.templates/yasnippets/"))
+;;   (yas-global-mode 1))
 
 (setq bookmark-default-file my/bookmarks)
 
@@ -950,6 +991,9 @@
     "f c" '((lambda () (interactive)
               (find-file "~/.config/emacs/config.org")) 
             :wk "Open config.org")
+    "f g" '((lambda () (interactive)
+              (find-file "d:/notebooks/org/Goals.org")) 
+            :wk "Open Goals.org")
     "f m" '((lambda () (interactive)
               (find-file "d:/notebooks/org/Meetings.org")) 
             :wk "Open Meetings.org")
@@ -961,7 +1005,8 @@
             :wk "Open Tasks.org")  
     "f r" '(recentf-open :wk "Recent Files")
 
-    "TAB TAB" '(comment-line :wk "Comment lines")
+    "TAB TAB" '(comment-dwim :wk "Add Comment")
+    "TAB q" '(comment-line :wk "Comment line")
 
     "B" '(:ignore t :wk "Bookmarks")
     "B b" '(list-bookmarks :wk "List bookmarks")
@@ -979,7 +1024,6 @@
     "r o" '(app/run-outlook :wk "Outlook")
     "r c" '(app/run-calendar :wk "gCalendar")
     "r s" '(app/org-screenshot :wk "snipping tool")
-
 
     "u" '(universal-argument :wk "u-arg")
     "q" '(exit-minibuffer :wk "Exit minib")
@@ -1025,16 +1069,15 @@
     "o t" '(org-set-tags-command :wk "Tags set/edit")
     "o u" '(my/org-unschedule :wk "Unschedule")
     "o z" '(org-cite-insert :wk "Cite")
-    "o TAB" '(complete-symbol :wk "Completion")
+    "o t" '(org-time-stamp :wk "Add Timestamp")
+    "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
+
 
 
     "s" '(:ignore t :wk "snippets")
-    "s s" '(yas-insert-snippet :wk "Insert Snippet")
-    "s i" '(org-insert-structure-template :wk "Insert Block")
-    "s n" '(yas-new-snippet :wk "New Snippet")
-
-    ;; "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
-    ;;"o ," '(org-cycle-agenda-files :wk "cycle agenda files")
+    "s s" '(org-insert-structure-template :wk "Insert Block")
+    ;; "s y" '(yas-insert-snippet :wk "Insert Snippet")
+    ;; "s n" '(yas-new-snippet :wk "New Snippet")
 
     )
   )
