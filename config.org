@@ -6,12 +6,18 @@
 #+OPTIONS: toc:2
 
 * INFO 
+:PROPERTIES:
+:ID:       73ac2cac-a48e-45ce-aa2f-6bd1b8660d59
+:END:
 
 The code blocks of this file get tangled into the file
 under the Header argument PROPERTY. To show the changes in the init file
 you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
 * General Settings
+:PROPERTIES:
+:ID:       78323a0b-bfd6-4622-aed7-d66361f8e476
+:END:
 
 #+begin_src emacs-lisp
 
@@ -34,14 +40,16 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 
   ;; Line Numbers
   (global-display-line-numbers-mode 1)
-  (menu-bar--display-line-numbers-mode-relative)
-  ;; (display-line-numbers-type 'relative)
+  (setq display-line-numbers-type 'relative)
+  ;;  (menu-bar--display-line-numbers-mode-relative)
 
   ;; Line Highlight
   (global-hl-line-mode 1)
-  (set-face-background hl-line-face "#716969")
+  ;; (set-face-background hl-line-face "#716969")
+  (set-face-background 'hl-line (face-background 'hl-line nil t))
 
   ;; History
+
   (setq history-length 30)
   (savehist-mode 1)
 
@@ -52,7 +60,7 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
   (global-auto-revert-mode)
 
   ;; Ensure Emacs starts in fullscreen mode
-  (add-hook 'window-setup-hook #'toggle-frame-maximized t)
+  (add-hook 'window-setup-hook #'toggle-frame-maximized)
 
   ;; Frame Parameters
   (set-frame-parameter nil 'internal-border-width 10)
@@ -71,31 +79,78 @@ you need to run revert-buffer or enable ~auto-revert-mode~ for that buffer.
 #+end_src
 
 ** Setting Location Variables
+:PROPERTIES:
+:ID:       159d7f3c-321c-45db-8210-ef87786078ac
+:END:
 
 Locations between my PC and the LAPTOP PC Differ, consider if statement to change var depending on
 the system you are using. At the moment File structure and Drive Name is the Same under Work and Private PC 
 
 #+begin_src emacs-lisp 
 
-  (defvar my/DRIVE_D "d:/")
-  (defvar my/DRIVE_C "c:/")
-  (defvar my/WORK_KROENER_FODLER "d:/office")
-  (defvar my/org-dir-files  (list (expand-file-name "notebooks/org" my/DRIVE_D)))
-  (defvar my/org-id-locations-file (expand-file-name "notebooks/org/.data/.win_org-id-locations" my/DRIVE_D))
-  (defvar my/bookmarks (expand-file-name "notebooks/org/.data/win_bookmarks" my/DRIVE_D))
-  (defvar my/trash-directory "~/.config/emacs/tmp/trash")
-  (defvar my/org-agenda-files (list (expand-file-name "notebooks/org/Tasks.org" my/DRIVE_D)
-                                    (expand-file-name "notebooks/org/Meetings.org" my/DRIVE_D)
-                                    (expand-file-name "D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/DRIVE_D)))
+  (defvar my/system-name (system-name))
 
-  ;; (setq default-directory (getenv "DRIVE_D"))
-  ;; (setq my-org-capture-template-target "/mnt/d/notebooks/DemacsNotes/org/Capture.org")
-  ;; (defvar my/backup-directory "d:/notebooks/org/.data/backups/")
-  ;; (defvar my/org-templates "d:/notebooks/org/.templates")
+  (defvar my/system-type system-type)
+
+  ;; (defvar my/BASE_PATH "d:/")
+  ;; (defvar my/SYSTEM_BASE_PATH "c:/")
+  ;; (defvar my/WORK_KROENER_FODLER "d:/office")
+  ;; (defvar my/ORG_BASE_PATH  (expand-file-name "notebooks/org" my/BASE_PATH))
+  ;; (defvar my/ORG_ID-LOCATIONS-FILE (expand-file-name ".data/.win_org-id-locations" my/ORG_BASE_PATH))
+  ;; (defvar my/BOOKMARKS (expand-file-name ".data/win_bookmarks" my/ORG_BASE_PATH))
+  ;; (defvar my/ORG-AGENDA_FILES (list (expand-file-name "tasks.org" my/ORG_BASE_PATH)
+  ;;                                   (expand-file-name "meetings.org" my/ORG_BASE_PATH)
+  ;;                                   (expand-file-name "OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/WORK_KROENER_FODLER)))
+  ;; (defvar my/trash-directory "~/.config/emacs/tmp/trash")
+
+;; -----------------------------
+;; Base paths per system
+;; -----------------------------
+(cond
+ ;; Desktop Windows
+ ((string-equal my/system-name "DT-001-W11")
+  (defvar my/BASE_PATH "d:/") ;; REFERS TO THE BASE DRIVE WHERE ORG FILES ARE
+  (defvar my/SYSTEM_BASE_PATH "c:/") ;; REFERS to DRIVE WITH OS C:/
+  (defvar my/WORK_KROENER_FODLER "d:/office"))
+
+ ;; Laptop Windows
+ ((string-equal my/system-name "LT")
+  (defvar my/BASE_PATH "d:/")
+  (defvar my/SYSTEM_BASE_PATH "c:/")
+  (defvar my/WORK_KROENER_FODLER "d:/office"))
+
+ ;; Linux
+ ;; ((eq my/system-type 'gnu/linux)
+  ;; (defvar my/BASE_PATH (expand-file-name "~")) ;;HOME set this to the folder above -> /notebooks/org
+  ;; (defvar my/SYSTEM_BASE_PATH "c:/")
+  ;; (defvar my/WORK_KROENER_FODLER "d:/office")) ;; set this to the folder above -> /office
+  ;; )
+
+ ;; fallback
+ (t
+  (defvar my/BASE_PATH "d:/")
+  (defvar my/SYSTEM_BASE_PATH "c:/")
+  (defvar my/WORK_KROENER_FODLER "d:/office")))
+
+
+  ;; -----------------------------
+  ;; Org directories and files
+  ;; -----------------------------
+  (defvar my/ORG_BASE_PATH (expand-file-name "notebooks/org" my/BASE_PATH))
+  (defvar my/ORG_ID-LOCATIONS-FILE (expand-file-name ".data/.win_org-id-locations" my/ORG_BASE_PATH))
+  (defvar my/BOOKMARKS (expand-file-name ".data/win_bookmarks" my/ORG_BASE_PATH))
+  (defvar my/ORG-AGENDA_FILES (list (expand-file-name "tasks.org" my/ORG_BASE_PATH)
+                                    (expand-file-name "meetings.org" my/ORG_BASE_PATH)
+                                    (expand-file-name "OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org" my/WORK_KROENER_FODLER)))
+  (defvar my/trash-directory "~/.config/emacs/tmp/trash")
 
 #+end_src
 
+
 ** Appearance Settings (Fonts and Themes)
+:PROPERTIES:
+:ID:       abe02d6c-1a58-4c8e-bf5b-0395a16b0644
+:END:
 
 considering another Theme like doom-old. Dont forget to Install the Fonts
 
@@ -151,11 +206,14 @@ considering another Theme like doom-old. Dont forget to Install the Fonts
 
   (use-package all-the-icons
     :if (display-graphic-p))
-  ;; :config (all-the-icons-install-fonts))
+  ;; :config (all-the-icons-install-fonts)
 
 #+end_src
 
 ** Window Behavior and Buffers
+:PROPERTIES:
+:ID:       d1376744-61f7-47c0-ad0a-c0f4bc3dce24
+:END:
 
 #+begin_src emacs-lisp
 
@@ -168,6 +226,9 @@ considering another Theme like doom-old. Dont forget to Install the Fonts
 #+end_src
 
 ** Package Manager
+:PROPERTIES:
+:ID:       5d5e351d-79f5-4509-830a-d091642acc82
+:END:
 
 Package.el is built into Emacs. Works fine for now
 
@@ -177,7 +238,7 @@ Package.el is built into Emacs. Works fine for now
 
   ;; Package Sources
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")("org" . "https://orgmode.org/elpa/")("elpa" . "https://elpa.gnu.org/packages/")))
-
+  (setq package-quickstart t)
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents))
@@ -192,6 +253,9 @@ Package.el is built into Emacs. Works fine for now
 #+end_src
 
 ** Default Programs
+:PROPERTIES:
+:ID:       e5769040-26c0-4d25-a5ee-cca17fd99961
+:END:
 
 Default Programs can be set up here. org-file-apps can point to windows programs but have to be added to the $PATH Variable.
 Additionally sending the informations about the path to the document (per ex. a pdf) requires further tinkering.
@@ -213,6 +277,9 @@ The DEFAULT BROWSER Function however works flawlessly.
 #+end_src
 
 ** Show file Name
+:PROPERTIES:
+:ID:       822b433f-63c2-43c2-869b-301b46b65813
+:END:
 
 #+begin_src emacs-lisp
 
@@ -228,7 +295,13 @@ The DEFAULT BROWSER Function however works flawlessly.
 :PROPERTIES:
 :ID:       21e5facd-bdbf-4e9e-af73-23ce5589535c
 :END:
+
 ** Org Mode
+:PROPERTIES:
+:ID:       7c93c197-2cc1-474f-a4d4-47904a7116f1
+:CREATED:  [2025-08-24 So 21:33]
+:SOURCE-LINK: [[id:7c93c197-2cc1-474f-a4d4-47904a7116f1][Org Mode]]
+:END:
 
 You can manually add files to the agenda ‘M-x org-agenda-file-to-front’
 
@@ -253,8 +326,8 @@ This Function is called with a shortcut
     (setq org-fontify-done-headline t)
 
     (setq org-insert-heading-respect-content t)
-    (setq org-directory my/org-dir-files) ;;Default location of Org files
-    (setq org-agenda-files my/org-agenda-files) ;;org agenda searches in this file or dir for todo items
+    (setq org-directory my/ORG_BASE_PATH) ;;Default location of Org files
+    (setq org-agenda-files my/ORG-AGENDA_FILES) ;;org agenda searches in this file or dir for todo items
     (setq org-ellipsis " ")
     (setq org-return-follows-link t)
     (setq org-log-done 'time) ;; timestamp on done
@@ -265,333 +338,118 @@ This Function is called with a shortcut
 
     (require 'org-id)
     (setq org-id-link-to-org-use-id t) ;; (org-id-method) 
-    (setq org-id-locations-file my/org-id-locations-file) ;; set where id's are stored
+    (setq org-id-locations-file my/ORG_ID-LOCATIONS-FILE)) ;; set where id's are stored
     ;; (org-id-update-id-locations '("d:\\notebooks\\org\\.data\\.win_org-id-locations"))
 
 
     ;; Org Capture Templates
 
-    (setq org-capture-templates
-          `(("t" "Tasks" entry (file+headline "d:/notebooks/org/Tasks.org" "Inbox")
-             (file "d:/notebooks/org/.templates/Task_Template.org")
-             :prepend t
-             :jump-to-captured t
-             :empty-lines-after 1
-             :empty-lines-before 1
-             )
+(setq org-capture-templates
+      `(
+        ("t" "Tasks" entry
+         (file+headline ,(expand-file-name "tasks.org" my/ORG_BASE_PATH) "Inbox")
+         (file ,(expand-file-name ".templates/Task_Template.org" my/ORG_BASE_PATH))
+         :prepend t
+         :jump-to-captured t
+         :empty-lines-after 1
+         :empty-lines-before 1)
 
-            ("m" "Meeting" entry (file+headline "d:/notebooks/org/Meetings.org" "Meeting Notes")
-             (file "d:/notebooks/org/.templates/Meeting_Template.org")
-             :prepend t
-             :jump-to-captured t
-             :empty-lines-after 1
-             :empty-lines-before 1
-             :time-prompt 1
-             )
+        ("m" "Meeting" entry
+         (file+headline ,(expand-file-name "meetings.org" my/ORG_BASE_PATH) "Meeting Notes")
+         (file ,(expand-file-name ".templates/Meeting_Template.org" my/ORG_BASE_PATH))
+         :prepend t
+         :jump-to-captured t
+         :empty-lines-after 1
+         :empty-lines-before 1
+         :time-prompt 1)
 
-            ("j" "Journal Log" plain (file+function "d:/notebooks/org/Journal.org"
-                                                    (lambda ()
-                                                      (org-datetree-find-date-create
-                                                       (org-date-to-gregorian (org-today)) t)
-                                                      (re-search-forward "^\\*.+ Log.+]" nil t)))
-             (file "d:/notebooks/org/.templates/Journal_Template.org")
-             :prepend nil
-             :jump-to-captured nil
-             :empty-lines-before 1
-             :empty-lines-after 1
-             )
+        ("l" "Lead" entry
+         (file+headline ,(expand-file-name "leads.org" my/ORG_BASE_PATH) "LEADS")
+         (file ,(expand-file-name ".templates/New_Lead_Template.org" my/ORG_BASE_PATH))
+         :prepend t
+         :jump-to-captured t
+         :empty-lines-after 0
+         :empty-lines-before 0)
 
-            ("J" "Journal Outline" entry (file+olp+datetree "d:/notebooks/org/Journal.org" "Journal")
-             (file "d:/notebooks/org/.templates/Journal_Outline_Template.org")
-             :prepend nil
-             :immediate-finish t
-             :jump-to-captured t
-             :empty-lines-before 0
-             :empty-lines-after 0
-             :after-finalize (lambda ()
-                               (message "Capture finalize hook called")
-                               (run-at-time "0.1 sec" nil 'my/jump-to-marker)
-                               (run-at-time "0.2 sec" nil 'my/press-a))
-             )
-            )
-          ))
+        ("j" "Journal Log" plain
+         (file+function ,(expand-file-name "journal.org" my/ORG_BASE_PATH)
+                        (lambda ()
+                          (org-datetree-find-date-create
+                           (org-date-to-gregorian (org-today)) t)
+                          (re-search-forward "^\\*.+ Log.+]" nil t)))
+         (file ,(expand-file-name ".templates/Journal_Template.org" my/ORG_BASE_PATH))
+         :prepend nil
+         :jump-to-captured nil
+         :empty-lines-before 1
+         :empty-lines-after 1)
 
-  (defun my/org-current-date-time-string ()
-    "Return the current date and time as a string."
-    (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))
+        ("J" "Journal Outline" entry
+         (file+olp+datetree ,(expand-file-name "journal.org" my/ORG_BASE_PATH) "Journal")
+         (file ,(expand-file-name ".templates/Journal_Outline_Template.org" my/ORG_BASE_PATH))
+         :prepend nil
+         :immediate-finish t
+         :jump-to-captured t
+         :empty-lines-before 0
+         :empty-lines-after 0)
+        ))
+
 
   ;; Disable Line Number in Org mode
-  (defun my-display-numbers-hook ()
-    (display-line-numbers-mode 0))
+;  (defun my-display-numbers-hook ()
+;    (display-line-numbers-mode 0))
+;
+;  (add-hook 'org-mode-hook 'my-display-numbers-hook)
 
-  (add-hook 'org-mode-hook 'my-display-numbers-hook)
 
-  ;; Org-Mode Custom Commands
-
-  (defun my/org-unschedule ()
-    (interactive)
-    (let ((current-prefix-arg '(4))) ;; emulate C-u
-      (call-interactively 'org-schedule))) ;; invoke align-regexp interactivel
-
-  (defun my/capture-without-id-at-point()
-    (interactive)
-    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-      (org-capture nil)
-      ))
-
-  (defun my/journal-capture-without-id-at-point()
-    (interactive)
-    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-      (org-capture nil "j")
-      ))
-
-  (defun my/journal-outline-capture-without-id-at-point()
-    (interactive)
-    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
-      (org-capture nil "J")
-      ))
-
-  (defun my/jump-to-marker ()
-    "Jump to the position marked with '******'."
-    (interactive)
-    (message "Jump to marker function called")  ;; This should show the message
-    (goto-char (point-min))
-    (search-forward "\n****** ")
-    (message "Jump completed"))  ;; This should show another message after jumping
-
-  (defun my/press-a () "Simulate pressing the 'a' key."
-         (interactive)
-         (execute-kbd-macro "a"))
-
-  ;; (defun my/capture-journal-without-id()
-  ;;   (org-capture nil))
   ;; Org Refile
-
-  (setq org-refile-targets
-        (quote(("d:/notebooks/org/Tasks.org" :maxlevel . 1)
-               ("d:/notebooks/org/Meetings.org" :maxlevel . 1))))
+(setq org-refile-targets
+      `((,(expand-file-name "tasks.org" my/ORG_BASE_PATH) :maxlevel . 1)
+        (,(expand-file-name "meetings.org" my/ORG_BASE_PATH) :maxlevel . 1)))
 
   (setq org-refile-use-outline-path nil)
   (setq org-refile-allow-creating-parent-nodes t)
   (setq org-outline-path-complete-in-steps nil)
 
-  ;; Org-TODO
-  (setq org-todo-keyword-faces
-        '(
-          ("ACT" . (:foreground "#ff6c6b" :weight bold)) ;; Modus Vivendi Red
-          ("WAIT" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
-          ("READ" . (:foreground "#3bd9ff")) ;; Modus Vivendi Cyan
 
-          ("TODO" . (:foreground "#ff6c6b")) ;; Modus Vivendi Red
-          ("Next" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
-          ("DONE" . (:foreground "#98be65")) ;; Modus Vivendi Green
-          ("CANCELED" . (:foreground "#a9a1e1")) ;; Modus Vivendi Grey
-          ("HOLD" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
+#+end_src
 
-          ("Initiation" . (:background "#005f87" :foreground "black")) ;; Modus Vivendi Blue
-          ("Planning" . (:background "#d79921" :foreground "black")) ;; Modus Vivendi Yellow
-          ("Execution&Monitoring" . (:background "#d33682" :foreground "black" :bold t :weight bold :box (:line-width 2 :style released-button))) ;; Modus Vivendi Magenta
-          ("Closing" . (:background "#005f87" :foreground "black")) ;; Modus Vivendi Blue
-          ("Done" . (:background "#98be65" :foreground "black")) ;; Modus Vivendi Green
-          ("Canceled" . (:background "grey" :foreground "black"))
-          ("Hold" . (:background "lightgrey" :foreground "black"))
+** Org Roam
+:PROPERTIES:
+:ID:       78c761db-c066-4eef-922c-d3c934902e60
+:END:
 
-          ("WIP" . (:foreground "#ff6c6b" :weight italic :box )) ;; Modus Vivendi Red
-          ("GEPRÜFT" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
-          ("FREI" . (:foreground "#98be65")) ;; Modus Vivendi Green
-          ("INTERN" . (:foreground "#ff6c6b")) ;; Modus Vivendi Red
-          ("RÜCKSPRACHE" . (:foreground "#ffdd33")) ;; Modus Vivendi Yellow
+#+begin_src emacs-lisp
 
-          ("DELIGATED" . (:foreground "#3bd9ff")) ;; Modus Vivendi Cyan
-          ("DONE" . (:foreground "#98be65")) ;; Modus Vivendi Green
-          ("CANCELED" . (:foreground "#a9a1e1")) ;; Modus Vivendi Grey
-          ))
+
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory (expand-file-name "notebooks/org-roam" my/BASE_PATH))
+    :config
+    ;; Enable automatic DB sync
+    (org-roam-db-autosync-mode))
+
+
 
 #+end_src
 
 ** Org Super Agenda
+:PROPERTIES:
+:ID:       0f90eb78-f8d9-49e7-960b-f19523717dc7
+:END:
 
 Org Super agenda only categorizes. If the results look weird remember, It does not filter. 
 
 #+begin_src emacs-lisp
 
-  (use-package org-super-agenda
-    :ensure t)
-  (require 'org-super-agenda)
-  (org-super-agenda-mode t)
-  (setq org-super-agenda-keep-order t) 
-                                          ; (org-agenda nil "a")
-  (setq org-super-agenda-header-separator "\n")
-
-  (setq org-agenda-custom-commands
-        '(
-          ("d" "Day"
-           (
-
-            (todo ""
-                  ((org-agenda-overriding-header "* GOALS *\n")
-                   (org-agenda-prefix-format '((todo . " %?-12t")))
-                   (org-agenda-hide-tags-regexp ".") ;; Hides all tags
-                   (org-agenda-files '("D:/notebooks/org/Goals.org" ))
-                   (org-super-agenda-groups
-                    '(
-                      (:name ""
-                             :todo "->"
-                             :order 2)
-                      (:discard (:anything))
-                      ))
-                   ))
-  
-            (agenda ""
-                    ((org-agenda-block-separator nil)
-                     (org-agenda-span 'day)
-                     (org-agenda-entry-types '(:deadline))
-                     (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                     (org-deadline-warning-days 30)
-                     (org-agenda-overriding-header "\n* Deadlines *\n")))
-
-            (agenda ""
-                    ((org-agenda-block-separator nil)
-                     (org-agenda-span 1)
-                     (org-agenda-repeating-timestamp-show-all t)
-                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                     (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                     (org-agenda-overriding-header "\n* Today *\n")
-                     (org-super-agenda-groups
-                      '((:name "Tasks"
-                               :todo "ACT"
-                               :order 1)
-                        (:name "Waiting on"
-                               :todo "WAIT"
-                               :order 2)
-                        (:name "Other"
-                               :todo t
-                               :order 3)))))
-
-            (agenda ""
-                    ((org-agenda-block-separator nil)
-                     (org-agenda-start-day "+1d")
-                     (org-agenda-span 2)
-                     (org-agenda-repeating-timestamp-show-all t)
-                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                     (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s")))
-                     (org-agenda-overriding-header "\n* Upcoming *\n")))
-
-            (todo ""
-                  ((org-agenda-overriding-header "* Open Task List *\n")
-                   (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-                   (org-agenda-files '("D:/notebooks/org/Tasks.org" "D:/notebooks/org/Meetings.org"))
-                   (org-super-agenda-groups
-                    '(
-                      (:name ""
-                             :todo "ACT"
-                             :order 1)
-                      (:name ""
-                             :todo "WAIT"
-                             :order 2)
-                      (:name ""
-                             :todo "DELIGATED"
-                             :order 3)
-                      (:name "Meeting Tasks"
-                             :file-path ("D:/notebooks/org/Meetings.org")
-                             :order 4)
-                      ))
-
-                   ))
-
-            (todo ""
-                  ((org-agenda-overriding-header "* Project Task List *\n")
-                   (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) ")))
-                   (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                   (org-super-agenda-groups
-                    '(
-                      (:name "Tasks"
-                             :todo "TODO"
-                             :order 1)
-                      (:name ""
-                             :todo "Next"
-                             :order 2)
-                      (:name "Projects"
-                             :todo "Execution&Monitoring"
-                             :order 3)
-                      (:name ""
-                             :todo "Planning"
-                             :order 4)
-                      (:name ""
-                             :todo "Initiation"
-                             :order 5)
-                      (:discard (:tag ("Exclude")))
-                      (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-
-                      ))
-
-                   ))
-
-            ))
-
-          ("P" "Project Task List"
-           (
-            (todo "" ((org-agenda-overriding-header "Project Task List")
-                      (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                      (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i ")))
-
-                      (org-super-agenda-groups
-                       '(
-                         (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                         (:discard (:tag ("Exclude")))
-                         )))))
-           nil
-           ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html"))
-
-          ("z" "Project Agenda Overview"
-           (
-            (agenda ""
-                    ((org-agenda-block-separator nil)
-                     (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                     (org-agenda-prefix-format '(
-                                                 (agenda . "%s %b  %?-2i %t")))
-                     (org-agenda-entry-types '(:deadline))
-                     (org-agenda-span 1)
-                     (org-deadline-warning-days 60)
-                     (org-agenda-overriding-header "\n* Deadlines *\n")))
-            (agenda ""
-                    ((org-agenda-overriding-header "Project Task List")
-                     (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org"))
-                     (org-agenda-span 90)
-                     (org-agenda-repeating-timestamp-show-all t)
-                     (org-agenda-skip-scheduled-if-done nil)
-                     (org-agenda-entry-types '(:timestamp :sexp :scheduled))
-                     (org-agenda-include-diary nil)
-                     (org-agenda-current-time-string "")
-                     (org-agenda-time-grid '((daily) () "" ""))
-                     (org-agenda-prefix-format '(
-                                                 (agenda . "%b  %?-2i %t ")))
-                     (org-super-agenda-groups
-                      '(
-                        ;; (:discard (:not (:todo ("Next" "TODO" "DONE"))))
-                        ;; (:auto-outline-path t)
-                        ;; (:auto-planning t)
-                        ;; (:auto-property "Project")
-                        ;; (:auto-tags t)
-                        ;; (:auto-category t)
-                        (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT")))
-                        (:discard (:tag ("Exclude")))
-                        (:name " Overdue "  ; Optionally specify section name
-                               :scheduled past
-                               :face 'warning)
-                        (:name ""  ; Optionally specify section name
-                               :scheduled future
-                               :face 'warning))))))
-           nil
-           ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html"))
-          ))
+  (use-package org-super-agenda :ensure t) (require 'org-super-agenda) (org-super-agenda-mode t) (setq org-super-agenda-keep-order t) ; (org-agenda nil "a") (setq org-super-agenda-header-separator "\n") (setq org-agenda-custom-commands '( ("d" "Day" ( (todo "" ((org-agenda-overriding-header "* GOALS *\n") (org-agenda-prefix-format '((todo . " %?-12t"))) (org-agenda-hide-tags-regexp ".") ;; Hides all tags (org-agenda-files '("D:/notebooks/org/Goals.org" )) (org-super-agenda-groups '( (:name "" :todo "->" :order 2) (:discard (:anything)) )) )) (agenda "" ((org-agenda-block-separator nil) (org-agenda-span 'day) (org-agenda-entry-types '(:deadline)) (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s"))) (org-deadline-warning-days 30) (org-agenda-overriding-header "\n* Deadlines *\n"))) (agenda "" ((org-agenda-block-separator nil) (org-agenda-span 1) (org-agenda-repeating-timestamp-show-all t) (org-agenda-entry-types '(:timestamp :sexp :scheduled)) (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s"))) (org-agenda-overriding-header "\n* Today *\n") (org-super-agenda-groups '((:name "Tasks" :todo "ACT" :order 1) (:name "Waiting on" :todo "WAIT" :order 2) (:name "Other" :todo t :order 3))))) (agenda "" ((org-agenda-block-separator nil) (org-agenda-start-day "+1d") (org-agenda-span 2) (org-agenda-repeating-timestamp-show-all t) (org-agenda-entry-types '(:timestamp :sexp :scheduled)) (org-agenda-prefix-format '((agenda . " %i %?-12t %-12s"))) (org-agenda-overriding-header "\n* Upcoming *\n"))) (todo "" ((org-agenda-overriding-header "* Open Task List *\n") (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i "))) (org-agenda-files '("D:/notebooks/org/tasks.org" "D:/notebooks/org/meetings.org")) (org-super-agenda-groups '( (:name "" :todo "ACT" :order 1) (:name "" :todo "WAIT" :order 2) (:name "" :todo "DELIGATED" :order 3) (:name "Meeting Tasks" :file-path ("D:/notebooks/org/meetings.org") :order 4) )) )) (todo "" ((org-agenda-overriding-header "* Project Task List *\n") (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) "))) (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org")) (org-super-agenda-groups '( (:name "Tasks" :todo "TODO" :order 1) (:name "" :todo "Next" :order 2) (:name "Projects" :todo "Execution&Monitoring" :order 3) (:name "" :todo "Planning" :order 4) (:name "" :todo "Initiation" :order 5) (:discard (:tag ("Exclude"))) (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT"))) )) )) )) ("P" "Project Task List" ( (todo "" ((org-agenda-overriding-header "Project Task List") (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org")) (org-agenda-prefix-format '((todo . "%-12(let ((scheduled (org-get-scheduled-time (point)))) (if scheduled (format-time-string \"%d.%m.%Y\" scheduled) \"\")) %i "))) (org-super-agenda-groups '( (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT"))) (:discard (:tag ("Exclude"))) ))))) nil ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Task_List.html")) ("z" "Project Agenda Overview" ( (agenda "" ((org-agenda-block-separator nil) (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org")) (org-agenda-prefix-format '( (agenda . "%s %b %?-2i %t"))) (org-agenda-entry-types '(:deadline)) (org-agenda-span 1) (org-deadline-warning-days 60) (org-agenda-overriding-header "\n* Deadlines *\n"))) (agenda "" ((org-agenda-overriding-header "Project Task List") (org-agenda-files '("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/ReOxy_Guide.org")) (org-agenda-span 90) (org-agenda-repeating-timestamp-show-all t) (org-agenda-skip-scheduled-if-done nil) (org-agenda-entry-types '(:timestamp :sexp :scheduled)) (org-agenda-include-diary nil) (org-agenda-current-time-string "") (org-agenda-time-grid '((daily) () "" "")) (org-agenda-prefix-format '( (agenda . "%b %?-2i %t "))) (org-super-agenda-groups '( ;; (:discard (:not (:todo ("Next" "TODO" "DONE")))) ;; (:auto-outline-path t) ;; (:auto-planning t) ;; (:auto-property "Project") ;; (:auto-tags t) ;; (:auto-category t) (:discard (:todo ("WIP" "INTERN" "RÜCKSPRACHE" "GEPRÜFT"))) (:discard (:tag ("Exclude"))) (:name " Overdue " ; Optionally specify section name :scheduled past :face 'warning) (:name "" ; Optionally specify section name :scheduled future :face 'warning)))))) nil ("D:/office/OneDrive - Kröner Medizintechnik/resources/reoxy/ReOxy_Guide/Project_Agenda_Overview.html")) ))
 
 #+end_src
 
-#+RESULTS:
-| d | Day | ((todo  ((org-agenda-overriding-header * GOALS * |
-
 ** Org Agenda Property
+:PROPERTIES:
+:ID:       2d343f30-e703-4a97-8817-7e6fedde463a
+:END:
 
 #+begin_src emacs-lisp
 
@@ -602,6 +460,9 @@ Org Super agenda only categorizes. If the results look weird remember, It does n
 #+end_src
 
 ** Org Download
+:PROPERTIES:
+:ID:       c5287895-4faf-4664-acef-5d80a1981546
+:END:
 
 #+begin_src emacs-lisp
 
@@ -612,6 +473,9 @@ Org Super agenda only categorizes. If the results look weird remember, It does n
 #+end_src
 
 ** Org Modern 
+:PROPERTIES:
+:ID:       fda37405-d072-44ad-ac46-df868606aa37
+:END:
 
 Replacing Org Bullets.
 
@@ -646,18 +510,10 @@ Replacing Org Bullets.
 
 #+end_src
 
-** Org Bullets
-
-#+begin_src emacs-lisp
-
-  ;; (use-package org-bullets
-  ;;   :hook (org-mode . org-bullets-mode)
-  ;;   :custom
-  ;;   (org-bullets-bullet-list '("*1" "*2" "*3" "*4" "*5" "*6")))
-
-#+end_src
-
 ** Org Cite
+:PROPERTIES:
+:ID:       48ad0356-8995-46ac-a920-9d904a661cf0
+:END:
 
 #+begin_src emacs-lisp
 
@@ -688,6 +544,9 @@ Replacing Org Bullets.
 #+end_src
 
 ** Org Noter
+:PROPERTIES:
+:ID:       02bdc535-e016-45ac-b49e-d8412b912234
+:END:
 
 #+begin_src emacs-lisp
 
@@ -710,6 +569,9 @@ Replacing Org Bullets.
 #+end_src
 
 ** Org Transclusion
+:PROPERTIES:
+:ID:       2de1bb9e-e651-42d8-a12e-6b79afb83be4
+:END:
 
 #+begin_src emacs-lisp 
 
@@ -735,6 +597,9 @@ Replacing Org Bullets.
 #+end_src
 
 ** Org Agenda (OLD)
+:PROPERTIES:
+:ID:       61d5b858-b4df-4057-bd79-35cf95fae56f
+:END:
 
 Switched to Superagenda [2024-05-31 Fr] 
 
@@ -882,7 +747,14 @@ Switched to Superagenda [2024-05-31 Fr]
 #+end_src
 
 * Packages
+:PROPERTIES:
+:ID:       965aff85-b0e6-4783-8b06-7689d7df55ff
+:END:
+
 ** Minibuffer
+:PROPERTIES:
+:ID:       94f77294-0124-43b0-bbc1-087260d14a89
+:END:
 
 For me ivy rich broke the buffer when starting dired.
 - Maybe use Distrotubes guide for Ivy https://www.youtube.com/watch?v=A4UothfExBM&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX&index=5
@@ -892,31 +764,31 @@ Considering HELM
 
 #+begin_src emacs-lisp
 
-  (use-package vertico
-    :init
-    (vertico-mode)
-    ;; (setq vertico-scroll-margin 0) ;; Different scroll margin
-    ;; (setq vertico-count 20) ;; Show more candidates
-    ;; (setq vertico-resize t) ;; Grow and shrink the Vertico minibuffer
-    ;; (setq vertico-cycle t)  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-    )
+  ;; (use-package vertico
+  ;;   :init
+  ;;   (vertico-mode)
+  ;;   ;; (setq vertico-scroll-margin 0) ;; Different scroll margin
+  ;;   ;; (setq vertico-count 20) ;; Show more candidates
+  ;;   ;; (setq vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;;   ;; (setq vertico-cycle t)  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;;   )
 
-  (setq minibuffer-prompt-properties
-        '(read-only t cursor-intangible t face minibuffer-prompt))
-  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  ;; (setq minibuffer-prompt-properties
+  ;;       '(read-only t cursor-intangible t face minibuffer-prompt))
+  ;; (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-  (setq enable-recursive-minibuffers t) ;;enables commands like M-x when in minibuffer
+  ;; (setq enable-recursive-minibuffers t) ;;enables commands like M-x when in minibuffer
 
-  ;; Orderless
+  ;; ;; Orderless
 
-  (use-package orderless
-    :init
-    ;; Configure a custom style dispatcher (see the Consult wiki)
-    ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
-    ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-    (setq completion-styles '(orderless basic)
-          completion-category-defaults nil
-          completion-category-overrides '((file (styles partial-completion)))))
+  ;; (use-package orderless
+  ;;   :init
+  ;;   ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;;   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
+  ;;   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  ;;   (setq completion-styles '(orderless basic)
+  ;;         completion-category-defaults nil
+  ;;         completion-category-overrides '((file (styles partial-completion)))))
 
   ;; Marginalia
 
@@ -930,7 +802,137 @@ Considering HELM
 
 #+end_src
 
+** Helm
+:PROPERTIES:
+:ID:       d44aedc8-a057-4cc6-b110-e7473cb7ef25
+:END:
+
+#+begin_src emacs-lisp
+
+  (use-package helm
+    :ensure t
+    :config
+    (helm-mode 1)
+    ;; Optional: Helm display preferences
+    (setq helm-display-header-line nil
+          helm-split-window-inside-p t
+          helm-autoresize-mode t)
+    (setq helm-M-x-fuzzy-match t
+          helm-buffers-fuzzy-matching t))
+
+  (global-set-key (kbd "M-x") #'helm-M-x)
+
+  (use-package helm-org
+    :ensure t)
+
+(defun my/helm-org-insert-link-to-heading ()
+  "Insert a link to a heading in the current buffer using Helm for completion.
+Shows the full outline path for disambiguation."
+  (interactive)
+  (require 'helm)
+  (require 'org)
+  (require 'org-id)
+  (unless (derived-mode-p 'org-mode)
+    (user-error "Not in an Org buffer"))
+  (let* ((candidates
+          (org-map-entries
+           (lambda ()
+             (let* ((pos (point-marker))
+                    (path (org-get-outline-path t t)) ; list of parents
+                    (heading (substring-no-properties (org-get-heading t t t t)))
+                    (full-path (mapconcat #'identity (append path (list heading)) " → ")))
+               (cons full-path pos)))))
+         (selected (helm :sources
+                         (helm-build-sync-source "Headings"
+                           :candidates candidates)
+                         :buffer "*helm org headings*")))
+    (when selected
+      (let (title id)
+        (with-current-buffer (marker-buffer selected)
+          (save-excursion
+            (goto-char selected)
+            (setq title (substring-no-properties
+                         (org-get-heading t t t t)))
+            (setq id (or (org-id-get) (org-id-get-create)))))
+        (insert (org-make-link-string (concat "id:" id) title))))))
+
+(defvar my/org-files-list
+  `(,(expand-file-name "tasks.org" my/ORG_BASE_PATH)
+    ,(expand-file-name "leads.org" my/ORG_BASE_PATH)
+    ,(expand-file-name "goals.org" my/ORG_BASE_PATH))
+  "List of Org files to be used for heading completion.")
+
+(defun my/helm-org-insert-link-to-heading-mf ()
+  "Insert a link to a heading from multiple Org files using Helm for completion.
+Displays the outline path for disambiguation."
+  (interactive)
+  (require 'helm)
+  (require 'org)
+  (require 'org-id)
+  ;; build candidates list: (DISPLAY . MARKER)
+  (let ((candidates '()))
+    (dolist (file my/org-files-list)
+      (with-current-buffer (find-file-noselect file)
+        (org-map-entries
+         (lambda ()
+           (let* ((pos (point-marker))
+                  (path (org-get-outline-path t t))
+                  (heading (substring-no-properties (org-get-heading t t t t)))
+                  (full-path (mapconcat #'identity (append path (list heading)) " → "))
+                  (display (format "%s  (%s)" full-path (file-name-nondirectory file))))
+             (push (cons display pos) candidates))))))
+
+    (setq candidates (nreverse candidates))
+
+    ;; run Helm on the candidates
+    (let ((selected
+           (helm :sources
+                 (helm-build-sync-source "Org Headings"
+                   :candidates candidates)
+                 :buffer "*helm org headings*")))
+      (when selected
+        (let (title id)
+          (with-current-buffer (marker-buffer selected)
+            (save-excursion
+              (goto-char selected)
+              (setq title (substring-no-properties (org-get-heading t t t t)))
+              (setq id (or (org-id-get) (org-id-get-create)))))
+          (insert (org-make-link-string (concat "id:" id) title)))))))
+
+
+#+end_src
+
+** Helm Rifle
+
+
+#+begin_src emacs-lisp
+
+  (use-package helm-org-rifle
+  :ensure t)
+  
+#+end_src
+
+** Org Tidy
+:PROPERTIES:
+:ID:       88a4daa4-062a-4ad1-8d5f-aeb1eb871b44
+:END:
+
+#+begin_src emacs-lisp
+
+;  (use-package org-tidy
+;    :ensure t
+;    :hook
+;    (org-mode . org-tidy-mode))
+;
+;
+;  (setq org-tidy-general-drawer-name-blacklist '("LOGBOOK"))
+;  (setq org-tidy-protect-overlay nil)
+#+end_src
+
 ** Doom Modeline
+:PROPERTIES:
+:ID:       a59d8185-b167-4f52-bc96-e362008d46e3
+:END:
 
 Default is fine
 
@@ -944,6 +946,9 @@ Default is fine
 #+end_src
 
 ** Helpful
+:PROPERTIES:
+:ID:       14eee06d-ae29-4e05-a2d8-87e610e1ece1
+:END:
 
 #+begin_src emacs-lisp
 
@@ -960,16 +965,27 @@ Default is fine
 #+end_src
 
 ** Which-Key
+:PROPERTIES:
+:ID:       347ae91e-c4f7-4598-a543-f8ddfdd64db7
+:END:
 
 #+begin_src emacs-lisp
 
-  (use-package which-key
-    :init (which-key-mode)
-    :config (setq which-key-idle-delay 0.05))
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode)  ;; enable globally
+  :config
+  (setq which-key-idle-delay 0
+        which-key-sort-order 'which-key-key-order-alpha
+        which-key-popup-type 'side-window))  ;; safe option
 
 #+end_src
 
 ** AUCTeX & PDF-Tools
+:PROPERTIES:
+:ID:       431d7350-f8e8-4037-99d0-0c12314727d5
+:END:
 
 PDF Tools needs to be compiled see below (pdf-tools-install) on windows this Requires Msys2 to Compile
 alternatively you can copy the working folder from an existing msys2 installation
@@ -990,6 +1006,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** EVIL Mode
+:PROPERTIES:
+:ID:       9365b1b1-86a8-4b7e-bbfe-ad6f41909140
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1007,12 +1026,15 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
   (use-package evil-collection
     :after evil
     :config
-    (setq evil-collection-mode-list '(dashboard dired org vertico ibuffer))
+    (setq evil-collection-mode-list '(dashboard dired org vertico ibuffer helm))
     (evil-collection-init))
 
 #+end_src
 
 ** Citar
+:PROPERTIES:
+:ID:       e6888842-1e0d-4922-83e6-499bd07af5e1
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1049,6 +1071,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** Embark
+:PROPERTIES:
+:ID:       5469ce62-95be-4e57-9645-8e67071d06dd
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1085,6 +1110,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** Google Calendar Import
+:PROPERTIES:
+:ID:       e839f0ec-874b-4088-b480-88e8a7f16c26
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1102,6 +1130,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** MAGIT MERMAID
+:PROPERTIES:
+:ID:       a241b9e4-90c5-4f20-afa9-16cd771e49c7
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1116,6 +1147,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** htmlize
+:PROPERTIES:
+:ID:       fd8aac1c-0a85-4f7f-bf79-0e2ddb70ffdf
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1125,6 +1159,9 @@ In the PDF Buffer it should show PDF-Tools as a Major Mode
 #+end_src
 
 ** Dired
+:PROPERTIES:
+:ID:       159b958d-e4bc-49f3-926b-c0a3a1676491
+:END:
 
 basic setup and trash directory
 
@@ -1145,6 +1182,9 @@ basic setup and trash directory
 #+end_src
 
 ** Yasnippet
+:PROPERTIES:
+:ID:       bf9511bc-40e4-4752-a9a8-59827e56cca7
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1156,14 +1196,20 @@ basic setup and trash directory
 #+end_src
 
 ** Bookmarks
+:PROPERTIES:
+:ID:       c9976699-19f7-472e-9346-e792e7351ade
+:END:
 
 #+begin_src emacs-lisp
 
- (setq bookmark-default-file my/bookmarks)
+ (setq bookmark-default-file my/BOOKMARKS)
 
 #+end_src
 
 ** Python
+:PROPERTIES:
+:ID:       e10b3a21-4b5b-4e90-805a-f82de7b37b52
+:END:
 
 Indenting needs to be fixed
 
@@ -1181,6 +1227,9 @@ Indenting needs to be fixed
 #+end_src
 
 ** Djvu
+:PROPERTIES:
+:ID:       5a806355-6092-4656-a92a-a7f013c8a8b9
+:END:
 
 Dependency
 
@@ -1195,6 +1244,9 @@ Dependency
 #+end_src
 
 ** ISpell
+:PROPERTIES:
+:ID:       a04a636e-e70e-454e-a13f-4abf6c958e90
+:END:
 
 Install Hunspell (precompiled or mysys + add path)
 
@@ -1206,42 +1258,36 @@ Install Hunspell (precompiled or mysys + add path)
   (setq ispell-dictionary "en_GB,de_DE_frami")
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_GB,de_DE_frami")
-  ;; (setq ispell-local-dictionary-alist '(
-  ;;                                       (nil
-  ;;                                        "[[:alpha:]]"
-  ;;                                        "[^[:alpha:]]"
-  ;;                                        "[']"
-  ;;                                        t
-  ;;                                        ("-d" "en_US" "-p" "D:\\hunspell\\share\\hunspell\\personal.en")
-  ;;                                        nil
-  ;;                                        iso-8859-1)
 
-  ;;                                       ("american"
-  ;;                                        "[[:alpha:]]"
-  ;;                                        "[^[:alpha:]]"
-  ;;                                        "[']"
-  ;;                                        t
-  ;;                                        ("-d" "en_US" "-p" "D:\\hunspell\\share\\hunspell\\personal.en")
-  ;;                                        nil
-  ;;                                        iso-8859-1)
-  ;;                                       ("deutsch"
-  ;;                                        "[[:alpha:]ÄÖÜéäöüß]"
-  ;;                                        "[^[:alpha:]ÄÖÜéäöüß]"
-  ;;                                        "[']"
-  ;;                                        t
-  ;;                                        ("-d" "de_DE_frami" "-p" 
-  ;;                                         "D:\\hunspell\\share\\hunspell\\personal.de")
-  ;;                                        nil
-  ;;                                        iso-8859-1)
-  ;;                                       ))
-
-  ;; (when (boundp 'ispell-hunspell-dictionary-alist)
-  ;;   (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))
+  ;; Helper: Toggle flyspell with dictionary selection
+(defun my/flyspell-toggle ()
+  "Toggle flyspell-mode and set dictionary based on buffer content or default."
+  (interactive)
+  (if flyspell-mode
+      (progn
+        (flyspell-mode -1)
+        (message "Flyspell disabled"))
+    ;; Enable flyspell
+    (let ((dict (or ispell-local-dictionary "en_GB"))) ; fallback if nil
+      (flyspell-mode 1)
+      ;; Optionally choose dictionary interactively
+      (setq dict
+            (completing-read "Choose dictionary: "
+                             '("en_GB" "de_DE_frami" "en_US" "de_DE")
+                             nil t nil nil dict))
+      (ispell-change-dictionary dict)
+      (message "Flyspell enabled with dictionary %s" ispell-local-dictionary))))
 
 #+end_src
 
 * KEYBINDINGS
+:PROPERTIES:
+:ID:       750bf3d6-0223-406a-98f8-a394bdbfb460
+:END:
 ** Global
+:PROPERTIES:
+:ID:       a4372829-1917-459c-9ee0-4315bd9fb940
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1251,6 +1297,9 @@ Install Hunspell (precompiled or mysys + add path)
 #+end_src
 
 ** General.el Keybindings for Leader Keys
+:PROPERTIES:
+:ID:       4f71514c-c150-45cf-8f25-120ccaa2e0e7
+:END:
 Resources https://github.com/noctuid/general.el
 
 #+begin_src emacs-lisp
@@ -1267,7 +1316,7 @@ Resources https://github.com/noctuid/general.el
       :global-prefix  "M-SPC") ;; access leader in insert mode
 
     (tmi/leader-keys
-      ":" '(execute-extended-command :wk "M-x")
+      ":" '(helm-M-x :wk "helm-M-x")
 
       "f" '(:ignore t :wk "Files")
       "f f" '(find-file :wk "Find file")
@@ -1275,16 +1324,19 @@ Resources https://github.com/noctuid/general.el
                 (find-file "~/.config/emacs/config.org")) 
               :wk "Open config.org")
       "f g" '((lambda () (interactive)
-                (find-file "d:/notebooks/org/Goals.org")) 
+                (find-file "d:/notebooks/org/goals.org")) 
+              :wk "Open Goals.org")
+      "f l" '((lambda () (interactive)
+                (find-file "d:/notebooks/org/leads.org")) 
               :wk "Open Goals.org")
       "f m" '((lambda () (interactive)
-                (find-file "d:/notebooks/org/Meetings.org")) 
+                (find-file "d:/notebooks/org/meetings.org")) 
               :wk "Open Meetings.org")
       "f j" '((lambda () (interactive)
-                (find-file "d:/notebooks/org/Journal.org")) 
+                (find-file "d:/notebooks/org/journal.org")) 
               :wk "Open Journal.org")
       "f t" '((lambda () (interactive)
-                (find-file "d:/notebooks/org/Tasks.org")) 
+                (find-file "d:/notebooks/org/tasks.org")) 
               :wk "Open Tasks.org")  
       "f r" '(recentf-open :wk "Recent Files")
 
@@ -1311,18 +1363,18 @@ Resources https://github.com/noctuid/general.el
       "u" '(universal-argument :wk "u-arg")
       "q" '(exit-minibuffer :wk "Exit minib")
 
-      "h" '(:ignore t :wk "help")
-      "h r r" '((lambda () (interactive)
-                  (load-file "~/.config/emacs/init.el"))
-                :wk "Reload emacs config")
+      ;; "h" '(:ignore t :wk "help")
+      ;; "h r r" '((lambda () (interactive)
+      ;;            (load-file "~/.config/emacs/init.el"))
+      ;;          :wk "Reload emacs config")
 
       "d" '(:ignore t :wk "Dired")
       "d d" '(dired :wk "Dired")
       "d D" '(dired-other-window :wk "Dired other Window")
 
       "w" '(:ignore t :wk "window")
-      "w w"'(other-window :wk "switch window")
-      "w q"'(quit-window :wk "close window")
+      "w w" '(other-window :wk "switch window")
+      "w q" '(quit-window :wk "close window")
       "w o" '(delete-other-windows :wk "delete other window")
       "w v" '(split-window-right :wk "split vertical")
 
@@ -1334,34 +1386,50 @@ Resources https://github.com/noctuid/general.el
       "e e" '(embark-act :wk "Act")
       "e d" '(embark-dwim :wk "Dwim")
 
+      ;; Top-level Org prefix
       "o" '(:ignore t :wk "org")
+      ;; Nested refile prefix
+      "o r" '(:ignore t :wk "refile")
+      ;; Actual command
+      "o r r" '(org-refile :wk "Refile")
+      "o r R" '(org-refile-copy :wk "Refile-Copy")
+      "o r l" '(my/refile-copy-to-lead :wk "Refile-Lead")
+      ;; "o TAB" '(org-tidy-toggle :wk "Org Tidy")
       "o a" '(org-agenda :wk "Agenda")
-      "o A" '(my/org-agenda-inactive :wk "Agenda TS")
+      "o A" '(my/org-agenda-inactive :wk "Agenda Time Stamp")
       "o w" '(org-store-agenda-views :wk "Write Agenda htmls")
       "o c" '(org-capture :wk "Capture")
       "o C" '(my/capture-without-id-at-point :wk "Capture without ID")
       "o d" '(org-deadline :wk "Deadline")
-      "o i" '(org-insert-last-stored-link :wk "Insert Link")
+      "o f" '(helm-org-rifle :wk "Org-Rifle ")
+      "o i" '(my/helm-org-insert-link-to-heading-mf :wk "Insert Link to Heading")
       "o I" '(org-insert-link :wk "Insert selected Link")
       "o j" '(my/journal-capture-without-id-at-point :wk "Journal Entry")
       "o J" '(my/journal-outline-capture-without-id-at-point :wk "Journal Outline")
+      "o k" '(my/org-todo-insert-comment :wk "Add Comment")
       "o l" '(org-store-link :wk "Store Link")
-      "o n" '(org-add-note :wk "add note to current entry")
-      "o o" '(org-open-at-point :wk "open link")
+      "o L" '(org-insert-last-stored-link :wk "Insert Link")
+      "o n" '(org-add-note :wk "Add Note")
+      "o o" '(org-open-at-point :wk "Open Link")
       "o s" '(org-schedule :wk "Schedule")
-      "o t" '(org-set-tags-command :wk "Tags set/edit")
       "o u" '(my/org-unschedule :wk "Unschedule")
+      "o U" '(my/org-undeadline :wk "Undead")
       "o z" '(org-cite-insert :wk "Cite")
       "o t" '(org-time-stamp :wk "Add Timestamp")
-      "o k" '(my/org-todo-insert-comment :wk "Comment TODO item")
+      ;;      "o t" '(org-set-tags-command :wk "Tags set/edit")
+      "o T" '(org-time-stamp-inactive :wk "Add Interactive Timestamp")
+
+      "g" '(:ignore t :wk "org-roam")
+      "g f" '(org-roam-node-find :wk "node find")
+      "g b" '(org-roam-buffer-toggle :wk "backlinks")
+      "g i" '(org-roam-node-insert :wk "insert link")
+      "g c" '(org-roam-capture :wk "roam capture")
 
 
-
-      "s" '(:ignore t :wk "snippets")
+      "s" '(:ignore t :wk "Snippets")
       "s s" '(org-insert-structure-template :wk "Insert Block")
       ;; "s y" '(yas-insert-snippet :wk "Insert Snippet")
       ;; "s n" '(yas-new-snippet :wk "New Snippet")
-
       )
     )
 
@@ -1369,6 +1437,9 @@ Resources https://github.com/noctuid/general.el
 #+end_src
 
 * Littering
+:PROPERTIES:
+:ID:       d5ea0027-f6f2-4646-b90a-ce8b4e1d561f
+:END:
 
 Trash Directory in Dired
 
@@ -1382,8 +1453,95 @@ Trash Directory in Dired
 #+end_src
 
 * My Custom Functions
+:PROPERTIES:
+:ID:       a4c025d9-9185-4668-a259-84a3be5aa9ba
+:END:
 
 #+begin_src emacs-lisp
+
+  ;; Org-Mode Custom Commands
+  (defun my/org-unschedule ()
+    (interactive)
+    (let ((current-prefix-arg '(4))) ;; emulate C-u
+      (call-interactively 'org-schedule))) ;; invoke align-regexp interactivel
+
+  (defun my/org-current-date-time-string ()
+    "Return the current date and time as a string."
+    (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))
+
+  (defun my/org-undeadline ()
+    (interactive)
+    (let ((current-prefix-arg '(4))) ;; emulate C-u
+      (call-interactively 'org-deadline))) ;; invoke align-regexp interactivel
+
+  (defun my/capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil)))
+
+  (defun my/journal-capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil "j")))
+
+  (defun my/journal-outline-capture-without-id-at-point()
+    (interactive)
+    (let ((org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id))
+      (org-capture nil "J")))
+
+  (defun my/refile-and-jump ()
+    "Refile the current subtree and jump to the new location."
+    (interactive)
+    (let ((org-refile-targets '(("d:/notebooks/org-roam/20250822102844-roam_leads.org" :maxlevel . 2))))
+      (org-refile-copy)
+      (org-refile-goto-last-stored)
+      (org-set-property "CREATED_AT" (format-time-string "[%Y-%m-%d %a %H:%M]"))))
+
+  (defun my/find-duplicate-lines ()
+    "Find and highlight duplicate lines in the current buffer."
+    (interactive)
+    (require 'hi-lock)
+    (let ((line-hash (make-hash-table :test 'equal))
+          (duplicates '()))
+      (save-excursion
+        (goto-char (point-min))
+        ;; Iterate over lines in the buffer
+        (while (not (eobp))
+          (let ((line (string-trim (thing-at-point 'line t))))
+            (when (and line (not (string-empty-p line)))
+              (if (gethash line line-hash)
+                  (add-to-list 'duplicates line)
+                (puthash line t line-hash))))
+          (forward-line 1)))
+      ;; Highlight duplicates
+      (hi-lock-mode 1)
+      (dolist (dup duplicates)
+        (highlight-lines-matching-regexp (regexp-quote dup) 'hi-yellow))
+      (if duplicates
+          (message "Found duplicate lines!")
+        (message "No duplicate lines found."))))
+
+  (defun my/find-duplicate-org-ids ()
+    "Find and highlight duplicate :ID: entries in the current buffer."
+    (interactive)
+    (require 'hi-lock)
+    (let ((id-hash (make-hash-table :test 'equal))
+          (duplicates '()))
+      (save-excursion
+        (goto-char (point-min))
+        ;; Search for :ID: entries
+        (while (re-search-forward "^\\s-*:ID:\\s-+\\([a-zA-Z0-9-]+\\)" nil t)
+          (let ((id (match-string 1)))
+            (if (gethash id id-hash)
+                (add-to-list 'duplicates id)
+              (puthash id t id-hash))))
+        ;; Highlight duplicates
+        (hi-lock-mode 1)
+        (dolist (dup duplicates)
+          (highlight-regexp (format "^\\s-*:ID:\\s-+%s" (regexp-quote dup)) 'hi-yellow)))
+      (if duplicates
+          (message "Found duplicate :ID: entries!")
+        (message "No duplicate :ID: entries found."))))
 
   (defun my/clip-path-to-current-location ()
     "Show the full path file name in the minibuffer."
@@ -1418,7 +1576,7 @@ Trash Directory in Dired
 
   (defun app/org-screenshot ()
     "Take a screenshot into a time stamped unique-named file in the
-          same directory as the org-buffer and insert a link to this file."  
+              same directory as the org-buffer and insert a link to this file."  
     (interactive)
     (setq filename
           (concat
@@ -1431,17 +1589,37 @@ Trash Directory in Dired
     (insert (concat "[[file:" filename "]]"))
     (org-display-inline-images))
 
-
   (defun my/export ()
     (interactive)
     (setq inhibit-read-only t)
     (org-export-dispatch)
     (setq inhibit-read-only nil))
-  
+
+
+  (defun my/beorg_sync ()		
+    (interactive)
+
+    (when (string-equal (buffer-file-name) "d:/notebooks/org/tasks.org")
+      ;; Dynamic scoping to the rescue
+      (write-region nil nil "d:/notebooks/org/beorg_sync/tasks_beorg.org" nil nil nil nil))
+
+    ;; (when (string-equal (buffer-file-name) "d:/notebooks/org/journal.org")
+    ;;   ;; Dynamic scoping to the rescue
+    ;;   (write-region nil nil "d:/notebooks/org/beorg_sync/journal_wr.org" nil nil nil nil))
+
+  (when (string-equal (buffer-file-name) "d:/notebooks/org/leads.org")
+    ;; Dynamic scoping to the rescue
+    (write-region nil nil "d:/notebooks/org/beorg_sync/leads_beorg.org" nil nil nil nil)))
+
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/beorg_sync)))
+
 #+end_src
 
 
 ** AUTOTANGLE
+:PROPERTIES:
+:ID:       840547c5-3801-4d87-bd3b-81a6b5474422
+:END:
 
 Tangles this config to the init file
 
@@ -1461,22 +1639,23 @@ Tangles this config to the init file
 #+end_src
 
 ** Pushes to Dropbox
+:PROPERTIES:
+:ID:       46e8b45f-5ff4-465c-8582-2a054099412b
+:END:
 
 #+begin_src emacs-lisp
 
-  (defun my/push-to-drop ()
-    (interactive)
-
-    (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
-      ;; Dynamic scoping to the rescue
-      (write-region nil nil "d:/notebooks/Dropbox/org/Tasks_wr.org" nil nil nil nil))
-
-    (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
-      ;; Dynamic scoping to the rescue
-      (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
-
-  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
+;;  (defun my/push-to-drop ()		
+;;    (interactive)
+;;
+;;    (when (string-equal (buffer-file-name) "d:/notebooks/org/Tasks.org")
+;;      ;; Dynamic scoping to the rescue
+;;      (write-region nil nil "d:/notebooks/Dropbox/org/Tasks_wr.org" nil nil nil nil))
+;;
+;;    (when (string-equal (buffer-file-name) "d:/notebooks/org/Journal.org")
+;;      ;; Dynamic scoping to the rescue
+;;      (write-region nil nil "d:/notebooks/Dropbox/org/Journal_wr.org" nil nil nil nil)))
+;;
+;;  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'my/push-to-drop)))
 
 #+end_src
-
-
